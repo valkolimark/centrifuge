@@ -1,58 +1,35 @@
 'use client'
 
-import { useEffect, useRef, useState } from 'react'
+import { useEffect, useState } from 'react'
 
-// Embeds a Cognito Forms form via a direct iframe (more reliable than the seamless
-// script, which did not initialize when injected dynamically). The Cognito page
-// posts height messages to the parent, which we use to auto-size the iframe.
+// Embeds a Cognito Forms form via a direct iframe + Cognito's official iframe.js,
+// which auto-resizes the iframe to its content height (so there is no internal
+// scrollbar). A skeleton shows until the iframe loads.
 export function CognitoForm({ dataKey, formId }: { dataKey: string; formId: string }) {
   const [loaded, setLoaded] = useState(false)
-  const [height, setHeight] = useState(720)
-  const [resized, setResized] = useState(false)
   const src = `https://www.cognitoforms.com/f/${dataKey}/${formId}`
-  const ref = useRef<HTMLIFrameElement>(null)
 
   useEffect(() => {
-    function onMessage(e: MessageEvent) {
-      if (!/(^|\.)cognitoforms\.com$/.test(new URL(e.origin).hostname || '')) return
-      const d: unknown = e.data
-      let h: number | undefined
-      if (typeof d === 'number') h = d
-      else if (typeof d === 'string') {
-        const n = Number(d)
-        if (Number.isFinite(n)) h = n
-        else
-          try {
-            const p = JSON.parse(d) as Record<string, unknown>
-            h = Number(p.height ?? p.formHeight)
-          } catch {
-            /* ignore */
-          }
-      } else if (d && typeof d === 'object') {
-        const p = d as Record<string, unknown>
-        h = Number(p.height ?? p.formHeight ?? (p.data as Record<string, unknown> | undefined)?.height)
-      }
-      if (h && Number.isFinite(h) && h > 120) {
-        setHeight(Math.ceil(h) + 8)
-        setResized(true)
-        setLoaded(true)
-      }
+    // Load Cognito's iframe auto-resize script once per page.
+    if (!document.querySelector('script[data-cognito-iframe]')) {
+      const s = document.createElement('script')
+      s.src = 'https://www.cognitoforms.com/f/iframe.js'
+      s.async = true
+      s.setAttribute('data-cognito-iframe', 'true')
+      document.body.appendChild(s)
     }
-    window.addEventListener('message', onMessage)
-    return () => window.removeEventListener('message', onMessage)
   }, [])
 
   return (
     <div className="relative">
       <iframe
-        ref={ref}
         src={src}
         title="Request form"
         onLoad={() => setLoaded(true)}
-        style={{ width: '100%', height, border: 0, display: 'block' }}
-        // If Cognito hasn't reported a height yet, allow internal scroll so a long
-        // form is never clipped; once auto-sized, no scrollbar is needed.
-        scrolling={resized ? 'no' : 'auto'}
+        height={700}
+        scrolling="no"
+        className="block w-full"
+        style={{ border: 0, width: '1px', minWidth: '100%' }}
       />
       {!loaded ? (
         <div className="absolute inset-0 space-y-3 bg-white" aria-hidden="true">

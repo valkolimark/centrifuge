@@ -54,6 +54,10 @@
   html {
     -webkit-text-size-adjust: 100%;
     scroll-behavior: smooth;
+    /* Prevent any stray-wide element from letting the page slide side-to-side on
+       mobile. `clip` (not `hidden`) does not create a scroll container, so the
+       sticky header keeps working. */
+    overflow-x: clip;
   }
 
   body {
@@ -64,6 +68,9 @@
     line-height: 1.6;
     -webkit-font-smoothing: antialiased;
     text-rendering: optimizeLegibility;
+    overflow-x: clip;
+    /* Break long unbroken strings (model numbers, URLs) instead of overflowing. */
+    overflow-wrap: break-word;
   }
 
   h1, h2, h3, h4, h5, h6 {
