@@ -1,13 +1,20 @@
-// Compact brand mark shown in the admin nav header. A centrifuge-rotor motif
-// (concentric rings + bowl) in Industrial Blue.
+// Compact brand mark shown in the admin nav header. The graphical CW logo on a
+// small white chip so it reads on the dark navy sidebar.
+// TODO(verify): replace with centrifuge.com's square favicon once the client
+// supplies it (the live favicon is behind the site's captcha and unreachable).
 export default function Icon() {
   return (
-    <svg width="30" height="30" viewBox="0 0 40 40" fill="none" aria-label="Centrifuge World" role="img">
-      <rect width="40" height="40" rx="9" fill="#00415A" />
-      <circle cx="20" cy="20" r="12" stroke="#00B8FF" strokeWidth="2" opacity="0.7" />
-      <circle cx="20" cy="20" r="7.5" stroke="#FFFFFF" strokeWidth="2" />
-      <circle cx="20" cy="20" r="2.4" fill="#DD1B24" />
-      <path d="M20 4.5v5M20 30.5v5M4.5 20h5M30.5 20h5" stroke="#00B8FF" strokeWidth="2" strokeLinecap="round" />
-    </svg>
+    <span
+      style={{
+        display: 'inline-flex',
+        alignItems: 'center',
+        background: '#fff',
+        padding: '4px 7px',
+        borderRadius: 6,
+      }}
+    >
+      {/* eslint-disable-next-line @next/next/no-img-element */}
+      <img src="/logo/cw-logo-black.webp" alt="Centrifuge World" style={{ height: 18, width: 'auto', display: 'block' }} />
+    </span>
   )
 }
