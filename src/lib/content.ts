@@ -176,9 +176,16 @@ export interface BlogPostContent {
   seoDescription?: string
   todos?: string[]
 }
-export function getBlogPosts(): BlogPostContent[] {
+export async function getBlogPosts(): Promise<BlogPostContent[]> {
+  try {
+    const { getBlogPostsFromCMS } = await import('./cms')
+    const fromCms = await getBlogPostsFromCMS()
+    if (fromCms.length) return fromCms
+  } catch {
+    /* DB unavailable → JSON */
+  }
   return readJson<BlogPostContent[]>('blog.json') ?? []
 }
-export function getBlogPost(slug: string): BlogPostContent | undefined {
-  return getBlogPosts().find((p) => p.slug === slug)
+export async function getBlogPost(slug: string): Promise<BlogPostContent | undefined> {
+  return (await getBlogPosts()).find((p) => p.slug === slug)
 }

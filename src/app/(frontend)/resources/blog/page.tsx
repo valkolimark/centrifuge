@@ -15,8 +15,8 @@ export const metadata: Metadata = buildMetadata(
   '/resources/blog/',
 )
 
-export default function BlogIndex() {
-  const posts = getBlogPosts()
+export default async function BlogIndex() {
+  const posts = await getBlogPosts()
   return (
     <SiteShell>
       <Breadcrumbs items={[{ name: 'Resources', url: '/resources/' }, { name: 'Blog', url: '/resources/blog/' }]} />

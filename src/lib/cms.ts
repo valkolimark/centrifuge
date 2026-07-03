@@ -3,7 +3,7 @@
 // and falls back to the JSON files if the DB is empty/unavailable — so the site
 // works whether or not a given collection has been migrated yet.
 import { getPayloadClient } from './payload'
-import type { BrandContent, IndustryContent, CaseStudyContent, LinkItem } from './content'
+import type { BrandContent, IndustryContent, CaseStudyContent, BlogPostContent, LinkItem } from './content'
 
 type Row = Record<string, unknown>
 const links = (v: unknown): LinkItem[] =>
@@ -111,4 +111,30 @@ export async function getCaseStudiesFromCMS(): Promise<CaseStudyContent[]> {
   const payload = await getPayloadClient()
   const res = await payload.find({ collection: 'case-studies', where: { _status: { equals: 'published' } }, depth: 0, limit: 100 })
   return res.docs.map((d) => mapCaseStudy(d as unknown as Row))
+}
+
+// ── Blog posts ──────────────────────────────────────────────
+function mapPost(d: Row): BlogPostContent {
+  const seo = (d.seo as { title?: string; description?: string } | undefined) ?? {}
+  const hero = d.hero as { url?: string; alt?: string } | undefined
+  return {
+    slug: d.slug as string,
+    title: d.title as string,
+    excerpt: (d.excerpt as string) || undefined,
+    publishedAt: (d.publishedAt as string) || undefined,
+    hero: hero?.url ? { src: hero.url, alt: hero.alt || (d.title as string) } : undefined,
+    sections: Array.isArray(d.sections)
+      ? (d.sections as Row[]).map((s) => ({ heading: String(s.heading ?? ''), body: strings(s.body, 'text') })).filter((s) => s.heading)
+      : [],
+    internalLinks: links(d.internalLinks),
+    faqs: faqs(d.faqs),
+    seoTitle: seo.title || undefined,
+    seoDescription: seo.description || undefined,
+  }
+}
+
+export async function getBlogPostsFromCMS(): Promise<BlogPostContent[]> {
+  const payload = await getPayloadClient()
+  const res = await payload.find({ collection: 'posts', where: { _status: { equals: 'published' } }, sort: '-publishedAt', depth: 0, limit: 100 })
+  return res.docs.map((d) => mapPost(d as unknown as Row))
 }

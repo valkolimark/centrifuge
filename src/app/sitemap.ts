@@ -41,7 +41,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   for (const it of await getInventory()) add(`/inventory/${it.slug}/`, 0.7)
   for (const h of getHowItWorks()) add(`/resources/how-it-works/${h.slug}/`, 0.6)
   for (const c of await getCaseStudies()) add(`/resources/case-studies/${c.slug}/`, 0.6)
-  for (const p of getBlogPosts()) add(`/resources/blog/${p.slug}/`, 0.6)
+  for (const p of await getBlogPosts()) add(`/resources/blog/${p.slug}/`, 0.6)
 
   return now
 }

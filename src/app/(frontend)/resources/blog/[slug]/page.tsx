@@ -15,20 +15,20 @@ import { getBlogPosts, getBlogPost } from '@/lib/content'
 
 export const revalidate = 3600
 
-export function generateStaticParams() {
-  return getBlogPosts().map((p) => ({ slug: p.slug }))
+export async function generateStaticParams() {
+  return (await getBlogPosts()).map((p) => ({ slug: p.slug }))
 }
 
 export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }): Promise<Metadata> {
   const { slug } = await params
-  const p = getBlogPost(slug)
+  const p = await getBlogPost(slug)
   if (!p) return { title: 'Not found', robots: { index: false } }
   return buildMetadata({ title: p.seoTitle || `${p.title} | Centrifuge World`, description: p.seoDescription }, `/resources/blog/${slug}/`)
 }
 
 export default async function BlogPostPage({ params }: { params: Promise<{ slug: string }> }) {
   const { slug } = await params
-  const p = getBlogPost(slug)
+  const p = await getBlogPost(slug)
   if (!p) notFound()
   const url = `${SITE_URL}/resources/blog/${slug}/`
   const faqs = (p.faqs ?? []).filter((f) => f.question && f.answer)

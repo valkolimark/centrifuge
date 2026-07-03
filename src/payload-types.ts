@@ -693,6 +693,37 @@ export interface Post {
    */
   slug: string;
   excerpt?: string | null;
+  hero?: {
+    url?: string | null;
+    alt?: string | null;
+  };
+  sections?:
+    | {
+        heading: string;
+        body?:
+          | {
+              text: string;
+              id?: string | null;
+            }[]
+          | null;
+        id?: string | null;
+      }[]
+    | null;
+  internalLinks?:
+    | {
+        label: string;
+        href: string;
+        id?: string | null;
+      }[]
+    | null;
+  faqs?:
+    | {
+        question: string;
+        answer: string;
+        id?: string | null;
+      }[]
+    | null;
+  publishedAt?: string | null;
   heroImage?: (number | null) | Media;
   body?: {
     root: {
@@ -709,7 +740,6 @@ export interface Post {
     };
     [k: string]: unknown;
   } | null;
-  publishedAt?: string | null;
   /**
    * Search metadata. Title ≤60, description ≤155 characters.
    */
@@ -1544,9 +1574,41 @@ export interface PostsSelect<T extends boolean = true> {
   title?: T;
   slug?: T;
   excerpt?: T;
+  hero?:
+    | T
+    | {
+        url?: T;
+        alt?: T;
+      };
+  sections?:
+    | T
+    | {
+        heading?: T;
+        body?:
+          | T
+          | {
+              text?: T;
+              id?: T;
+            };
+        id?: T;
+      };
+  internalLinks?:
+    | T
+    | {
+        label?: T;
+        href?: T;
+        id?: T;
+      };
+  faqs?:
+    | T
+    | {
+        question?: T;
+        answer?: T;
+        id?: T;
+      };
+  publishedAt?: T;
   heroImage?: T;
   body?: T;
-  publishedAt?: T;
   seo?:
     | T
     | {
