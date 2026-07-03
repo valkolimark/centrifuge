@@ -67,6 +67,12 @@ async function main() {
   loadEnv()
   const { default: config } = await import('../src/payload.config.ts')
   const payload = await getPayload({ config })
+
+  if (process.argv.includes('--wipe')) {
+    const del = await payload.delete({ collection: 'inventory', where: { id: { exists: true } } })
+    console.log(`wiped ${Array.isArray(del.docs) ? del.docs.length : 0} existing inventory items`)
+  }
+
   const items = loadItems()
   console.log(`loaded ${items.length} extracted listings`)
 
