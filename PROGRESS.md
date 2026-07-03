@@ -138,3 +138,46 @@ Runs against the live WordPress site, not this repo. WP admin credentials are
 available but the **site URL and a backup path are still needed**, and it makes
 irreversible edits to production — awaiting an explicit go-ahead with the URL
 before touching the live site.
+
+---
+
+## Cycles 2–5 — built autonomously (overnight session)
+
+Live on the stable production URL: **https://centrifuge-nu.vercel.app** (auto-updates on each deploy). Sitemap: 98 URLs. Build clean, typecheck clean, all page types verified 200.
+
+### Cycle 2 — Conversion core
+- Forms engine (6 native types, verified end-to-end) — now superseded on live pages by the client's **Cognito forms** (EZ Quote #14, Contact #4) per client direction; native engine retained in code.
+- Master service template + **14 service pages** (Payload-driven, real copy, Service/FAQPage/Breadcrumb schema, hero images, relevant YouTube videos on decanter/basket/disc-stack/balancing/rebuilds/repair).
+- **Full homepage** (hero with fly-through video top-right, trust bar, services, emergency, types, industries, process, before/after proof, why, locations, FAQ, CTA) + graphical logo in header.
+- Legacy Cognito URLs preserved: **/cw-ez-quote-for-sales/** (EZ Quote) and **/contact-cw/** (Contact) — nav "Request a Quote"/"Contact" point here.
+- Legal: /privacy-policy/, /terms-of-use/ (drafts, TODO legal review).
+
+### Cycle 3 — OEM library
+- **All 42 brand pages** on one template, content harvested from the Wayback archive (live site is captcha-walled) by 7 parallel extraction agents → rewritten SEO/AEO. Each: hero, answer box, independent-service disclosure, models, types, rebuild gallery (S3), FAQs, related links, Cognito quote form, schema, brand video where available.
+- Merge redirects: alfa-laval-sharples→alfa-laval, bird-andritz→bird, ketema-tolhurst→tolhurst.
+- /brands/ index.
+
+### Cycle 4 — Reach
+- **8 industry pages** (typical equipment cross-linked, failure modes, services, brands, FAQs, hero).
+- **3 location pages** (Houston (Rosharon)/Franklin Park/Alsip) + index — LocalBusiness schema, NAP from nap.json, click-to-load map facade, capabilities.
+- **FAQ hub** (/resources/faqs/) — 5 categorized sections + FAQPage schema.
+- Sitemap expanded to all routes.
+
+### Cycle 5 — Authority
+- **How-it-works** library: index + 8 pages (correct engineering, decanter/basket videos, Article+VideoObject schema).
+- **Case studies**: index + 5 (confidential clients, before/after, galleries; outcomes/timelines TODO(verify) drafts — zero invented facts).
+- **Blog**: index + 4 SEO posts (hero images, internal links, FAQs).
+- **Videos** (/resources/videos/): all 15 @centrifugeworld channel videos (facade grid, VideoObject schema).
+
+### Media & content sourcing
+- Images served directly from the client's public S3 bucket (centrifuge-im.s3.amazonaws.com) via next/image; appropriate hero per page.
+- Videos: YouTube via click-to-load facades (no third-party JS before play); channel pulled via RSS.
+- All inline `TODO(verify: …)` notes stripped from visible text (kept in content JSON `todos` arrays for the client).
+
+### Not done — requires the client / external access
+- **Cycle 6 (launch/cutover)**: DNS repoint, Google Search Console/Analytics/Business Profile, WordPress final export + freeze, and the client go-decision. Irreversible and gated — cannot run autonomously.
+- **Cycle 0 (live WordPress hotfixes)**: needs the WP site URL + backup; the site is behind a SiteGround captcha that blocks automated access.
+- Real integration secrets (Resend, Turnstile, Blob) — placeholders; native-form integration deferred (Cognito handles live lead capture).
+
+### Open TODO(verify) for the client (in content `todos` arrays)
+Brand model designations (most brands), two brand spellings (Contrubex, Veronesi), per-facility capability lists, case-study outcomes/timelines, cost/turnaround figures (kept as ranges), pharma/food/dairy certification claims, legal review, public email, social sameAs URLs, location geo coordinates.
