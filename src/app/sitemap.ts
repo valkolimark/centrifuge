@@ -8,7 +8,19 @@ import { getPayloadClient } from '@/lib/payload'
 export const revalidate = 3600
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
-  const staticRoutes = ['/', '/services/', '/brands/', '/industries/', '/cw-ez-quote-for-sales/', '/contact-cw/']
+  const staticRoutes = [
+    '/',
+    '/services/',
+    '/brands/',
+    '/industries/',
+    '/locations/',
+    '/about/',
+    '/sell-your-centrifuge/',
+    '/cw-ez-quote-for-sales/',
+    '/contact-cw/',
+    '/privacy-policy/',
+    '/terms-of-use/',
+  ]
   const entries: MetadataRoute.Sitemap = staticRoutes.map((path) => ({
     url: `${SITE_URL}${path}`,
     changeFrequency: 'weekly',
