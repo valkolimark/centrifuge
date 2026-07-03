@@ -2,7 +2,14 @@ import Link from 'next/link'
 import type { AnchorHTMLAttributes, ButtonHTMLAttributes } from 'react'
 import { cn } from '@/lib/cn'
 
-type Variant = 'primary' | 'secondary' | 'emergency' | 'ghost'
+type Variant =
+  | 'primary'
+  | 'secondary'
+  | 'emergency'
+  | 'ghost'
+  | 'on-dark'
+  | 'on-emergency'
+  | 'outline-dark'
 type Size = 'md' | 'lg'
 
 const base =
@@ -11,12 +18,18 @@ const base =
   'focus-visible:outline-3 focus-visible:outline-offset-2 disabled:opacity-60 disabled:pointer-events-none'
 
 const variants: Record<Variant, string> = {
-  // white text on blue — verified large-text contrast; buttons are >=16px semibold
+  // white text on blue — verified AA on white
   primary: 'bg-blue text-white hover:bg-navy shadow-sm',
   secondary: 'bg-white text-navy border border-steel-300 hover:border-navy hover:bg-steel-100',
-  // safety orange is reserved exclusively for emergency CTAs / 24-7 line (CLAUDE.md)
+  // --color-safety (bright red) is reserved exclusively for emergency CTAs / 24-7 line
   emergency: 'bg-safety text-white hover:brightness-95 shadow-sm font-bold',
   ghost: 'bg-transparent text-navy hover:bg-steel-100',
+  // Solid white button for use on dark (navy/deep/emergency) backgrounds. Use these
+  // variants instead of overriding colors via className (which conflicts with the
+  // variant's own text color and can render white-on-white).
+  'on-dark': 'bg-white text-navy hover:bg-steel-100 shadow-sm',
+  'on-emergency': 'bg-white text-safety hover:bg-steel-100 shadow-sm font-bold',
+  'outline-dark': 'bg-transparent text-white border border-white/50 hover:bg-white/10',
 }
 
 const sizes: Record<Size, string> = {

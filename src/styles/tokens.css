@@ -24,7 +24,7 @@
 
   /* --color-safety is the emergency/warning color — now BRIGHT RED (was orange).
      Still reserved exclusively for emergency CTAs, the 24/7 line, and warnings. */
-  --color-safety: #e11900;
+  --color-safety: #dd1b24;
   --color-success: #1e8e5a;
   --color-error: #d32f2f;
 

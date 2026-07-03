@@ -6,7 +6,7 @@ export default function Icon() {
       <rect width="40" height="40" rx="9" fill="#00415A" />
       <circle cx="20" cy="20" r="12" stroke="#00B8FF" strokeWidth="2" opacity="0.7" />
       <circle cx="20" cy="20" r="7.5" stroke="#FFFFFF" strokeWidth="2" />
-      <circle cx="20" cy="20" r="2.4" fill="#E11900" />
+      <circle cx="20" cy="20" r="2.4" fill="#DD1B24" />
       <path d="M20 4.5v5M20 30.5v5M4.5 20h5M30.5 20h5" stroke="#00B8FF" strokeWidth="2" strokeLinecap="round" />
     </svg>
   )

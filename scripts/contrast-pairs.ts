@@ -19,7 +19,7 @@ export const palette = {
   white: '#FFFFFF',
   black: '#000000',
   // Functional
-  safety: '#E11900', // BRIGHT RED — emergencies & warnings (repurposed token)
+  safety: '#DD1B24', // BRIGHT RED — emergencies & warnings (repurposed token)
   success: '#1E8E5A',
   error: '#D32F2F',
   link: '#00719C',

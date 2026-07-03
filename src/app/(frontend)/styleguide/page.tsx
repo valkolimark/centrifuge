@@ -55,7 +55,7 @@ export default function StyleGuidePage() {
       <Breadcrumbs items={[{ name: 'Style Guide', url: '/styleguide/' }]} />
 
       <Section className="!pt-4">
-        <h1>Industrial Blue — Style Guide</h1>
+        <h1>Web Blue — Style Guide</h1>
         <p className="mt-2 max-w-2xl text-steel-700">
           The Cycle 1 component library and design tokens. Noindexed. Every component variant is
           rendered here and scanned by axe-core + Lighthouse in CI.
@@ -114,14 +114,14 @@ export default function StyleGuidePage() {
                     <ButtonLink href={`tel:${emergencyPhone.number}`} variant="emergency">
                       24/7 Emergency
                     </ButtonLink>
-                    <ButtonLink href="/request-a-quote/" className="bg-white text-navy hover:bg-steel-100">
+                    <ButtonLink href="/request-a-quote/" variant="on-dark">
                       Request a Quote
                     </ButtonLink>
                   </>
                 }
               />
               <Hero variant="interior" eyebrow="Interior variant" title="Decanter Centrifuge Repair" subtitle="Light interior hero for content pages." />
-              <Hero variant="emergency" eyebrow="Emergency variant" title="24/7 Emergency Centrifuge Service" subtitle="Safety-orange treatment, reserved for emergencies." />
+              <Hero variant="emergency" eyebrow="Emergency variant" title="24/7 Emergency Centrifuge Service" subtitle="Emergency red — reserved for the 24/7 line & emergencies." />
             </div>
           </Block>
 

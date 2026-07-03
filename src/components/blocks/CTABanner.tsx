@@ -20,11 +20,11 @@ export function CTABanner({
           <p className="mt-2 text-white/90">{body}</p>
         </div>
         <div className="flex flex-wrap gap-3">
-          <ButtonLink href={primary.href} className="bg-blue text-white hover:bg-white hover:text-navy">
+          <ButtonLink href={primary.href} variant="on-dark">
             {primary.label}
           </ButtonLink>
           {secondary ? (
-            <ButtonLink href={secondary.href} variant="secondary">
+            <ButtonLink href={secondary.href} variant="outline-dark">
               {secondary.label}
             </ButtonLink>
           ) : null}

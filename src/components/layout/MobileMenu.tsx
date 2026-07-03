@@ -7,7 +7,7 @@ import { PhoneLink } from '@/components/ui/PhoneLink'
 import { cn } from '@/lib/cn'
 
 // Flagship component. Full-screen overlay, opens <=200ms, order from
-// navigation.mobile_menu_order, pinned safety-orange emergency bar, 44px+ targets,
+// navigation.mobile_menu_order, pinned emergency-red bar, 44px+ targets,
 // focus-trapped, Esc/overlay-tap closes, body scroll locked, no layout shift.
 export function MobileMenu({ open, onClose }: { open: boolean; onClose: () => void }) {
   const panelRef = useRef<HTMLDivElement>(null)

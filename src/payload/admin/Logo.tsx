@@ -6,7 +6,7 @@ export default function Logo() {
         <rect width="40" height="40" rx="10" fill="#00415A" />
         <circle cx="20" cy="20" r="12.5" stroke="#00B8FF" strokeWidth="2" opacity="0.7" />
         <circle cx="20" cy="20" r="8" stroke="#FFFFFF" strokeWidth="2" />
-        <circle cx="20" cy="20" r="2.6" fill="#E11900" />
+        <circle cx="20" cy="20" r="2.6" fill="#DD1B24" />
         <path d="M20 4v5.5M20 30.5V36M4 20h5.5M30.5 20H36" stroke="#00B8FF" strokeWidth="2" strokeLinecap="round" />
       </svg>
       <span style={{ display: 'flex', flexDirection: 'column', lineHeight: 1.15 }}>

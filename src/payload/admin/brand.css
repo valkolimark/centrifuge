@@ -14,7 +14,7 @@
   --cw-steel-100: #eef3f6;
   --cw-steel-300: #c2d0d8;
   --cw-steel-500: #5c7078;
-  --cw-safety: #e11900;
+  --cw-safety: #dd1b24;
 
   /* Softer, cooler canvas; cards stay white for contrast. */
   --theme-bg: var(--cw-steel-100);

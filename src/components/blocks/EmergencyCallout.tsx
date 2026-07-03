@@ -1,7 +1,7 @@
 import { emergencyPhone } from '@/lib/site'
 import { ButtonLink } from '@/components/ui/Button'
 
-// EmergencyCallout: safety-orange band, 2-tap tel: reach from any page (DoD).
+// EmergencyCallout: emergency-red band, 2-tap tel: reach from any page (DoD).
 export function EmergencyCallout({
   heading = 'Centrifuge down? We respond 24/7.',
   body = 'On-call technicians and expedited shop turnaround keep your plant running. Call the emergency line now.',
@@ -18,9 +18,9 @@ export function EmergencyCallout({
         </div>
         <ButtonLink
           href={`tel:${emergencyPhone.number}`}
-          variant="secondary"
+          variant="on-emergency"
           size="lg"
-          className="shrink-0 bg-white text-safety hover:bg-steel-100"
+          className="shrink-0"
         >
           Call {emergencyPhone.display}
         </ButtonLink>

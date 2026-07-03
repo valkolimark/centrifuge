@@ -1,8 +1,8 @@
 import { emergencyPhone, hours } from '@/lib/site'
 import { PhoneLink } from '@/components/ui/PhoneLink'
 
-// Always-visible utility bar. Safety-orange 24/7 emergency line + office hours.
-// Safety orange is reserved for this and emergency CTAs only (CLAUDE.md).
+// Always-visible utility bar. Emergency-red 24/7 emergency line + office hours.
+// The emergency red is reserved for this and emergency CTAs only (CLAUDE.md).
 export function EmergencyBar() {
   return (
     <div className="bg-safety text-white">

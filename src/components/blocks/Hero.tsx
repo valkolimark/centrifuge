@@ -4,7 +4,7 @@ import { cn } from '@/lib/cn'
 
 type Variant = 'home' | 'interior' | 'emergency'
 
-// Hero block, three variants. Emergency uses the safety-orange treatment.
+// Hero block, three variants. Emergency uses the emergency-red treatment.
 // Pass an optional next/image (with explicit dims + alt) as `image`; when it is
 // the LCP element the caller sets priority on it.
 export function Hero({
