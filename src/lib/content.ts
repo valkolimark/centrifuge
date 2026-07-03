@@ -6,11 +6,28 @@ import { join } from 'node:path'
 
 const ROOT = join(process.cwd(), 'content-migration')
 
+// Strip inline "TODO(verify: …)" notes from any rendered string so they never show
+// to visitors. The dedicated `todos` array is preserved untouched for the client.
+export function stripTodo(s: string): string {
+  return s.replace(/\s*TODO\([^)]*\)\.?/g, '').replace(/\s{2,}/g, ' ').trim()
+}
+function sanitize<T>(value: T, key?: string): T {
+  if (key === 'todos') return value
+  if (typeof value === 'string') return stripTodo(value) as unknown as T
+  if (Array.isArray(value)) return value.map((v) => sanitize(v)) as unknown as T
+  if (value && typeof value === 'object') {
+    const out: Record<string, unknown> = {}
+    for (const [k, v] of Object.entries(value)) out[k] = sanitize(v, k)
+    return out as T
+  }
+  return value
+}
+
 function readJson<T>(rel: string): T | null {
   const p = join(ROOT, rel)
   if (!existsSync(p)) return null
   try {
-    return JSON.parse(readFileSync(p, 'utf8')) as T
+    return sanitize(JSON.parse(readFileSync(p, 'utf8')) as T)
   } catch {
     return null
   }

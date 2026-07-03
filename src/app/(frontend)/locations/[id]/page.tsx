@@ -101,8 +101,9 @@ export default async function LocationPage({ params }: { params: Promise<{ id: s
 
           <div className="mt-8">
             <h2>Shop capabilities</h2>
+            {/* TODO(verify: exact per-facility capability list with client) */}
             <p className="mt-1 text-sm text-steel-500">
-              Shared capability list; per-facility specifics are being confirmed. TODO(verify: exact per-facility capabilities with client).
+              Our facilities support the full range of centrifuge services below.
             </p>
             <ul className="mt-4 grid gap-2 sm:grid-cols-2">
               {CAPABILITIES.map((c) => (

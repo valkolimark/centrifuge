@@ -16,6 +16,7 @@ import { SERVICE_HERO, SERVICE_VIDEO } from '@/lib/page-media'
 import { toVideoSource } from '@/lib/videos'
 import { JsonLd } from '@/components/JsonLd'
 import { getPayloadClient } from '@/lib/payload'
+import { stripTodo } from '@/lib/content'
 import { buildMetadata } from '@/lib/seo'
 import { SITE_URL } from '@/lib/site'
 import {
@@ -98,7 +99,11 @@ export default async function ServicePage({ params }: { params: Promise<{ slug: 
 
   const url = `${SITE_URL}/services/${service.slug}/`
   const h1 = service.h1 || service.title
-  const faqs = (service.faqs ?? []).filter((f) => f.question && f.answer)
+  const answerBox = service.answerBox ? stripTodo(service.answerBox) : undefined
+  const intro = service.intro ? stripTodo(service.intro) : undefined
+  const faqs = (service.faqs ?? [])
+    .filter((f) => f.question && f.answer)
+    .map((f) => ({ question: f.question, answer: stripTodo(f.answer) }))
   const relatedGroups = [
     service.relatedServices?.length ? { heading: 'Related services', links: service.relatedServices } : null,
     service.relatedBrands?.length ? { heading: 'Brands we service', links: service.relatedBrands } : null,
@@ -106,7 +111,7 @@ export default async function ServicePage({ params }: { params: Promise<{ slug: 
   ].filter(Boolean) as { heading: string; links: LinkItem[] }[]
 
   const schema = [
-    serviceSchema({ url, name: service.title, serviceType: `${service.title} — industrial centrifuges`, description: service.answerBox }),
+    serviceSchema({ url, name: service.title, serviceType: `${service.title} — industrial centrifuges`, description: answerBox }),
     faqs.length ? faqPageSchema(faqs) : null,
     breadcrumbSchema([
       { name: 'Home', url: `${SITE_URL}/` },
@@ -124,15 +129,15 @@ export default async function ServicePage({ params }: { params: Promise<{ slug: 
         variant={service.emergencyVariant ? 'emergency' : 'interior'}
         eyebrow="Centrifuge service"
         title={h1}
-        subtitle={service.intro}
+        subtitle={intro}
         image={!service.emergencyVariant && SERVICE_HERO[service.slug] ? SERVICE_HERO[service.slug] : undefined}
       />
 
       <Section>
         <div className="mx-auto max-w-3xl">
-          {service.answerBox ? (
+          {answerBox ? (
             <AnswerBox question={service.answerBoxQuestion || `About ${service.title}`}>
-              {service.answerBox}
+              {answerBox}
             </AnswerBox>
           ) : null}
 

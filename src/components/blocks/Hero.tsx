@@ -25,14 +25,17 @@ export function Hero({
   /** Optional media (e.g. a video) rendered in a right column, top-aligned. */
   media?: ReactNode
 }) {
-  const dark = variant !== 'interior'
+  // Any hero with a background image sits on a dark overlay, so its text must be
+  // white regardless of variant (fixes dark-navy text on a dark image = unreadable).
+  const dark = variant !== 'interior' || !!image
   return (
     <section
       className={cn(
         'relative overflow-hidden',
         variant === 'home' && 'bg-blue-deep text-white',
         variant === 'emergency' && 'bg-safety text-white',
-        variant === 'interior' && 'bg-steel-100 text-body',
+        variant === 'interior' && !image && 'bg-steel-100 text-body',
+        variant === 'interior' && image && 'bg-blue-deep text-white',
       )}
     >
       {image ? (
@@ -43,9 +46,16 @@ export function Hero({
             fill
             priority={image.priority}
             sizes="100vw"
-            className="object-cover opacity-25"
+            className="object-cover opacity-40"
           />
-          <div className={cn('absolute inset-0', variant === 'emergency' ? 'bg-safety/70' : 'bg-blue-deep/70')} />
+          <div
+            className={cn(
+              'absolute inset-0',
+              variant === 'emergency'
+                ? 'bg-safety/80'
+                : 'bg-gradient-to-r from-blue-deep/90 via-blue-deep/75 to-blue-deep/55',
+            )}
+          />
         </div>
       ) : null}
 
