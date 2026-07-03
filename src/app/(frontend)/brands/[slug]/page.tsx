@@ -23,7 +23,7 @@ import { BRAND_VIDEO, fallbackBrandHero } from '@/lib/page-media'
 import { toVideoSource } from '@/lib/videos'
 
 export const revalidate = 3600
-const INVENTORY = 'https://inventory.centrifuge.com'
+const INVENTORY = '/inventory/'
 
 // Map a brand's serviced types to the matching "used centrifuges" category for
 // long-tail "buy/sell used <brand>" internal linking.
@@ -175,7 +175,7 @@ export default async function BrandPage({ params }: { params: Promise<{ slug: st
             or the full inventory.
           </p>
           <div className="mt-5 flex flex-wrap gap-3">
-            <ButtonLink href={INVENTORY} external>
+            <ButtonLink href={INVENTORY}>
               Browse inventory
             </ButtonLink>
             <ButtonLink href="/cw-ez-quote-for-sales/" variant="secondary">

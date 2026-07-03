@@ -17,7 +17,7 @@ import { SITE_URL } from '@/lib/site'
 import { USED_CATEGORIES, getUsedCategory } from '@/content/used-centrifuges'
 
 export const revalidate = 3600
-const INVENTORY = 'https://inventory.centrifuge.com'
+const INVENTORY = '/inventory/'
 
 export function generateStaticParams() {
   return USED_CATEGORIES.map((c) => ({ slug: c.slug }))
@@ -60,7 +60,7 @@ export default async function UsedCategoryPage({ params }: { params: Promise<{ s
         image={{ src: c.hero.src, alt: c.hero.alt, width: 1600, height: 900 }}
         actions={
           <>
-            <ButtonLink href={INVENTORY} external variant="on-dark">
+            <ButtonLink href={INVENTORY} variant="on-dark">
               Browse inventory
             </ButtonLink>
             <ButtonLink href="/cw-ez-quote-for-sales/" variant="outline-dark">

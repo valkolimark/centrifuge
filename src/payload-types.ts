@@ -74,6 +74,7 @@ export interface Config {
     locations: Location;
     posts: Post;
     'case-studies': CaseStudy;
+    inventory: Inventory;
     faqs: Faq;
     media: Media;
     'form-submissions': FormSubmission;
@@ -94,6 +95,7 @@ export interface Config {
     locations: LocationsSelect<false> | LocationsSelect<true>;
     posts: PostsSelect<false> | PostsSelect<true>;
     'case-studies': CaseStudiesSelect<false> | CaseStudiesSelect<true>;
+    inventory: InventorySelect<false> | InventorySelect<true>;
     faqs: FaqsSelect<false> | FaqsSelect<true>;
     media: MediaSelect<false> | MediaSelect<true>;
     'form-submissions': FormSubmissionsSelect<false> | FormSubmissionsSelect<true>;
@@ -689,6 +691,90 @@ export interface CaseStudy {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "inventory".
+ */
+export interface Inventory {
+  id: number;
+  /**
+   * e.g. "Sharples P-3000 Solid-Bowl Decanter Centrifuge".
+   */
+  title: string;
+  /**
+   * URL segment. Auto-generated from the title if left blank.
+   */
+  slug: string;
+  /**
+   * OEM brand, e.g. Sharples (must match /data/oem-brands.json spelling).
+   */
+  brand?: string | null;
+  machineType: 'decanter' | 'basket' | 'disc-stack' | 'pusher' | 'peeler' | 'separator' | 'other';
+  model?: string | null;
+  condition?: ('reconditioned' | 'rebuilt' | 'used' | 'for-parts') | null;
+  /**
+   * Sold items are hidden from the public site.
+   */
+  availability?: ('available' | 'sale-pending' | 'sold') | null;
+  /**
+   * USD. Leave blank and check "Price on request" if not public.
+   */
+  price?: number | null;
+  priceOnRequest?: boolean | null;
+  /**
+   * 1–2 sentences shown on the listing card.
+   */
+  shortDescription?: string | null;
+  /**
+   * Full description shown on the detail page.
+   */
+  description?: string | null;
+  /**
+   * Bowl diameter, max RPM/G-force, material, drive, etc.
+   */
+  specs?:
+    | {
+        label: string;
+        value: string;
+        id?: string | null;
+      }[]
+    | null;
+  images?:
+    | {
+        image: number | Media;
+        id?: string | null;
+      }[]
+    | null;
+  /**
+   * Show first in listings.
+   */
+  featured?: boolean | null;
+  /**
+   * Search metadata. Title ≤60, description ≤155 characters.
+   */
+  seo?: {
+    /**
+     * Unique <title>, ≤60 chars. Falls back to the page title.
+     */
+    title?: string | null;
+    /**
+     * Meta description, ≤155 chars.
+     */
+    description?: string | null;
+    /**
+     * Only if this page should canonicalize to a different URL.
+     */
+    canonicalOverride?: string | null;
+    ogImage?: (number | null) | Media;
+    /**
+     * Exclude from search engines and the sitemap.
+     */
+    noindex?: boolean | null;
+  };
+  updatedAt: string;
+  createdAt: string;
+  _status?: ('draft' | 'published') | null;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "faqs".
  */
 export interface Faq {
@@ -933,6 +1019,10 @@ export interface PayloadLockedDocument {
     | ({
         relationTo: 'case-studies';
         value: number | CaseStudy;
+      } | null)
+    | ({
+        relationTo: 'inventory';
+        value: number | Inventory;
       } | null)
     | ({
         relationTo: 'faqs';
@@ -1209,6 +1299,49 @@ export interface CaseStudiesSelect<T extends boolean = true> {
       };
   timeline?: T;
   outcome?: T;
+  seo?:
+    | T
+    | {
+        title?: T;
+        description?: T;
+        canonicalOverride?: T;
+        ogImage?: T;
+        noindex?: T;
+      };
+  updatedAt?: T;
+  createdAt?: T;
+  _status?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "inventory_select".
+ */
+export interface InventorySelect<T extends boolean = true> {
+  title?: T;
+  slug?: T;
+  brand?: T;
+  machineType?: T;
+  model?: T;
+  condition?: T;
+  availability?: T;
+  price?: T;
+  priceOnRequest?: T;
+  shortDescription?: T;
+  description?: T;
+  specs?:
+    | T
+    | {
+        label?: T;
+        value?: T;
+        id?: T;
+      };
+  images?:
+    | T
+    | {
+        image?: T;
+        id?: T;
+      };
+  featured?: T;
   seo?:
     | T
     | {
@@ -1575,6 +1708,10 @@ export interface TaskSchedulePublish {
       | ({
           relationTo: 'case-studies';
           value: number | CaseStudy;
+        } | null)
+      | ({
+          relationTo: 'inventory';
+          value: number | Inventory;
         } | null)
       | ({
           relationTo: 'faqs';

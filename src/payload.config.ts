@@ -16,6 +16,7 @@ import { Industries } from './payload/collections/Industries'
 import { Locations } from './payload/collections/Locations'
 import { Posts } from './payload/collections/Posts'
 import { CaseStudies } from './payload/collections/CaseStudies'
+import { Inventory } from './payload/collections/Inventory'
 import { FAQs } from './payload/collections/FAQs'
 import { FormSubmissions } from './payload/collections/FormSubmissions'
 import { Redirects } from './payload/collections/Redirects'
@@ -99,6 +100,7 @@ export default buildConfig({
     Locations,
     Posts,
     CaseStudies,
+    Inventory,
     FAQs,
     Media,
     FormSubmissions,

@@ -4,6 +4,7 @@ import { INDUSTRIES } from '@/lib/stubs'
 import { getPayloadClient } from '@/lib/payload'
 import { getBrandContent, getHowItWorks, getCaseStudies, getBlogPosts } from '@/lib/content'
 import { USED_CATEGORIES } from '@/content/used-centrifuges'
+import { getInventory } from '@/lib/inventory'
 
 // Sitemap: static routes + published services + content routes (brands/industries/
 // how-it-works/case-studies/blog). Merged brands (redirects) are excluded.
@@ -36,6 +37,8 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   for (const l of locations) add(`/locations/${l.id}/`, 0.7)
   add('/used-centrifuges/', 0.8)
   for (const u of USED_CATEGORIES) add(`/used-centrifuges/${u.slug}/`, 0.8)
+  add('/inventory/', 0.8)
+  for (const it of await getInventory()) add(`/inventory/${it.slug}/`, 0.7)
   for (const h of getHowItWorks()) add(`/resources/how-it-works/${h.slug}/`, 0.6)
   for (const c of getCaseStudies()) add(`/resources/case-studies/${c.slug}/`, 0.6)
   for (const p of getBlogPosts()) add(`/resources/blog/${p.slug}/`, 0.6)

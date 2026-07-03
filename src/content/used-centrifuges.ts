@@ -66,7 +66,8 @@ export const USED_HUB = {
     { question: 'What does a used centrifuge cost?', answer: 'It depends on type, size, brand, and condition. As framing, a reconditioned used machine typically costs a fraction of a comparable new unit; we quote after understanding your process.' },
     { question: 'Do you buy and sell all brands?', answer: 'Yes — 45+ OEM brands, including Sharples, Alfa Laval, GEA Westfalia, Andritz, Bird, Flottweg, Centrisys, Tolhurst, and more.' },
   ] as SalesFaq[],
-  inventoryUrl: INVENTORY,
+  inventoryUrl: '/inventory/',
+  externalInventoryUrl: INVENTORY,
 }
 
 export const USED_CATEGORIES: UsedCentrifugePage[] = [

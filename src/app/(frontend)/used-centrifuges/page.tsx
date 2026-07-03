@@ -5,7 +5,6 @@ import { Section } from '@/components/ui/Section'
 import { Breadcrumbs } from '@/components/layout/Breadcrumbs'
 import { Hero } from '@/components/blocks/Hero'
 import { AnswerBox } from '@/components/blocks/AnswerBox'
-import { ProcessSteps } from '@/components/blocks/ProcessSteps'
 import { FAQAccordion } from '@/components/blocks/FAQAccordion'
 import { CTABanner } from '@/components/blocks/CTABanner'
 import { ButtonLink } from '@/components/ui/Button'
@@ -46,7 +45,7 @@ export default function UsedCentrifugesHub() {
         image={{ src: USED_HUB.hero.src, alt: USED_HUB.hero.alt, width: 1600, height: 900 }}
         actions={
           <>
-            <ButtonLink href={USED_HUB.inventoryUrl} external variant="on-dark">
+            <ButtonLink href={USED_HUB.inventoryUrl} variant="on-dark">
               Browse inventory
             </ButtonLink>
             <ButtonLink href="/sell-your-centrifuge/" variant="outline-dark">
@@ -77,27 +76,34 @@ export default function UsedCentrifugesHub() {
       </Section>
 
       <Section tone="subtle">
-        <div className="grid gap-10 lg:grid-cols-2">
-          <div>
-            <h2>Buying a used centrifuge</h2>
-            <p className="mt-2 text-steel-700">Reconditioned, tested machines matched to your process.</p>
-            <div className="mt-5">
-              <ProcessSteps steps={USED_HUB.buySteps} />
+        <div className="grid gap-6 lg:grid-cols-2">
+          {[
+            { title: 'Buying a used centrifuge', blurb: 'Reconditioned, tested machines matched to your process.', steps: USED_HUB.buySteps, cta: { label: 'Browse inventory', href: '/inventory/' } },
+            { title: 'Selling your centrifuge', blurb: 'A fair offer for machines you no longer run.', steps: USED_HUB.sellSteps, cta: { label: 'Sell your centrifuge', href: '/sell-your-centrifuge/' } },
+          ].map((col) => (
+            <div key={col.title} className="flex flex-col rounded-card border border-steel-300 bg-white p-6 sm:p-8">
+              <h2 className="text-2xl">{col.title}</h2>
+              <p className="mt-2 text-steel-700">{col.blurb}</p>
+              <ol className="mt-6 space-y-5">
+                {col.steps.map((s, i) => (
+                  <li key={s.title} className="flex gap-4">
+                    <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-navy text-sm font-bold text-white" aria-hidden="true">
+                      {i + 1}
+                    </span>
+                    <div>
+                      <p className="font-semibold text-navy">{s.title}</p>
+                      <p className="text-sm text-steel-700">{s.description}</p>
+                    </div>
+                  </li>
+                ))}
+              </ol>
+              <div className="mt-auto pt-6">
+                <ButtonLink href={col.cta.href} variant="secondary">
+                  {col.cta.label}
+                </ButtonLink>
+              </div>
             </div>
-            <ButtonLink href={USED_HUB.inventoryUrl} external className="mt-5">
-              Browse inventory
-            </ButtonLink>
-          </div>
-          <div>
-            <h2>Selling your centrifuge</h2>
-            <p className="mt-2 text-steel-700">A fair offer for machines you no longer run.</p>
-            <div className="mt-5">
-              <ProcessSteps steps={USED_HUB.sellSteps} />
-            </div>
-            <ButtonLink href="/sell-your-centrifuge/" variant="secondary" className="mt-5">
-              Sell your centrifuge
-            </ButtonLink>
-          </div>
+          ))}
         </div>
       </Section>
 
