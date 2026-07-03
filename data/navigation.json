@@ -24,7 +24,7 @@
           {"label": "Parts & Fabrication", "href": "/services/parts-fabrication/"},
           {"label": "Gearbox Repair", "href": "/services/gearbox-repair/"},
           {"label": "Centrifuge Rentals", "href": "/services/centrifuge-rentals/"},
-          {"label": "Buy a Centrifuge", "href": "https://inventory.centrifuge.com", "external": true},
+          {"label": "Buy a Centrifuge", "href": "/used-centrifuges/"},
           {"label": "Sell Your Centrifuge", "href": "/sell-your-centrifuge/"}
         ]}
       ]

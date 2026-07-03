@@ -21,6 +21,7 @@ const companyLinks = [
   { label: 'FAQs', href: '/resources/faqs/' },
   { label: 'Contact', href: '/contact-cw/' },
   { label: 'Request a Quote', href: '/cw-ez-quote-for-sales/' },
+  { label: 'Buy Used Centrifuges', href: '/used-centrifuges/' },
   { label: 'Sell Your Centrifuge', href: '/sell-your-centrifuge/' },
 ]
 
