@@ -42,7 +42,7 @@ export function generateStaticParams() {
 
 export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }): Promise<Metadata> {
   const { slug } = await params
-  const c = getBrandContent(slug)
+  const c = await getBrandContent(slug)
   const brand = brandStubBySlug(slug)
   if (!brand) return { title: 'Not found', robots: { index: false } }
   return buildMetadata(
@@ -60,7 +60,7 @@ export default async function BrandPage({ params }: { params: Promise<{ slug: st
   const { slug } = await params
   const brand = brandStubBySlug(slug)
   if (!brand) notFound()
-  const c = getBrandContent(slug)
+  const c = await getBrandContent(slug)
   // Merge decision (e.g. alfa-laval-sharples → alfa-laval): redirect to the target.
   if (c?.mergeInto) redirect(`/brands/${c.mergeInto}/`)
   const name = c?.name || brand.name

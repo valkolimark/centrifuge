@@ -30,7 +30,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
 
   // Brands with harvested content (skip merged → they redirect)
   for (const b of brands) {
-    const c = getBrandContent(b.slug)
+    const c = await getBrandContent(b.slug)
     if (c && !c.mergeInto) add(`/brands/${b.slug}/`, 0.7)
   }
   for (const i of INDUSTRIES) add(`/industries/${i.slug}/`, 0.7)

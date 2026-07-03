@@ -57,7 +57,15 @@ export interface BrandContent {
   mergeInto?: string | null
 }
 
-export function getBrandContent(slug: string): BrandContent | null {
+// Payload-first (editable in /admin), JSON fallback (build safety / un-migrated).
+export async function getBrandContent(slug: string): Promise<BrandContent | null> {
+  try {
+    const { getBrandFromCMS } = await import('./cms')
+    const fromCms = await getBrandFromCMS(slug)
+    if (fromCms) return fromCms
+  } catch {
+    /* DB unavailable → fall back to JSON */
+  }
   return readJson<BrandContent>(`oem/${slug}.json`)
 }
 

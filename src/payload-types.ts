@@ -397,16 +397,85 @@ export interface OemBrand {
    */
   slug: string;
   featured?: boolean | null;
+  /**
+   * If set, this brand 301-redirects to /brands/<slug>.
+   */
+  mergeInto?: string | null;
+  /**
+   * 40–60 word direct answer under the H1 (AEO).
+   */
+  answerBox?: string | null;
+  /**
+   * Hero subtitle / lead paragraph.
+   */
+  intro?: string | null;
+  /**
+   * Independent-service disclosure line (legally clean positioning).
+   */
+  disclosure?: string | null;
+  paragraphs?:
+    | {
+        text: string;
+        id?: string | null;
+      }[]
+    | null;
   modelsServiced?:
     | {
         model: string;
         id?: string | null;
       }[]
     | null;
-  /**
-   * Independent-service disclosure line (legally clean positioning).
-   */
-  disclosure?: string | null;
+  typesServiced?:
+    | {
+        value: string;
+        id?: string | null;
+      }[]
+    | null;
+  capabilities?:
+    | {
+        item: string;
+        detail?: string | null;
+        id?: string | null;
+      }[]
+    | null;
+  faqs?:
+    | {
+        question: string;
+        answer: string;
+        id?: string | null;
+      }[]
+    | null;
+  images?:
+    | {
+        /**
+         * Image URL (e.g. an S3 URL).
+         */
+        url: string;
+        alt: string;
+        id?: string | null;
+      }[]
+    | null;
+  relatedServices?:
+    | {
+        label: string;
+        href: string;
+        id?: string | null;
+      }[]
+    | null;
+  relatedBrands?:
+    | {
+        label: string;
+        href: string;
+        id?: string | null;
+      }[]
+    | null;
+  relatedIndustries?:
+    | {
+        label: string;
+        href: string;
+        id?: string | null;
+      }[]
+    | null;
   body?: {
     root: {
       type: string;
@@ -1200,13 +1269,70 @@ export interface OemBrandsSelect<T extends boolean = true> {
   name?: T;
   slug?: T;
   featured?: T;
+  mergeInto?: T;
+  answerBox?: T;
+  intro?: T;
+  disclosure?: T;
+  paragraphs?:
+    | T
+    | {
+        text?: T;
+        id?: T;
+      };
   modelsServiced?:
     | T
     | {
         model?: T;
         id?: T;
       };
-  disclosure?: T;
+  typesServiced?:
+    | T
+    | {
+        value?: T;
+        id?: T;
+      };
+  capabilities?:
+    | T
+    | {
+        item?: T;
+        detail?: T;
+        id?: T;
+      };
+  faqs?:
+    | T
+    | {
+        question?: T;
+        answer?: T;
+        id?: T;
+      };
+  images?:
+    | T
+    | {
+        url?: T;
+        alt?: T;
+        id?: T;
+      };
+  relatedServices?:
+    | T
+    | {
+        label?: T;
+        href?: T;
+        id?: T;
+      };
+  relatedBrands?:
+    | T
+    | {
+        label?: T;
+        href?: T;
+        id?: T;
+      };
+  relatedIndustries?:
+    | T
+    | {
+        label?: T;
+        href?: T;
+        id?: T;
+      };
   body?: T;
   seo?:
     | T
