@@ -1,0 +1,80 @@
+{
+  "_readme": "Authoritative navigation structure (Deliverable D3). Header shows grouped, prioritized items \u2014 NOT the legacy 21-item/44-item dumps. Deep inventories live on index pages. Mobile menu = same data, different component (see cycle-1 spec).",
+  "header": [
+    {
+      "label": "Services",
+      "type": "megamenu",
+      "groups": [
+        {"heading": "Repair & Rebuild", "items": [
+          {"label": "Centrifuge Repair", "href": "/services/centrifuge-repair/"},
+          {"label": "Centrifuge Rebuilds", "href": "/services/centrifuge-rebuilds/"},
+          {"label": "Decanter Centrifuge Repair", "href": "/services/decanter-centrifuge-repair/"},
+          {"label": "Basket Centrifuge Repair", "href": "/services/basket-centrifuge-repair/"},
+          {"label": "Disc Stack Centrifuge Repair", "href": "/services/disc-stack-centrifuge-repair/"},
+          {"label": "Pusher & Peeler Centrifuge Repair", "href": "/services/pusher-peeler-centrifuge-repair/"}
+        ]},
+        {"heading": "Service & Support", "items": [
+          {"label": "24/7 Emergency Service", "href": "/services/emergency-centrifuge-service/", "style": "emergency"},
+          {"label": "Field Service", "href": "/services/field-service/"},
+          {"label": "Preventive Maintenance", "href": "/services/preventive-maintenance/"},
+          {"label": "Centrifuge Inspections", "href": "/services/centrifuge-inspections/"},
+          {"label": "Balancing & Testing", "href": "/services/balancing-testing/"}
+        ]},
+        {"heading": "Parts & Equipment", "items": [
+          {"label": "Parts & Fabrication", "href": "/services/parts-fabrication/"},
+          {"label": "Gearbox Repair", "href": "/services/gearbox-repair/"},
+          {"label": "Centrifuge Rentals", "href": "/services/centrifuge-rentals/"},
+          {"label": "Buy a Centrifuge", "href": "https://inventory.centrifuge.com", "external": true},
+          {"label": "Sell Your Centrifuge", "href": "/sell-your-centrifuge/"}
+        ]}
+      ]
+    },
+    {
+      "label": "Brands We Service",
+      "type": "megamenu",
+      "featured_from": "data/oem-brands.json (featured: true)",
+      "footer_link": {"label": "All 45+ Brands \u2192", "href": "/brands/"}
+    },
+    {
+      "label": "Industries",
+      "type": "dropdown",
+      "items": [
+        {"label": "Rendering", "href": "/industries/rendering/"},
+        {"label": "Wastewater Treatment", "href": "/industries/wastewater-treatment/"},
+        {"label": "Chemical", "href": "/industries/chemical/"},
+        {"label": "Food & Beverage", "href": "/industries/food-beverage/"},
+        {"label": "Dairy", "href": "/industries/dairy/"},
+        {"label": "Oil & Gas", "href": "/industries/oil-gas/"},
+        {"label": "Pharmaceutical", "href": "/industries/pharmaceutical/"},
+        {"label": "Mining & Manufacturing", "href": "/industries/mining-manufacturing/"}
+      ]
+    },
+    {
+      "label": "Resources",
+      "type": "dropdown",
+      "items": [
+        {"label": "How Centrifuges Work", "href": "/resources/how-it-works/"},
+        {"label": "Case Studies", "href": "/resources/case-studies/"},
+        {"label": "Blog", "href": "/resources/blog/"},
+        {"label": "FAQs", "href": "/resources/faqs/"},
+        {"label": "Videos", "href": "/resources/videos/"}
+      ]
+    },
+    {"label": "About", "href": "/about/"},
+    {"label": "Locations", "href": "/locations/"},
+    {"label": "Contact", "href": "/contact/"}
+  ],
+  "header_utility": [
+    {"label": "24/7 Emergency: 832-338-4990", "phone": "emergency", "style": "emergency", "always_visible": true},
+    {"label": "Request a Quote", "href": "/request-a-quote/", "style": "primary-button"}
+  ],
+  "mobile_menu_order": ["emergency_bar", "request_quote_button", "Services", "Brands We Service", "Industries", "Resources", "Locations", "About", "Contact", "call_text_row"],
+  "footer": {
+    "col_services": "top 8 services + View All",
+    "col_brands": "featured brands + All 45+ Brands link (NO A\u2013Z dump \u2014 that lives at /brands/)",
+    "col_industries": "all 8",
+    "col_company": ["About", "Locations", "Case Studies", "Blog", "FAQs", "Contact", "Request a Quote", "Sell Your Centrifuge"],
+    "col_locations": "3 location cards from nap.json with phones + hours",
+    "legal_row": ["Privacy Policy \u2192 /privacy-policy/", "Terms of Use \u2192 /terms-of-use/", "Sitemap \u2192 /sitemap.xml", "\u00a9 Centrifuge World \u00b7 Since 1939"]
+  }
+}

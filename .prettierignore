@@ -1,0 +1,7 @@
+node_modules
+.next
+out
+build
+pnpm-lock.yaml
+data/*.json
+src/app/(payload)/admin/importMap.js

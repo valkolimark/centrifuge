@@ -1,0 +1,149 @@
+@import 'tailwindcss';
+@import './tokens.css';
+
+/* Map the design tokens (defined as runtime CSS variables in tokens.css) into
+   Tailwind's theme. `inline` means utilities reference var(--…) directly instead
+   of re-emitting the values, so tokens.css stays the single source of truth. */
+@theme inline {
+  --color-navy: var(--color-navy);
+  --color-blue: var(--color-blue);
+  --color-blue-deep: var(--color-blue-deep);
+  --color-steel-100: var(--color-steel-100);
+  --color-steel-300: var(--color-steel-300);
+  --color-steel-500: var(--color-steel-500);
+  --color-steel-700: var(--color-steel-700);
+  --color-safety: var(--color-safety);
+  --color-white: var(--color-white);
+  --color-success: var(--color-success);
+  --color-error: var(--color-error);
+  --color-link: var(--color-link);
+  --color-link-hover: var(--color-link-hover);
+
+  /* semantic surface/text aliases */
+  --color-bg: var(--bg-body);
+  --color-subtle: var(--bg-subtle);
+  --color-inverse: var(--bg-inverse);
+  --color-body: var(--text-body);
+  --color-heading: var(--text-heading);
+  --color-muted: var(--text-muted);
+  --color-border: var(--border-default);
+
+  --font-heading: var(--font-heading);
+  --font-body: var(--font-body);
+
+  --radius-card: var(--radius-card);
+  --radius-button: var(--radius-button);
+  --radius-pill: var(--radius-pill);
+
+  --shadow-sm: var(--shadow-sm);
+  --shadow-md: var(--shadow-md);
+  --shadow-lg: var(--shadow-lg);
+
+  --spacing-container: var(--container-max);
+}
+
+/* ── Base layer ─────────────────────────────────────────────── */
+@layer base {
+  * {
+    border-color: var(--border-default);
+  }
+
+  html {
+    -webkit-text-size-adjust: 100%;
+    scroll-behavior: smooth;
+  }
+
+  body {
+    background: var(--bg-body);
+    color: var(--text-body);
+    font-family: var(--font-body);
+    font-size: var(--step-0);
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-heading);
+    color: var(--text-heading);
+    font-weight: 700;
+    line-height: 1.15;
+    letter-spacing: -0.015em;
+    text-wrap: balance;
+  }
+
+  h1 { font-size: var(--step-5); font-weight: 800; }
+  h2 { font-size: var(--step-3); }
+  h3 { font-size: var(--step-2); }
+  h4 { font-size: var(--step-1); }
+
+  p { text-wrap: pretty; }
+
+  a {
+    color: var(--color-link);
+    text-underline-offset: 2px;
+  }
+  a:hover { color: var(--color-link-hover); }
+
+  /* Visible focus states everywhere (Definition of Done) */
+  :where(a, button, input, select, textarea, summary, [tabindex]):focus-visible {
+    outline: 3px solid var(--focus-ring);
+    outline-offset: 2px;
+    border-radius: 2px;
+  }
+
+  :where(img, svg, video) {
+    max-width: 100%;
+    height: auto;
+  }
+}
+
+/* ── Reduced-motion global kill-switch (task 1.5) ───────────── */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* ── Utility helpers used by components ─────────────────────── */
+@layer components {
+  .container-cw {
+    width: 100%;
+    max-width: var(--container-max);
+    margin-inline: auto;
+    padding-inline: var(--container-pad);
+  }
+
+  .skip-link {
+    position: absolute;
+    left: -9999px;
+    top: 0;
+    z-index: 100;
+    background: var(--color-navy);
+    color: var(--color-white);
+    padding: var(--space-3) var(--space-4);
+    border-radius: 0 0 var(--radius-button) 0;
+  }
+  .skip-link:focus {
+    left: 0;
+  }
+
+  /* IntersectionObserver reveal (task 1.5) — CSS transitions only */
+  .reveal {
+    opacity: 0;
+    transform: translateY(12px);
+    transition:
+      opacity var(--motion-slow) var(--ease-out),
+      transform var(--motion-slow) var(--ease-out);
+    transition-delay: calc(var(--reveal-index, 0) * 60ms);
+  }
+  .reveal.is-visible {
+    opacity: 1;
+    transform: none;
+  }
+}

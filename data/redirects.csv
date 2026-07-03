@@ -1,0 +1,40 @@
+# redirects.csv — observed legacy URLs → new canonical URLs
+# STATUS: PARTIAL. Contains only URLs directly observed in the audit.
+# Cycle 6 task: export full URL list from WordPress (or crawl) and complete this map 1:1 before cutover.
+# All redirects are 301. centrifugeworld.com redirects page-level to the centrifuge.com equivalent of the same path.
+legacy_url,new_url,note
+/centrifuge-services/,/services/centrifuge-repair/,services hub rename
+/centrifuge-rebuilding/,/services/centrifuge-rebuilds/,
+/decanter-centrifuge-repair/,/services/decanter-centrifuge-repair/,moved under /services/
+/basket-centrifuge-repair/,/services/basket-centrifuge-repair/,
+/centrifuge-inspections/,/services/centrifuge-inspections/,
+/gearbox-repair/,/services/gearbox-repair/,
+/sumitomo-gearbox-repair/,/services/gearbox-repair/,merge into gearbox hub (Sumitomo section on page)
+/planetary-gearbox-repair/,/services/gearbox-repair/,TODO(verify slug existed; header label observed)
+/centrifuge-parts/,/services/parts-fabrication/,4-page parts merge
+/centrifuge-parts-sales-and-mfg/,/services/parts-fabrication/,TODO(verify exact legacy slug)
+/parts-fabrication/,/services/parts-fabrication/,
+/custom-products-and-services/,/services/parts-fabrication/,
+/decanter-gearbox-parts/,/services/gearbox-repair/,
+/centrifuge-rentals/,/services/centrifuge-rentals/,
+/wastewater-treament/,/industries/wastewater-treatment/,legacy slug typo
+/beer-centrifuges/,/industries/food-beverage/,fold content into F&B page with anchor
+/carbide-tiles/,/services/parts-fabrication/,section anchor #carbide-tiles
+/settling-tanks/,/services/parts-fabrication/,TODO(verify best target during content review)
+/filtration-clarification/,/services/centrifuge-repair/,TODO(verify)
+/service-and-support/,/services/field-service/,
+/cw-media/,/resources/videos/,
+/sell-your-centrifuge-2/,/sell-your-centrifuge/,drop the -2
+/contact-cw/,/contact/,
+/how-a-decanter-centrifuge-works/,/resources/how-it-works/decanter/,
+/how-a-basket-centrifuge-works/,/resources/how-it-works/basket/,TODO(verify legacy slug)
+/how-a-peeler-centrifuge-works/,/resources/how-it-works/peeler/,TODO(verify)
+/how-a-pusher-centrifuge-works/,/resources/how-it-works/pusher/,TODO(verify)
+/how-a-self-cleaning-decanter-works/,/resources/how-it-works/self-cleaning-decanter/,TODO(verify)
+/how-a-nozzle-separator-works/,/resources/how-it-works/nozzle-separator/,TODO(verify)
+/hutchinson-hayes/,/brands/hutchison-hayes/,misspelled duplicate
+/dorr-olive-r-merco/,/brands/dorr-oliver-merco/,typo duplicate
+/heinkel-centrifuge-repair/,/brands/heinkel/,duplicate merge
+/westfalia-centrifuge-repair/,/brands/westfalia/,duplicate merge
+/varonesi/,/brands/veronesi/,spelling pending TODO(verify)
+# ALL remaining OEM slugs: /<legacy_slug>/ → /brands/<slug>/ generated from data/oem-brands.json in Cycle 3.

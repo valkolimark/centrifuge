@@ -1,0 +1,54 @@
+{
+  "organization": {
+    "name": "Centrifuge World",
+    "url": "https://centrifuge.com",
+    "foundingYear": 1939,
+    "description": "Industrial centrifuge repair, rebuilds, inspections, balancing, parts fabrication, field service, and 24/7 emergency service for 45+ OEM brands across the US.",
+    "email_leads": ["David@p5400.com", "Ron@p5400.com", "Cynthia@p5400.com", "Mark@p5400.com"],
+    "public_email": "TODO(verify: confirm public-facing email; legacy site showed deals@centrifugeworld.com which uses the retired domain)"
+  },
+  "phones": {
+    "main": {"number": "+1-800-208-6075", "display": "(800) 208-6075", "role": "Main / toll-free, all locations"},
+    "emergency": {"number": "+1-832-338-4990", "display": "832-338-4990", "role": "24/7 Emergency Service", "hoursAvailable": "24/7"},
+    "chicago": {"number": "+1-773-617-0937", "display": "773-617-0937", "role": "Chicago area + SMS Text Us link"},
+    "houston": {"number": "+1-832-743-1573", "display": "832-743-1573", "role": "Houston direct"}
+  },
+  "hours": {
+    "office": {"days": "Monday-Friday", "opens": "06:00", "closes": "18:00", "display": "Mon\u2013Fri: 6:00 AM \u2013 6:00 PM"},
+    "oncall": {"display": "On-Call 24/7", "schemaContactOption": "TollFree"},
+    "forbidden_legacy_string": "8:00pm - 6:30pm"
+  },
+  "locations": [
+    {
+      "id": "houston",
+      "label": "Houston, TX",
+      "streetAddress": "7650 CR 48, Unit C",
+      "addressLocality": "Rosharon",
+      "addressRegion": "TX",
+      "postalCode": "77583",
+      "note": "Marketed as Houston; physical address is Rosharon. Use 'Houston (Rosharon), TX' pattern on location page; schema uses the real address.",
+      "phone": "houston",
+      "geo": "TODO(verify: lat/lng from Google Business Profile)"
+    },
+    {
+      "id": "franklin-park",
+      "label": "Chicago \u2013 Franklin Park, IL",
+      "streetAddress": "9212 Cherry Ave",
+      "addressLocality": "Franklin Park",
+      "addressRegion": "IL",
+      "postalCode": "60131",
+      "phone": "chicago",
+      "geo": "TODO(verify)"
+    },
+    {
+      "id": "alsip",
+      "label": "Alsip, IL",
+      "streetAddress": "12340 S Keeler Ave",
+      "addressLocality": "Alsip",
+      "addressRegion": "IL",
+      "postalCode": "60803",
+      "phone": "main",
+      "geo": "TODO(verify)"
+    }
+  ]
+}
