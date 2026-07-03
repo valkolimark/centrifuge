@@ -2,47 +2,60 @@
 
 import { useEffect, useRef, useState } from 'react'
 
-// Embeds a Cognito Forms "seamless" form. seamless.js injects the form right after
-// its own <script>, so we append that script into a host div on mount. A skeleton
-// shows until the form renders (or a short fallback), and the head preconnects to
-// cognitoforms.com so the fetch is fast.
+// Embeds a Cognito Forms form via a direct iframe (more reliable than the seamless
+// script, which did not initialize when injected dynamically). The Cognito page
+// posts height messages to the parent, which we use to auto-size the iframe.
 export function CognitoForm({ dataKey, formId }: { dataKey: string; formId: string }) {
-  const hostRef = useRef<HTMLDivElement>(null)
-  const [ready, setReady] = useState(false)
+  const [loaded, setLoaded] = useState(false)
+  const [height, setHeight] = useState(720)
+  const [resized, setResized] = useState(false)
+  const src = `https://www.cognitoforms.com/f/${dataKey}/${formId}`
+  const ref = useRef<HTMLIFrameElement>(null)
 
   useEffect(() => {
-    const host = hostRef.current
-    if (!host) return
-    host.innerHTML = ''
-
-    const script = document.createElement('script')
-    script.src = 'https://www.cognitoforms.com/f/seamless.js'
-    script.async = true
-    script.setAttribute('data-key', dataKey)
-    script.setAttribute('data-form', formId)
-    host.appendChild(script)
-
-    // Reveal once the form (a non-script node) appears in the host.
-    const mo = new MutationObserver(() => {
-      if (Array.from(host.children).some((c) => c.tagName !== 'SCRIPT')) setReady(true)
-    })
-    mo.observe(host, { childList: true, subtree: true })
-
-    // Fallback: clear the skeleton even if detection misses.
-    const fallback = window.setTimeout(() => setReady(true), 3500)
-
-    return () => {
-      mo.disconnect()
-      window.clearTimeout(fallback)
+    function onMessage(e: MessageEvent) {
+      if (!/(^|\.)cognitoforms\.com$/.test(new URL(e.origin).hostname || '')) return
+      const d: unknown = e.data
+      let h: number | undefined
+      if (typeof d === 'number') h = d
+      else if (typeof d === 'string') {
+        const n = Number(d)
+        if (Number.isFinite(n)) h = n
+        else
+          try {
+            const p = JSON.parse(d) as Record<string, unknown>
+            h = Number(p.height ?? p.formHeight)
+          } catch {
+            /* ignore */
+          }
+      } else if (d && typeof d === 'object') {
+        const p = d as Record<string, unknown>
+        h = Number(p.height ?? p.formHeight ?? (p.data as Record<string, unknown> | undefined)?.height)
+      }
+      if (h && Number.isFinite(h) && h > 120) {
+        setHeight(Math.ceil(h) + 8)
+        setResized(true)
+        setLoaded(true)
+      }
     }
-  }, [dataKey, formId])
+    window.addEventListener('message', onMessage)
+    return () => window.removeEventListener('message', onMessage)
+  }, [])
 
   return (
-    <div>
-      {/* seamless.js renders the form here; React never manages its children */}
-      <div ref={hostRef} />
-      {!ready ? (
-        <div className="space-y-3" aria-hidden="true">
+    <div className="relative">
+      <iframe
+        ref={ref}
+        src={src}
+        title="Request form"
+        onLoad={() => setLoaded(true)}
+        style={{ width: '100%', height, border: 0, display: 'block' }}
+        // If Cognito hasn't reported a height yet, allow internal scroll so a long
+        // form is never clipped; once auto-sized, no scrollbar is needed.
+        scrolling={resized ? 'no' : 'auto'}
+      />
+      {!loaded ? (
+        <div className="absolute inset-0 space-y-3 bg-white" aria-hidden="true">
           <div className="h-11 animate-pulse rounded-button bg-steel-100" />
           <div className="h-11 animate-pulse rounded-button bg-steel-100" />
           <div className="h-11 animate-pulse rounded-button bg-steel-100" />
