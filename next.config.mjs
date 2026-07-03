@@ -13,6 +13,7 @@ const nextConfig = {
   experimental: { inlineCss: true },
   images: {
     formats: ['image/avif', 'image/webp'],
+    qualities: [45, 60, 75],
     remotePatterns: [
       // Vercel Blob storage (Cycle 1+). Token-gated; public read URLs.
       { protocol: 'https', hostname: '*.public.blob.vercel-storage.com' },

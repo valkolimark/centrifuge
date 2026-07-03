@@ -23,12 +23,10 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   return (
     <html lang="en" className={fontVariables}>
       <head>
-        {/* S3 hosts the hero (LCP) image on nearly every page — preconnect it.
-            Form/video hosts are page-specific, so use lighter dns-prefetch to avoid
-            "unused preconnect" on pages that don't request them. */}
-        <link rel="preconnect" href="https://centrifuge-im.s3.amazonaws.com" crossOrigin="anonymous" />
+        {/* next/image proxies S3 + YouTube thumbnails through our own origin, so the
+            browser never connects to those hosts directly. The only cross-origin
+            connection is the Cognito form iframe — warm just that. */}
         <link rel="dns-prefetch" href="https://www.cognitoforms.com" />
-        <link rel="dns-prefetch" href="https://i.ytimg.com" />
       </head>
       <body>
         <a href="#main" className="skip-link">

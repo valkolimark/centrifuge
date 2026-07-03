@@ -7,6 +7,14 @@
   "engines": {
     "node": ">=20.9.0"
   },
+  "browserslist": [
+    "chrome >= 100",
+    "edge >= 100",
+    "firefox >= 100",
+    "safari >= 15.4",
+    "ios_saf >= 15.4",
+    "not dead"
+  ],
   "scripts": {
     "dev": "next dev",
     "build:redirects": "tsx scripts/build-redirects.ts",

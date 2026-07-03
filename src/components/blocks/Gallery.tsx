@@ -23,6 +23,7 @@ export function Gallery({ images }: { images: GalleryImage[] }) {
               width={img.width}
               height={img.height}
               sizes="(max-width: 640px) 50vw, 33vw"
+              quality={60}
               loading={i < 3 ? 'eager' : 'lazy'}
               className="aspect-[4/3] w-full object-cover"
             />

@@ -48,6 +48,9 @@ export function Hero({
             // priority (adds preload + fetchpriority=high).
             priority={image.priority ?? true}
             fetchPriority="high"
+            // The hero image sits at 40% opacity behind a dark overlay, so a low
+            // quality is invisible but meaningfully lighter for LCP.
+            quality={45}
             sizes="100vw"
             className="object-cover opacity-40"
           />
