@@ -38,11 +38,11 @@ export const photos = {
     id: 'QWFCZQzj2CQ',
     title: 'Centrifuge World — industrial centrifuge repair & rebuilds',
     poster: {
-      // Actual image is 4:3; facade is 16:9 (matches YouTube) and object-cover crops it.
-      src: `${S3_UPLOADS}/2020/02/07193227/large-decanter.jpg`,
-      alt: 'Rebuilt decanter centrifuge bowl and rotor in the Centrifuge World shop',
-      width: 1600,
-      height: 900,
+      // The video's own YouTube thumbnail (16:9 maxres).
+      src: 'https://i.ytimg.com/vi/QWFCZQzj2CQ/maxresdefault.jpg',
+      alt: 'Centrifuge World — centrifuge repair fly-through',
+      width: 1280,
+      height: 720,
     },
   },
   gallery: [
