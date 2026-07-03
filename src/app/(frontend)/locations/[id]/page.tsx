@@ -41,7 +41,7 @@ export async function generateMetadata({ params }: { params: Promise<{ id: strin
   if (!loc) return { title: 'Not found', robots: { index: false } }
   const m = META[id]
   return buildMetadata(
-    { title: `Centrifuge Repair in ${m?.metro || loc.addressLocality} | Centrifuge World`, description: `Industrial centrifuge repair, rebuilds, and 24/7 service at our ${m?.display || loc.label} facility. 45+ OEM brands, nationwide field service.` },
+    { title: `Centrifuge Repair — ${loc.addressLocality}, ${loc.addressRegion} | Centrifuge World`, description: `Industrial centrifuge repair, rebuilds, and 24/7 service at our ${m?.display || loc.label} facility. 45+ OEM brands, nationwide field service.` },
     `/locations/${id}/`,
   )
 }
