@@ -25,7 +25,7 @@ legacy_url,new_url,note
 /service-and-support/,/services/field-service/,
 /cw-media/,/resources/videos/,
 /sell-your-centrifuge-2/,/sell-your-centrifuge/,drop the -2
-/contact-cw/,/contact/,
+# /contact-cw/ is kept as a live page (hosts the legacy Cognito contact form) — no redirect.
 /how-a-decanter-centrifuge-works/,/resources/how-it-works/decanter/,
 /how-a-basket-centrifuge-works/,/resources/how-it-works/basket/,TODO(verify legacy slug)
 /how-a-peeler-centrifuge-works/,/resources/how-it-works/peeler/,TODO(verify)
