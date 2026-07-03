@@ -7,7 +7,10 @@
 @theme inline {
   --color-navy: var(--color-navy);
   --color-blue: var(--color-blue);
+  --color-blue-mid: var(--color-blue-mid);
+  --color-blue-bright: var(--color-blue-bright);
   --color-blue-deep: var(--color-blue-deep);
+  --color-black: var(--color-black);
   --color-steel-100: var(--color-steel-100);
   --color-steel-300: var(--color-steel-300);
   --color-steel-500: var(--color-steel-500);

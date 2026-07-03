@@ -21,14 +21,17 @@ This repo is the complete rebuild of centrifuge.com for **Centrifuge World**, a 
 - **Analytics:** GTM `GTM-P5VRJC5` via `@next/third-parties`, loaded after interactive; GA4 events per Definition of Done
 - **No page builders, no jQuery, no animation libraries >5KB gzipped, no CSS frameworks other than Tailwind CSS 4**
 
-## Design system — "Industrial Blue"
-Defined as CSS variables in `/src/styles/tokens.css` (created in Cycle 1). Palette:
-- `--color-navy: #0B3A6B` (primary surfaces, headings)
-- `--color-blue: #1E6FD9` (links, primary buttons, focus rings)
-- `--color-blue-deep: #072546` (footer, hero overlays)
-- `--color-steel-100/300/500/700: #F4F6F8 / #C9D2DB / #6B7A89 / #2E3A45`
-- `--color-safety: #F26A1B` — **reserved exclusively for emergency CTAs and the 24/7 line.** Never decorative.
-- `--color-white: #FFFFFF`, success `#1E8E5A`, error `#C6362C`
+## Design system — "Web Blue" (client-selected palette)
+Defined as CSS variables in `/src/styles/tokens.css`. Monochromatic blue ramp + true black/white, bright red for emergencies. Palette:
+- `--color-blue-bright: #00B8FF` (brightest accent — dark surfaces, dark-mode links, glows)
+- `--color-blue-mid: #009BD6` (accent / large text)
+- `--color-blue: #00719C` (links, primary buttons, focus rings — clears AA on white)
+- `--color-navy: #00415A` (primary surfaces, headings)
+- `--color-blue-deep: #001F2B` (footer, hero overlays, deepest surface)
+- `--color-steel-100/300/500/700: #EEF3F6 / #C2D0D8 / #5C7078 / #16303B` (cool, blue-tinted neutrals)
+- `--color-white: #FFFFFF`, `--color-black: #000000`
+- `--color-safety: #E11900` — **BRIGHT RED, reserved exclusively for emergency CTAs, the 24/7 line, and warnings.** Never decorative.
+- success `#1E8E5A`, error `#D32F2F`
 - All text/background pairs must pass WCAG AA (4.5:1 body, 3:1 large). Verify programmatically in Cycle 1.
 - Type: self-hosted variable fonts, subset latin, `font-display: swap`. Headings: Archivo (SemiBold/Bold, tight tracking). Body/UI: Inter. Max 2 families, max ~90KB total font payload.
 - Radius 6px cards / 4px buttons; borders 1px steel-300; shadows subtle (max `0 8px 24px rgb(7 37 70 / 0.10)`).

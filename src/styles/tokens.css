@@ -5,24 +5,32 @@
    pair in scripts/contrast-pairs.ts against these values.
    ───────────────────────────────────────────────────────────── */
 :root {
-  /* Brand palette (exact per CLAUDE.md) */
-  --color-navy: #0b3a6b;
-  --color-blue: #1e6fd9;
-  --color-blue-deep: #072546;
-  --color-steel-100: #f4f6f8;
-  --color-steel-300: #c9d2db;
-  --color-steel-500: #6b7a89;
-  --color-steel-700: #2e3a45;
-  --color-safety: #f26a1b;
-  --color-white: #ffffff;
-  --color-success: #1e8e5a;
-  --color-error: #c6362c;
+  /* "Web Blue" palette (client-selected). Monochromatic blue ramp + true
+     black/white, with a bright red reserved for emergencies & warnings.
+     Verified WCAG AA in scripts/contrast-pairs.ts. */
+  --color-blue-bright: #00b8ff; /* brightest accent (dark surfaces, dark-mode) */
+  --color-blue-mid: #009bd6; /* accent / large text */
+  --color-blue: #00719c; /* primary interactive: links, buttons, focus */
+  --color-navy: #00415a; /* headings, primary dark surfaces */
+  --color-blue-deep: #001f2b; /* footer, hero overlays, deepest surface */
 
-  /* Derived text colors tuned to pass WCAG AA on white/steel-100.
-     --color-link is a darker blue than --color-blue so body-size link
-     text clears 4.5:1; --color-blue stays for buttons/focus rings. */
-  --color-link: #1257ad;
-  --color-link-hover: #0b3a6b;
+  --color-steel-100: #eef3f6;
+  --color-steel-300: #c2d0d8;
+  --color-steel-500: #5c7078;
+  --color-steel-700: #16303b;
+
+  --color-white: #ffffff;
+  --color-black: #000000;
+
+  /* --color-safety is the emergency/warning color — now BRIGHT RED (was orange).
+     Still reserved exclusively for emergency CTAs, the 24/7 line, and warnings. */
+  --color-safety: #e11900;
+  --color-success: #1e8e5a;
+  --color-error: #d32f2f;
+
+  /* Interactive text. --color-blue already clears AA on white, so link == blue. */
+  --color-link: #00719c;
+  --color-link-hover: #00415a;
 
   /* Semantic aliases */
   --bg-body: var(--color-white);

@@ -6,6 +6,7 @@ const gtm = 'https://www.googletagmanager.com'
 const ga = 'https://www.google-analytics.com https://region1.google-analytics.com'
 const turnstile = 'https://challenges.cloudflare.com'
 const blob = 'https://*.public.blob.vercel-storage.com'
+const s3media = 'https://centrifuge-im.s3.amazonaws.com'
 
 // NOTE: 'unsafe-inline' on script-src is required by GTM's bootstrap snippet loaded via
 // @next/third-parties. Tightening to a nonce is tracked in BACKLOG.md.
@@ -15,7 +16,7 @@ const csp = [
   `object-src 'none'`,
   `frame-ancestors 'self'`,
   `form-action 'self'`,
-  `img-src 'self' data: blob: ${blob} ${gtm} ${ga} https://www.google.com https://maps.googleapis.com https://maps.gstatic.com`,
+  `img-src 'self' data: blob: ${blob} ${s3media} ${gtm} ${ga} https://www.google.com https://maps.googleapis.com https://maps.gstatic.com`,
   `script-src 'self' 'unsafe-inline' ${gtm} ${turnstile}`,
   `style-src 'self' 'unsafe-inline'`,
   `font-src 'self' data:`,

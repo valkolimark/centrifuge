@@ -5,14 +5,16 @@
    variables + a few stable component classes to the brand palette.
    ───────────────────────────────────────────────────────────── */
 :root {
-  --cw-navy: #0b3a6b;
-  --cw-navy-deep: #072546;
-  --cw-blue: #1e6fd9;
-  --cw-blue-600: #1257ad;
-  --cw-steel-100: #f4f6f8;
-  --cw-steel-300: #c9d2db;
-  --cw-steel-500: #6b7a89;
-  --cw-safety: #f26a1b;
+  /* "Web Blue" palette to match the site (bright red = emergencies/warnings). */
+  --cw-navy: #00415a;
+  --cw-navy-deep: #001f2b;
+  --cw-blue: #00719c;
+  --cw-blue-600: #00658c;
+  --cw-blue-bright: #00b8ff;
+  --cw-steel-100: #eef3f6;
+  --cw-steel-300: #c2d0d8;
+  --cw-steel-500: #5c7078;
+  --cw-safety: #e11900;
 
   /* Softer, cooler canvas; cards stay white for contrast. */
   --theme-bg: var(--cw-steel-100);
@@ -41,7 +43,7 @@ html[data-theme='dark'] {
   --theme-elevation-0: #0a2846;
   --theme-elevation-50: #0d2f52;
   --theme-border-color: #17436e;
-  --cw-accent: #4d95ef;
+  --cw-accent: #00b8ff;
 }
 
 /* ── Primary buttons → navy, hover blue ─────────────────────── */
@@ -58,7 +60,7 @@ html[data-theme='dark'] {
 .btn--style-primary:not(.btn--disabled):focus-visible {
   background-color: var(--cw-blue);
   border-color: var(--cw-blue);
-  box-shadow: 0 6px 18px rgb(30 111 217 / 0.28);
+  box-shadow: 0 6px 18px rgb(0 113 156 / 0.28);
 }
 
 /* Secondary buttons: steel outline that warms to blue. */
@@ -78,11 +80,11 @@ a,
   transition: background-color 0.12s ease;
 }
 .nav__link:hover {
-  background-color: rgb(30 111 217 / 0.08);
+  background-color: rgb(0 113 156 / 0.08);
 }
 .nav__link.active,
 .nav__link[aria-current='page'] {
-  background-color: rgb(30 111 217 / 0.12);
+  background-color: rgb(0 113 156 / 0.12);
   color: var(--cw-navy);
   box-shadow: inset 3px 0 0 0 var(--cw-blue);
 }
@@ -131,7 +133,7 @@ a,
 /* ── Login screen ───────────────────────────────────────────── */
 .login {
   background:
-    radial-gradient(1200px 500px at 50% -10%, rgb(30 111 217 / 0.1), transparent),
+    radial-gradient(1200px 500px at 50% -10%, rgb(0 113 156 / 0.1), transparent),
     var(--theme-bg);
 }
 .login .login__wrap,

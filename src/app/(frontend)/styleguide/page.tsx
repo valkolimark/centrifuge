@@ -20,6 +20,7 @@ import { RelatedLinks } from '@/components/blocks/RelatedLinks'
 import { PhoneLink } from '@/components/ui/PhoneLink'
 import { FormDemo } from './FormDemo'
 import { locations, emergencyPhone } from '@/lib/site'
+import { photos } from '@/lib/media'
 import { palette } from '../../../../scripts/contrast-pairs'
 
 // /styleguide — the component library reference. Noindexed (robots + metadata).
@@ -47,8 +48,6 @@ function Block({ id, title, children }: { id: string; title: string; children: R
     </section>
   )
 }
-
-const IMG = '/placeholders'
 
 export default function StyleGuidePage() {
   return (
@@ -109,7 +108,7 @@ export default function StyleGuidePage() {
                 eyebrow="Home variant"
                 title="Keep your centrifuges running."
                 subtitle="Dark hero with dual CTA and background image."
-                image={{ src: `${IMG}/shop-hero.jpg`, alt: 'Centrifuge shop floor (placeholder)', width: 1600, height: 900, priority: true }}
+                image={{ ...photos.shopHero, priority: true }}
                 actions={
                   <>
                     <ButtonLink href={`tel:${emergencyPhone.number}`} variant="emergency">
@@ -167,20 +166,11 @@ export default function StyleGuidePage() {
           </Block>
 
           <Block id="beforeafter" title="BeforeAfterSlider (pointer + keyboard)">
-            <BeforeAfterSlider
-              before={{ src: `${IMG}/before.jpg`, alt: 'Worn centrifuge bowl before rebuild (placeholder)' }}
-              after={{ src: `${IMG}/after.jpg`, alt: 'Rebuilt centrifuge bowl after service (placeholder)' }}
-            />
+            <BeforeAfterSlider before={photos.before} after={photos.after} />
           </Block>
 
           <Block id="gallery" title="Gallery">
-            <Gallery
-              images={[
-                { src: `${IMG}/gallery-1.jpg`, alt: 'Rebuild sequence 1 (placeholder)', width: 800, height: 600, caption: 'Intake inspection' },
-                { src: `${IMG}/gallery-2.jpg`, alt: 'Rebuild sequence 2 (placeholder)', width: 800, height: 600, caption: 'Machining' },
-                { src: `${IMG}/gallery-3.jpg`, alt: 'Rebuild sequence 3 (placeholder)', width: 800, height: 600, caption: 'Balancing' },
-              ]}
-            />
+            <Gallery images={photos.gallery} />
           </Block>
 
           <Block id="logos" title="LogoRow (text lockups — no fabricated logos)"><LogoRow /></Block>

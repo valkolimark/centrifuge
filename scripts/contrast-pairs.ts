@@ -2,19 +2,27 @@
 // and the text/background pairs that must pass WCAG AA. Imported by both the
 // CLI (check-contrast.ts) and the vitest gate (contrast.test.ts).
 
+// "Web Blue" palette (client-selected). Monochromatic blue ramp + black/white,
+// with a bright red reserved for warnings & emergencies.
 export const palette = {
-  navy: '#0B3A6B',
-  blue: '#1E6FD9',
-  blueDeep: '#072546',
-  steel100: '#F4F6F8',
-  steel300: '#C9D2DB',
-  steel500: '#6B7A89',
-  steel700: '#2E3A45',
-  safety: '#F26A1B',
+  // Brand blue ramp (light → dark)
+  blueBright: '#00B8FF', // brightest accent (dark surfaces, dark-mode links, glows)
+  blueMid: '#009BD6', // accent / large text only
+  blue: '#00719C', // primary interactive: links, buttons, focus (AA on white)
+  navy: '#00415A', // headings, primary dark surfaces
+  blueDeep: '#001F2B', // footer, hero overlays, deepest surface
+  // Neutrals (cool, blue-tinted to harmonize) + true black/white
+  steel100: '#EEF3F6',
+  steel300: '#C2D0D8',
+  steel500: '#5C7078',
+  steel700: '#16303B',
   white: '#FFFFFF',
+  black: '#000000',
+  // Functional
+  safety: '#E11900', // BRIGHT RED — emergencies & warnings (repurposed token)
   success: '#1E8E5A',
-  error: '#C6362C',
-  link: '#1257AD',
+  error: '#D32F2F',
+  link: '#00719C',
 } as const
 
 type Hex = string
@@ -36,17 +44,18 @@ export const pairs: Pair[] = [
   { name: 'heading (navy) on steel-100', fg: palette.navy, bg: palette.steel100, level: 'normal' },
   { name: 'link on white', fg: palette.link, bg: palette.white, level: 'normal' },
   { name: 'link on steel-100', fg: palette.link, bg: palette.steel100, level: 'normal' },
+  { name: 'white on blue (primary button)', fg: palette.white, bg: palette.blue, level: 'normal' },
   { name: 'white on navy', fg: palette.white, bg: palette.navy, level: 'normal' },
   { name: 'white on blue-deep', fg: palette.white, bg: palette.blueDeep, level: 'normal' },
-  { name: 'white on blue (primary button)', fg: palette.white, bg: palette.blue, level: 'large' },
+  { name: 'blue-bright on blue-deep (dark-mode accent)', fg: palette.blueBright, bg: palette.blueDeep, level: 'normal' },
   { name: 'navy on steel-300 (border/chip)', fg: palette.navy, bg: palette.steel300, level: 'normal' },
-  // Safety orange is reserved for emergency CTAs (large, bold) — verified at large level.
-  { name: 'white on safety (emergency CTA)', fg: palette.white, bg: palette.safety, level: 'large' },
-  // navy-on-safety only appears as a large bold label/icon; emergency CTA body text is white.
-  { name: 'navy on safety (large label only)', fg: palette.navy, bg: palette.safety, level: 'large' },
+  { name: 'black on white', fg: palette.black, bg: palette.white, level: 'normal' },
+  { name: 'white on black', fg: palette.white, bg: palette.black, level: 'normal' },
+  // Bright red reserved for emergencies/warnings — white CTA text verified at normal size.
+  { name: 'white on safety/red (emergency CTA)', fg: palette.white, bg: palette.safety, level: 'normal' },
   { name: 'white on success', fg: palette.white, bg: palette.success, level: 'large' },
   { name: 'white on error', fg: palette.white, bg: palette.error, level: 'normal' },
-  { name: 'muted (steel-500) on white — UI/large', fg: palette.steel500, bg: palette.white, level: 'large' },
+  { name: 'muted (steel-500) on white', fg: palette.steel500, bg: palette.white, level: 'normal' },
 ]
 
 function toLinear(c: number): number {

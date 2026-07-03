@@ -13,6 +13,9 @@ const nextConfig = {
     remotePatterns: [
       // Vercel Blob storage (Cycle 1+). Token-gated; public read URLs.
       { protocol: 'https', hostname: '*.public.blob.vercel-storage.com' },
+      // Client's existing media bucket (WP Offload Media). Public read; optimized
+      // by next/image. Interim source until assets migrate into Payload media.
+      { protocol: 'https', hostname: 'centrifuge-im.s3.amazonaws.com' },
     ],
   },
   async headers() {

@@ -14,6 +14,7 @@ import { JsonLd } from '@/components/JsonLd'
 import { webPageSchema } from '@/lib/schema'
 import { buildMetadata } from '@/lib/seo'
 import { SITE_URL, emergencyPhone, locations, org } from '@/lib/site'
+import { photos } from '@/lib/media'
 
 // NOTE: Cycle 1 ships a minimal but real home so the CI Lighthouse budget on '/'
 // is meaningful. Cycle 2 (task 2.4) authors the full homepage with real imagery,
@@ -73,6 +74,7 @@ export default function HomePage() {
         eyebrow="Industrial centrifuge repair & rebuilds since 1939"
         title="Keep your centrifuges running."
         subtitle="The largest provider and rebuilder of industrial centrifuges in the US — repair, rebuilds, balancing, parts, and 24/7 emergency service for 45+ OEM brands."
+        image={{ ...photos.shopHero, priority: true }}
         actions={
           <>
             <ButtonLink
