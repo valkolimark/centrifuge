@@ -528,7 +528,58 @@ export interface Industry {
    * URL segment. Auto-generated from the title if left blank.
    */
   slug: string;
+  /**
+   * 40–60 word direct answer under the H1 (AEO).
+   */
   answerBox?: string | null;
+  intro?: string | null;
+  hero?: {
+    /**
+     * Hero image URL (S3).
+     */
+    url?: string | null;
+    alt?: string | null;
+  };
+  typicalEquipment?:
+    | {
+        text: string;
+        links?:
+          | {
+              label: string;
+              href: string;
+              id?: string | null;
+            }[]
+          | null;
+        id?: string | null;
+      }[]
+    | null;
+  failureModes?:
+    | {
+        value: string;
+        id?: string | null;
+      }[]
+    | null;
+  relevantServices?:
+    | {
+        label: string;
+        href: string;
+        id?: string | null;
+      }[]
+    | null;
+  relatedBrands?:
+    | {
+        label: string;
+        href: string;
+        id?: string | null;
+      }[]
+    | null;
+  faqs?:
+    | {
+        question: string;
+        answer: string;
+        id?: string | null;
+      }[]
+    | null;
   body?: {
     root: {
       type: string;
@@ -1355,6 +1406,53 @@ export interface IndustriesSelect<T extends boolean = true> {
   title?: T;
   slug?: T;
   answerBox?: T;
+  intro?: T;
+  hero?:
+    | T
+    | {
+        url?: T;
+        alt?: T;
+      };
+  typicalEquipment?:
+    | T
+    | {
+        text?: T;
+        links?:
+          | T
+          | {
+              label?: T;
+              href?: T;
+              id?: T;
+            };
+        id?: T;
+      };
+  failureModes?:
+    | T
+    | {
+        value?: T;
+        id?: T;
+      };
+  relevantServices?:
+    | T
+    | {
+        label?: T;
+        href?: T;
+        id?: T;
+      };
+  relatedBrands?:
+    | T
+    | {
+        label?: T;
+        href?: T;
+        id?: T;
+      };
+  faqs?:
+    | T
+    | {
+        question?: T;
+        answer?: T;
+        id?: T;
+      };
   body?: T;
   seo?:
     | T

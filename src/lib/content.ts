@@ -93,11 +93,18 @@ export interface IndustryContent {
   seoDescription?: string
   todos?: string[]
 }
-export function getIndustries(): IndustryContent[] {
+export async function getIndustries(): Promise<IndustryContent[]> {
+  try {
+    const { getIndustriesFromCMS } = await import('./cms')
+    const fromCms = await getIndustriesFromCMS()
+    if (fromCms.length) return fromCms
+  } catch {
+    /* DB unavailable → JSON */
+  }
   return readJson<IndustryContent[]>('industries.json') ?? []
 }
-export function getIndustry(slug: string): IndustryContent | undefined {
-  return getIndustries().find((i) => i.slug === slug)
+export async function getIndustry(slug: string): Promise<IndustryContent | undefined> {
+  return (await getIndustries()).find((i) => i.slug === slug)
 }
 
 // ── How it works ──────────────────────────────────────────────

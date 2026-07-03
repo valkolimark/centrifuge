@@ -26,7 +26,7 @@ export function generateStaticParams() {
 export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }): Promise<Metadata> {
   const { slug } = await params
   const ind = industryBySlug(slug)
-  const c = getIndustry(slug)
+  const c = await getIndustry(slug)
   if (!ind) return { title: 'Not found', robots: { index: false } }
   return buildMetadata(
     {
@@ -42,7 +42,7 @@ export default async function IndustryPage({ params }: { params: Promise<{ slug:
   const { slug } = await params
   const ind = industryBySlug(slug)
   if (!ind) notFound()
-  const c = getIndustry(slug)
+  const c = await getIndustry(slug)
   const name = c?.name || ind.label
   const url = `${SITE_URL}/industries/${slug}/`
   const faqs = (c?.faqs ?? []).filter((f) => f.question && f.answer)
