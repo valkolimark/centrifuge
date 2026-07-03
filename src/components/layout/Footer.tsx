@@ -19,8 +19,8 @@ const companyLinks = [
   { label: 'Case Studies', href: '/resources/case-studies/' },
   { label: 'Blog', href: '/resources/blog/' },
   { label: 'FAQs', href: '/resources/faqs/' },
-  { label: 'Contact', href: '/contact/' },
-  { label: 'Request a Quote', href: '/request-a-quote/' },
+  { label: 'Contact', href: '/contact-cw/' },
+  { label: 'Request a Quote', href: '/cw-ez-quote-for-sales/' },
   { label: 'Sell Your Centrifuge', href: '/sell-your-centrifuge/' },
 ]
 

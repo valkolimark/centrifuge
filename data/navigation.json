@@ -62,11 +62,11 @@
     },
     {"label": "About", "href": "/about/"},
     {"label": "Locations", "href": "/locations/"},
-    {"label": "Contact", "href": "/contact/"}
+    {"label": "Contact", "href": "/contact-cw/"}
   ],
   "header_utility": [
     {"label": "24/7 Emergency: 832-338-4990", "phone": "emergency", "style": "emergency", "always_visible": true},
-    {"label": "Request a Quote", "href": "/request-a-quote/", "style": "primary-button"}
+    {"label": "Request a Quote", "href": "/cw-ez-quote-for-sales/", "style": "primary-button"}
   ],
   "mobile_menu_order": ["emergency_bar", "request_quote_button", "Services", "Brands We Service", "Industries", "Resources", "Locations", "About", "Contact", "call_text_row"],
   "footer": {

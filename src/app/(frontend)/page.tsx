@@ -84,7 +84,7 @@ export default function HomePage() {
             >
               24/7 Emergency Service
             </ButtonLink>
-            <ButtonLink href="/request-a-quote/" variant="on-dark" size="lg">
+            <ButtonLink href="/cw-ez-quote-for-sales/" variant="on-dark" size="lg">
               Request a Quote
             </ButtonLink>
           </>

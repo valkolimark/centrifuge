@@ -53,7 +53,7 @@ export function Header() {
           </nav>
 
           <div className="flex items-center gap-2">
-            <ButtonLink href="/request-a-quote/" className="hidden sm:inline-flex" size="md">
+            <ButtonLink href="/cw-ez-quote-for-sales/" className="hidden sm:inline-flex" size="md">
               Request a Quote
             </ButtonLink>
             <button

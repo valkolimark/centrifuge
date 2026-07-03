@@ -109,7 +109,7 @@ export function MobileMenu({ open, onClose }: { open: boolean; onClose: () => vo
 
         <nav aria-label="Mobile" className="flex-1 overflow-y-auto overscroll-contain p-4">
           <Link
-            href="/request-a-quote/"
+            href="/cw-ez-quote-for-sales/"
             onClick={onClose}
             className="mb-4 flex min-h-[48px] items-center justify-center rounded-button bg-blue px-5 font-semibold text-white"
           >

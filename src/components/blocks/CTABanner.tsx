@@ -4,7 +4,7 @@ import { ButtonLink } from '@/components/ui/Button'
 export function CTABanner({
   heading = 'Ready to get your centrifuge back in service?',
   body = 'Send us your machine details for an inspection-first quote. No obligation.',
-  primary = { label: 'Request a Quote', href: '/request-a-quote/' },
+  primary = { label: 'Request a Quote', href: '/cw-ez-quote-for-sales/' },
   secondary,
 }: {
   heading?: string
