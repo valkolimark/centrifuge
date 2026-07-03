@@ -1,5 +1,5 @@
 import type { MetadataRoute } from 'next'
-import { SITE_URL, brands } from '@/lib/site'
+import { SITE_URL, brands, locations } from '@/lib/site'
 import { INDUSTRIES } from '@/lib/stubs'
 import { getPayloadClient } from '@/lib/payload'
 import { getBrandContent, getHowItWorks, getCaseStudies, getBlogPosts } from '@/lib/content'
@@ -32,6 +32,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     if (c && !c.mergeInto) add(`/brands/${b.slug}/`, 0.7)
   }
   for (const i of INDUSTRIES) add(`/industries/${i.slug}/`, 0.7)
+  for (const l of locations) add(`/locations/${l.id}/`, 0.7)
   for (const h of getHowItWorks()) add(`/resources/how-it-works/${h.slug}/`, 0.6)
   for (const c of getCaseStudies()) add(`/resources/case-studies/${c.slug}/`, 0.6)
   for (const p of getBlogPosts()) add(`/resources/blog/${p.slug}/`, 0.6)

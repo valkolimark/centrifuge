@@ -33,7 +33,12 @@ export default function LocationsPage() {
         </div>
         <div className="mt-8 grid gap-4 md:grid-cols-3">
           {locations.map((loc) => (
-            <LocationCard key={loc.id} loc={loc} />
+            <div key={loc.id}>
+              <LocationCard loc={loc} />
+              <a href={`/locations/${loc.id}/`} className="mt-2 inline-block text-sm font-semibold text-link hover:text-navy">
+                View facility →
+              </a>
+            </div>
           ))}
         </div>
       </Section>
