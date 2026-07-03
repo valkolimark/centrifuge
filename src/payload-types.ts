@@ -269,13 +269,72 @@ export interface Service {
    */
   slug: string;
   /**
-   * Primary AEO question (see data/faq-bank.md).
+   * Page H1 (defaults to title).
+   */
+  h1?: string | null;
+  /**
+   * Which lead form embeds on this page.
+   */
+  formType?: ('request_quote' | 'emergency_service' | 'free_inspection' | 'contact' | 'send_photos') | null;
+  /**
+   * AEO question (data/faq-bank.md).
    */
   answerBoxQuestion?: string | null;
   /**
-   * 40–60 word direct answer placed under the H1.
+   * 40–60 word direct answer under the H1.
    */
   answerBox?: string | null;
+  /**
+   * Lead paragraph after the answer box.
+   */
+  intro?: string | null;
+  capabilitiesHeading?: string | null;
+  capabilities?:
+    | {
+        item: string;
+        detail?: string | null;
+        id?: string | null;
+      }[]
+    | null;
+  processHeading?: string | null;
+  process?:
+    | {
+        title: string;
+        description?: string | null;
+        id?: string | null;
+      }[]
+    | null;
+  faqs?:
+    | {
+        question: string;
+        answer: string;
+        id?: string | null;
+      }[]
+    | null;
+  relatedServices?:
+    | {
+        label: string;
+        href: string;
+        id?: string | null;
+      }[]
+    | null;
+  relatedBrands?:
+    | {
+        label: string;
+        href: string;
+        id?: string | null;
+      }[]
+    | null;
+  relatedIndustries?:
+    | {
+        label: string;
+        href: string;
+        id?: string | null;
+      }[]
+    | null;
+  /**
+   * Optional long-form body (not rendered by the block template).
+   */
   body?: {
     root: {
       type: string;
@@ -291,13 +350,10 @@ export interface Service {
     };
     [k: string]: unknown;
   } | null;
-  faqs?:
-    | {
-        question: string;
-        answer: string;
-        id?: string | null;
-      }[]
-    | null;
+  /**
+   * Use the safety-red emergency hero treatment.
+   */
+  emergencyVariant?: boolean | null;
   /**
    * Search metadata. Title ≤60, description ≤155 characters.
    */
@@ -968,9 +1024,27 @@ export interface PagesSelect<T extends boolean = true> {
 export interface ServicesSelect<T extends boolean = true> {
   title?: T;
   slug?: T;
+  h1?: T;
+  formType?: T;
   answerBoxQuestion?: T;
   answerBox?: T;
-  body?: T;
+  intro?: T;
+  capabilitiesHeading?: T;
+  capabilities?:
+    | T
+    | {
+        item?: T;
+        detail?: T;
+        id?: T;
+      };
+  processHeading?: T;
+  process?:
+    | T
+    | {
+        title?: T;
+        description?: T;
+        id?: T;
+      };
   faqs?:
     | T
     | {
@@ -978,6 +1052,29 @@ export interface ServicesSelect<T extends boolean = true> {
         answer?: T;
         id?: T;
       };
+  relatedServices?:
+    | T
+    | {
+        label?: T;
+        href?: T;
+        id?: T;
+      };
+  relatedBrands?:
+    | T
+    | {
+        label?: T;
+        href?: T;
+        id?: T;
+      };
+  relatedIndustries?:
+    | T
+    | {
+        label?: T;
+        href?: T;
+        id?: T;
+      };
+  body?: T;
+  emergencyVariant?: T;
   seo?:
     | T
     | {
