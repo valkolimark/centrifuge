@@ -1,4 +1,5 @@
 import type { Metadata } from 'next'
+import Link from 'next/link'
 import { notFound, redirect } from 'next/navigation'
 import { SiteShell } from '@/components/layout/SiteShell'
 import { Section } from '@/components/ui/Section'
@@ -10,6 +11,7 @@ import { FAQAccordion } from '@/components/blocks/FAQAccordion'
 import { RelatedLinks } from '@/components/blocks/RelatedLinks'
 import { CTABanner } from '@/components/blocks/CTABanner'
 import { VideoFacade } from '@/components/blocks/VideoFacade'
+import { ButtonLink } from '@/components/ui/Button'
 import { QuoteForm } from '@/components/forms/QuoteForm'
 import { JsonLd } from '@/components/JsonLd'
 import { serviceSchema, faqPageSchema, breadcrumbSchema } from '@/lib/schema'
@@ -21,6 +23,18 @@ import { BRAND_VIDEO, fallbackBrandHero } from '@/lib/page-media'
 import { toVideoSource } from '@/lib/videos'
 
 export const revalidate = 3600
+const INVENTORY = 'https://inventory.centrifuge.com'
+
+// Map a brand's serviced types to the matching "used centrifuges" category for
+// long-tail "buy/sell used <brand>" internal linking.
+function usedCategoryFor(types?: string[]): { label: string; href: string } {
+  const t = (types ?? []).join(' ').toLowerCase()
+  if (t.includes('decanter')) return { label: 'used decanter centrifuges', href: '/used-centrifuges/decanter-centrifuges/' }
+  if (t.includes('basket')) return { label: 'used basket centrifuges', href: '/used-centrifuges/basket-centrifuges/' }
+  if (t.includes('disc')) return { label: 'used disc-stack separators', href: '/used-centrifuges/disc-stack-separators/' }
+  if (t.includes('pusher') || t.includes('peeler')) return { label: 'used pusher & peeler centrifuges', href: '/used-centrifuges/pusher-peeler-centrifuges/' }
+  return { label: 'used centrifuges', href: '/used-centrifuges/' }
+}
 
 export function generateStaticParams() {
   return brands.map((b) => ({ slug: b.slug }))
@@ -58,7 +72,12 @@ export default async function BrandPage({ params }: { params: Promise<{ slug: st
   const disclosure =
     c?.disclosure ||
     `Centrifuge World is an independent repair and rebuild specialist. We are not affiliated with ${name}.`
-  const faqs = (c?.faqs ?? []).filter((f) => f.question && f.answer)
+  const usedCat = usedCategoryFor(c?.typesServiced)
+  const buyFaq = {
+    question: `Can I buy or sell a used ${name} centrifuge?`,
+    answer: `Yes. Centrifuge World buys and sells used ${name} centrifuges. The machines we sell are inspected, reconditioned where needed, balanced, and test-run, and we buy ${name} machines of most conditions. Browse our inventory or request a quote to buy, or use our Sell Your Centrifuge page.`,
+  }
+  const faqs = [...(c?.faqs ?? []).filter((f) => f.question && f.answer), buyFaq]
   // Only S3-hosted images are loadable (allowed in next.config; the live domain is captcha-walled).
   const s3Images = (c?.images ?? []).filter((im) => im.src.includes('centrifuge-im.s3.amazonaws.com'))
   // Every brand gets a hero: its own harvested image, else a varied shop-image fallback.
@@ -143,8 +162,34 @@ export default async function BrandPage({ params }: { params: Promise<{ slug: st
         </div>
       </Section>
 
+      <Section tone="subtle">
+        <div className="mx-auto max-w-3xl">
+          <h2>Buy or sell a used {name} centrifuge</h2>
+          <p className="mt-3 text-steel-700">
+            Need a reconditioned {name} centrifuge, or want to sell one you no longer run? Centrifuge
+            World buys and sells used {name} machines — the ones we sell are inspected, rebuilt where
+            needed, balanced, and test-run before they ship. Browse our{' '}
+            <Link href={usedCat.href} className="text-link underline">
+              {usedCat.label}
+            </Link>{' '}
+            or the full inventory.
+          </p>
+          <div className="mt-5 flex flex-wrap gap-3">
+            <ButtonLink href={INVENTORY} external>
+              Browse inventory
+            </ButtonLink>
+            <ButtonLink href="/cw-ez-quote-for-sales/" variant="secondary">
+              Request a Quote
+            </ButtonLink>
+            <ButtonLink href="/sell-your-centrifuge/" variant="ghost">
+              Sell your {name} centrifuge
+            </ButtonLink>
+          </div>
+        </div>
+      </Section>
+
       {videoId ? (
-        <Section tone="subtle">
+        <Section tone={undefined}>
           <div className="mx-auto max-w-3xl">
             <h2>{name} repair in the shop</h2>
             <div className="mt-5">
@@ -155,7 +200,7 @@ export default async function BrandPage({ params }: { params: Promise<{ slug: st
       ) : null}
 
       {galleryImgs.length ? (
-        <Section tone={videoId ? 'default' : 'subtle'}>
+        <Section tone={videoId ? 'subtle' : 'default'}>
           <div className="mb-6 max-w-2xl">
             <h2>{name} rebuild gallery</h2>
           </div>
