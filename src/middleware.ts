@@ -8,6 +8,10 @@ import redirects from './lib/redirects-data.json'
 
 const map = redirects as Record<string, string>
 
+// Prefix rules for legacy WordPress archive URLs that all consolidate to one
+// destination (hundreds of indexed /tag/ pages). Exact map entries take priority.
+const prefixRules: [string, string][] = [['/tag/', '/resources/blog/']]
+
 function normalize(pathname: string): string {
   let s = pathname
   if (s.length > 1 && s.endsWith('/')) s = s.slice(0, -1)
@@ -16,7 +20,12 @@ function normalize(pathname: string): string {
 
 export function middleware(req: NextRequest) {
   const { pathname, search } = req.nextUrl
-  const target = map[normalize(pathname)]
+  let target = map[normalize(pathname)]
+  if (!target) {
+    const lower = pathname.toLowerCase()
+    const rule = prefixRules.find(([p]) => lower.startsWith(p))
+    if (rule) target = rule[1]
+  }
   if (target && normalize(target) !== normalize(pathname)) {
     const url = req.nextUrl.clone()
     url.pathname = target
