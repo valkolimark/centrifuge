@@ -1,0 +1,51 @@
+{
+  "slug": "flottweg",
+  "name": "Flottweg",
+  "archiveUrl": "https://web.archive.org/web/20240614232117/https://centrifuge.com/flottweg/",
+  "answerBox": "Centrifuge World repairs and rebuilds Flottweg decanter centrifuges, Tricanter three-phase decanters, and disc-stack separators. As an independent specialist serving industry since 1939, we inspect, recondition, balance, test, and supply parts for Flottweg equipment at our Houston and Chicago service centers.",
+  "intro": "Centrifuge World provides repair, rebuild, and parts support for Flottweg decanter centrifuges, Tricanter separators, and disc-stack machines, restoring reliable, efficient operation.",
+  "disclosure": "Centrifuge World is an independent repair and rebuild specialist. We are not affiliated with Flottweg.",
+  "modelsServiced": [],
+  "typesServiced": ["Decanter", "Tricanter", "Disc-stack"],
+  "capabilities": [
+    {"item": "Inspection & NDTI", "detail": "Non-destructive teardown and inspection documents machine condition before work begins."},
+    {"item": "Decanter & Tricanter rebuilds", "detail": "We recondition bowls, scrolls, and rotating assemblies to restore separation performance."},
+    {"item": "Wear-part replacement", "detail": "O-rings, gaskets, bearings, and worn components are refit or replaced to specification."},
+    {"item": "Weld repair", "detail": "We repair damage from mechanical wear, chemical attack, and erosion."},
+    {"item": "Balancing & testing", "detail": "Static and dynamic balancing plus a test run confirm the machine is ready to return to service."},
+    {"item": "Parts fabrication", "detail": "Hard-to-source Flottweg parts are reverse-engineered and fabricated in-house."}
+  ],
+  "body": [
+    "Centrifuge World repairs and rebuilds Flottweg centrifuges, including decanter centrifuges, Tricanter three-phase decanters, and disc-stack separators. Our service engineers restore worn equipment to reliable, efficient operation at our shops in Houston, Texas and the Chicago, Illinois area.",
+    "Like any high-speed separation equipment, Flottweg centrifuges gradually lose efficiency as bearings wear, surfaces erode, and rotating assemblies fall out of balance. Regular inspection and timely repair keep throughput and separation quality high while reducing the risk of unplanned downtime. Our engineers can help troubleshoot maintenance issues and schedule an inspection before small problems become failures.",
+    "Every repair begins with a non-destructive teardown and inspection (NDTI). When you schedule service, we can collect the machine from your site, bring it to our shop, and complete a full inspection. You then receive a detailed condition report with recommended repairs and the parts required, so nothing proceeds without your approval.",
+    "Once the scope is approved, our rebuild work covers standard maintenance, weld repair of areas damaged by mechanical, chemical, or erosion attack, refitting of wear parts such as o-rings and gaskets, replacement of worn or damaged components, approved upgrades, and static and dynamic balancing. Before the machine ships back, we complete a test run to confirm it operates at peak performance.",
+    "We can also supply parts for Flottweg centrifuges. When a component is hard to find or carries a long lead time, our team can reverse-engineer and fabricate it in-house. And when a breakdown can't wait, our emergency and rush repair support returns your Flottweg equipment to service quickly."
+  ],
+  "faqs": [
+    {"question": "Which Flottweg centrifuges do you repair?", "answer": "We service Flottweg decanter centrifuges, Tricanter three-phase decanters, and disc-stack separators."},
+    {"question": "Do you supply Flottweg parts?", "answer": "Yes. When a Flottweg part is hard to find or on long backlog, we can reverse-engineer and fabricate the component in-house."},
+    {"question": "What happens during an inspection?", "answer": "We perform a non-destructive teardown and inspection (NDTI) and provide a written report detailing the machine's condition, the recommended repairs, and the parts needed to complete them."},
+    {"question": "Do you handle emergency Flottweg repairs?", "answer": "Yes. We offer rush and emergency repair support to get failed Flottweg centrifuges back into production quickly."}
+  ],
+  "images": [
+    {"src": "https://centrifuge-im.s3.amazonaws.com/wp-content/uploads/2021/12/07192739/IMG_8060-1.jpg", "alt": "Flottweg centrifuge at a Centrifuge World service center"}
+  ],
+  "relatedBrands": [
+    {"label": "Alfa Laval", "href": "/brands/alfa-laval/"},
+    {"label": "Westfalia", "href": "/brands/westfalia/"}
+  ],
+  "relatedServices": [
+    {"label": "Decanter Centrifuge Repair", "href": "/services/decanter-centrifuge-repair/"},
+    {"label": "Centrifuge Rebuilds", "href": "/services/centrifuge-rebuilds/"}
+  ],
+  "relatedIndustries": [
+    {"label": "Food & Beverage", "href": "/industries/food-beverage/"}
+  ],
+  "seoTitle": "Flottweg Centrifuge Repair | Centrifuge World",
+  "seoDescription": "Independent Flottweg decanter, Tricanter, and disc-stack centrifuge repair, rebuilds, and parts. Inspection, balancing, and testing in Houston and Chicago.",
+  "todos": [
+    "TODO(verify: legacy Flottweg page had no substantive body copy — page built from standard service sections. Confirm which Flottweg lines (decanter, Tricanter, Sedicanter, AC disc-stack, belt press) Centrifuge World actively services and add any real model numbers.)"
+  ],
+  "mergeInto": null
+}

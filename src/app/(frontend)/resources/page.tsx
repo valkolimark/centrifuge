@@ -14,11 +14,11 @@ export const metadata: Metadata = buildMetadata(
 // Videos are live now; the rest are authored in Cycle 5 (shown as coming soon so
 // the nav/breadcrumb resolve without dead links).
 const RESOURCES = [
+  { label: 'How Centrifuges Work', href: '/resources/how-it-works/', desc: 'Plain-language guides by machine type.', live: true },
+  { label: 'Case Studies', href: '/resources/case-studies/', desc: 'Documented rebuild projects.', live: true },
+  { label: 'Blog', href: '/resources/blog/', desc: 'Guidance on repair, cost, and maintenance.', live: true },
+  { label: 'FAQs', href: '/resources/faqs/', desc: 'Answers to common centrifuge questions.', live: true },
   { label: 'Videos', href: '/resources/videos/', desc: 'Shop tours and real repair & rebuild work.', live: true },
-  { label: 'How Centrifuges Work', href: '/resources/how-it-works/', desc: 'Plain-language guides by machine type.', live: false },
-  { label: 'Case Studies', href: '/resources/case-studies/', desc: 'Documented rebuild projects.', live: false },
-  { label: 'Blog', href: '/resources/blog/', desc: 'Guidance on repair, cost, and maintenance.', live: false },
-  { label: 'FAQs', href: '/resources/faqs/', desc: 'Answers to common centrifuge questions.', live: false },
 ]
 
 export default function ResourcesIndex() {

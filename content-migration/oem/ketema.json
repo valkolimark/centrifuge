@@ -1,0 +1,49 @@
+{
+  "slug": "ketema",
+  "name": "Ketema",
+  "archiveUrl": "https://web.archive.org/web/20240525181315/https://centrifuge.com/ketema/",
+  "answerBox": "Centrifuge World repairs, rebuilds, and supplies parts for Ketema and Ketema/Tolhurst basket centrifuges. As an independent specialist serving industry since 1939, we inspect, recondition, weld-repair, balance, and test your equipment at our Houston, Texas and Chicago, Illinois service centers, with 24/7 rush support.",
+  "intro": "Centrifuge World provides comprehensive repair, rebuild, and parts services for Ketema and Ketema/Tolhurst basket centrifuges, restoring high efficiency and optimal performance while reducing process downtime.",
+  "disclosure": "Centrifuge World is an independent repair and rebuild specialist. We are not affiliated with Ketema.",
+  "modelsServiced": [],
+  "typesServiced": ["Basket"],
+  "capabilities": [
+    {"item": "Inspection & NDTI", "detail": "A non-destructive teardown and inspection documents the condition of your Ketema/Tolhurst basket centrifuge before any work is scoped."},
+    {"item": "Basket centrifuge rebuilds", "detail": "We recondition baskets and rotating assemblies to return the machine to peak operating performance."},
+    {"item": "Wear-part replacement", "detail": "O-rings, gaskets, bearings, and worn components are refit or replaced to specification."},
+    {"item": "Weld repair", "detail": "We repair damage caused by mechanical wear, chemical attack, and erosion."},
+    {"item": "Balancing & testing", "detail": "Static and dynamic balancing plus a test run confirm the machine is ready to return to service."},
+    {"item": "Parts fabrication", "detail": "Hard-to-source Ketema/Tolhurst parts are reverse-engineered and fabricated in-house, often with a short turnaround."}
+  ],
+  "body": [
+    "Centrifuge World offers a full range of service options to enhance the performance of your Ketema and Ketema/Tolhurst basket centrifuge equipment. All work is carried out at our specialized service centers in Houston, Texas and the Chicago, Illinois area, where our qualified service engineers assess each machine and build the right plan to rebuild your Ketema/Tolhurst centrifuge.",
+    "Keeping a basket centrifuge in top operating condition depends on regular maintenance, so our engineers are available to help troubleshoot maintenance issues or set up an inspection before small problems become costly failures. Scheduling a non-destructive teardown and inspection (NDTI) is easy: call Centrifuge World, we handle the logistics and send a truck to your facility, you load the centrifuge, and our driver brings it back to our shop for a complete NDTI.",
+    "After the inspection you receive a detailed condition report covering the findings, recommendations for how to proceed, and an overview of the parts that will require replacement. Once approved, our Ketema/Tolhurst rebuild services include refitting of wear parts such as o-rings and gaskets, replacement of worn or damaged items, approved upgrades, weld repair, and static and dynamic balancing, followed where possible by a test run before the machine ships back in top condition.",
+    "We also maintain a large inventory of OEM parts for Ketema/Tolhurst basket centrifuges. When a component is hard to find or on long backlog, our team can reverse-engineer and fabricate it in-house, often turning it around in just a few days. And when a breakdown can't wait, our emergency and rush repair support responds 24/7 to get your equipment back into production quickly."
+  ],
+  "faqs": [
+    {"question": "Which Ketema centrifuges do you repair?", "answer": "We repair and rebuild Ketema and Ketema/Tolhurst basket centrifuges, including reconditioning of baskets, rotating assemblies, and wear components."},
+    {"question": "Do you supply Ketema/Tolhurst parts?", "answer": "Yes. We keep an inventory of OEM parts for Ketema/Tolhurst centrifuges and can reverse-engineer and fabricate hard-to-find components in-house when a part is on long backlog."},
+    {"question": "Where is Ketema service performed?", "answer": "Repairs and rebuilds are carried out at our service centers in Houston, Texas and the Chicago, Illinois area."}
+  ],
+  "images": [
+    {"src": "https://centrifuge-im.s3.amazonaws.com/wp-content/uploads/2020/01/07192833/61151602436__73E5579B-BE9B-4595-8C01-6614452E51AC-scaled-e1636755537776.jpeg", "alt": "Ketema Tolhurst basket centrifuge undergoing repair at a Centrifuge World service center"}
+  ],
+  "relatedBrands": [
+    {"label": "Tolhurst", "href": "/brands/tolhurst/"},
+    {"label": "Broadbent", "href": "/brands/broadbent/"}
+  ],
+  "relatedServices": [
+    {"label": "Basket Centrifuge Repair", "href": "/services/basket-centrifuge-repair/"},
+    {"label": "Centrifuge Repair", "href": "/services/centrifuge-repair/"}
+  ],
+  "relatedIndustries": [
+    {"label": "Chemical", "href": "/industries/chemical/"}
+  ],
+  "seoTitle": "Ketema Centrifuge Repair | Centrifuge World",
+  "seoDescription": "Independent Ketema and Ketema/Tolhurst basket centrifuge repair, rebuilds, and parts. Inspection, balancing, and testing in Houston and Chicago.",
+  "todos": [
+    "TODO(verify: no specific Ketema or Ketema/Tolhurst model numbers were listed on the legacy page; confirm the basket centrifuge series serviced before adding models)"
+  ],
+  "mergeInto": null
+}

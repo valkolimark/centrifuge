@@ -1,0 +1,53 @@
+{
+  "slug": "bock",
+  "name": "Bock",
+  "archiveUrl": "http://web.archive.org/web/20240525170453/https://centrifuge.com/bock/",
+  "answerBox": "Centrifuge World repairs and rebuilds Bock centrifuges. As an independent specialist serving industrial plants since 1939, we inspect, recondition, balance, and test-run Bock machines at our Houston and Chicago shops, and fabricate hard-to-find parts in house to minimize your downtime.",
+  "intro": "Centrifuge World is an independent centrifuge repair and rebuild shop that services Bock centrifuges alongside dozens of other OEM brands. From inspection and reconditioning to balancing, testing, and parts fabrication, we help keep your Bock equipment running at peak performance.",
+  "disclosure": "Centrifuge World is an independent repair and rebuild specialist. We are not affiliated with Bock.",
+  "modelsServiced": [],
+  "typesServiced": [],
+  "capabilities": [
+    { "item": "Inspection and diagnostics", "detail": "Non-destructive testing and inspection of your Bock centrifuge, followed by a written condition report and recommended repair plan." },
+    { "item": "Reconditioning and rebuild", "detail": "Complete reconditioning and rebuild to restore efficiency and performance and reduce process downtime." },
+    { "item": "Welding repair", "detail": "Repair of areas damaged by mechanical, chemical, or erosion attack." },
+    { "item": "Wear-part refitting", "detail": "Refitting of wear parts such as o-rings and gaskets, plus replacement of worn or damaged items." },
+    { "item": "Balancing and test run", "detail": "Static and dynamic balancing followed by a test run before the machine is returned." },
+    { "item": "Parts fabrication", "detail": "Reverse-engineering and in-house fabrication of hard-to-find Bock parts when OEM stock is backordered." }
+  ],
+  "body": [
+    "Centrifuge World provides independent repair and rebuild services for Bock centrifuges. Every job starts with a thorough inspection at our Houston, Texas or Chicago, Illinois facility, where our engineers evaluate the machine and document its true condition before recommending a repair plan and quote.",
+    "Getting an inspection is straightforward. Call us to schedule it, load the centrifuge onto the truck we dispatch, and our driver delivers it to our shop for a comprehensive non-destructive testing and inspection. You then receive a detailed report with the recommended services and the parts required to complete the work.",
+    "Our repair scope covers reconditioning, welding of areas damaged by mechanical, chemical, or erosion attack, refitting of wear parts such as o-rings and gaskets, replacement of worn or damaged items, static and dynamic balancing, and a full test run before shipment. When a part is hard to find or backordered, our shop can reverse-engineer and fabricate it to keep your repair on schedule.",
+    "If you experience an unexpected breakdown, Centrifuge World offers 24/7 emergency service and rush repairs. We are here to respond quickly and get your Bock centrifuge back into production with minimal disruption."
+  ],
+  "faqs": [
+    { "question": "Who repairs Bock centrifuges?", "answer": "Centrifuge World, an independent centrifuge repair and rebuild specialist operating since 1939. We inspect, recondition, balance, and test Bock centrifuges at our Houston and Chicago facilities and are not affiliated with Bock." },
+    { "question": "Do you offer emergency service for Bock centrifuges?", "answer": "Yes. We provide 24/7 emergency service and rush repairs so an unexpected Bock centrifuge breakdown can be diagnosed and returned to production as quickly as possible." },
+    { "question": "Can you make Bock parts that are hard to find?", "answer": "Yes. When a Bock part is backordered or no longer available, our shop can reverse-engineer and fabricate the component in house, which shortens lead times and keeps your rebuild on schedule." }
+  ],
+  "images": [
+    { "src": "https://centrifuge-im.s3.amazonaws.com/wp-content/uploads/2021/12/07192739/IMG_8060-1.jpg", "alt": "Centrifuge undergoing repair at Centrifuge World" }
+  ],
+  "relatedBrands": [
+    { "label": "Alfa Laval", "href": "/brands/alfa-laval/" },
+    { "label": "Flottweg", "href": "/brands/flottweg/" }
+  ],
+  "relatedServices": [
+    { "label": "Centrifuge Repair", "href": "/services/centrifuge-repair/" },
+    { "label": "Centrifuge Rebuilds", "href": "/services/centrifuge-rebuilds/" }
+  ],
+  "relatedIndustries": [
+    { "label": "Chemical", "href": "/industries/chemical/" }
+  ],
+  "seoTitle": "Bock Centrifuge Repair & Rebuild | Centrifuge World",
+  "seoDescription": "Independent Bock centrifuge repair and rebuild. Inspection, reconditioning, welding, balancing, testing, and parts fabrication in Houston and Chicago.",
+  "todos": [
+    "TODO(verify: the legacy /bock/ page was footer-only with no body copy; this page was built entirely from standard sections. Confirm all copy with client before publishing.)",
+    "TODO(verify: confirm which centrifuge types Bock manufactures and which Centrifuge World services (decanter, basket, disc-stack); typesServiced left empty pending confirmation.)",
+    "TODO(verify: confirm specific Bock model numbers serviced; none were available.)",
+    "TODO(verify: confirm primary industry association for Bock; Chemical selected as a placeholder.)",
+    "TODO(verify: the single legacy image (IMG_8060-1.jpg) is a generic shop photo, not confirmed to be a Bock machine.)"
+  ],
+  "mergeInto": null
+}

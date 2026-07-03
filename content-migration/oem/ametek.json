@@ -1,0 +1,47 @@
+{
+  "slug": "ametek",
+  "name": "Ametek",
+  "archiveUrl": "http://web.archive.org/web/20240422093506/https://centrifuge.com/ametek/",
+  "answerBox": "Centrifuge World repairs and rebuilds Ametek basket centrifuges. As an independent specialist since 1939, we service every Ametek basket type, including top and bottom discharge, horizontal and vertical pusher and peeler machines, with reconditioning, welding, wear-part refitting, balancing, and test runs at our Houston and Chicago shops.",
+  "intro": "Ametek basket centrifuges are workhorses for batch and continuous filtration across chemical, pharmaceutical, and process industries. Centrifuge World is an independent shop that reconditions and repairs the full range of Ametek basket machines so they keep running at high efficiency with minimal downtime.",
+  "disclosure": "Centrifuge World is an independent repair and rebuild specialist. We are not affiliated with Ametek.",
+  "modelsServiced": [],
+  "typesServiced": ["Basket centrifuges", "Top-discharge basket centrifuges", "Bottom-discharge basket centrifuges", "Horizontal pusher and peeler centrifuges", "Vertical pusher and peeler centrifuges"],
+  "capabilities": [
+    { "item": "Basket reconditioning", "detail": "Complete industrial reconditioning of Ametek basket centrifuges to restore efficiency and performance with minimal downtime." },
+    { "item": "Standard maintenance", "detail": "Scheduled maintenance at our facilities when field service is not convenient." },
+    { "item": "Welding repair", "detail": "Repair of areas damaged by mechanical, chemical, or erosion attack." },
+    { "item": "Wear-part refitting", "detail": "Refitting of wear parts such as o-rings and gaskets, plus replacement of worn or damaged items." },
+    { "item": "Upgrades and balancing", "detail": "Execution of equipment upgrades and static or dynamic balancing based on need and available equipment." },
+    { "item": "Parts fabrication", "detail": "In-house fabrication of hard-to-find Ametek parts, with turnaround in a few days when OEM stock is backordered." }
+  ],
+  "body": [
+    "Centrifuge World specializes in Ametek basket centrifuge repair and maintenance. We service all Ametek basket types, including top and bottom discharge, horizontal, and vertical pusher and peeler machines, providing complete industrial reconditioning that keeps equipment operating at high efficiency with little to no downtime.",
+    "Maintenance is what keeps a basket centrifuge in peak condition. Our highly skilled service engineers troubleshoot issues either on site or at our conveniently located repair facilities in Houston, Texas and Chicago, Illinois, and can rebuild your Ametek machine from the ground up.",
+    "When rotating equipment needs work, we offer standard maintenance when field service is not practical, welding of areas damaged by mechanical, chemical, or erosion attack, refitting of wear parts such as o-rings and gaskets, replacement of worn or damaged items, equipment upgrades, static and dynamic balancing, and a test run appropriate to the machine.",
+    "We also carry a large inventory of parts for Ametek centrifuges. When a part is hard to find or facing a long backlog, our shop can fabricate the component you need and turn it around in just a few days, keeping your repair on schedule and your process online."
+  ],
+  "faqs": [
+    { "question": "Who repairs Ametek centrifuges?", "answer": "Centrifuge World, an independent basket centrifuge repair and rebuild specialist operating since 1939. We service all Ametek basket types at our Houston and Chicago facilities and are not affiliated with Ametek." },
+    { "question": "Which Ametek basket centrifuge types do you service?", "answer": "We service every Ametek basket type, including top-discharge and bottom-discharge machines and horizontal and vertical pusher and peeler centrifuges, with reconditioning, welding, wear-part refitting, upgrades, and balancing." },
+    { "question": "Can you supply or make Ametek parts?", "answer": "Yes. We keep a large inventory of parts for Ametek centrifuges, and when a part is hard to find or backordered we can fabricate it in house and turn it around in just a few days." }
+  ],
+  "images": [],
+  "relatedBrands": [
+    { "label": "Tolhurst", "href": "/brands/tolhurst/" },
+    { "label": "Broadbent", "href": "/brands/broadbent/" }
+  ],
+  "relatedServices": [
+    { "label": "Basket Centrifuge Repair", "href": "/services/basket-centrifuge-repair/" },
+    { "label": "Centrifuge Repair", "href": "/services/centrifuge-repair/" }
+  ],
+  "relatedIndustries": [
+    { "label": "Pharmaceutical", "href": "/industries/pharmaceutical/" }
+  ],
+  "seoTitle": "Ametek Basket Centrifuge Repair & Rebuild | Centrifuge World",
+  "seoDescription": "Independent Ametek basket centrifuge repair. Top and bottom discharge, pusher and peeler reconditioning, welding, balancing, and parts fabrication.",
+  "todos": [
+    "TODO(verify: confirm specific Ametek basket centrifuge model numbers Centrifuge World services; legacy page listed types only, no model numbers.)"
+  ],
+  "mergeInto": null
+}

@@ -1,0 +1,47 @@
+{
+  "slug": "heraeus",
+  "name": "Heraeus",
+  "archiveUrl": "https://web.archive.org/web/20240422084613/https://centrifuge.com/heraeus/",
+  "answerBox": "Centrifuge World repairs, rebuilds, and supplies parts for Heraeus centrifuges. As an independent specialist serving industry since 1939, we inspect, recondition, weld-repair, balance, and test your equipment at our Houston, Texas and Chicago, Illinois service centers, with 24/7 rush support for emergency breakdowns.",
+  "intro": "Centrifuge World delivers dependable repair, rebuild, and parts services for Heraeus centrifuges, keeping your equipment running at optimal performance and reducing process downtime.",
+  "disclosure": "Centrifuge World is an independent repair and rebuild specialist. We are not affiliated with Heraeus.",
+  "modelsServiced": [],
+  "typesServiced": [],
+  "capabilities": [
+    {"item": "Inspection & NDTI", "detail": "A non-destructive teardown and inspection documents machine condition before any work is scoped."},
+    {"item": "Reconditioning & rebuilds", "detail": "We recondition rotating assemblies and restore your Heraeus centrifuge to high efficiency and optimal performance."},
+    {"item": "Wear-part replacement", "detail": "O-rings, gaskets, bearings, and worn components are refit or replaced to specification."},
+    {"item": "Weld repair", "detail": "We repair damage caused by mechanical wear, chemical attack, and erosion."},
+    {"item": "Balancing & testing", "detail": "Static and dynamic balancing plus a test run confirm the machine is ready to return to service."},
+    {"item": "Parts fabrication", "detail": "Hard-to-source Heraeus parts are reverse-engineered and fabricated in-house, often with a short turnaround."}
+  ],
+  "body": [
+    "Centrifuge World provides dependable repair and service for Heraeus centrifuges, with a range of offerings designed to enhance the performance of your equipment. All work is carried out at our specialized service centers in Houston, Texas and the Chicago, Illinois area, where our highly qualified service engineers can rebuild your centrifuge regardless of the condition it arrives in.",
+    "We offer comprehensive reconditioning and repair for industrial centrifuges, ensuring your equipment continues to operate at optimal performance. Routine maintenance is essential to keeping a machine in top operating condition, so our engineers are available to help troubleshoot maintenance issues or set up an appointment for inspection before small problems become costly failures.",
+    "When rotating equipment requires repair, our services include standard shop maintenance when field service isn't convenient, weld repair of areas damaged by mechanical, chemical, or erosion attack, refitting of wear parts such as o-rings and gaskets, and static and dynamic balancing based on the machine and available tooling. Where the equipment allows, we complete a test run before the centrifuge ships back.",
+    "We also maintain a large inventory of OEM parts. When a component is hard to find or on long backlog, our team can reverse-engineer and fabricate it in-house, often turning it around in just a few days. And when a breakdown can't wait, our emergency and rush repair support responds 24/7 to return your Heraeus equipment to production quickly."
+  ],
+  "faqs": [
+    {"question": "Do you repair Heraeus centrifuges?", "answer": "Yes. Centrifuge World provides reconditioning, repair, weld repair, and rebuild services for Heraeus centrifuges at our Houston and Chicago service centers."},
+    {"question": "Do you supply Heraeus parts?", "answer": "We keep an inventory of OEM parts and can reverse-engineer and fabricate hard-to-find Heraeus components in-house when a part is on long backlog."},
+    {"question": "How quickly can you handle an emergency repair?", "answer": "Our rush repair support is available 24/7, 365 days a year, so we can respond quickly when an unexpected breakdown needs to be resolved."}
+  ],
+  "images": [],
+  "relatedBrands": [
+    {"label": "Tolhurst", "href": "/brands/tolhurst/"},
+    {"label": "Hutchison Hayes", "href": "/brands/hutchison-hayes/"}
+  ],
+  "relatedServices": [
+    {"label": "Centrifuge Repair", "href": "/services/centrifuge-repair/"},
+    {"label": "Centrifuge Rebuilds", "href": "/services/centrifuge-rebuilds/"}
+  ],
+  "relatedIndustries": [
+    {"label": "Pharmaceutical", "href": "/industries/pharmaceutical/"}
+  ],
+  "seoTitle": "Heraeus Centrifuge Repair | Centrifuge World",
+  "seoDescription": "Independent Heraeus centrifuge repair, rebuilds, and parts. Inspection, weld repair, balancing, and testing in Houston and Chicago, with 24/7 rush support.",
+  "todos": [
+    "TODO(verify: the legacy Heraeus page contained only generic boilerplate with no Heraeus-specific model numbers or centrifuge types; confirm which Heraeus centrifuge lines and models are serviced before adding modelsServiced or typesServiced)"
+  ],
+  "mergeInto": null
+}

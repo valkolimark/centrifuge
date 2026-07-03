@@ -1,0 +1,49 @@
+{
+  "slug": "heine",
+  "name": "Heine",
+  "archiveUrl": "https://web.archive.org/web/20240715163826/https://centrifuge.com/heine/",
+  "answerBox": "Centrifuge World repairs, rebuilds, and supplies parts for Heine basket centrifuges. As an independent specialist serving industry since 1939, we inspect, recondition, weld-repair, balance, and test your Heine equipment at our Houston, Texas and Chicago, Illinois service centers, with rush support for emergency breakdowns.",
+  "intro": "Centrifuge World provides comprehensive repair, rebuild, and parts services for Heine basket centrifuges, restoring high efficiency and optimal performance while reducing process downtime.",
+  "disclosure": "Centrifuge World is an independent repair and rebuild specialist. We are not affiliated with Heine.",
+  "modelsServiced": [],
+  "typesServiced": ["Basket"],
+  "capabilities": [
+    {"item": "Inspection & NDTI", "detail": "A non-destructive teardown and inspection documents the condition of your Heine basket centrifuge before any work is scoped."},
+    {"item": "Basket centrifuge rebuilds", "detail": "We recondition baskets and rotating assemblies to return the machine to peak operating performance."},
+    {"item": "Wear-part replacement", "detail": "O-rings, gaskets, bearings, and worn components are refit or replaced to specification."},
+    {"item": "Weld repair", "detail": "We repair damage caused by mechanical wear, chemical attack, and erosion."},
+    {"item": "Balancing & testing", "detail": "Static and dynamic balancing plus a test run confirm the machine is ready to return to service."},
+    {"item": "Parts fabrication", "detail": "Hard-to-source Heine parts are reverse-engineered and fabricated in-house, often with a short turnaround."}
+  ],
+  "body": [
+    "Centrifuge World offers a full range of service options to enhance the performance of your Heine basket centrifuge. All work is carried out at our specialized service centers in Houston, Texas and the Chicago, Illinois area, where our qualified service engineers assess each machine and build the right plan to rebuild it, whatever condition it arrives in.",
+    "Every repair starts with a non-destructive teardown and inspection (NDTI). Scheduling one is simple: call Centrifuge World, we dispatch a truck to your facility, you load the centrifuge, and our driver brings it back to our shop for a complete NDTI. Following the inspection you receive a detailed condition report with recommended repairs and the parts required, so you can approve the scope before work proceeds.",
+    "Once approved, our Heine rebuild services cover refitting of wear parts such as o-rings and gaskets, replacement of worn or damaged items, approved upgrades, weld repair, and static and dynamic balancing. Where the equipment allows, we complete a test run before returning your Heine centrifuge in top condition, operating at peak performance.",
+    "We also maintain a large inventory of OEM parts for Heine centrifuges. When a component is hard to find or on long backlog, our team can reverse-engineer and fabricate it in-house, often turning it around in just a few days. And when a breakdown can't wait, our emergency and rush repair support responds 24/7 to get your equipment back into production quickly."
+  ],
+  "faqs": [
+    {"question": "Which Heine centrifuges do you repair?", "answer": "We repair and rebuild Heine basket centrifuges, including reconditioning of baskets, rotating assemblies, and wear components."},
+    {"question": "Do you supply Heine parts?", "answer": "Yes. We keep an inventory of OEM parts for Heine centrifuges and can reverse-engineer and fabricate hard-to-find components in-house when a part is on long backlog."},
+    {"question": "Where is Heine service performed?", "answer": "Repairs and rebuilds are carried out at our service centers in Houston, Texas and the Chicago, Illinois area."}
+  ],
+  "images": [
+    {"src": "https://centrifuge-im.s3.amazonaws.com/wp-content/uploads/2019/02/07192803/heinkel-centrifuge-repair-hero-1.jpg", "alt": "Basket centrifuge undergoing repair at a Centrifuge World service center"}
+  ],
+  "relatedBrands": [
+    {"label": "Tolhurst", "href": "/brands/tolhurst/"},
+    {"label": "Broadbent", "href": "/brands/broadbent/"}
+  ],
+  "relatedServices": [
+    {"label": "Basket Centrifuge Repair", "href": "/services/basket-centrifuge-repair/"},
+    {"label": "Centrifuge Rebuilds", "href": "/services/centrifuge-rebuilds/"}
+  ],
+  "relatedIndustries": [
+    {"label": "Chemical", "href": "/industries/chemical/"}
+  ],
+  "seoTitle": "Heine Centrifuge Repair | Centrifuge World",
+  "seoDescription": "Independent Heine basket centrifuge repair, rebuilds, and parts. Inspection, weld repair, balancing, and testing in Houston and Chicago.",
+  "todos": [
+    "TODO(verify: no specific Heine model numbers were listed on the legacy page; confirm the Heine centrifuge series serviced before adding models)"
+  ],
+  "mergeInto": null
+}

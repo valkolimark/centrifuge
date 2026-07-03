@@ -1,0 +1,85 @@
+{
+  "slug": "siebtechnik",
+  "name": "Siebtechnik",
+  "archiveUrl": "https://web.archive.org/web/20240525180903/https://centrifuge.com/siebtechnik/",
+  "answerBox": "Centrifuge World repairs and rebuilds Siebtechnik decanter and basket centrifuges at our US service centers in Houston and Chicago. Since 1939 our engineers have delivered inspection, non-destructive testing, rotating-assembly rebuilds, precision balancing, and reverse-engineered replacement parts to restore Siebtechnik equipment to peak separation performance and reduce your process downtime.",
+  "intro": "Siebtechnik decanter and basket centrifuges are built for demanding solid-liquid separation duty, and Centrifuge World keeps them running long after the original warranty ends. As an independent specialist working on every major industrial centrifuge platform since 1939, we inspect, repair, rebuild, and supply parts for Siebtechnik machines from our Houston, Texas and Chicago, Illinois shops.",
+  "disclosure": "Centrifuge World is an independent repair and rebuild specialist. We are not affiliated with Siebtechnik.",
+  "modelsServiced": [],
+  "typesServiced": [
+    "Decanter centrifuges",
+    "Basket centrifuges",
+    "Pusher centrifuges",
+    "Peeler centrifuges"
+  ],
+  "capabilities": [
+    {
+      "item": "Inspection & NDT",
+      "detail": "Full teardown, non-destructive testing, and dimensional evaluation of bowls, scrolls, baskets, and drive components, documented in a written findings report with a repair quote."
+    },
+    {
+      "item": "Rebuilds & reconditioning",
+      "detail": "Complete reconditioning of Siebtechnik rotating assemblies, including bearing and seal replacement, weld repair of erosion and corrosion damage, and wear-part refits."
+    },
+    {
+      "item": "Parts fabrication",
+      "detail": "Reverse engineering and in-house machining of hard-to-source Siebtechnik wear parts, with hard-surfacing and carbide tile protection when required."
+    },
+    {
+      "item": "Balancing & test runs",
+      "detail": "Static and dynamic balancing of rotors and baskets followed by a monitored test run to verify vibration levels before the machine ships."
+    },
+    {
+      "item": "Field & emergency service",
+      "detail": "On-site troubleshooting, installation support, and 24/7 emergency response backed by expedited shop turnaround."
+    }
+  ],
+  "body": [
+    "Centrifuge World offers a full range of service options to restore and enhance the performance of your Siebtechnik decanter and basket centrifuges. All work is completed at our service centers in Houston, Texas and the Chicago, Illinois area, where our engineers evaluate each machine and develop the right plan to repair or rebuild it.",
+    "Every project begins with inspection. Schedule a pickup and we will dispatch a truck to your site, transport the centrifuge to our shop, and perform comprehensive non-destructive testing (NDT). You receive a written report detailing the machine's condition, the services we recommend, and the parts required, along with a firm quote before any work proceeds.",
+    "When Siebtechnik rotating equipment needs attention, our rebuild scope covers standard maintenance, welding of mechanical, chemical, and erosion damage, refitting wear parts such as O-rings and gaskets, replacement of worn or damaged components, engineered upgrades, and static or dynamic balancing followed by a documented test run.",
+    "Parts availability keeps aging equipment in service. We maintain an inventory of centrifuge parts and, when a Siebtechnik component is on long backorder or no longer stocked, our team reverse-engineers and fabricates it in-house, often turning critical parts around in a matter of days.",
+    "Unexpected breakdowns do not wait for business hours. Our 24/7 emergency line and rush repair service get your Siebtechnik centrifuge back into production quickly, whether the problem calls for field support or an expedited shop rebuild."
+  ],
+  "faqs": [
+    {
+      "question": "Who repairs Siebtechnik centrifuges?",
+      "answer": "Centrifuge World repairs Siebtechnik decanter and basket centrifuges as an independent specialist. We are not the OEM, but we have serviced Siebtechnik and comparable industrial centrifuges since 1939 from our Houston and Chicago facilities."
+    },
+    {
+      "question": "Can you supply parts for a Siebtechnik centrifuge?",
+      "answer": "Yes. We stock centrifuge wear parts and reverse-engineer and machine hard-to-source Siebtechnik components in-house, so long lead times and discontinued parts do not keep your machine out of service."
+    },
+    {
+      "question": "Do you rebuild Siebtechnik centrifuges or only repair them?",
+      "answer": "Both. We handle targeted repairs and complete rebuilds, including bearing and seal replacement, weld repair, wear-part refits, upgrades, and precision balancing with a verified test run before the machine returns to you."
+    }
+  ],
+  "images": [
+    {
+      "src": "https://centrifuge-im.s3.amazonaws.com/wp-content/uploads/2020/01/07192600/siebtechnik-hero.jpg",
+      "alt": "Siebtechnik industrial centrifuge serviced by Centrifuge World"
+    },
+    {
+      "src": "https://centrifuge-im.s3.amazonaws.com/wp-content/uploads/2020/01/07193446/7362b.jpg",
+      "alt": "Siebtechnik centrifuge component during repair at Centrifuge World"
+    }
+  ],
+  "relatedBrands": [
+    { "label": "Tolhurst", "href": "/brands/tolhurst/" },
+    { "label": "Broadbent", "href": "/brands/broadbent/" }
+  ],
+  "relatedServices": [
+    { "label": "Basket Centrifuge Repair", "href": "/services/basket-centrifuge-repair/" },
+    { "label": "Parts Fabrication", "href": "/services/parts-fabrication/" }
+  ],
+  "relatedIndustries": [
+    { "label": "Chemical Processing", "href": "/industries/chemical/" }
+  ],
+  "seoTitle": "Siebtechnik Centrifuge Repair & Rebuild | Centrifuge World",
+  "seoDescription": "Independent Siebtechnik centrifuge repair and rebuilds since 1939. Inspection, balancing, parts fabrication and 24/7 emergency service from our US shops.",
+  "todos": [
+    "TODO(verify: confirm the full list of Siebtechnik centrifuge types and any specific models the client services; legacy page named only decanter and basket)"
+  ],
+  "mergeInto": null
+}

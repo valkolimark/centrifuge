@@ -1,0 +1,48 @@
+{
+  "slug": "aldec",
+  "name": "Aldec (Alfa Laval)",
+  "archiveUrl": null,
+  "answerBox": "Centrifuge World repairs and rebuilds Aldec (Alfa Laval) decanter centrifuges. As an independent specialist serving industrial plants since 1939, we inspect, recondition, and rebuild Aldec bowls, scrolls, gearboxes, and bearings at our Houston and Chicago shops, then balance and hydraulically test each unit before return to minimize your downtime.",
+  "intro": "The Aldec line is Alfa Laval's family of high-performance decanter centrifuges used for continuous solid-liquid separation, dewatering, and thickening across municipal and industrial processes. Centrifuge World is an independent shop that keeps Aldec decanters running through inspection, repair, rebuild, and hard-surfacing, without the lead times of factory service.",
+  "disclosure": "Centrifuge World is an independent repair and rebuild specialist. We are not affiliated with Aldec (Alfa Laval).",
+  "modelsServiced": ["ALDEC G2", "ALDEC G3"],
+  "typesServiced": ["Decanter centrifuges", "High-solids dewatering decanters"],
+  "capabilities": [
+    { "item": "Inspection and diagnostics", "detail": "Non-destructive testing and inspection (NDTI) of the bowl, conveyor scroll, bearings, and gearbox, followed by a written condition report and quotation." },
+    { "item": "Bowl and scroll rebuild", "detail": "Reconditioning of worn Aldec bowls and conveyor flights, including feed zone repair and replacement of worn components." },
+    { "item": "Hard-surfacing and wear protection", "detail": "Tungsten-carbide tiles, sprayed hard-facing, and replaceable wear surfaces on scroll flights and discharge ports to extend service life." },
+    { "item": "Gearbox repair", "detail": "Overhaul and testing of the planetary or cyclo gearbox that drives differential scroll speed." },
+    { "item": "Precision balancing and testing", "detail": "Dynamic bowl balancing and full-speed hydraulic test-run before the decanter ships back to your plant." },
+    { "item": "Parts fabrication", "detail": "Reverse-engineering and in-house manufacture of hard-to-source Aldec wear parts to compress lead times." }
+  ],
+  "body": [
+    "Aldec decanter centrifuges are built for continuous, high-throughput separation, and like every decanter they lose efficiency as bowl surfaces, scroll flights, and bearings wear. Vibration, reduced cake dryness, and falling capture rates are the usual signs that a rebuild is due. Centrifuge World restores that lost performance with a full teardown, inspection, and rebuild program tailored to your application.",
+    "Every job begins with our non-destructive testing and inspection process. We dispatch a truck to your site, bring the machine to our Houston, Texas or Chicago, Illinois facility, and document the true condition of the bowl, conveyor, main bearings, and gearbox. You receive a detailed report with recommended repairs and the parts required before any work proceeds.",
+    "Because decanters in dewatering service run in abrasive slurries, wear protection is central to a lasting rebuild. We apply hard-surfacing to scroll flights and feed zones, replace worn tiles and bushings, and re-establish the running clearances that control cake dryness and centrate clarity. Completed machines are dynamically balanced and hydraulically tested at full speed so they return ready to run.",
+    "When a genuine part is on long backorder, our shop reverse-engineers and fabricates the component, keeping your rebuild on schedule. For plants that cannot afford extended outages, we also offer field service and 24/7 emergency support to get an Aldec decanter back online quickly."
+  ],
+  "faqs": [
+    { "question": "Who repairs Aldec centrifuges?", "answer": "Centrifuge World, an independent decanter centrifuge repair and rebuild specialist operating since 1939. We service Aldec (Alfa Laval) decanters at our Houston and Chicago facilities, including bowl, scroll, gearbox, and bearing rebuilds, and we are not affiliated with Alfa Laval." },
+    { "question": "How often should an Aldec decanter be serviced?", "answer": "Service intervals depend on feed abrasiveness and duty cycle, but scheduling inspection at regular intervals helps prevent unplanned production stops. Rising vibration, reduced cake dryness, or falling throughput are signs your Aldec decanter should be inspected." },
+    { "question": "Can you supply Aldec wear parts and gearbox components?", "answer": "Yes. We stock common decanter wear parts and can reverse-engineer and fabricate hard-to-find Aldec components in house, which shortens lead times when factory parts are backordered. We also overhaul and test decanter gearboxes." }
+  ],
+  "images": [],
+  "relatedBrands": [
+    { "label": "Alfa Laval", "href": "/brands/alfa-laval/" },
+    { "label": "Flottweg", "href": "/brands/flottweg/" }
+  ],
+  "relatedServices": [
+    { "label": "Decanter Centrifuge Repair", "href": "/services/decanter-centrifuge-repair/" },
+    { "label": "Centrifuge Rebuilds", "href": "/services/centrifuge-rebuilds/" }
+  ],
+  "relatedIndustries": [
+    { "label": "Wastewater Treatment", "href": "/industries/wastewater-treatment/" }
+  ],
+  "seoTitle": "Aldec (Alfa Laval) Centrifuge Repair | Centrifuge World",
+  "seoDescription": "Independent Aldec (Alfa Laval) decanter centrifuge repair and rebuild. Bowl, scroll, gearbox, and bearing service with balancing and testing.",
+  "todos": [
+    "TODO(verify: no archived /aldec/ page was found; page built from standard sections. Confirm body copy with client before publishing.)",
+    "TODO(verify: confirm which Aldec models Centrifuge World actively services. ALDEC G2 and ALDEC G3 are documented Alfa Laval decanter model families but were not evidenced on a legacy page.)"
+  ],
+  "mergeInto": null
+}

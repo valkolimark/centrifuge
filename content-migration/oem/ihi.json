@@ -1,0 +1,50 @@
+{
+  "slug": "ihi",
+  "name": "IHI",
+  "archiveUrl": "https://web.archive.org/web/20240715171639/https://centrifuge.com/i-h-i/",
+  "answerBox": "Centrifuge World repairs, rebuilds, and supplies parts for IHI decanter and basket centrifuges. As an independent specialist serving industry since 1939, we inspect, recondition, weld-repair, balance, and test your IHI equipment at our Houston, Texas and Chicago, Illinois service centers, with 24/7 rush support.",
+  "intro": "Centrifuge World provides comprehensive repair, rebuild, and parts services for IHI decanter and basket centrifuges, restoring high efficiency and optimal performance while reducing process downtime.",
+  "disclosure": "Centrifuge World is an independent repair and rebuild specialist. We are not affiliated with IHI.",
+  "modelsServiced": [],
+  "typesServiced": ["Decanter", "Basket"],
+  "capabilities": [
+    {"item": "Inspection & NDTI", "detail": "A non-destructive teardown and inspection documents the condition of your IHI decanter or basket centrifuge before any work is scoped."},
+    {"item": "Decanter & basket rebuilds", "detail": "We recondition bowls, conveyors, baskets, and rotating assemblies to restore peak performance."},
+    {"item": "Wear-part replacement", "detail": "O-rings, gaskets, bearings, and worn components are refit or replaced to specification."},
+    {"item": "Weld repair", "detail": "We repair damage caused by mechanical wear, chemical attack, and erosion."},
+    {"item": "Balancing & testing", "detail": "Static and dynamic balancing plus a test run confirm the machine is ready to return to service."},
+    {"item": "Parts fabrication", "detail": "Hard-to-source IHI parts are reverse-engineered and fabricated in-house, often with a short turnaround."}
+  ],
+  "body": [
+    "Centrifuge World offers a full range of service options to enhance the performance of your IHI decanter or basket centrifuge. All work is carried out at our specialized service centers in Houston, Texas and the Chicago, Illinois area, where our qualified service engineers assess each machine and build the right plan to rebuild your IHI centrifuge.",
+    "Every repair starts with a non-destructive teardown and inspection (NDTI). Scheduling one is easy: call Centrifuge World, we handle the logistics and send a truck to your facility, you load the centrifuge, and our driver brings it back to our shop for a complete NDTI. You then receive a detailed condition report covering the findings, recommendations for how to proceed, and an overview of the parts that will require replacement, so you can approve the scope before work begins.",
+    "For IHI decanter and basket centrifuges, our rebuild services include refitting of wear parts such as o-rings and gaskets, replacement of worn or damaged items, approved upgrades, weld repair, and static and dynamic balancing. Where the equipment allows, we complete a test run before returning your IHI centrifuge in top condition, operating at peak performance.",
+    "We also maintain a large inventory of OEM parts for IHI centrifuges. When a component is hard to find or on long backlog, our team can reverse-engineer and fabricate it in-house, often turning it around in just a few days. And when a breakdown can't wait, our emergency and rush repair support responds 24/7 to get your equipment back into production quickly."
+  ],
+  "faqs": [
+    {"question": "Which IHI centrifuges do you repair?", "answer": "We repair and rebuild IHI decanter and basket centrifuges, including reconditioning of bowls, conveyors, baskets, and rotating assemblies."},
+    {"question": "Do you supply IHI parts?", "answer": "Yes. We keep an inventory of OEM parts for IHI centrifuges and can reverse-engineer and fabricate hard-to-find components in-house when a part is on long backlog."},
+    {"question": "Where is IHI service performed?", "answer": "Repairs and rebuilds are carried out at our service centers in Houston, Texas and the Chicago, Illinois area."}
+  ],
+  "images": [
+    {"src": "https://centrifuge-im.s3.amazonaws.com/wp-content/uploads/2021/11/07192904/IHI-Body-1.jpg", "alt": "IHI centrifuge undergoing repair at a Centrifuge World service center"},
+    {"src": "https://centrifuge-im.s3.amazonaws.com/wp-content/uploads/2020/01/07193427/4976_3.jpg", "alt": "Industrial centrifuge rotating assembly in the Centrifuge World shop"}
+  ],
+  "relatedBrands": [
+    {"label": "Alfa Laval", "href": "/brands/alfa-laval/"},
+    {"label": "Andritz", "href": "/brands/andritz/"}
+  ],
+  "relatedServices": [
+    {"label": "Decanter Centrifuge Repair", "href": "/services/decanter-centrifuge-repair/"},
+    {"label": "Centrifuge Rebuilds", "href": "/services/centrifuge-rebuilds/"}
+  ],
+  "relatedIndustries": [
+    {"label": "Wastewater Treatment", "href": "/industries/wastewater-treatment/"}
+  ],
+  "seoTitle": "IHI Centrifuge Repair | Centrifuge World",
+  "seoDescription": "Independent IHI decanter and basket centrifuge repair, rebuilds, and parts. Inspection, balancing, and testing in Houston and Chicago.",
+  "todos": [
+    "TODO(verify: no specific IHI model numbers were listed on the legacy page; confirm the IHI decanter and basket series serviced before adding models)"
+  ],
+  "mergeInto": null
+}

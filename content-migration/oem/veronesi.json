@@ -1,0 +1,73 @@
+{
+  "slug": "veronesi",
+  "name": "Veronesi",
+  "archiveUrl": null,
+  "answerBox": "Centrifuge World repairs and rebuilds Veronesi industrial centrifuges at our US service centers in Houston and Chicago. Since 1939 our engineers have delivered inspection, non-destructive testing, rotating-assembly rebuilds, precision balancing, and reverse-engineered replacement parts to restore Veronesi equipment to peak separation performance and reduce unplanned process downtime.",
+  "intro": "Centrifuge World keeps Veronesi industrial centrifuges running long after their original service life. As an independent centrifuge repair and rebuild specialist since 1939, we inspect, repair, rebuild, and supply parts for Veronesi machines from our Houston, Texas and Chicago, Illinois shops, restoring separation performance and reducing downtime.",
+  "disclosure": "Centrifuge World is an independent repair and rebuild specialist. We are not affiliated with Veronesi.",
+  "modelsServiced": [],
+  "typesServiced": [],
+  "capabilities": [
+    {
+      "item": "Inspection & NDT",
+      "detail": "Full teardown, non-destructive testing, and dimensional evaluation of rotating and drive components, documented in a written findings report with a repair quote."
+    },
+    {
+      "item": "Rebuilds & reconditioning",
+      "detail": "Complete reconditioning of Veronesi rotating assemblies, including bearing and seal replacement, weld repair of erosion and corrosion damage, and wear-part refits."
+    },
+    {
+      "item": "Parts fabrication",
+      "detail": "Reverse engineering and in-house machining of hard-to-source Veronesi wear parts, with hard-surfacing and carbide protection when required."
+    },
+    {
+      "item": "Balancing & test runs",
+      "detail": "Static and dynamic balancing of rotating assemblies followed by a monitored test run to verify vibration levels before the machine ships."
+    },
+    {
+      "item": "Field & emergency service",
+      "detail": "On-site troubleshooting, installation support, and 24/7 emergency response backed by expedited shop turnaround."
+    }
+  ],
+  "body": [
+    "Centrifuge World offers a full range of service options to restore and enhance the performance of your Veronesi industrial centrifuge. All work is completed at our service centers in Houston, Texas and the Chicago, Illinois area, where our qualified service engineers evaluate each machine and develop the right plan to repair or rebuild it.",
+    "Every project begins with inspection. We schedule a pickup, dispatch a truck to your site, and transport the centrifuge to our shop for comprehensive non-destructive testing (NDT). You then receive a written report covering the machine's condition, our recommended services, and the required parts, along with a firm quote before any work proceeds.",
+    "When Veronesi rotating equipment needs repair, our scope includes standard maintenance, welding of mechanical, chemical, and erosion damage, refitting wear parts such as O-rings and gaskets, replacing worn or damaged items, engineered upgrades, and static or dynamic balancing followed by a documented test run.",
+    "Parts availability keeps aging equipment in service. We maintain an inventory of centrifuge wear parts and, when a Veronesi component is on long backorder or no longer stocked, our team reverse-engineers and fabricates it in-house, often turning critical parts around within a few days.",
+    "Unexpected breakdowns do not wait for business hours. Our 24/7 emergency line and rush repair service get your Veronesi centrifuge back into production quickly, whether the fix calls for field support or an expedited shop rebuild."
+  ],
+  "faqs": [
+    {
+      "question": "Who repairs Veronesi centrifuges?",
+      "answer": "Centrifuge World repairs Veronesi industrial centrifuges as an independent specialist. We are not the OEM, but we have serviced comparable industrial centrifuges since 1939 from our Houston and Chicago facilities."
+    },
+    {
+      "question": "Can you supply parts for a Veronesi centrifuge?",
+      "answer": "Yes. We stock centrifuge wear parts and reverse-engineer and machine hard-to-source components in-house, so long OEM lead times and discontinued parts do not keep your Veronesi machine out of service."
+    },
+    {
+      "question": "What does a Veronesi centrifuge rebuild include?",
+      "answer": "A rebuild can include teardown and NDT inspection, bearing and seal replacement, weld repair, wear-part refits, engineered upgrades, and static and dynamic balancing with a monitored test run before the machine ships back to you."
+    }
+  ],
+  "images": [],
+  "relatedBrands": [
+    { "label": "Alfa Laval", "href": "/brands/alfa-laval/" },
+    { "label": "Andritz", "href": "/brands/andritz/" }
+  ],
+  "relatedServices": [
+    { "label": "Centrifuge Repair", "href": "/services/centrifuge-repair/" },
+    { "label": "Centrifuge Rebuilds", "href": "/services/centrifuge-rebuilds/" }
+  ],
+  "relatedIndustries": [
+    { "label": "Chemical Processing", "href": "/industries/chemical/" }
+  ],
+  "seoTitle": "Veronesi Centrifuge Repair & Rebuild | Centrifuge World",
+  "seoDescription": "Independent Veronesi centrifuge repair and rebuilds since 1939. Inspection, balancing, parts fabrication and 24/7 emergency service in the US.",
+  "todos": [
+    "TODO(verify: confirm brand spelling with client — legacy site spells it \"Varonesi\"; page published here as \"Veronesi\". Keep the legacy /varonesi/ slug in the redirect map either way)",
+    "TODO(verify: confirm the Veronesi centrifuge types and any specific models the client services; no legacy content was available to source these)",
+    "TODO(no archived snapshot found for centrifuge.com/varonesi/ — this page was built entirely from standard sections; review with client before publish)"
+  ],
+  "mergeInto": null
+}

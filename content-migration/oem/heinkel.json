@@ -1,0 +1,100 @@
+{
+  "slug": "heinkel",
+  "name": "Heinkel",
+  "archiveUrl": "http://web.archive.org/web/20240525162702/https://centrifuge.com/heinkel/",
+  "answerBox": "Centrifuge World repairs and rebuilds Heinkel centrifuges, including peeler and basket-type filtering machines. As an independent specialist, we inspect each machine, weld and machine worn components, refit wear parts, and dynamically balance and test-run the assembly at our Houston and Chicago service centers to restore performance and reduce downtime.",
+  "intro": "Heinkel filtering centrifuges, including peeler and inverting-filter designs, are used for high-value solids recovery in pharmaceutical, fine-chemical and process applications. Centrifuge World is an independent repair and rebuild specialist that keeps this equipment running when parts and factory support are hard to source.",
+  "disclosure": "Centrifuge World is an independent repair and rebuild specialist. We are not affiliated with Heinkel.",
+  "modelsServiced": [],
+  "typesServiced": [
+    "Peeler centrifuges",
+    "Basket centrifuges",
+    "Inverting filter centrifuges"
+  ],
+  "capabilities": [
+    {
+      "item": "Non-destructive testing & inspection (NDTI)",
+      "detail": "Incoming inspection with dimensional checks, dye-penetrant and other NDT methods, followed by a written findings-and-recommendations report before any work begins."
+    },
+    {
+      "item": "Bowl and rotating-assembly repair",
+      "detail": "Weld build-up and machining of bowls, hubs and shafts damaged by mechanical wear, chemical attack or erosion, restored to original fits and tolerances."
+    },
+    {
+      "item": "High-speed dynamic balancing",
+      "detail": "Rotating assemblies are balanced and test-run to reduce vibration and protect bearings, seals and gearboxes."
+    },
+    {
+      "item": "Wear-part replacement",
+      "detail": "O-rings, gaskets, seals, bearings and other consumable wear components refitted using new parts."
+    },
+    {
+      "item": "Parts fabrication & reverse engineering",
+      "detail": "In-house machining and reverse engineering of hard-to-find or long-lead components to keep aging equipment in service."
+    }
+  ],
+  "body": [
+    "Centrifuge World offers a range of services to enhance the performance of Heinkel centrifuges. Work is performed at our service centers in Houston, Texas and Chicago, Illinois, where qualified service engineers carry out non-destructive testing and inspection and develop the right plan to rebuild each machine.",
+    "Regular maintenance is essential to keep a Heinkel centrifuge in top operating condition. Our service engineers can help troubleshoot maintenance issues or set up an inspection appointment so the equipment continues to run at high efficiency with less process downtime.",
+    "The inspection process is straightforward. Call to schedule, we dispatch a truck to your location, and once the machine reaches our shop it undergoes a comprehensive non-destructive test and inspection. You then receive a written report with recommendations and a list of the parts required to complete the repairs.",
+    "Once you approve the plan, our repair scope can include welding of areas damaged by mechanical, chemical or erosion attack, refitting wear parts such as O-rings and gaskets, replacing worn or damaged items, executing upgrades, static and dynamic balancing, and a final test run before the Heinkel is returned to service.",
+    "We keep a large inventory of parts for Heinkel centrifuges and, when a component is hard to find or on long backorder, we reverse engineer and fabricate it in-house, typically within a few days. Rush service is available for unexpected breakdowns."
+  ],
+  "faqs": [
+    {
+      "question": "Who repairs Heinkel centrifuges?",
+      "answer": "Centrifuge World repairs and rebuilds Heinkel filtering centrifuges, including peeler and basket-type machines, as an independent specialist. We inspect, weld, machine, balance and reassemble these machines at our Houston and Chicago service centers."
+    },
+    {
+      "question": "Can you rebuild a Heinkel peeler centrifuge?",
+      "answer": "Yes. We rebuild Heinkel peeler and basket-type filtering centrifuges, including bowl and rotating-assembly repair, wear-part replacement, upgrades and dynamic balancing, followed by a test run before the machine is returned."
+    },
+    {
+      "question": "What if a Heinkel part is discontinued or backordered?",
+      "answer": "We stock parts for Heinkel centrifuges and reverse engineer and fabricate hard-to-find or long-lead components in-house, often within a few days, to keep older machines in production."
+    }
+  ],
+  "images": [
+    {
+      "src": "https://centrifuge-im.s3.amazonaws.com/wp-content/uploads/2019/02/07192803/heinkel-centrifuge-repair-hero-1.jpg",
+      "alt": "Heinkel centrifuge repair at Centrifuge World"
+    },
+    {
+      "src": "https://centrifuge-im.s3.amazonaws.com/wp-content/uploads/2019/10/07193609/peeler-centrifuge.jpg",
+      "alt": "Heinkel peeler centrifuge serviced by Centrifuge World"
+    }
+  ],
+  "relatedBrands": [
+    {
+      "label": "Broadbent",
+      "href": "/brands/broadbent"
+    },
+    {
+      "label": "Andritz",
+      "href": "/brands/andritz"
+    }
+  ],
+  "relatedServices": [
+    {
+      "label": "Basket Centrifuge Repair",
+      "href": "/services/basket-centrifuge-repair"
+    },
+    {
+      "label": "Centrifuge Rebuilds",
+      "href": "/services/centrifuge-rebuilds"
+    }
+  ],
+  "relatedIndustries": [
+    {
+      "label": "Pharmaceutical",
+      "href": "/industries/pharmaceutical"
+    }
+  ],
+  "seoTitle": "Heinkel Centrifuge Repair & Rebuilds | Centrifuge World",
+  "seoDescription": "Independent Heinkel centrifuge repair and rebuilds for peeler and basket filtering machines. Inspection, balancing, parts fabrication and rush service.",
+  "todos": [
+    "TODO(verify: specific Heinkel model designations serviced, e.g. inverting-filter HF series)",
+    "TODO(verify: whether Heinkel inverting filter centrifuges are within service scope)"
+  ],
+  "mergeInto": null
+}

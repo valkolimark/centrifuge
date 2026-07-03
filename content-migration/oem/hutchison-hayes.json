@@ -1,0 +1,97 @@
+{
+  "slug": "hutchison-hayes",
+  "name": "Hutchison Hayes",
+  "archiveUrl": "http://web.archive.org/web/20240715175240/https://centrifuge.com/hutchison-hayes/",
+  "answerBox": "Centrifuge World repairs and rebuilds Hutchison Hayes decanter centrifuges. As an independent specialist serving the United States, Canada and Mexico, we inspect, machine and balance these machines and fabricate hard-to-find parts, returning them to service from our Houston and Chicago centers to reduce plant downtime.",
+  "intro": "Hutchison Hayes decanter centrifuges are used for solids-liquid separation across oil and gas, industrial and process applications. Centrifuge World is an independent repair and rebuild specialist that provides precision service for these machines throughout North America.",
+  "disclosure": "Centrifuge World is an independent repair and rebuild specialist. We are not affiliated with Hutchison Hayes.",
+  "modelsServiced": [],
+  "typesServiced": [
+    "Decanter centrifuges"
+  ],
+  "capabilities": [
+    {
+      "item": "Non-destructive testing & inspection (NDTI)",
+      "detail": "Incoming inspection with dimensional checks, dye-penetrant and other NDT methods, followed by a written findings-and-recommendations report before any work begins."
+    },
+    {
+      "item": "Bowl and rotating-assembly repair",
+      "detail": "Weld build-up and machining of bowls, hubs and shafts damaged by mechanical wear, chemical attack or erosion, restored to original fits and tolerances."
+    },
+    {
+      "item": "High-speed dynamic balancing",
+      "detail": "Rotating assemblies are balanced and test-run to reduce vibration and protect bearings, seals and gearboxes."
+    },
+    {
+      "item": "Wear-part replacement",
+      "detail": "O-rings, gaskets, seals, bearings and other consumable wear components refitted using new parts."
+    },
+    {
+      "item": "Parts fabrication & reverse engineering",
+      "detail": "In-house machining and reverse engineering of hard-to-find or long-lead components to keep aging equipment in service."
+    }
+  ],
+  "body": [
+    "Centrifuge World serves customers across the United States, Canada and Mexico, helping plants overcome service difficulties and keep processes running. Whether the need is phone or online consultation, repair and reconditioning at one of our facilities, or on-site commissioning and service, our specialists work to keep your Hutchison Hayes equipment operational.",
+    "We offer a variety of services to get the most out of Hutchison Hayes equipment, delivered from our service centers in Houston, Texas and Chicago, Illinois. Highly skilled service engineers rebuild Hutchison Hayes decanter centrifuges to restore separation performance.",
+    "Getting a machine inspected is easy. Call to schedule an inspection, we dispatch a truck to your location, and once the centrifuge reaches our shop it undergoes a comprehensive non-destructive test and inspection before any repair is recommended.",
+    "When rotating equipment needs repair, our scope includes welding of areas damaged by mechanical, chemical or erosion attack, refitting wear parts such as O-rings and gaskets, replacing worn or damaged components, executing upgrades, static and dynamic balancing, and a final test run.",
+    "We keep a large inventory of parts for Hutchison Hayes centrifuges, and when a component is hard to find or backordered we fabricate it in-house, often turning it around within days. Expert technicians can service your machine either on site or at a Centrifuge World service center."
+  ],
+  "faqs": [
+    {
+      "question": "Who repairs Hutchison Hayes decanter centrifuges?",
+      "answer": "Centrifuge World repairs and rebuilds Hutchison Hayes decanter centrifuges as an independent specialist. We inspect, machine, balance and reassemble these machines at our Houston and Chicago centers and serve customers across North America."
+    },
+    {
+      "question": "Do you service Hutchison Hayes centrifuges on site?",
+      "answer": "Yes. Expert technicians can service Hutchison Hayes equipment either at your facility or at a Centrifuge World service center, including on-site commissioning, troubleshooting and reconditioning."
+    },
+    {
+      "question": "Can you supply parts for older Hutchison Hayes machines?",
+      "answer": "Yes. We stock parts for Hutchison Hayes centrifuges and fabricate hard-to-find or backordered components in-house, typically within a few days, to keep aging decanters in service."
+    }
+  ],
+  "images": [
+    {
+      "src": "https://centrifuge-im.s3.amazonaws.com/wp-content/uploads/2020/01/07192602/3ff26857958ae13a65f8834b318e177c-xlarge.jpg",
+      "alt": "Hutchison Hayes decanter centrifuge serviced by Centrifuge World"
+    },
+    {
+      "src": "https://centrifuge-im.s3.amazonaws.com/wp-content/uploads/2020/01/07193435/image-1.png",
+      "alt": "Hutchison Hayes centrifuge repair at Centrifuge World"
+    }
+  ],
+  "relatedBrands": [
+    {
+      "label": "Sharples",
+      "href": "/brands/sharples"
+    },
+    {
+      "label": "Bird",
+      "href": "/brands/bird"
+    }
+  ],
+  "relatedServices": [
+    {
+      "label": "Decanter Centrifuge Repair",
+      "href": "/services/decanter-centrifuge-repair"
+    },
+    {
+      "label": "Centrifuge Repair",
+      "href": "/services/centrifuge-repair"
+    }
+  ],
+  "relatedIndustries": [
+    {
+      "label": "Oil & Gas",
+      "href": "/industries/oil-gas"
+    }
+  ],
+  "seoTitle": "Hutchison Hayes Centrifuge Repair | Centrifuge World",
+  "seoDescription": "Independent Hutchison Hayes decanter centrifuge repair and rebuilds across the US, Canada and Mexico. On-site or in-shop service and parts fabrication.",
+  "todos": [
+    "TODO(verify: specific Hutchison Hayes model designations serviced)"
+  ],
+  "mergeInto": null
+}

@@ -1,0 +1,83 @@
+{
+  "slug": "tomoe",
+  "name": "Tomoe",
+  "archiveUrl": "https://web.archive.org/web/20240614213217/https://centrifuge.com/tomoe/",
+  "answerBox": "Centrifuge World repairs and rebuilds Tomoe decanter and basket centrifuges at our US service centers in Houston and Chicago. Since 1939 our engineers have delivered inspection, non-destructive testing, rotating-assembly rebuilds, precision balancing, and reverse-engineered replacement parts to restore Tomoe equipment to peak separation performance and reduce unplanned process downtime.",
+  "intro": "Tomoe decanter and basket centrifuges are engineered for continuous solid-liquid separation, and Centrifuge World keeps them producing well beyond their original service life. As an independent centrifuge repair specialist since 1939, we inspect, repair, rebuild, and supply parts for Tomoe machines from our Houston, Texas and Chicago, Illinois shops.",
+  "disclosure": "Centrifuge World is an independent repair and rebuild specialist. We are not affiliated with Tomoe.",
+  "modelsServiced": [],
+  "typesServiced": [
+    "Decanter centrifuges",
+    "Basket centrifuges"
+  ],
+  "capabilities": [
+    {
+      "item": "Inspection & NDT",
+      "detail": "Full teardown, non-destructive testing, and dimensional evaluation of bowls, scrolls or conveyors, and drive components, documented in a written findings report with a repair quote."
+    },
+    {
+      "item": "Rebuilds & reconditioning",
+      "detail": "Complete reconditioning of Tomoe rotating assemblies, including bearing and seal replacement, weld repair of erosion and corrosion damage, and wear-part refits."
+    },
+    {
+      "item": "Parts fabrication",
+      "detail": "Reverse engineering and in-house machining of hard-to-source Tomoe wear parts, with hard-surfacing and carbide tile protection when required."
+    },
+    {
+      "item": "Balancing & test runs",
+      "detail": "Static and dynamic balancing of bowls and conveyors followed by a monitored test run to verify vibration levels before the machine ships."
+    },
+    {
+      "item": "Field & emergency service",
+      "detail": "On-site troubleshooting, installation support, and 24/7 emergency response backed by expedited shop turnaround."
+    }
+  ],
+  "body": [
+    "Centrifuge World offers a full range of service options to enhance the performance of your Tomoe decanter and basket centrifuges. All work is performed at our service centers in Houston, Texas and the Chicago, Illinois area, where our qualified service engineers assess each machine and develop the right plan to repair or rebuild it.",
+    "Inspection is the first step. We schedule a pickup, dispatch a truck to your site, and transport the centrifuge to our shop for comprehensive non-destructive testing (NDT). You then receive a written report covering the machine's condition, our recommended services, and the required parts, along with a firm quote before repairs begin.",
+    "When Tomoe rotating equipment requires repair, our scope includes standard maintenance, welding of mechanical, chemical, and erosion damage, refitting wear parts such as O-rings and gaskets, replacing worn or damaged items, engineered upgrades, and static or dynamic balancing followed by a documented test run.",
+    "We maintain a large inventory of centrifuge parts, and when a Tomoe component is hard to find or on a long backlog, our team reverse-engineers and fabricates it in-house, often returning critical parts within a few days so your equipment does not sit idle.",
+    "For unexpected breakdowns, our 24/7 emergency line and rush repair service respond quickly, pairing field support with expedited shop turnaround to bring your Tomoe centrifuge back into production."
+  ],
+  "faqs": [
+    {
+      "question": "Who repairs Tomoe centrifuges?",
+      "answer": "Centrifuge World repairs Tomoe decanter and basket centrifuges as an independent specialist. We are not the OEM, but we have serviced Tomoe and comparable industrial centrifuges since 1939 from our Houston and Chicago facilities."
+    },
+    {
+      "question": "Can you supply parts for a Tomoe centrifuge?",
+      "answer": "Yes. We stock centrifuge wear parts and reverse-engineer and machine hard-to-source Tomoe components in-house, so long OEM lead times and discontinued parts do not keep your machine out of service."
+    },
+    {
+      "question": "How does the Tomoe centrifuge repair process work?",
+      "answer": "We pick up your machine, perform non-destructive testing at our shop, and send a written report with a quote. Once approved, we complete the repair or rebuild, balance the rotating assembly, and test run it before return."
+    }
+  ],
+  "images": [
+    {
+      "src": "https://centrifuge-im.s3.amazonaws.com/wp-content/uploads/2020/01/07193044/Tomoe-Header-Image-e1636401735397.jpg",
+      "alt": "Tomoe industrial centrifuge serviced by Centrifuge World"
+    },
+    {
+      "src": "https://centrifuge-im.s3.amazonaws.com/wp-content/uploads/2020/01/07193447/img_0346.jpg",
+      "alt": "Tomoe centrifuge during rebuild at Centrifuge World"
+    }
+  ],
+  "relatedBrands": [
+    { "label": "Alfa Laval", "href": "/brands/alfa-laval/" },
+    { "label": "Flottweg", "href": "/brands/flottweg/" }
+  ],
+  "relatedServices": [
+    { "label": "Decanter Centrifuge Repair", "href": "/services/decanter-centrifuge-repair/" },
+    { "label": "Gearbox Repair", "href": "/services/gearbox-repair/" }
+  ],
+  "relatedIndustries": [
+    { "label": "Wastewater Treatment", "href": "/industries/wastewater-treatment/" }
+  ],
+  "seoTitle": "Tomoe Centrifuge Repair & Rebuild | Centrifuge World",
+  "seoDescription": "Independent Tomoe centrifuge repair and rebuilds since 1939. Inspection, balancing, parts fabrication and 24/7 emergency service from our US shops.",
+  "todos": [
+    "TODO(verify: confirm the Tomoe centrifuge types and any specific models the client services; legacy page named only decanter and basket)"
+  ],
+  "mergeInto": null
+}

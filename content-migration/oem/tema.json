@@ -1,0 +1,79 @@
+{
+  "slug": "tema",
+  "name": "Tema",
+  "archiveUrl": "https://web.archive.org/web/20240525180223/https://centrifuge.com/tema/",
+  "answerBox": "Centrifuge World repairs and rebuilds Tema decanter and basket centrifuges at our US service centers in Houston and Chicago. Since 1939 our engineers have delivered inspection, non-destructive testing, rotating-assembly rebuilds, precision balancing, and reverse-engineered replacement parts to return Tema equipment to peak separation performance and minimize costly process downtime.",
+  "intro": "Tema decanter and basket centrifuges handle continuous solid-liquid separation across many industrial processes, and Centrifuge World keeps that equipment productive well beyond its original service life. As an independent centrifuge specialist since 1939, we inspect, repair, rebuild, and supply parts for Tema machines from our Houston, Texas and Chicago, Illinois shops.",
+  "disclosure": "Centrifuge World is an independent repair and rebuild specialist. We are not affiliated with Tema.",
+  "modelsServiced": [],
+  "typesServiced": [
+    "Decanter centrifuges",
+    "Basket centrifuges"
+  ],
+  "capabilities": [
+    {
+      "item": "Inspection & NDT",
+      "detail": "Full teardown, non-destructive testing, and dimensional evaluation of bowls, scrolls, and drive components, documented in a written findings report with a repair quote."
+    },
+    {
+      "item": "Rebuilds & reconditioning",
+      "detail": "Complete reconditioning of Tema rotating assemblies, including bearing and seal replacement, weld repair of erosion and corrosion damage, and wear-part refits."
+    },
+    {
+      "item": "Parts fabrication",
+      "detail": "Reverse engineering and in-house machining of hard-to-source Tema wear parts, with hard-surfacing and carbide protection when required."
+    },
+    {
+      "item": "Balancing & test runs",
+      "detail": "Static and dynamic balancing of rotating assemblies followed by a monitored test run to verify vibration levels before the machine ships."
+    },
+    {
+      "item": "Field & emergency service",
+      "detail": "On-site troubleshooting, installation support, and 24/7 emergency response backed by expedited shop turnaround."
+    }
+  ],
+  "body": [
+    "Centrifuge World provides a full range of service offerings to enhance the performance of your Tema decanter and basket centrifuges. Work is carried out at our service centers in Houston, Texas and the Chicago, Illinois area, where our qualified service engineers evaluate each machine and build the right plan to repair or rebuild it.",
+    "Inspection comes first. We schedule a pickup, dispatch a truck to your location, and bring the centrifuge to our shop for comprehensive non-destructive testing (NDT). You then receive a written report with condition findings, recommended services, and a required-parts list, along with a firm quote before any repair work begins.",
+    "For Tema rotating equipment that needs repair, our scope includes standard maintenance, welding of mechanical, chemical, and erosion damage, refitting wear parts such as O-rings and gaskets, replacing worn or damaged items, engineered upgrades, and static or dynamic balancing followed by a documented test run.",
+    "We keep a large inventory of centrifuge parts, and when a Tema component is hard to find or facing a long backlog, our team reverse-engineers and fabricates it in-house, frequently delivering critical parts within a few days to avoid extended downtime.",
+    "When a breakdown stops production, our 24/7 emergency service and rush repair program respond quickly, combining field support with expedited shop turnaround to get your Tema centrifuge back online."
+  ],
+  "faqs": [
+    {
+      "question": "Who repairs Tema centrifuges?",
+      "answer": "Centrifuge World repairs Tema decanter and basket centrifuges as an independent specialist. We are not the OEM, but we have serviced Tema and similar industrial centrifuges since 1939 from our Houston and Chicago facilities."
+    },
+    {
+      "question": "Can you get parts for a Tema centrifuge?",
+      "answer": "Yes. We stock centrifuge wear parts and reverse-engineer and machine hard-to-source Tema components in-house, so discontinued parts and long OEM lead times do not keep your machine idle."
+    },
+    {
+      "question": "What does a Tema centrifuge rebuild include?",
+      "answer": "A rebuild can include teardown and NDT inspection, bearing and seal replacement, weld repair, wear-part refits, engineered upgrades, and static and dynamic balancing with a monitored test run before the machine ships back to you."
+    }
+  ],
+  "images": [
+    {
+      "src": "https://centrifuge-im.s3.amazonaws.com/wp-content/uploads/2020/01/07193443/tema.jpg",
+      "alt": "Tema industrial centrifuge serviced by Centrifuge World"
+    }
+  ],
+  "relatedBrands": [
+    { "label": "Tolhurst", "href": "/brands/tolhurst/" },
+    { "label": "Broadbent", "href": "/brands/broadbent/" }
+  ],
+  "relatedServices": [
+    { "label": "Basket Centrifuge Repair", "href": "/services/basket-centrifuge-repair/" },
+    { "label": "Centrifuge Rebuilds", "href": "/services/centrifuge-rebuilds/" }
+  ],
+  "relatedIndustries": [
+    { "label": "Chemical Processing", "href": "/industries/chemical/" }
+  ],
+  "seoTitle": "Tema Centrifuge Repair & Rebuild | Centrifuge World",
+  "seoDescription": "Independent Tema centrifuge repair and rebuilds since 1939. Inspection, balancing, parts fabrication and 24/7 emergency service from our US shops.",
+  "todos": [
+    "TODO(verify: confirm the Tema centrifuge types and any specific models the client services; legacy page named only decanter and basket)"
+  ],
+  "mergeInto": null
+}

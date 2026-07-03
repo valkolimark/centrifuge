@@ -1,0 +1,49 @@
+{
+  "slug": "sharples",
+  "name": "Sharples",
+  "archiveUrl": "https://web.archive.org/web/20240525173618/https://centrifuge.com/sharples/",
+  "answerBox": "Centrifuge World repairs, rebuilds, and supplies parts for Sharples decanter and basket centrifuges. As an independent specialist serving industry since 1939, we inspect, recondition, balance, and test Sharples equipment at our Houston and Chicago service centers, then return it to peak operating performance.",
+  "intro": "Centrifuge World provides complete repair, rebuild, and parts support for Sharples decanter and basket centrifuges, restoring worn equipment to reliable, efficient operation.",
+  "disclosure": "Centrifuge World is an independent repair and rebuild specialist. We are not affiliated with Sharples.",
+  "modelsServiced": ["P3400", "P5000", "PM75000"],
+  "typesServiced": ["Decanter", "Basket"],
+  "capabilities": [
+    {"item": "Inspection & NDTI", "detail": "Non-destructive teardown and inspection produces a documented condition report before any work begins."},
+    {"item": "Full rebuilds", "detail": "We recondition bowls, conveyors, and rotating assemblies to restore original performance."},
+    {"item": "Wear-part replacement", "detail": "O-rings, gaskets, bearings, and worn components are refit or replaced to specification."},
+    {"item": "Weld repair", "detail": "We repair damage from mechanical wear, chemical attack, and erosion."},
+    {"item": "Balancing & testing", "detail": "Static and dynamic balancing plus a full test run confirm the machine is ready to return to service."},
+    {"item": "Parts fabrication", "detail": "Hard-to-source Sharples parts are reverse-engineered and fabricated in-house."}
+  ],
+  "body": [
+    "Sharples decanter and basket centrifuges lose separation efficiency over time as bearings wear, surfaces erode, and rotating assemblies fall out of balance. Centrifuge World reconditions and repairs Sharples equipment so it continues to deliver high throughput and clean separation while reducing unplanned process downtime.",
+    "Every job begins with a thorough inspection. When you schedule service, we can dispatch a truck to your facility, transport the machine to our shop, and perform a complete non-destructive teardown and inspection (NDTI). You then receive a detailed condition report with recommended repairs and a list of the parts required to complete them, so you can make an informed decision before work proceeds.",
+    "Once the scope is approved, our service engineers rebuild the centrifuge: repairing weld areas damaged by mechanical, chemical, or erosion attack; refitting wear parts such as o-rings and gaskets; replacing worn or damaged components; carrying out approved upgrades; and balancing the rotating assembly statically and dynamically. Before the machine ships back, we complete a full test run to confirm it operates at peak performance.",
+    "We also maintain a large inventory of parts for Sharples centrifuges. When a component is hard to find or carries a long lead time, our team can reverse-engineer and fabricate it in-house, often with a short turnaround, keeping your equipment out of extended backlog waits.",
+    "When a breakdown can't wait, Centrifuge World offers emergency and rush repair support. Our shops in Houston, Texas and the Chicago, Illinois area are equipped to troubleshoot maintenance issues and return your Sharples centrifuge to service quickly."
+  ],
+  "faqs": [
+    {"question": "Which Sharples centrifuges do you repair?", "answer": "We service Sharples decanter and basket centrifuges, including models such as the P3400, P5000, and PM75000, along with a wide range of other Sharples rotating equipment."},
+    {"question": "Do you supply Sharples replacement parts?", "answer": "Yes. We keep an inventory of Sharples parts and can reverse-engineer and fabricate hard-to-find components in-house when a part is on long backlog."},
+    {"question": "What happens during an inspection?", "answer": "We perform a non-destructive teardown and inspection (NDTI) and provide a written report detailing the condition of the machine, the recommended repairs, and the parts needed to complete them."},
+    {"question": "Do you handle emergency Sharples repairs?", "answer": "Yes. We offer rush and emergency repair support to get failed Sharples centrifuges back into production as quickly as possible."}
+  ],
+  "images": [
+    {"src": "https://centrifuge-im.s3.amazonaws.com/wp-content/uploads/2020/01/07192820/sharples-centrifuge-repair-hero-scaled.jpg", "alt": "Sharples centrifuge undergoing repair at a Centrifuge World service center"}
+  ],
+  "relatedBrands": [
+    {"label": "Alfa Laval", "href": "/brands/alfa-laval/"},
+    {"label": "Tolhurst", "href": "/brands/tolhurst/"}
+  ],
+  "relatedServices": [
+    {"label": "Decanter Centrifuge Repair", "href": "/services/decanter-centrifuge-repair/"},
+    {"label": "Basket Centrifuge Repair", "href": "/services/basket-centrifuge-repair/"}
+  ],
+  "relatedIndustries": [
+    {"label": "Wastewater Treatment", "href": "/industries/wastewater-treatment/"}
+  ],
+  "seoTitle": "Sharples Centrifuge Repair | Centrifuge World",
+  "seoDescription": "Independent Sharples decanter and basket centrifuge repair, rebuilds, and parts. Inspection, balancing, and testing in Houston and Chicago.",
+  "todos": [],
+  "mergeInto": null
+}

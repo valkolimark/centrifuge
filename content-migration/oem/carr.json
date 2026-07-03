@@ -1,0 +1,85 @@
+{
+  "slug": "carr",
+  "name": "Carr",
+  "archiveUrl": "http://web.archive.org/web/20240525180607/https://centrifuge.com/carr/",
+  "answerBox": "Centrifuge World is an independent specialist in Carr centrifuge repair and rebuilds, servicing high-speed disc-stack machines, decanters, and separators. Since 1939 we have inspected, reconditioned, balanced, and fabricated parts for industrial centrifuges from our Texas and Illinois service centers, backed by 24/7 emergency response and in-house parts fabrication.",
+  "intro": "Carr centrifuges are used for demanding high-speed separation and clarification duties across pharmaceutical, biotech, and process industries. Centrifuge World provides independent repair, rebuild, and maintenance for Carr equipment, returning worn units to peak efficiency without the cost and lead time of OEM service.",
+  "disclosure": "Centrifuge World is an independent repair and rebuild specialist. We are not affiliated with Carr.",
+  "modelsServiced": [],
+  "typesServiced": [
+    "Disc-stack centrifuges",
+    "Decanter centrifuges",
+    "Separators"
+  ],
+  "capabilities": [
+    {
+      "item": "Full reconditioning and repair",
+      "detail": "We provide complete reconditioning of Carr rotating equipment to keep it operating at peak efficiency and performance."
+    },
+    {
+      "item": "Weld repair and refit",
+      "detail": "We weld areas damaged by mechanical, chemical, or erosion attack and refit wear parts such as O-rings and gaskets."
+    },
+    {
+      "item": "Static and dynamic balancing",
+      "detail": "Rebuilt assemblies are balanced statically and dynamically to eliminate vibration and extend bearing and seal life."
+    },
+    {
+      "item": "Reverse-engineered parts fabrication",
+      "detail": "When a Carr part is hard to find or backordered, we reverse engineer and fabricate it in-house, often turning it around in just a few days."
+    }
+  ],
+  "body": [
+    "Carr rotating equipment covers high-speed disc-stack centrifuges, decanters, and separators built for continuous industrial separation. When these machines wear or fail, precise reconditioning is essential to restore separation performance and protect surrounding process equipment. Centrifuge World specializes in Carr centrifuge repair and returns each unit to reliable, high-efficiency operation.",
+    "As a one-stop shop, we provide full reconditioning and repair for industrial centrifuges of every type. Repairs are completed in our service centers in the Houston, Texas and Chicago, Illinois areas. Routine maintenance is the most cost-effective way to keep Carr equipment running, and our service engineers are available to troubleshoot issues or schedule an inspection before small problems become failures.",
+    "When Carr equipment requires repair, our scope typically includes standard maintenance when field service is not practical, weld repair of damaged areas, refitting of wear parts such as O-rings and gaskets, replacement of worn or damaged items, engineered upgrades, static and dynamic balancing, and a test run where the equipment allows.",
+    "Centrifuge World stocks a large inventory of parts for Carr centrifuges. When a component is obsolete or on a long backorder, our shop can reverse engineer and fabricate the part in-house, frequently within a few days. Combined with 24/7 emergency response, this keeps your Carr equipment available when you need it."
+  ],
+  "faqs": [
+    {
+      "question": "Does Centrifuge World repair Carr centrifuges?",
+      "answer": "Yes. Centrifuge World is an independent specialist in Carr centrifuge repair and rebuilds, servicing high-speed disc-stack machines, decanters, and separators, including inspection, reconditioning, balancing, and parts fabrication."
+    },
+    {
+      "question": "What if a Carr part is obsolete or backordered?",
+      "answer": "We keep a large inventory of Carr parts, and when a component is hard to find our shop reverse engineers and fabricates it in-house, often delivering the finished part within a few days."
+    },
+    {
+      "question": "Where are repairs performed?",
+      "answer": "Carr centrifuge repairs are completed in our service centers in the Houston, Texas and Chicago, Illinois areas, with pickup, transport, and 24/7 emergency support available."
+    }
+  ],
+  "images": [],
+  "relatedBrands": [
+    {
+      "label": "Alfa Laval",
+      "href": "/brands/alfa-laval/"
+    },
+    {
+      "label": "GEA Westfalia",
+      "href": "/brands/westfalia/"
+    }
+  ],
+  "relatedServices": [
+    {
+      "label": "Disc-Stack Centrifuge Repair",
+      "href": "/services/disc-stack-centrifuge-repair/"
+    },
+    {
+      "label": "Centrifuge Rebuilds",
+      "href": "/services/centrifuge-rebuilds/"
+    }
+  ],
+  "relatedIndustries": [
+    {
+      "label": "Pharmaceutical",
+      "href": "/industries/pharmaceutical/"
+    }
+  ],
+  "seoTitle": "Carr Centrifuge Repair & Rebuild Specialists",
+  "seoDescription": "Independent Carr centrifuge repair and rebuilds. Disc-stack machines, decanters, separators reconditioned, balanced, and fabricated.",
+  "todos": [
+    "TODO(verify: confirm specific Carr / Carr Powerfuge model designations serviced with client; legacy page listed no model numbers)"
+  ],
+  "mergeInto": null
+}

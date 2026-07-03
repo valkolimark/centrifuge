@@ -1,0 +1,100 @@
+{
+  "slug": "centrisys",
+  "name": "Centrisys",
+  "archiveUrl": "http://web.archive.org/web/20240614224113/https://centrifuge.com/centrisys-repair-rebuilding/",
+  "answerBox": "Centrifuge World repairs and rebuilds Centrisys decanter centrifuges used for dewatering, sludge thickening and separation. As an independent specialist, we measure scrolls and wear components to Centrisys specifications, perform high-speed dynamic balancing and vibration analysis, and return your machine to service quickly from our Houston and Chicago centers.",
+  "intro": "Centrisys decanter centrifuges are widely used for municipal and industrial dewatering, sludge thickening and liquid-solid separation. Centrifuge World is an independent repair and rebuild specialist that restores these machines to reliable performance and minimizes the downtime a failure creates.",
+  "disclosure": "Centrifuge World is an independent repair and rebuild specialist. We are not affiliated with Centrisys.",
+  "modelsServiced": [],
+  "typesServiced": [
+    "Decanter centrifuges",
+    "Thickening centrifuges",
+    "Disc-stack centrifuges"
+  ],
+  "capabilities": [
+    {
+      "item": "Inspection to Centrisys specifications",
+      "detail": "We measure all critical fits and dimensions and evaluate scrolls and wear components against original standards before recommending repairs."
+    },
+    {
+      "item": "Bowl, scroll and flight repair",
+      "detail": "Conveyor flight repair and replacement, weld build-up and machining restore worn scrolls and bowls to correct tolerances."
+    },
+    {
+      "item": "High-speed dynamic balancing & vibration analysis",
+      "detail": "Rotating assemblies are balanced at operating speed and checked with vibration analysis to protect bearings, seals and drives."
+    },
+    {
+      "item": "Remanufacturing & 3D-modeled parts",
+      "detail": "We reverse engineer, model in 3D and fabricate replacement and improved parts for machines with long lead times."
+    },
+    {
+      "item": "Control panel automation & upgrades",
+      "detail": "Control and automation upgrades and retrofits to modernize aging installations."
+    }
+  ],
+  "body": [
+    "When a Centrisys centrifuge fails, minimizing downtime is critical. Centrifuge World's service department has the experience to diagnose and repair Centrisys decanter centrifuges so your dewatering or separation process gets back online as quickly as possible.",
+    "Because dewatering and separation duties vary widely, we begin by measuring all critical fits and dimensions to Centrisys specifications and evaluating scrolls and wear components against original standards. We analyze wear points, friction and stress factors, then design and improve parts using 3D modeling where an upgrade is warranted.",
+    "Our comprehensive services include repair and rebuilding, remanufacturing and fabrication, reconditioning, upgrades and retrofits, high-speed dynamic balancing, vibration analysis, and conveyor flight repair and replacement. Inspection services and control-panel automation upgrades round out the offering.",
+    "Beyond individual repairs, we can help optimize your process and set up a preventative maintenance plan for dewatering, sludge-thickening, dryer or disc-stack applications. We also service equipment from other manufacturers, so a mixed fleet can be supported through a single partner.",
+    "All work is performed at our service centers in Houston, Texas and Chicago, Illinois, and rush service is available for emergency breakdowns."
+  ],
+  "faqs": [
+    {
+      "question": "Who repairs Centrisys decanter centrifuges?",
+      "answer": "Centrifuge World repairs and rebuilds Centrisys decanter centrifuges as an independent specialist. We measure to Centrisys specifications, repair scrolls and flights, balance rotating assemblies and return machines to service from our Houston and Chicago centers."
+    },
+    {
+      "question": "Do you repair conveyor scrolls and flights on Centrisys machines?",
+      "answer": "Yes. Flight repair and replacement is a core capability. We evaluate scroll and flight wear against original standards, then rebuild or fabricate replacements and dynamically balance the assembly before return."
+    },
+    {
+      "question": "Can you support a preventative maintenance plan for our dewatering process?",
+      "answer": "Yes. We can help optimize your process and implement a preventative maintenance plan for dewatering, sludge-thickening, dryer and disc-stack applications to reduce unplanned downtime."
+    }
+  ],
+  "images": [
+    {
+      "src": "https://centrifuge-im.s3.amazonaws.com/wp-content/uploads/2022/01/07192618/IMG_7351.jpeg",
+      "alt": "Centrisys decanter centrifuge undergoing repair at Centrifuge World"
+    },
+    {
+      "src": "https://centrifuge-im.s3.amazonaws.com/wp-content/uploads/2022/01/07192627/centrisys.jpeg",
+      "alt": "Centrisys centrifuge serviced by Centrifuge World"
+    }
+  ],
+  "relatedBrands": [
+    {
+      "label": "Alfa Laval",
+      "href": "/brands/alfa-laval"
+    },
+    {
+      "label": "Andritz",
+      "href": "/brands/andritz"
+    }
+  ],
+  "relatedServices": [
+    {
+      "label": "Decanter Centrifuge Repair",
+      "href": "/services/decanter-centrifuge-repair"
+    },
+    {
+      "label": "Centrifuge Rebuilds",
+      "href": "/services/centrifuge-rebuilds"
+    }
+  ],
+  "relatedIndustries": [
+    {
+      "label": "Wastewater Treatment",
+      "href": "/industries/wastewater-treatment"
+    }
+  ],
+  "seoTitle": "Centrisys Centrifuge Repair & Rebuilds | Centrifuge World",
+  "seoDescription": "Independent Centrisys decanter centrifuge repair and rebuilds for dewatering and separation. Scroll and flight repair, balancing and vibration analysis.",
+  "todos": [
+    "TODO(verify: ISO 9001:2015 certification claim listed on the legacy Centrisys page)",
+    "TODO(verify: specific Centrisys model designations serviced)"
+  ],
+  "mergeInto": null
+}

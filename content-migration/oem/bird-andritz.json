@@ -1,0 +1,50 @@
+{
+  "slug": "bird-andritz",
+  "name": "Bird / Andritz",
+  "archiveUrl": "http://web.archive.org/web/20240715170939/https://centrifuge.com/bird-andritz/",
+  "answerBox": "Centrifuge World repairs and rebuilds Bird and Andritz decanter centrifuges. As an independent specialist since 1939, we repair, retrofit, and modify Bird machines on-site or at our Texas and Illinois shops, restoring years of productivity while minimizing downtime. This page consolidates into our main Bird brand page.",
+  "intro": "Bird is one of the oldest names in solid-liquid separation, and its decanter line continued under Andritz after a 2003 acquisition. Centrifuge World is an independent shop that repairs, retrofits, and rebuilds Bird and Andritz centrifuges, adding years of productive life to machines that would otherwise be scrapped.",
+  "disclosure": "Centrifuge World is an independent repair and rebuild specialist. We are not affiliated with Bird / Andritz.",
+  "modelsServiced": [],
+  "typesServiced": ["Decanter centrifuges", "Solid-liquid separation centrifuges"],
+  "capabilities": [
+    { "item": "On-site and in-shop repair", "detail": "Repair, retrofit, and modification of Bird and Andritz machines on-site or at our manufacturing and service locations in Texas and Illinois." },
+    { "item": "Inspection and documentation", "detail": "Non-destructive testing and inspection followed by a condition report, dimensioned drawings, material certificates, and test logs matched to your requirements." },
+    { "item": "Testing and verification", "detail": "Dye-penetration testing, dimension logs, balancing logs, and commissioning logs covering test run, imbalance, noise, and temperature." },
+    { "item": "Performance upgrades", "detail": "Retrofits and modifications that improve safety, reduce operating costs, and save power on existing solid-liquid separation equipment." },
+    { "item": "Rebuild and life extension", "detail": "Full rebuilds that add years of productivity to Bird machines while minimizing downtime." }
+  ],
+  "body": [
+    "Bird is one of the oldest names in the centrifuge business, and Centrifuge World has been rebuilding Bird and Andritz machines for customers worldwide for years. Whether you are looking to optimize performance or extend equipment life, our crews repair, retrofit, and modify Bird machines on-site or at our manufacturing and service locations in Texas and Illinois, with rebuilds designed to add years of productivity while keeping downtime to a minimum.",
+    "There is rarely a reason to scrap existing solid-liquid separation equipment when it can be upgraded. Our team brings deep separation experience and an installed base spanning tens of thousands of machines to help you improve safety, reduce costs, and save on power across a wide range of well-known OEM brands.",
+    "Every rebuild follows a disciplined inspection and documentation process. After our non-destructive testing and inspection, we provide documentation matched to your requirements, which can include a checklist-based condition report, drawings with measured dimensions, material certificates, and test logs such as dye-penetration tests, dimension logs, and balancing logs, along with commissioning logs covering the test run and measurements of imbalance, noise, and temperature. Once initial testing, cost assessment, and your approval are complete, we begin the repair promptly.",
+    "A note on the lineage: in October 1998, Bird Machine Company combined resources with two other Baker Hughes companies to form Baker Process. In June 2001, Baker Process was realigned into its three former legacy companies, and in October 2003 Bird Machine was acquired by Andritz AG, which is why Bird decanters are often referenced today as Bird/Andritz machines."
+  ],
+  "faqs": [
+    { "question": "Who repairs Bird and Andritz centrifuges?", "answer": "Centrifuge World, an independent decanter centrifuge repair and rebuild specialist operating since 1939. We repair, retrofit, and rebuild Bird and Andritz machines on-site or at our Texas and Illinois shops, and we are not affiliated with Andritz." },
+    { "question": "Are Bird and Andritz centrifuges the same?", "answer": "They share a lineage. Bird Machine Company was acquired by Andritz AG in October 2003, so many Bird decanters are now referenced as Bird/Andritz machines. We service both under the same rebuild program." },
+    { "question": "Can you repair a Bird centrifuge on-site?", "answer": "Yes. Our crews can repair, retrofit, and modify Bird machines on-site or at our manufacturing and service locations in Texas and Illinois, with full inspection documentation and commissioning logs provided on completion." }
+  ],
+  "images": [
+    { "src": "https://centrifuge-im.s3.amazonaws.com/wp-content/uploads/2020/01/07192822/bird-centrifuge-repair-hero-scaled.jpg", "alt": "Bird / Andritz decanter centrifuge repair at Centrifuge World" }
+  ],
+  "relatedBrands": [
+    { "label": "Andritz", "href": "/brands/andritz/" },
+    { "label": "Flottweg", "href": "/brands/flottweg/" }
+  ],
+  "relatedServices": [
+    { "label": "Decanter Centrifuge Repair", "href": "/services/decanter-centrifuge-repair/" },
+    { "label": "Centrifuge Rebuilds", "href": "/services/centrifuge-rebuilds/" }
+  ],
+  "relatedIndustries": [
+    { "label": "Wastewater Treatment", "href": "/industries/wastewater-treatment/" }
+  ],
+  "seoTitle": "Bird / Andritz Centrifuge Repair | Centrifuge World",
+  "seoDescription": "Independent Bird and Andritz decanter centrifuge repair, retrofit, and rebuild on-site or in-shop in Texas and Illinois, with full test documentation.",
+  "todos": [
+    "TODO(verify: confirm whether this page should 301-merge into /brands/bird/ or remain distinct; dedicated Bird and Andritz pages already exist. mergeInto set to bird.)",
+    "TODO(verify: confirm the '150 years of OEM experience' and 'installed base of more than 35,000 machines' claims from legacy copy before publishing; these were rewritten generically and not asserted as specific numbers.)",
+    "TODO(verify: confirm specific Bird/Andritz decanter model numbers serviced; none were listed on the legacy page.)"
+  ],
+  "mergeInto": "bird"
+}

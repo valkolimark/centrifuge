@@ -1,0 +1,48 @@
+{
+  "slug": "escher-wyss",
+  "name": "Escher Wyss (Ferrum)",
+  "archiveUrl": null,
+  "answerBox": "Centrifuge World repairs, rebuilds, and supplies parts for Escher Wyss centrifuges, whose centrifuge line is now part of Ferrum. As an independent specialist serving industry since 1939, we inspect, recondition, weld-repair, balance, and test your equipment at our Houston, Texas and Chicago, Illinois service centers.",
+  "intro": "Centrifuge World provides comprehensive repair, rebuild, and parts services for Escher Wyss centrifuges, now part of the Ferrum centrifuge line, restoring high efficiency and optimal performance while reducing process downtime.",
+  "disclosure": "Centrifuge World is an independent repair and rebuild specialist. We are not affiliated with Escher Wyss (Ferrum).",
+  "modelsServiced": [],
+  "typesServiced": ["Decanter", "Basket"],
+  "capabilities": [
+    {"item": "Inspection & NDTI", "detail": "A non-destructive teardown and inspection documents machine condition before any work is scoped."},
+    {"item": "Decanter & basket rebuilds", "detail": "We recondition bowls, conveyors, baskets, and rotating assemblies to restore peak performance."},
+    {"item": "Wear-part replacement", "detail": "O-rings, gaskets, bearings, and worn components are refit or replaced to specification."},
+    {"item": "Weld repair", "detail": "We repair damage caused by mechanical wear, chemical attack, and erosion."},
+    {"item": "Balancing & testing", "detail": "Static and dynamic balancing plus a test run confirm the machine is ready to return to service."},
+    {"item": "Parts fabrication", "detail": "Hard-to-source Escher Wyss and Ferrum parts are reverse-engineered and fabricated in-house, often with a short turnaround."}
+  ],
+  "body": [
+    "Centrifuge World offers a full range of service options for Escher Wyss centrifuges, whose centrifuge product line is now part of Ferrum. Whatever the age or condition of your machine, our qualified service engineers assess it and build the right plan to restore it. All work is carried out at our specialized service centers in Houston, Texas and the Chicago, Illinois area.",
+    "Every repair starts with a non-destructive teardown and inspection (NDTI). Scheduling one is simple: call Centrifuge World, we dispatch a truck to your location, you load the centrifuge, and our driver delivers it to our shop for a comprehensive NDTI. Following the inspection you receive a detailed condition report with recommended repairs and the parts required, so you can approve the scope before work proceeds.",
+    "Once approved, our rebuild services include refitting of wear parts such as o-rings and gaskets, replacement of worn or damaged items, approved upgrades, weld repair of areas damaged by mechanical, chemical, or erosion attack, and static and dynamic balancing. Where the equipment allows, we complete a test run before returning your Escher Wyss centrifuge in top condition, operating at peak performance.",
+    "Because Escher Wyss centrifuges share heritage with the current Ferrum range, our team is well positioned to source and support parts across both. When a component is hard to find or on long backlog, we can reverse-engineer and fabricate it in-house, often with a short turnaround. And when a breakdown can't wait, our emergency and rush repair support responds 24/7 to get your equipment back into production quickly."
+  ],
+  "faqs": [
+    {"question": "Do you repair Escher Wyss centrifuges?", "answer": "Yes. Centrifuge World repairs and rebuilds Escher Wyss centrifuges, whose product line is now part of Ferrum, at our Houston and Chicago service centers."},
+    {"question": "Can you supply parts for older Escher Wyss machines?", "answer": "We keep OEM parts where available and can reverse-engineer and fabricate hard-to-find Escher Wyss and Ferrum components in-house when a part is on long backlog."},
+    {"question": "Where is Escher Wyss service performed?", "answer": "Repairs and rebuilds are carried out at our service centers in Houston, Texas and the Chicago, Illinois area."}
+  ],
+  "images": [],
+  "relatedBrands": [
+    {"label": "Ferrum", "href": "/brands/ferrum/"},
+    {"label": "Flottweg", "href": "/brands/flottweg/"}
+  ],
+  "relatedServices": [
+    {"label": "Decanter Centrifuge Repair", "href": "/services/decanter-centrifuge-repair/"},
+    {"label": "Centrifuge Rebuilds", "href": "/services/centrifuge-rebuilds/"}
+  ],
+  "relatedIndustries": [
+    {"label": "Chemical", "href": "/industries/chemical/"}
+  ],
+  "seoTitle": "Escher Wyss (Ferrum) Centrifuge Repair | Centrifuge World",
+  "seoDescription": "Independent Escher Wyss and Ferrum centrifuge repair, rebuilds, and parts. Inspection, weld repair, balancing, and testing in Houston and Chicago.",
+  "todos": [
+    "TODO(verify: no archived legacy page was available for /escher-wyss-ferrum/, so this page was built from standard service sections; confirm the specific Escher Wyss centrifuge types and models serviced and the exact Escher Wyss/Ferrum relationship wording)",
+    "TODO(verify: no brand-specific image was recovered; source an Escher Wyss or Ferrum centrifuge photo if desired)"
+  ],
+  "mergeInto": null
+}

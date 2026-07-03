@@ -1,0 +1,88 @@
+{
+  "slug": "centriquip",
+  "name": "Centriquip",
+  "archiveUrl": "http://web.archive.org/web/20240713055725/https://centrifuge.com/centriquip/",
+  "answerBox": "Centrifuge World is an independent specialist in Centriquip decanter centrifuge repair and rebuilds. With Centriquip manufacturing wound down, we provide skilled, cost-effective service for existing installations, including the CQ5000, from our Texas and Illinois service centers with reconditioning, balancing, parts fabrication, and 24/7 emergency support.",
+  "intro": "Centriquip built decanter centrifuges near Chesterfield, England until manufacturing ended following a change of ownership, driving up service costs and making support for existing installations harder to find. Centrifuge World gives Centriquip owners a technically capable, experienced, and affordable independent option for repair, rebuild, and ongoing maintenance.",
+  "disclosure": "Centrifuge World is an independent repair and rebuild specialist. We are not affiliated with Centriquip.",
+  "modelsServiced": [
+    "CQ5000"
+  ],
+  "typesServiced": [
+    "Decanter centrifuges"
+  ],
+  "capabilities": [
+    {
+      "item": "Full decanter reconditioning",
+      "detail": "We provide complete reconditioning and repair for Centriquip decanter centrifuges, restoring separation performance and reliability."
+    },
+    {
+      "item": "Bowl and scroll repair",
+      "detail": "We rebuild bowls and conveyor scrolls, resurface wear zones, and replace worn tiles and flights to recover throughput and cake dryness."
+    },
+    {
+      "item": "Dynamic balancing",
+      "detail": "Rebuilt rotating assemblies are balanced to eliminate vibration and protect bearings, seals, and drive components."
+    },
+    {
+      "item": "Reverse-engineered parts fabrication",
+      "detail": "With OEM support limited, we reverse engineer and fabricate hard-to-find Centriquip parts in-house, often within a few days."
+    }
+  ],
+  "body": [
+    "Centriquip produced decanter centrifuges near Chesterfield, England until manufacturing ended after a change of ownership. That transition increased service costs and made support for existing after-sales installations increasingly difficult to obtain. For plants still running Centriquip equipment, dependable independent service is now essential to protect the investment.",
+    "Centrifuge World is a recognized provider of maintenance and repair for decanter centrifuges of all makes and specializes in service and repair of all Centriquip models. Owners of existing installations gain a legitimate option that is technically skilled, experienced, and, most importantly, competitively priced. We service Centriquip equipment including the CQ5000.",
+    "As a one-stop shop we provide full reconditioning and repair for industrial decanter centrifuges. Our scope includes standard maintenance, weld repair of damaged areas, refitting of wear parts such as O-rings and gaskets, replacement of worn or damaged items, engineered upgrades, static and dynamic balancing, and a test run where the equipment allows. Repairs are completed in our service centers in the Houston, Texas and Chicago, Illinois areas.",
+    "We maintain a large inventory of parts for Centriquip centrifuges, and because OEM support is limited, our shop can reverse engineer and fabricate hard-to-find components in-house, frequently within a few days. Combined with 24/7 emergency response, Centrifuge World keeps your Centriquip decanters running with minimal downtime."
+  ],
+  "faqs": [
+    {
+      "question": "Can you still service Centriquip decanter centrifuges now that manufacturing has ended?",
+      "answer": "Yes. Centrifuge World specializes in service and repair of all Centriquip decanter models, including the CQ5000, giving owners of existing installations a technically skilled, experienced, and affordable independent option."
+    },
+    {
+      "question": "Do you supply parts for Centriquip centrifuges?",
+      "answer": "We keep a large inventory of Centriquip parts, and because OEM support is limited, our shop reverse engineers and fabricates hard-to-find components in-house, often within a few days."
+    },
+    {
+      "question": "Where is the work performed?",
+      "answer": "Centriquip repairs are completed in our service centers in the Houston, Texas and Chicago, Illinois areas, with pickup, transport, and 24/7 emergency response available."
+    }
+  ],
+  "images": [
+    {
+      "src": "https://centrifuge-im.s3.amazonaws.com/wp-content/uploads/2020/01/07193404/CQ5000-Cropped-Rear-View-1.jpg",
+      "alt": "Centriquip CQ5000 decanter centrifuge rear view serviced by Centrifuge World"
+    }
+  ],
+  "relatedBrands": [
+    {
+      "label": "Andritz",
+      "href": "/brands/andritz/"
+    },
+    {
+      "label": "Centrisys",
+      "href": "/brands/centrisys/"
+    }
+  ],
+  "relatedServices": [
+    {
+      "label": "Decanter Centrifuge Repair",
+      "href": "/services/decanter-centrifuge-repair/"
+    },
+    {
+      "label": "Gearbox Repair",
+      "href": "/services/gearbox-repair/"
+    }
+  ],
+  "relatedIndustries": [
+    {
+      "label": "Wastewater Treatment",
+      "href": "/industries/wastewater-treatment/"
+    }
+  ],
+  "seoTitle": "Centriquip Decanter Centrifuge Repair & Rebuild",
+  "seoDescription": "Independent Centriquip decanter centrifuge repair and rebuilds, including the CQ5000. Cost-effective service and in-house parts.",
+  "todos": [],
+  "mergeInto": null
+}

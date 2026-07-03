@@ -1,0 +1,52 @@
+{
+  "slug": "andritz",
+  "name": "Andritz",
+  "archiveUrl": "https://web.archive.org/web/20240525164816/https://centrifuge.com/andritz/",
+  "answerBox": "Centrifuge World repairs, rebuilds, and supplies parts for Andritz decanter and basket centrifuges. As an independent specialist serving industry since 1939, we inspect, recondition, balance, test, and support upgrades for Andritz Separation equipment at our Houston and Chicago service centers.",
+  "intro": "Centrifuge World is a full-service source for Andritz decanter and basket centrifuges, covering spare parts, local servicing, repairs, upgrades, and modernization.",
+  "disclosure": "Centrifuge World is an independent repair and rebuild specialist. We are not affiliated with Andritz.",
+  "modelsServiced": [],
+  "typesServiced": ["Decanter", "Basket", "Disc-stack", "Pusher", "Peeler"],
+  "capabilities": [
+    {"item": "Inspection & NDTI", "detail": "Non-destructive teardown and inspection documents machine condition before any work is scoped."},
+    {"item": "Decanter & basket rebuilds", "detail": "We recondition bowls, conveyors, and rotating assemblies to restore high efficiency and performance."},
+    {"item": "Wear-part replacement", "detail": "O-rings, gaskets, bearings, and worn components are refit or replaced to specification."},
+    {"item": "Weld repair", "detail": "We repair damage from mechanical wear, chemical attack, and erosion."},
+    {"item": "Balancing & testing", "detail": "Static and dynamic balancing plus a test run confirm the machine is ready to return to service."},
+    {"item": "Parts fabrication", "detail": "Hard-to-source Andritz parts are reverse-engineered and fabricated in-house."}
+  ],
+  "body": [
+    "Centrifuge World is a full-service source for Andritz decanter and basket centrifuges. Whether you need spare and wear parts, local servicing, repairs, upgrades, or modernization of your decanter, our team supports the full range of Andritz Separation rotating equipment, including high-speed disc separators, baskets, large-volume decanters, pushers, and peelers.",
+    "Our service engineers work to enhance the performance of your Andritz Separation equipment. Repairs and rebuilds are carried out at our specialized service centers in Houston, Texas and the Chicago, Illinois area, where comprehensive reconditioning keeps your machine delivering high efficiency and optimal performance.",
+    "Every repair begins with a non-destructive teardown and inspection (NDTI). We produce a detailed condition report with recommended repairs and the parts required, so you can approve the scope before work proceeds. Our rebuild services then cover standard maintenance, weld repair of areas damaged by mechanical, chemical, or erosion attack, refitting of wear parts such as o-rings and gaskets, replacement of worn or damaged items, approved upgrades, and static and dynamic balancing. Where the equipment allows, we complete a test run before the machine ships back.",
+    "We can also support Andritz Separation upgrade and modernization programs, from control-system improvements and operator-training tools to lubrication and rotor-performance upgrades that aim to raise availability and lower operating costs. Our engineers can advise which options fit your machine and application.",
+    "We maintain a large inventory of genuine Andritz parts. When a component is hard to find or on long backlog, our team can reverse-engineer and fabricate it in-house, often with a short turnaround. And when a breakdown can't wait, our emergency and rush repair support returns your Andritz centrifuge to production quickly."
+  ],
+  "faqs": [
+    {"question": "Which Andritz centrifuges do you repair?", "answer": "We service Andritz decanter and basket centrifuges along with disc separators, pushers, and peelers across the Andritz Separation range."},
+    {"question": "Do you support Andritz upgrades and modernization?", "answer": "Yes. We can support control-system upgrades, lubrication improvements, and rotor-performance modernization; our engineers will advise which options suit your machine."},
+    {"question": "Do you supply genuine Andritz parts?", "answer": "We keep an inventory of genuine Andritz parts and can reverse-engineer and fabricate hard-to-find components in-house when a part is on long backlog."},
+    {"question": "Where is Andritz service performed?", "answer": "Repairs and rebuilds are carried out at our service centers in Houston, Texas and the Chicago, Illinois area."}
+  ],
+  "images": [
+    {"src": "https://centrifuge-im.s3.amazonaws.com/wp-content/uploads/2022/01/07192633/andritz-scaled.jpg", "alt": "Andritz decanter centrifuge undergoing repair at a Centrifuge World service center"},
+    {"src": "https://centrifuge-im.s3.amazonaws.com/wp-content/uploads/2020/01/07192607/1cfb7939-d3a7-4ab4-a20f-b760afd2968f.jpg", "alt": "Andritz Separation centrifuge in the Centrifuge World shop"}
+  ],
+  "relatedBrands": [
+    {"label": "Bird", "href": "/brands/bird/"},
+    {"label": "Sharples", "href": "/brands/sharples/"}
+  ],
+  "relatedServices": [
+    {"label": "Decanter Centrifuge Repair", "href": "/services/decanter-centrifuge-repair/"},
+    {"label": "Centrifuge Rebuilds", "href": "/services/centrifuge-rebuilds/"}
+  ],
+  "relatedIndustries": [
+    {"label": "Wastewater Treatment", "href": "/industries/wastewater-treatment/"}
+  ],
+  "seoTitle": "Andritz Centrifuge Repair | Centrifuge World",
+  "seoDescription": "Independent Andritz decanter and basket centrifuge repair, rebuilds, parts, and upgrade support. Inspection, balancing, and testing in Houston and Chicago.",
+  "todos": [
+    "TODO(verify: legacy page cites specific Andritz upgrade product names (SmartSIM, TurboJet weir plate, HP2) and OEM performance figures such as up to 30% power/cooling-water savings — confirm before restating any specific numbers or trademarked program names)"
+  ],
+  "mergeInto": null
+}

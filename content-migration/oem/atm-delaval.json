@@ -1,0 +1,51 @@
+{
+  "slug": "atm-delaval",
+  "name": "ATM (DeLaval)",
+  "archiveUrl": "http://web.archive.org/web/20240614212317/https://centrifuge.com/delaval-atm/",
+  "answerBox": "Centrifuge World repairs and rebuilds ATM (DeLaval) decanter and basket centrifuges. As an independent specialist since 1939, we inspect, recondition, weld, refit wear parts, balance, and test-run these machines at our Houston and Chicago shops, and fabricate hard-to-find parts to keep your process running.",
+  "intro": "ATM and DeLaval decanter and basket centrifuges serve dewatering, clarification, and solids-handling duties across a range of industries. Centrifuge World is an independent shop that inspects, rebuilds, and returns these machines to peak performance, backed by in-house parts fabrication when OEM stock runs long.",
+  "disclosure": "Centrifuge World is an independent repair and rebuild specialist. We are not affiliated with ATM (DeLaval).",
+  "modelsServiced": [],
+  "typesServiced": ["Decanter centrifuges", "Basket centrifuges"],
+  "capabilities": [
+    { "item": "Inspection and diagnostics", "detail": "Non-destructive testing and inspection (NDTI) of your DeLaval/ATM decanter or basket centrifuge, followed by a written condition report and recommended repair plan." },
+    { "item": "Reconditioning and rebuild", "detail": "Comprehensive reconditioning of decanter and basket machines to restore high efficiency and reduce process downtime." },
+    { "item": "Welding repair", "detail": "Repair of areas damaged by mechanical, chemical, or erosion attack." },
+    { "item": "Wear-part refitting", "detail": "Refitting of wear parts such as o-rings and gaskets, plus replacement of worn or damaged items." },
+    { "item": "Balancing and test run", "detail": "Static and dynamic balancing based on need, followed by a test run before return." },
+    { "item": "Parts fabrication", "detail": "Reverse-engineering and in-house fabrication of hard-to-find DeLaval/ATM parts, with turnaround in a few days." }
+  ],
+  "body": [
+    "Centrifuge World offers a full range of services to enhance the performance of DeLaval/ATM decanter and basket centrifuge equipment. Work is performed at our service centers in Houston, Texas and Chicago, Illinois, where our engineers begin with a non-destructive testing and inspection and then build the right plan to rebuild your machine.",
+    "Getting an inspection is easy. Call us to schedule it, load the centrifuge onto the truck we dispatch, and our driver delivers it to our shop for a comprehensive NDTI. Afterward you receive a detailed report with the recommended services and a list of the parts needed to complete the repairs. Once you approve the quote, we execute the work and return the machine in top condition, operating at peak performance.",
+    "Our repair scope covers standard maintenance when field service is not convenient, welding of areas damaged by mechanical, chemical, or erosion attack, refitting of wear parts such as o-rings and gaskets, replacement of worn or damaged items, equipment upgrades, static and dynamic balancing, and a full test run before shipment.",
+    "We keep a large inventory of parts for DeLaval/ATM centrifuges, and when a part is hard to find or facing a long backlog we have the knowledge to reverse-engineer it and the equipment to fabricate it, often turning it around in just a few days so your rebuild stays on schedule."
+  ],
+  "faqs": [
+    { "question": "Who repairs ATM (DeLaval) centrifuges?", "answer": "Centrifuge World, an independent centrifuge repair and rebuild specialist operating since 1939. We service DeLaval/ATM decanter and basket centrifuges at our Houston and Chicago facilities and are not affiliated with DeLaval." },
+    { "question": "Do you service both DeLaval decanters and basket centrifuges?", "answer": "Yes. We recondition and rebuild both DeLaval/ATM decanter and basket machines, including inspection, welding, wear-part refitting, balancing, and a test run before the unit is returned to your plant." },
+    { "question": "What happens after my DeLaval/ATM centrifuge is inspected?", "answer": "After our non-destructive testing and inspection you receive a detailed report with recommended services and a parts list. Once you approve the quote, we complete the repairs and return the machine in top condition at peak performance." }
+  ],
+  "images": [
+    { "src": "https://centrifuge-im.s3.amazonaws.com/wp-content/uploads/2020/01/07193408/48-dia-delaval-basket-centrifuge-58228.jpg", "alt": "48-inch diameter DeLaval basket centrifuge serviced by Centrifuge World" },
+    { "src": "https://centrifuge-im.s3.amazonaws.com/wp-content/uploads/2020/01/07193427/4976_3.jpg", "alt": "DeLaval/ATM centrifuge in the Centrifuge World repair shop" }
+  ],
+  "relatedBrands": [
+    { "label": "Alfa Laval", "href": "/brands/alfa-laval/" },
+    { "label": "Westfalia", "href": "/brands/westfalia/" }
+  ],
+  "relatedServices": [
+    { "label": "Basket Centrifuge Repair", "href": "/services/basket-centrifuge-repair/" },
+    { "label": "Decanter Centrifuge Repair", "href": "/services/decanter-centrifuge-repair/" }
+  ],
+  "relatedIndustries": [
+    { "label": "Dairy", "href": "/industries/dairy/" }
+  ],
+  "seoTitle": "ATM (DeLaval) Centrifuge Repair & Rebuild | Centrifuge World",
+  "seoDescription": "Independent ATM (DeLaval) decanter and basket centrifuge repair. Reconditioning, welding, balancing, testing, and parts fabrication in Houston and Chicago.",
+  "todos": [
+    "TODO(verify: confirm specific ATM/DeLaval model numbers serviced; legacy page listed decanter and basket types only. One legacy image is a 48-inch DeLaval basket centrifuge.)",
+    "TODO(verify: /atm-delaval/ had no archived snapshot; content sourced from the /delaval-atm/ snapshot. Both legacy slugs 301 to /brands/atm-delaval/.)"
+  ],
+  "mergeInto": null
+}

@@ -1,0 +1,52 @@
+{
+  "slug": "sanborn",
+  "name": "Sanborn",
+  "archiveUrl": "http://web.archive.org/web/20240422083201/https://centrifuge.com/sanborn/",
+  "answerBox": "Centrifuge World is an independent specialist that repairs, rebuilds, and supplies parts for Sanborn decanter and basket centrifuges. Our Houston and Chicago service centers deliver full non-destructive inspection, structural welding, wear-part refitting, precision balancing, and reverse-engineered parts to restore your Sanborn machine to peak performance.",
+  "intro": "Sanborn decanter and basket centrifuges handle demanding dewatering and separation duties. Centrifuge World provides independent repair, rebuild, and reverse-engineered parts support to keep these machines running at high efficiency with minimal downtime.",
+  "disclosure": "Centrifuge World is an independent repair and rebuild specialist. We are not affiliated with Sanborn.",
+  "modelsServiced": [],
+  "typesServiced": [
+    "Decanter centrifuge",
+    "Basket centrifuge"
+  ],
+  "capabilities": [
+    { "item": "Non-destructive teardown inspection (NDTI)", "detail": "Complete disassembly and inspection of your Sanborn centrifuge, followed by a written report with findings and recommended repairs." },
+    { "item": "Structural welding", "detail": "Repair of areas damaged by mechanical stress, chemical attack, or erosion." },
+    { "item": "Wear-part refitting", "detail": "Replacement of o-rings, gaskets, and other consumable wear items." },
+    { "item": "Component replacement and upgrades", "detail": "Replacement of worn or damaged parts and execution of available performance upgrades." },
+    { "item": "Static and dynamic balancing", "detail": "Precision balancing of rotating assemblies to specification." },
+    { "item": "Reverse-engineered parts fabrication", "detail": "In-house manufacture of hard-to-find or long-lead OEM-equivalent parts, often within days." }
+  ],
+  "body": [
+    "Centrifuge World offers a range of services to enhance the performance of your Sanborn decanter or basket centrifuge. All work is performed at our service centers in Houston, Texas and Chicago, Illinois, where qualified engineers inspect each machine and develop the right plan to rebuild it.",
+    "We provide comprehensive reconditioning and repair for all industrial centrifuges, keeping equipment operating at high efficiency and reducing process downtime. Routine maintenance is essential, and our engineers are available to troubleshoot issues or schedule an inspection.",
+    "Getting an inspection is easy: call to schedule and we dispatch a truck to your location. Once the machine reaches our shop, we perform a complete non-destructive teardown inspection. You then receive a comprehensive report with recommendations on the services required, how to proceed, and a list of the parts needed to complete the repair.",
+    "When Sanborn rotating equipment requires repair, we perform standard maintenance, welding of damaged areas, refitting of wear parts such as o-rings and gaskets, replacement of worn components, available upgrades, static and dynamic balancing, and a test run. On approval, we complete the repairs and return your centrifuge in top condition, operating at peak performance.",
+    "We carry a large inventory of OEM-equivalent parts for Sanborn centrifuges. When a part is hard to find or backlogged, our shop can reverse engineer and fabricate it, frequently within a few days. For unexpected breakdowns, rush service is available around the clock."
+  ],
+  "faqs": [
+    { "question": "Does Centrifuge World repair Sanborn centrifuges?", "answer": "Yes. We repair and rebuild Sanborn decanter and basket centrifuges at our Houston and Chicago service centers, including non-destructive inspection, welding, wear-part replacement, and balancing." },
+    { "question": "Can you supply parts for a Sanborn centrifuge?", "answer": "We maintain a large inventory of OEM-equivalent parts and can reverse engineer and fabricate hard-to-find or long-lead components in-house, often within days." },
+    { "question": "What happens after my Sanborn centrifuge is inspected?", "answer": "Following the non-destructive teardown inspection, you receive a comprehensive report with recommendations on the required services and a list of the parts needed before any repair work begins." }
+  ],
+  "images": [],
+  "relatedBrands": [
+    { "label": "Hutchison Hayes", "href": "/oem/hutchison-hayes" },
+    { "label": "Bird", "href": "/oem/bird" }
+  ],
+  "relatedServices": [
+    { "label": "Decanter Centrifuge Repair", "href": "/services/decanter-centrifuge-repair" },
+    { "label": "Basket Centrifuge Repair", "href": "/services/basket-centrifuge-repair" }
+  ],
+  "relatedIndustries": [
+    { "label": "Wastewater Treatment", "href": "/industries/wastewater-treatment" }
+  ],
+  "seoTitle": "Sanborn Centrifuge Repair & Rebuild | Centrifuge World",
+  "seoDescription": "Independent Sanborn decanter and basket centrifuge repair, rebuild, and parts. Inspection, welding, balancing, and rush service in Houston and Chicago.",
+  "todos": [
+    "TODO(verify: confirm specific Sanborn centrifuge model designations to populate modelsServiced)",
+    "TODO(verify: no product images were present on the archived Sanborn page; source a Sanborn machine photo before publishing)"
+  ],
+  "mergeInto": null
+}

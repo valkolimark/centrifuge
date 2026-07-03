@@ -1,0 +1,47 @@
+{
+  "slug": "ellerwerk",
+  "name": "Ellerwerk",
+  "archiveUrl": null,
+  "answerBox": "Centrifuge World is an independent specialist in Ellerwerk centrifuge repair and rebuilds. Since 1939 we have inspected, reconditioned, balanced, and fabricated parts for industrial centrifuges from our Texas and Illinois service centers, backed by free pickup and delivery, in-house parts fabrication, and 24/7 emergency response.",
+  "intro": "Ellerwerk centrifuges are used for industrial solid-liquid separation across process applications. Centrifuge World provides independent inspection, repair, rebuild, and maintenance for Ellerwerk equipment, restoring worn units to peak performance without the cost and lead time of OEM service.",
+  "disclosure": "Centrifuge World is an independent repair and rebuild specialist. We are not affiliated with Ellerwerk.",
+  "modelsServiced": [],
+  "typesServiced": [
+    "Industrial centrifuges"
+  ],
+  "capabilities": [
+    {"item": "Non-destructive teardown inspection (NDTI)", "detail": "We fully disassemble and inspect each Ellerwerk unit, then deliver a documented condition report and repair plan before quoting."},
+    {"item": "Full reconditioning and repair", "detail": "We provide comprehensive reconditioning to restore separation performance and reliability on Ellerwerk equipment."},
+    {"item": "Static and dynamic balancing", "detail": "Rebuilt rotating assemblies are balanced to eliminate vibration and protect bearings, seals, and drive components."},
+    {"item": "Reverse-engineered parts fabrication", "detail": "When an Ellerwerk part is hard to find or backordered, we reverse engineer and fabricate it in-house, often within a few days."}
+  ],
+  "body": [
+    "Ellerwerk centrifuges are built for industrial solid-liquid separation. When bowls, baskets, bearings, seals, or drives wear, precise reconditioning is essential to restore throughput and separation quality. Centrifuge World provides independent repair and rebuild services for Ellerwerk equipment and returns each machine to reliable operation.",
+    "Our process begins with a non-destructive teardown inspection. Our highly qualified service engineers assess the unit and develop the right plan to rebuild it, then provide a written condition report with recommended repairs and a complete parts list so you can approve the scope before work begins. We offer free pickup and delivery from either of our service centers.",
+    "Once approved, our scope typically includes standard maintenance when field service is not practical, weld repair of areas damaged by mechanical, chemical, or erosion attack, refitting of wear parts such as O-rings and gaskets, replacement of worn or damaged items, engineered upgrades, static and dynamic balancing, and a test run where the equipment allows. Repairs are completed in our service centers in the Houston, Texas and Chicago, Illinois areas.",
+    "We maintain a large inventory of parts for industrial centrifuges and can reverse engineer and fabricate hard-to-find Ellerwerk components in-house, frequently within a few days. Combined with 24/7 emergency response, Centrifuge World keeps your Ellerwerk equipment running with minimal downtime."
+  ],
+  "faqs": [
+    {"question": "Does Centrifuge World repair Ellerwerk centrifuges?", "answer": "Yes. Centrifuge World is an independent specialist in Ellerwerk centrifuge repair and rebuilds, handling inspection, reconditioning, balancing, and parts fabrication as an independent service provider."},
+    {"question": "How does the Ellerwerk repair process begin?", "answer": "Call Centrifuge World to schedule an inspection. We arrange free pickup and transport to our shop, perform a full non-destructive teardown inspection, and provide a condition report and parts list before any work starts."},
+    {"question": "Can you supply parts for Ellerwerk centrifuges?", "answer": "We keep a large inventory of centrifuge parts, and when an Ellerwerk component is obsolete or backordered our shop reverse engineers and fabricates it in-house, often within a few days."}
+  ],
+  "images": [],
+  "relatedBrands": [
+    {"label": "GEA Westfalia", "href": "/brands/westfalia/"},
+    {"label": "Flottweg", "href": "/brands/flottweg/"}
+  ],
+  "relatedServices": [
+    {"label": "Centrifuge Repair", "href": "/services/centrifuge-repair/"},
+    {"label": "Centrifuge Rebuilds", "href": "/services/centrifuge-rebuilds/"}
+  ],
+  "relatedIndustries": [
+    {"label": "Chemical Processing", "href": "/industries/chemical/"}
+  ],
+  "seoTitle": "Ellerwerk Centrifuge Repair & Rebuild Specialists",
+  "seoDescription": "Independent Ellerwerk centrifuge repair and rebuilds. Inspection, reconditioning, balancing, and in-house parts fabrication with 24/7 emergency response.",
+  "todos": [
+    "TODO(verify: no archived legacy /ellerwerk/ page was available on the Wayback Machine; this page was built from standard service sections. Confirm brand spelling, centrifuge types, and any model designations with client before publishing)"
+  ],
+  "mergeInto": null
+}

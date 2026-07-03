@@ -1,0 +1,472 @@
+[
+  {
+    "slug": "decanter",
+    "title": "How a Decanter Centrifuge Works",
+    "answerBox": "A decanter centrifuge separates solids from liquids by spinning a horizontal bowl at high speed, generating centrifugal force thousands of times gravity. Solids settle against the bowl wall while an internal scroll conveys them out one end and clarified liquid overflows the other. Centrifuge World repairs and rebuilds decanters.",
+    "sections": [
+      {
+        "heading": "The Separation Principle: Sedimentation Under High G-Force",
+        "body": [
+          "A decanter centrifuge is a continuous sedimentation machine. It does the same job gravity does in a settling tank, but far faster. In a tank, denser solids drift slowly to the bottom because they weigh more than the surrounding liquid. A decanter replaces gravity with centrifugal force by spinning the mixture, so particles settle in seconds instead of hours.",
+          "The strength of that force is expressed in G-force, or multiples of gravity. It depends on how fast the bowl turns and its radius: G equals the angular velocity squared times the radius, divided by gravitational acceleration. Industrial decanters commonly develop several thousand times the force of gravity at the bowl wall, which lets them settle fine particles and separate liquids of only slightly different density."
+        ]
+      },
+      {
+        "heading": "Inside the Machine: Bowl, Scroll, and Differential Speed",
+        "body": [
+          "A decanter has two main rotating parts that turn in the same direction: an outer solid-wall bowl and an inner helical screw called the scroll or conveyor. The bowl is cylindrical along most of its length and tapers to a cone (the beach) at one end. The scroll fits closely inside the bowl and carries a spiral flight along its full length.",
+          "The scroll turns at a slightly different speed than the bowl, a few revolutions per minute faster or slower. This difference is the differential speed, and it is set by a gearbox, typically a planetary or cycloidal unit, at the machine's end. The differential is what moves settled solids along the bowl; without it, solids would simply spin in place against the wall.",
+          "Feed slurry enters through a stationary pipe into the center of the rotating assembly and is accelerated up to bowl speed. As it flows through the bowl, the high G-force throws the denser solids outward against the wall while the clarified liquid, called the centrate, forms an inner layer."
+        ]
+      },
+      {
+        "heading": "The Separation Path: From Feed to Solids and Centrate",
+        "body": [
+          "Solids that collect on the bowl wall are caught by the rotating scroll flight and conveyed toward the conical beach. As the solids climb the beach, they rise above the liquid level and drain before dropping out through the solids discharge ports at the narrow end of the cone.",
+          "The clarified liquid flows the opposite direction along the bowl and overflows adjustable weirs (also called dam plates or a weir plate) at the cylindrical end. Changing the weir setting raises or lowers the depth of the liquid pool inside the bowl, which trades off between drier solids and clearer centrate. This is one of the main levers operators use to tune performance.",
+          "Because feed enters continuously and both solids and liquid discharge continuously, a decanter runs without stopping to unload. This makes it well suited to high-volume duties such as wastewater biosolids dewatering, drilling-mud solids control, and industrial process separation."
+        ]
+      },
+      {
+        "heading": "Why Decanters Wear and What Fails",
+        "body": [
+          "Decanters run at high speed against abrasive slurries, so wear is expected. The scroll flights and the bowl's inner surface erode over time, especially at the feed zone and the beach, which reduces conveying efficiency and separation quality. Tiles, tungsten carbide tips, and hardfacing are used to protect these surfaces and are replaced during a rebuild.",
+          "Bearings and the main gearbox carry heavy dynamic loads and are common wear points. Seals, the feed accelerator, and the drive belts also degrade. As parts wear unevenly, the rotating assembly can fall out of balance, which shows up as vibration and accelerates further damage. Restoring a decanter means inspecting these components, replacing worn parts, and rebalancing the assembly before a test run."
+        ]
+      }
+    ],
+    "signsNeedRepair": [
+      "Rising vibration or a new shake at operating speed, often a sign of scroll or bowl wear or a rotating assembly out of balance",
+      "Wetter solids or cloudier centrate, indicating scroll wear, a wrong differential speed, or a changed feed",
+      "Grinding, whining, or knocking noises from the bearing or gearbox end",
+      "Climbing motor amp draw or repeated overload trips as conveying gets harder",
+      "Oil leaks or overheating at the main bearings or gearbox"
+    ],
+    "videoId": "sysTqpEXoWc",
+    "relatedService": {"label": "Decanter Centrifuge Repair", "href": "/services/decanter-centrifuge-repair/"},
+    "relatedBrands": [
+      {"label": "Alfa Laval", "href": "/brands/alfa-laval/"},
+      {"label": "Sharples", "href": "/brands/sharples/"},
+      {"label": "Flottweg", "href": "/brands/flottweg/"}
+    ],
+    "faqs": [
+      {"question": "What is the differential speed on a decanter centrifuge?", "answer": "It is the small difference in rotational speed between the outer bowl and the internal scroll, usually a few RPM. That difference is what conveys settled solids along the bowl toward the discharge. Adjusting it changes how dry the solids are and how clear the centrate is."},
+      {"question": "What does a decanter centrifuge separate?", "answer": "It continuously separates suspended solids from a liquid, and can also split two liquids of different density (three-phase separation). Common duties include dewatering wastewater biosolids, cleaning drilling mud, and clarifying industrial process streams."},
+      {"question": "How many G's does a decanter centrifuge generate?", "answer": "Most industrial decanters develop several thousand times gravity at the bowl wall. The exact figure depends on bowl diameter and speed, and higher G-force generally means finer separation and drier solids."}
+    ],
+    "seoTitle": "How a Decanter Centrifuge Works | Centrifuge World",
+    "seoDescription": "A clear, technical explanation of how a decanter centrifuge separates solids from liquids using G-force, a spinning bowl, and a scroll conveyor.",
+    "todos": []
+  },
+  {
+    "slug": "basket",
+    "title": "How a Basket Centrifuge Works",
+    "answerBox": "A basket centrifuge spins a perforated basket lined with filter cloth at high speed, forcing liquid outward through the cloth while solids build up as a cake against the wall. It filters and dewaters in batches, then the cake is removed. Centrifuge World repairs and rebuilds basket centrifuges.",
+    "sections": [
+      {
+        "heading": "The Basic Idea: Centrifugal Filtration",
+        "body": [
+          "A basket centrifuge separates solids from liquids much like a spin cycle in a washing machine, but at far higher speed and with a filter medium in place. The mixture is fed into a rotating cylindrical basket. Centrifugal force drives the liquid outward and through the basket, while the solids are held back and pile up against the wall as a filter cake.",
+          "The force involved is many times gravity, which pushes liquid through the cake and drains it far more completely than gravity draining ever could. This makes basket centrifuges good at producing a relatively dry cake and at recovering fine or high-value solid product."
+        ]
+      },
+      {
+        "heading": "Perforated vs. Imperforate Baskets",
+        "body": [
+          "There are two families of basket centrifuge, and they separate in different ways. A perforated (screen) basket has holes in its wall and is lined with a filter cloth or screen. Liquid passes through the cloth and out the perforations, and the solids stay behind as a cake. This is true filtration and is the most common basket type.",
+          "An imperforate basket has a solid wall and no perforations. It works by sedimentation, not filtration: denser solids settle against the solid wall and the clarified liquid forms an inner layer that overflows a lip or is skimmed off. Imperforate baskets are used when particles are too fine to filter, such as polishing a liquid to remove trace solids."
+        ]
+      },
+      {
+        "heading": "The Batch Cycle: Charge, Spin, Wash, and Unload",
+        "body": [
+          "Most basket centrifuges run as batch machines. A charge of slurry is fed in and the basket spins up. Liquid filters through the cake while solids accumulate. When the cake reaches the design thickness, feed stops and the machine spins to dry the cake by driving out residual liquid.",
+          "If the product needs rinsing, a wash liquid is sprayed onto the cake and spun through, displacing mother liquor without redissolving the solids. After the dry-spin, the machine is unloaded. In a manual basket the operator stops the machine and digs the cake out; larger automated units slow down and use a plow or a scraper knife to peel the cake while still turning.",
+          "Because each cycle stops to load and unload, throughput is lower than a continuous machine, but the batch approach gives excellent control over cake washing and dryness, which is why basket centrifuges are common in fine chemical, pharmaceutical, and food processing."
+        ]
+      },
+      {
+        "heading": "Common Wear Points and Repair Needs",
+        "body": [
+          "The filter cloth or screen is a consumable and blinds (clogs) or tears over time, which shows up as slow filtration or solids bleeding into the filtrate. The basket itself can crack or corrode, and because it spins fast, a cracked basket is a serious safety concern that requires immediate inspection.",
+          "Bearings, the drive, the brake, and the seals all wear. Baskets must stay balanced, so uneven cake loading, corrosion, or a worn suspension can produce vibration. Repairs typically include recladding or replacing the basket, renewing bearings and cloth, and static and dynamic balancing followed by a test run before the machine returns to service."
+        ]
+      }
+    ],
+    "signsNeedRepair": [
+      "Slow filtration or a wet cake, often a blinded, worn, or torn filter cloth or screen",
+      "Solids appearing in the filtrate, pointing to a damaged cloth or basket screen",
+      "Vibration during spin-up or at speed, from an unbalanced, worn, or corroded basket",
+      "Visible cracks, corrosion, or distortion in the basket, which is a safety-critical condition",
+      "Noisy or dragging bearings, a weak brake, or seal leaks around the basket"
+    ],
+    "videoId": "_0sHuLimB_c",
+    "relatedService": {"label": "Basket Centrifuge Repair", "href": "/services/basket-centrifuge-repair/"},
+    "relatedBrands": [
+      {"label": "Tolhurst", "href": "/brands/tolhurst/"},
+      {"label": "Western States", "href": "/brands/western-states/"},
+      {"label": "Broadbent", "href": "/brands/broadbent/"}
+    ],
+    "faqs": [
+      {"question": "What is the difference between a perforated and imperforate basket centrifuge?", "answer": "A perforated basket has holes and a filter cloth, so it works by filtration: liquid passes through and solids stay as a cake. An imperforate basket has a solid wall and works by sedimentation, letting fine solids settle while clarified liquid overflows. Perforated baskets are the more common type."},
+      {"question": "Is a basket centrifuge continuous or batch?", "answer": "Most basket centrifuges are batch machines. They load a charge, spin to filter and dry, optionally wash the cake, then unload before the next cycle. This gives excellent control over cake washing and dryness but lower throughput than a continuous decanter or pusher."},
+      {"question": "Why is my basket centrifuge filtering slowly?", "answer": "The most common cause is a blinded (clogged), worn, or torn filter cloth or screen. A changed feed, a worn basket, or scale buildup can also slow filtration. The cloth is a consumable and is replaced during routine service."}
+    ],
+    "seoTitle": "How a Basket Centrifuge Works | Centrifuge World",
+    "seoDescription": "How a basket centrifuge filters and dewaters: perforated vs. imperforate baskets, the batch spin-wash-unload cycle, and common wear points.",
+    "todos": []
+  },
+  {
+    "slug": "peeler",
+    "title": "How a Peeler Centrifuge Works",
+    "answerBox": "A peeler centrifuge is an automated filtering basket that spins to filter, wash, and dry a solid cake, then removes it with a peeling knife while the basket still turns at reduced speed. It automates the batch cycle for high throughput. Centrifuge World repairs and rebuilds peeler centrifuges.",
+    "sections": [
+      {
+        "heading": "A Peeler Is an Automated Filtering Basket",
+        "body": [
+          "A peeler centrifuge is a type of basket (filtering) centrifuge built for automatic, repeatable batch cycles. Like any filtering basket, it feeds slurry into a perforated basket lined with a screen or cloth, uses centrifugal force to drive liquid out through the wall, and retains the solids as a filter cake.",
+          "What sets a peeler apart is how it removes the cake. Instead of stopping the machine and digging the cake out by hand, a peeler uses a hydraulically or mechanically actuated knife, the peeler, to shave the cake off the basket wall while the basket keeps turning. This lets the machine cycle quickly and run with little operator intervention."
+        ]
+      },
+      {
+        "heading": "The Automated Cycle: Fill, Spin, Wash, Dry, Peel",
+        "body": [
+          "A peeler runs through a programmed sequence. First it fills: slurry feeds into the spinning basket and the cake builds to a set thickness, often monitored by a sensor or timer. Then it filters and spins to drive mother liquor through the cake.",
+          "If the product needs rinsing, a wash step sprays liquid onto the cake and spins it through to displace impurities. A dry-spin follows at high speed to reduce residual moisture. Finally, the basket slows to peeling speed and the knife advances to cut the cake free; the discharged solids drop through a chute at the bottom of the housing.",
+          "Because the sequence is automated and the machine never fully stops between batches, a peeler delivers high throughput with consistent, repeatable cake quality. It is widely used in fine chemicals, pharmaceuticals, food, and plastics where product purity and cycle consistency matter."
+        ]
+      },
+      {
+        "heading": "Horizontal and Vertical Configurations",
+        "body": [
+          "Peeler centrifuges are built with the basket axis either horizontal or vertical. Horizontal peelers are common in high-volume chemical and pharmaceutical duty; the horizontal axis makes cake discharge and heel management straightforward and suits fast, frequent cycles.",
+          "Vertical peelers are used where floor space or a specific process layout favors a vertical basket. In both configurations the working principle is the same: filter through a screen, wash and dry the cake, then peel it off with a knife. A thin residual layer of solids, the heel, is often left on the screen to protect the cloth and aid filtration on the next charge."
+        ]
+      },
+      {
+        "heading": "What Wears and What Gets Repaired",
+        "body": [
+          "The peeler knife and its actuator take direct mechanical load every cycle and wear or lose adjustment, which leads to incomplete cake removal or screen damage. The filter screen or cloth blinds and tears like any filtering basket and is a routine replacement item.",
+          "Bearings, the drive, seals, and the hydraulic or pneumatic actuation system all wear with the machine's frequent starts, stops, and speed changes. The basket must remain balanced and crack-free given its high speed. A rebuild typically covers the knife assembly, screen, bearings, seals, and controls, followed by balancing and a test run."
+        ]
+      }
+    ],
+    "signsNeedRepair": [
+      "Cake left behind or uneven discharge, usually a worn, misadjusted, or damaged peeler knife",
+      "Screen damage or scoring, often from a knife set too deep or a failing actuator",
+      "Slow filtration or wet cake from a blinded or torn screen or cloth",
+      "Vibration at speed from an unbalanced, worn, or cracked basket",
+      "Erratic cycle timing or actuation faults in the hydraulic, pneumatic, or control system"
+    ],
+    "videoId": null,
+    "relatedService": {"label": "Pusher & Peeler Centrifuge Repair", "href": "/services/pusher-peeler-centrifuge-repair/"},
+    "relatedBrands": [
+      {"label": "Krauss-Maffei", "href": "/brands/krauss-maffei/"},
+      {"label": "Ferrum", "href": "/brands/ferrum/"},
+      {"label": "Broadbent", "href": "/brands/broadbent/"}
+    ],
+    "faqs": [
+      {"question": "What is the difference between a peeler and a basket centrifuge?", "answer": "A peeler is a type of filtering basket centrifuge, but it automates the cycle and removes the cake with a peeling knife while the basket keeps turning. A basic basket centrifuge is often unloaded manually after stopping. The peeler's automation gives higher throughput and more consistent batches."},
+      {"question": "What is the heel in a peeler centrifuge?", "answer": "The heel is a thin residual layer of cake left on the screen after peeling. It protects the filter cloth from the knife and can improve filtration of the next charge. Peeler designs and cycles are set up to manage heel thickness consistently."},
+      {"question": "Why is my peeler leaving cake in the basket?", "answer": "Incomplete peeling usually points to a worn or misadjusted peeler knife, a failing knife actuator, or a fault in the cycle controls. It can also result from cake that is too wet or too hard. The knife assembly and actuation are common repair items."}
+    ],
+    "seoTitle": "How a Peeler Centrifuge Works | Centrifuge World",
+    "seoDescription": "How a peeler centrifuge automates the filter, wash, dry, and knife-discharge cycle, with horizontal and vertical designs and common wear points.",
+    "todos": []
+  },
+  {
+    "slug": "pusher",
+    "title": "How a Pusher Centrifuge Works",
+    "answerBox": "A pusher centrifuge is a continuous filtering machine. Slurry feeds onto a rotating screen basket where liquid drains through and solids form a cake; a reciprocating pusher plate shoves the cake steadily along the basket to the discharge. Centrifuge World repairs and rebuilds pusher centrifuges.",
+    "sections": [
+      {
+        "heading": "Continuous Filtration by Pushing the Cake",
+        "body": [
+          "A pusher centrifuge separates fast-draining solids from liquid continuously, without the stop-start batch cycle of a basket or peeler. Feed slurry enters and lands on the inside of a rotating cylindrical screen. Centrifugal force drives the liquid through the screen while the solids are held back and form a cake against the screen wall.",
+          "Instead of letting the cake sit until a batch is unloaded, a pusher moves it. A reciprocating pusher plate strokes back and forth along the axis of the basket, shoving the cake a short distance toward the open discharge end with every stroke. Fresh feed fills the space behind it, so the cake advances as a continuous ring that is washed, dried, and discharged as it travels."
+        ]
+      },
+      {
+        "heading": "Single-Stage and Multi-Stage Designs",
+        "body": [
+          "In a single-stage pusher, one basket and one pusher plate move the cake the full length of the screen. In a multi-stage pusher, the cake is transferred across two or more concentric or stepped baskets of increasing diameter. Each stage gives the cake room to spread and drain again, which improves dewatering and handles a longer residence time without an excessively long single basket.",
+          "Along the cake's travel there are usually zones for washing and drying. A wash liquid can be applied partway along to displace impurities, and the remaining screen length lets the cake dry before it reaches the discharge. The result is a continuous stream of washed, dewatered solids leaving the open end of the machine."
+        ]
+      },
+      {
+        "heading": "Where Pushers Fit: Fast-Draining Crystalline Solids",
+        "body": [
+          "Pusher centrifuges work best on feeds that drain quickly and form a stable, permeable cake, typically coarse crystals and granular solids at moderate to high solids concentration. Common duties include salt, sodium chloride and other crystalline chemicals, plastics, and mineral products.",
+          "They are less suited to fine, slow-draining, or compressible solids, which blind the screen and will not convey cleanly. The feed also needs enough solids to build a supporting cake; too dilute a feed lets liquid and fines slip through to the discharge. Matching the machine to the feed is central to reliable pusher operation."
+        ]
+      },
+      {
+        "heading": "Wear and Repair on a Pusher",
+        "body": [
+          "The screen is the heart of a pusher and takes constant abrasion and pressure; it blinds, wears thin, and eventually needs replacement. The pusher mechanism, including the hydraulic drive, pusher plate, and seals, does heavy repetitive work and is a primary wear and repair item.",
+          "Main bearings, the drive, and the feed distributor also wear, and the rotating assembly must stay in balance at high speed. Symptoms of trouble include poor cake conveying, wet or fines-laden discharge, and vibration. A rebuild generally addresses the screen, the pusher and its drive, bearings, and seals, followed by balancing and a test run."
+        ]
+      }
+    ],
+    "signsNeedRepair": [
+      "Cake not conveying evenly or backing up, often a worn pusher mechanism or blinded screen",
+      "Wet discharge or fines slipping through, indicating a worn or damaged screen or a feed mismatch",
+      "Weak, slow, or erratic pusher stroke from a failing hydraulic drive or seals",
+      "Vibration at operating speed from an unbalanced or worn rotating assembly",
+      "Rising noise or heat at the main bearings and drive"
+    ],
+    "videoId": null,
+    "relatedService": {"label": "Pusher & Peeler Centrifuge Repair", "href": "/services/pusher-peeler-centrifuge-repair/"},
+    "relatedBrands": [
+      {"label": "Krauss-Maffei", "href": "/brands/krauss-maffei/"},
+      {"label": "Ferrum", "href": "/brands/ferrum/"},
+      {"label": "Siebtechnik", "href": "/brands/siebtechnik/"}
+    ],
+    "faqs": [
+      {"question": "What is the difference between a pusher and a peeler centrifuge?", "answer": "Both are filtering centrifuges, but a pusher is continuous and a peeler is batch. A pusher advances the cake along a screen with a reciprocating plate and discharges solids nonstop, while a peeler fills, spins, and peels one charge at a time. Pushers suit high-volume, fast-draining solids."},
+      {"question": "What is a multi-stage pusher centrifuge?", "answer": "A multi-stage pusher moves the cake across two or more baskets of increasing diameter. Each stage lets the cake spread and drain again, improving dewatering and washing without needing one very long basket. Single-stage pushers use a single basket and pusher plate."},
+      {"question": "What kind of material suits a pusher centrifuge?", "answer": "Pushers work best on fast-draining, free-flowing crystalline or granular solids at moderate to high concentration, such as salts, plastics, and minerals. Fine, slow-draining, or compressible solids blind the screen and do not convey well, so those feeds usually call for a different centrifuge type."}
+    ],
+    "seoTitle": "How a Pusher Centrifuge Works | Centrifuge World",
+    "seoDescription": "How a pusher centrifuge continuously filters and conveys cake with a reciprocating plate, single vs. multi-stage designs, and where it fits.",
+    "todos": []
+  },
+  {
+    "slug": "self-cleaning-decanter",
+    "title": "How a Self-Cleaning Decanter Works",
+    "answerBox": "A self-cleaning decanter is a continuous decanter centrifuge whose internal scroll constantly sweeps settled solids off the bowl wall and out the discharge, so solids never accumulate and the machine does not stop to be emptied. Centrifuge World repairs and rebuilds self-cleaning decanter centrifuges.",
+    "sections": [
+      {
+        "heading": "What \"Self-Cleaning\" Means for a Decanter",
+        "body": [
+          "The term self-cleaning describes the continuous, self-discharging nature of a decanter centrifuge. Unlike a batch basket machine that must be stopped and emptied once solids fill it, a decanter continuously removes the solids it separates. The internal scroll conveyor scavenges settled solids off the bowl wall and pushes them out the discharge without interrupting the process, so the bowl effectively cleans itself as it runs.",
+          "This matters for high-solids and around-the-clock duties, where stopping to clean out a machine would mean constant downtime. A continuously self-clearing decanter can run for long stretches on slurries that would quickly clog or fill a batch centrifuge."
+        ]
+      },
+      {
+        "heading": "The Same Core Mechanics as Any Decanter",
+        "body": [
+          "A self-cleaning decanter works on the same principles as a standard decanter. A horizontal bowl spins at high speed, generating centrifugal force thousands of times gravity, so denser solids settle rapidly against the bowl wall while clarified liquid forms an inner layer.",
+          "Inside the bowl, a helical scroll turns at a slightly different speed, the differential, set by a gearbox. That speed difference is what drives settled solids along the bowl and up the conical beach to the solids discharge, while the clarified centrate flows the other way and overflows the weirs. Feed, solids, and liquid all move continuously, which is what keeps the bowl clear."
+        ]
+      },
+      {
+        "heading": "Design Features That Reduce Fouling and Buildup",
+        "body": [
+          "Decanters built for demanding, sticky, or abrasive feeds add features that help them stay clear. Wear-protected scroll flights, tiled or hardfaced bowl surfaces, and carefully shaped feed zones keep solids moving instead of packing or caking. Adjusting the pool depth at the weirs and the scroll differential lets operators keep solids conveying reliably as the feed changes.",
+          "The goal of these features is uninterrupted conveying: solids should always be swept out as fast as they settle. When conveying is properly matched to the feed, the machine runs continuously without the periodic shutdown-and-clean that batch equipment requires."
+        ]
+      },
+      {
+        "heading": "Wear Points and What a Rebuild Restores",
+        "body": [
+          "Continuous solids conveying is abrasive work, so the scroll flights, wear tiles, and bowl surfaces erode, particularly at the feed zone and beach. As they wear, conveying efficiency drops and solids can start to build up, undermining the self-cleaning action. Restoring the scroll's wear surfaces is central to a decanter rebuild.",
+          "Bearings, the main gearbox, seals, and the feed accelerator wear as on any decanter, and uneven wear leads to imbalance and vibration. A rebuild inspects and renews these components, restores the scroll and bowl wear protection, and finishes with static and dynamic balancing and a test run to confirm clean, continuous operation."
+        ]
+      }
+    ],
+    "signsNeedRepair": [
+      "Solids building up or the bowl fouling, a sign the scroll or wear surfaces are worn and no longer conveying fully",
+      "Wetter solids or cloudier centrate from scroll wear or an off differential speed",
+      "Rising vibration from uneven wear or an unbalanced rotating assembly",
+      "Climbing motor amp draw or torque as conveying gets harder",
+      "Bearing or gearbox noise, heat, or oil leaks"
+    ],
+    "videoId": null,
+    "relatedService": {"label": "Decanter Centrifuge Repair", "href": "/services/decanter-centrifuge-repair/"},
+    "relatedBrands": [
+      {"label": "Alfa Laval", "href": "/brands/alfa-laval/"},
+      {"label": "Flottweg", "href": "/brands/flottweg/"},
+      {"label": "Andritz", "href": "/brands/andritz/"}
+    ],
+    "faqs": [
+      {"question": "What makes a decanter centrifuge self-cleaning?", "answer": "The internal scroll continuously conveys settled solids off the bowl wall and out the discharge, so solids never accumulate and the machine does not stop to be emptied. That continuous, self-discharging action is what the term self-cleaning refers to for a decanter."},
+      {"question": "How is a self-cleaning decanter different from a standard decanter?", "answer": "Mechanically they are the same type of machine. Self-cleaning highlights the decanter's continuous solids discharge and often refers to designs with wear protection and feed-zone features that keep sticky or abrasive solids moving so the bowl stays clear during long, uninterrupted runs."},
+      {"question": "Why is my self-cleaning decanter building up solids?", "answer": "Buildup usually means the scroll is no longer conveying fully, from worn flights or wear tiles, a differential speed set too low, or a feed change. When conveying falls behind the settling rate, solids pack in the bowl. Restoring scroll wear surfaces and retuning the differential typically corrects it."}
+    ],
+    "seoTitle": "How a Self-Cleaning Decanter Works | Centrifuge World",
+    "seoDescription": "How a self-cleaning decanter continuously discharges solids so the bowl stays clear, its core mechanics, and the wear points a rebuild restores.",
+    "todos": []
+  },
+  {
+    "slug": "nozzle-separator",
+    "title": "How a Nozzle Separator Works",
+    "answerBox": "A nozzle separator is a disc-stack centrifuge that clarifies liquids and continuously discharges concentrated solids through nozzles around the bowl's rim. A stack of cone-shaped discs shortens settling distance for high throughput. Centrifuge World repairs and rebuilds nozzle separators and disc-stack centrifuges.",
+    "sections": [
+      {
+        "heading": "A Disc-Stack Centrifuge with Peripheral Nozzles",
+        "body": [
+          "A nozzle separator belongs to the disc-stack (or disc-bowl) family of centrifuges. The mixture spins inside a bowl at very high speed, generating centrifugal force many thousands of times gravity, which drives denser solids and heavier liquid outward while lighter clarified liquid moves toward the center and out.",
+          "What distinguishes a nozzle separator is how it removes solids. A set of small nozzles is spaced around the widest part of the bowl. Concentrated solids collect at the bowl periphery and are discharged continuously through these nozzles as a thick slurry, while the clarified liquid leaves separately. This lets the machine run nonstop on feeds with a steady, moderate solids load."
+        ]
+      },
+      {
+        "heading": "Why a Disc Stack Improves Separation",
+        "body": [
+          "Inside the bowl sits a stack of closely spaced, cone-shaped discs. Their purpose is to shorten the distance a particle has to travel to be separated. Instead of settling across the full radius of the bowl, a particle only has to reach the nearest disc surface, a very short distance, before it is carried outward along the disc to the bowl wall.",
+          "Because the stack packs a large effective settling area into a compact bowl, a disc-stack machine can process high flow rates and separate fine particles and closely matched liquids. The many thin channels between discs are what give this design its high clarifying capacity for its size."
+        ]
+      },
+      {
+        "heading": "Continuous Solids Discharge Through the Nozzles",
+        "body": [
+          "The nozzle design suits feeds that carry a fairly constant, moderate concentration of solids that need continuous removal, rather than occasional bursts. As solids concentrate at the bowl wall, they flow out through the nozzles as a controlled underflow while the process runs.",
+          "Nozzle size and number set the solids discharge rate, so they are matched to the feed. Some designs recirculate part of the concentrate to keep the discharge consistent. Typical applications include yeast and biomass concentration, starch processing, protein recovery, and other high-volume biological and food streams where solids must come off continuously.",
+          "This continuous discharge distinguishes a nozzle separator from a self-cleaning (solids-ejecting) disc centrifuge, which holds solids in the bowl and periodically shoots them out in intermittent bursts. A nozzle machine instead bleeds solids off steadily."
+        ]
+      },
+      {
+        "heading": "Wear Points and Repair Needs",
+        "body": [
+          "Nozzles erode as abrasive concentrate passes through them, and worn or blocked nozzles change the solids discharge and separation, so they are inspected and replaced as wear parts. The disc stack can scale, corrode, or foul, which reduces clarifying performance and must be cleaned or renewed.",
+          "The bowl runs at very high speed, so the spindle, bearings, drive, and seals carry heavy loads and wear over time, and the rotating assembly must stay precisely balanced. A rebuild typically covers the nozzles, disc stack, bearings, spindle, and seals, followed by high-speed balancing and a test run before return to service."
+        ]
+      }
+    ],
+    "signsNeedRepair": [
+      "Poorer clarification or solids carrying over into the clarified liquid, from a fouled or worn disc stack",
+      "Changed solids discharge or plugging, indicating worn or blocked nozzles",
+      "Vibration at operating speed from an unbalanced or worn rotating assembly or spindle",
+      "Rising noise, heat, or oil leaks at the bearings, spindle, or drive",
+      "Difficulty reaching or holding full operating speed"
+    ],
+    "videoId": null,
+    "relatedService": {"label": "Disc Stack Centrifuge Repair", "href": "/services/disc-stack-centrifuge-repair/"},
+    "relatedBrands": [
+      {"label": "GEA Westfalia", "href": "/brands/westfalia/"},
+      {"label": "Alfa Laval", "href": "/brands/alfa-laval/"},
+      {"label": "US Centrifuge", "href": "/brands/us-centrifuge/"}
+    ],
+    "faqs": [
+      {"question": "What is a nozzle separator?", "answer": "It is a disc-stack centrifuge that clarifies a liquid while continuously discharging concentrated solids through nozzles spaced around the bowl's outer rim. It suits high-volume feeds with a steady, moderate solids load, such as yeast, starch, and protein streams."},
+      {"question": "How is a nozzle separator different from a self-cleaning disc centrifuge?", "answer": "A nozzle separator bleeds solids off steadily through fixed nozzles as the machine runs. A self-cleaning (solids-ejecting) disc centrifuge instead holds solids in the bowl and periodically ejects them in short bursts. Both are disc-stack machines but discharge solids differently."},
+      {"question": "Why does the disc stack matter?", "answer": "The stack of cone-shaped discs shortens the distance a particle must settle, since it only has to reach the nearest disc rather than crossing the whole bowl. That packs a large settling area into a compact bowl, giving high throughput and the ability to separate fine particles."}
+    ],
+    "seoTitle": "How a Nozzle Separator Works | Centrifuge World",
+    "seoDescription": "How a nozzle separator clarifies liquid and continuously discharges solids through peripheral nozzles, why the disc stack matters, and wear points.",
+    "todos": []
+  },
+  {
+    "slug": "signs-your-centrifuge-needs-repair",
+    "title": "Signs Your Centrifuge Needs Repair",
+    "answerBox": "Watch for new vibration, unusual noise, falling separation quality, rising power draw, leaks, or overheating. Each points to a likely cause such as worn bearings, an unbalanced rotor, or worn wear surfaces, and each warrants inspection before failure. Centrifuge World inspects, diagnoses, and repairs industrial centrifuges.",
+    "sections": [
+      {
+        "heading": "Why Early Signs Matter",
+        "body": [
+          "Centrifuges spin heavy rotating assemblies at high speed against abrasive process material, so wear is normal and progressive. The value of catching problems early is that a small, planned repair, a bearing, a seal, a wear tile, is far less disruptive than an unplanned failure that damages the rotor, gearbox, or bowl and forces an emergency shutdown.",
+          "Most trouble announces itself through a handful of observable symptoms. The pattern below pairs each common symptom with its likely causes and the recommended action, so a maintenance team can decide when to schedule an inspection."
+        ]
+      },
+      {
+        "heading": "Vibration and Noise",
+        "body": [
+          "New or rising vibration is one of the clearest warning signs. Likely causes include an unbalanced rotating assembly, worn or failing bearings, uneven wear on a scroll or basket, product buildup, or a loosening foundation or coupling. The recommended action is to stop the machine, check for buildup, and schedule a vibration analysis and inspection; running through vibration accelerates bearing and structural damage.",
+          "Unusual noise, grinding, whining, knocking, or rumbling, usually traces to bearings, the gearbox, gear or belt drives, or contact between rotating and stationary parts. The recommended action is to shut down promptly and inspect the bearings and drivetrain before running again, since a failed bearing can quickly wreck a shaft or gearbox."
+        ]
+      },
+      {
+        "heading": "Performance, Power, and Process Symptoms",
+        "body": [
+          "Falling separation quality, wetter solids, cloudier centrate or filtrate, or solids carrying over, points to worn wear surfaces or scroll, a wrong differential or pool setting, a blinded or torn screen or cloth, worn nozzles, or a changed feed. The recommended action is to review operating settings and feed first, then inspect the wear surfaces and filter media.",
+          "Rising motor amp draw, torque, or overload trips means the machine is working harder than it should, often from harder conveying, product buildup, bearing drag, or an overloaded feed. The recommended action is to check feed rate and buildup, then inspect bearings and the drivetrain. Frequent tripping should not be reset repeatedly without diagnosis."
+        ]
+      },
+      {
+        "heading": "Leaks, Heat, and Physical Damage",
+        "body": [
+          "Oil or process leaks point to failed seals, gaskets, or o-rings, or in some cases a cracked casing. The recommended action is to identify the leak source and replace the seals; running low on gearbox or bearing oil risks rapid, expensive failure.",
+          "Overheating at bearings or the gearbox indicates lubrication problems, bearing wear, overloading, or cooling issues, and warrants shutting down to investigate before damage spreads. Any visible crack, corrosion, or distortion in a bowl, basket, or rotor is safety-critical at centrifuge speeds and calls for immediate shutdown and professional inspection, not continued operation."
+        ]
+      }
+    ],
+    "signsNeedRepair": [
+      "New or increasing vibration at operating speed (unbalance, worn bearings, uneven wear, buildup) — stop and schedule vibration analysis and inspection",
+      "Grinding, whining, knocking, or rumbling noise (bearings, gearbox, drive, or rubbing parts) — shut down and inspect the bearings and drivetrain",
+      "Declining separation quality: wet solids, cloudy centrate or filtrate, carryover (worn wear surfaces, wrong settings, damaged screen or cloth, worn nozzles) — check settings and feed, then inspect wear parts",
+      "Rising amp draw, torque, or overload trips (harder conveying, buildup, bearing drag, overload) — check feed and buildup, then inspect bearings and drive; do not keep resetting trips",
+      "Oil or process leaks (failed seals, gaskets, o-rings, or a cracked casing) — find the source and replace seals before oil starvation causes damage",
+      "Overheating at bearings or gearbox (lubrication fault, bearing wear, overload) — shut down and investigate before damage spreads",
+      "Visible cracks, corrosion, or distortion in a bowl, basket, or rotor — stop immediately; this is safety-critical and needs professional inspection"
+    ],
+    "videoId": null,
+    "relatedService": {"label": "Centrifuge Inspections", "href": "/services/centrifuge-inspections/"},
+    "relatedBrands": [
+      {"label": "Alfa Laval", "href": "/brands/alfa-laval/"},
+      {"label": "Sharples", "href": "/brands/sharples/"},
+      {"label": "GEA Westfalia", "href": "/brands/westfalia/"}
+    ],
+    "faqs": [
+      {"question": "Is centrifuge vibration always a problem?", "answer": "New or rising vibration is one of the most reliable early warning signs and should never be ignored. Common causes are an unbalanced rotor, worn bearings, uneven wear, or product buildup. Continuing to run through vibration accelerates bearing and structural damage, so the machine should be checked promptly."},
+      {"question": "Can I keep running a centrifuge that keeps tripping on overload?", "answer": "No. Repeated overload trips mean the machine is working harder than it should, from harder conveying, buildup, bearing drag, or overloading. Resetting the trip without finding the cause risks a serious failure. Check feed and buildup, then have the bearings and drivetrain inspected."},
+      {"question": "When should a centrifuge be shut down immediately?", "answer": "Shut down at once for any visible crack, corrosion, or distortion in a bowl, basket, or rotor, for severe vibration or loud grinding, or for signs of oil starvation or overheating. At centrifuge speeds these conditions are safety-critical and call for professional inspection before restarting."}
+    ],
+    "seoTitle": "Signs Your Centrifuge Needs Repair | Centrifuge World",
+    "seoDescription": "Centrifuge warning signs by symptom, likely cause, and recommended action: vibration, noise, poor separation, high amps, leaks, and overheating.",
+    "todos": []
+  },
+  {
+    "slug": "repair-vs-replace-vs-rebuild",
+    "title": "Centrifuge Repair vs. Replace vs. Rebuild",
+    "answerBox": "Repair fixes a specific failure at the lowest cost; rebuild is a full teardown and reconditioning that restores like-new performance and extends service life for a fraction of a new machine; replace buys new but costs the most with the longest lead time. Centrifuge World handles repairs and rebuilds.",
+    "sections": [
+      {
+        "heading": "Three Different Decisions, Not One",
+        "body": [
+          "Repair, rebuild, and replace are three distinct paths, and the right choice depends on the machine's condition, its age and parts availability, how critical it is to your process, and the cost of downtime. Understanding what each path actually involves is the first step to a sound decision.",
+          "Cost figures below are given only as general ranges and relationships, not quotes. Actual pricing depends on the machine type, size, condition, and scope. TODO(verify: insert Centrifuge World cost ranges and typical turnaround figures once confirmed with the client)."
+        ]
+      },
+      {
+        "heading": "Repair: Fix the Specific Failure",
+        "body": [
+          "A repair addresses a defined problem, replacing a failed bearing, renewing seals, changing a filter screen, or fixing a specific worn part, to get the machine running again. It is the lowest-cost path and the fastest when the fault is isolated and parts are on hand.",
+          "Repair is the right call when the machine is otherwise in good condition and a single component has failed or worn out. Its limitation is that it does not address wear elsewhere in the machine, so if the equipment is generally worn, one repair is often followed by the next. Repeated repairs on an aging machine are a signal to consider a full rebuild instead. TODO(verify: typical repair cost range)."
+        ]
+      },
+      {
+        "heading": "Rebuild: Recondition to Like-New",
+        "body": [
+          "A rebuild is a complete teardown, inspection, and reconditioning of the whole machine. Wear surfaces, bearings, seals, the scroll or basket, gearbox, and drive components are inspected and repaired or replaced, and the rotating assembly is rebalanced and test-run. The result is a machine returned to like-new performance and reliability.",
+          "A rebuild costs more than a single repair but is typically a fraction of the price of a new machine, and it resets the wear across the whole unit rather than fixing one item. It is the strong choice for a fundamentally sound machine that has accumulated broad wear, or where a new replacement carries a long lead time or the model is no longer sold. For obsolete or hard-to-source brands, a rebuild also keeps a proven machine in service. TODO(verify: typical rebuild cost range and how it compares as a percentage of new)."
+        ]
+      },
+      {
+        "heading": "Replace: Buy New",
+        "body": [
+          "Replacement means buying a new centrifuge. It carries the highest capital cost and usually the longest lead time, but it delivers the latest design, a full manufacturer warranty, and, potentially, better efficiency or capacity than an older machine.",
+          "Replacement makes sense when a machine is beyond economical repair, when the process needs more capacity or a different capability than the existing unit can provide, or when downtime and reliability demands justify the investment. For many industrial users, though, a rebuild delivers most of the reliability benefit at a lower cost and shorter lead time, so replacement is best weighed against a rebuild rather than assumed. TODO(verify: new-machine cost range and lead-time considerations)."
+        ]
+      },
+      {
+        "heading": "How to Decide",
+        "body": [
+          "Weigh the machine's overall condition and age, whether failures are isolated or widespread, parts availability for the brand and model, how critical the machine is to production, and the real cost of downtime. An isolated fault on a sound machine favors repair; broad wear on an otherwise good machine favors a rebuild; a machine that is obsolete, unsafe, or fundamentally undersized favors replacement.",
+          "A documented inspection is the best basis for this decision, since it establishes the true condition and scope before any money is committed. TODO(verify: reference Centrifuge World inspection and typical turnaround once confirmed)."
+        ]
+      }
+    ],
+    "signsNeedRepair": [
+      "A single isolated failure on an otherwise sound machine points toward a targeted repair",
+      "Repeated repairs on an aging machine signal it is time to consider a full rebuild",
+      "Broad, general wear across bearings, wear surfaces, and drive favors a rebuild over piecemeal repairs",
+      "An obsolete, unsafe, or undersized machine, or one beyond economical repair, points toward replacement",
+      "Any decision is best made after a documented inspection that establishes the machine's true condition"
+    ],
+    "videoId": null,
+    "relatedService": {"label": "Centrifuge Rebuilds", "href": "/services/centrifuge-rebuilds/"},
+    "relatedBrands": [
+      {"label": "Alfa Laval", "href": "/brands/alfa-laval/"},
+      {"label": "Sharples", "href": "/brands/sharples/"},
+      {"label": "GEA Westfalia", "href": "/brands/westfalia/"}
+    ],
+    "faqs": [
+      {"question": "Is it cheaper to rebuild or replace a centrifuge?", "answer": "A rebuild is typically a fraction of the cost of a new machine and usually has a shorter lead time, while restoring like-new performance. Replacement costs the most but delivers a new machine with a warranty. For a fundamentally sound unit, a rebuild often gives most of the benefit at lower cost. TODO(verify: cost ranges)."},
+      {"question": "When should I repair instead of rebuild?", "answer": "Repair is the right choice when a machine is otherwise in good condition and a single, isolated component has failed or worn out. If instead you are seeing repeated failures or broad wear across the machine, a full rebuild usually makes more sense than a series of one-off repairs."},
+      {"question": "What is included in a centrifuge rebuild?", "answer": "A rebuild is a complete teardown, inspection, and reconditioning. Wear surfaces, bearings, seals, the scroll or basket, gearbox, and drive are inspected and repaired or replaced, then the rotating assembly is rebalanced and test-run so the machine returns to like-new performance."}
+    ],
+    "seoTitle": "Centrifuge Repair vs. Replace vs. Rebuild | Centrifuge World",
+    "seoDescription": "Repair vs. rebuild vs. replace for industrial centrifuges: what each involves, cost relationships in ranges, and how to decide based on condition.",
+    "todos": ["TODO(verify: insert Centrifuge World repair, rebuild, and new-machine cost ranges and typical turnaround once confirmed with the client)"]
+  }
+]

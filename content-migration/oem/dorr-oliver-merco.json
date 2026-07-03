@@ -1,0 +1,96 @@
+{
+  "slug": "dorr-oliver-merco",
+  "name": "Dorr-Oliver / Merco",
+  "archiveUrl": "http://web.archive.org/web/20240715172837/https://centrifuge.com/dorr-oliver-merco/",
+  "answerBox": "Centrifuge World repairs and rebuilds Dorr-Oliver / Merco decanter and basket centrifuges. As an independent specialist, we inspect each machine, weld and machine worn components, refit wear parts, and dynamically balance and test-run the assembly at our Houston and Chicago service centers to restore performance and reduce downtime.",
+  "intro": "Dorr-Oliver / Merco decanter and basket centrifuges are used for solids-liquid separation across mineral processing, wet milling and industrial applications. Centrifuge World is an independent repair and rebuild specialist that keeps this equipment in service when parts and factory support are hard to obtain.",
+  "disclosure": "Centrifuge World is an independent repair and rebuild specialist. We are not affiliated with Dorr-Oliver / Merco.",
+  "modelsServiced": [],
+  "typesServiced": [
+    "Decanter centrifuges",
+    "Basket centrifuges",
+    "Disc-stack centrifuges"
+  ],
+  "capabilities": [
+    {
+      "item": "Non-destructive testing & inspection (NDTI)",
+      "detail": "Incoming inspection with dimensional checks, dye-penetrant and other NDT methods, followed by a written findings-and-recommendations report before any work begins."
+    },
+    {
+      "item": "Bowl and rotating-assembly repair",
+      "detail": "Weld build-up and machining of bowls, hubs and shafts damaged by mechanical wear, chemical attack or erosion, restored to original fits and tolerances."
+    },
+    {
+      "item": "High-speed dynamic balancing",
+      "detail": "Rotating assemblies are balanced and test-run to reduce vibration and protect bearings, seals and gearboxes."
+    },
+    {
+      "item": "Wear-part replacement",
+      "detail": "O-rings, gaskets, seals, bearings and other consumable wear components refitted using new parts."
+    },
+    {
+      "item": "Parts fabrication & reverse engineering",
+      "detail": "In-house machining and reverse engineering of hard-to-find or long-lead components to keep aging equipment in service."
+    }
+  ],
+  "body": [
+    "Centrifuge World offers a range of services to enhance the performance of Dorr-Oliver / Merco decanter and basket centrifuges. Work is carried out at our service centers in Houston, Texas and Chicago, Illinois, where qualified service engineers perform non-destructive testing and inspection and develop the right plan to rebuild each machine.",
+    "Regular maintenance keeps decanter and basket equipment running in top condition. Our service engineers can help troubleshoot recurring issues or set up an inspection appointment, ensuring the equipment continues to deliver high efficiency while reducing process downtime.",
+    "The inspection process is simple. Call to schedule, we dispatch a truck to your location, and once the machine reaches our shop it undergoes a comprehensive non-destructive test and inspection. You then receive a written report with recommendations for your decanter or basket and a list of the parts required to complete the repairs.",
+    "Once you approve the quote, our repair scope can include welding of areas damaged by mechanical, chemical or erosion attack, refitting wear parts such as O-rings and gaskets, replacing worn or damaged items, executing upgrades, static and dynamic balancing, and a final test run before the centrifuge is returned to service.",
+    "We keep a large inventory of parts for Dorr-Oliver / Merco centrifuges and, when a component is hard to find or on long backorder, we reverse engineer and fabricate it in-house, typically within a few days. Rush service is available for emergency breakdowns."
+  ],
+  "faqs": [
+    {
+      "question": "Who repairs Dorr-Oliver / Merco centrifuges?",
+      "answer": "Centrifuge World repairs and rebuilds Dorr-Oliver / Merco decanter and basket centrifuges as an independent specialist. We inspect, weld, machine, balance and reassemble these machines at our Houston and Chicago service centers."
+    },
+    {
+      "question": "Do you service both decanter and basket Dorr-Oliver / Merco machines?",
+      "answer": "Yes. We repair and rebuild Dorr-Oliver / Merco decanter and basket centrifuges, including bowl and scroll repair, wear-part replacement, upgrades and dynamic balancing, followed by a test run before return."
+    },
+    {
+      "question": "What happens after the inspection?",
+      "answer": "After the non-destructive test and inspection you receive a written report with repair recommendations and a parts list. Once you approve the quote, we complete the repairs and return the centrifuge in top operating condition."
+    }
+  ],
+  "images": [
+    {
+      "src": "https://centrifuge-im.s3.amazonaws.com/wp-content/uploads/2020/01/07193447/img_0346.jpg",
+      "alt": "Dorr-Oliver / Merco centrifuge component during repair at Centrifuge World"
+    }
+  ],
+  "relatedBrands": [
+    {
+      "label": "Bird",
+      "href": "/brands/bird"
+    },
+    {
+      "label": "Sharples",
+      "href": "/brands/sharples"
+    }
+  ],
+  "relatedServices": [
+    {
+      "label": "Decanter Centrifuge Repair",
+      "href": "/services/decanter-centrifuge-repair"
+    },
+    {
+      "label": "Centrifuge Rebuilds",
+      "href": "/services/centrifuge-rebuilds"
+    }
+  ],
+  "relatedIndustries": [
+    {
+      "label": "Mining & Manufacturing",
+      "href": "/industries/mining-manufacturing"
+    }
+  ],
+  "seoTitle": "Dorr-Oliver / Merco Repair & Rebuilds | Centrifuge World",
+  "seoDescription": "Independent Dorr-Oliver / Merco decanter and basket centrifuge repair, rebuilds, parts fabrication, balancing and rush service in Houston and Chicago.",
+  "todos": [
+    "TODO(verify: specific Dorr-Oliver / Merco model designations serviced)",
+    "TODO(verify: source a Dorr-Oliver / Merco-specific hero image; legacy page reused a Western States header graphic)"
+  ],
+  "mergeInto": null
+}

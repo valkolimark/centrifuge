@@ -1,0 +1,253 @@
+[
+  {
+    "slug": "decanter-centrifuge-rebuild-before-after",
+    "title": "Decanter Centrifuge Rebuild: From Worn to Rebuilt",
+    "clientIndustry": "Confidential rendering client",
+    "machineBrandModel": "Decanter centrifuge (bowl-and-scroll; make/model not disclosed)",
+    "problem": "The decanter arrived worn and out of service, showing the surface erosion, worn wear surfaces, and degraded rotating components typical of a machine due for a full rebuild. The before image documents its condition on arrival; the after image documents the same machine following a complete shop rebuild.",
+    "scopeOfWork": [
+      "Non-destructive teardown and inspection (NDTI) with a documented condition report",
+      "Conveyor scroll refurbishment and hardfacing of wear surfaces",
+      "Bearing replacement on the rotating assembly",
+      "Weld repair of areas damaged by mechanical, chemical, or erosion attack",
+      "Refitting and replacement of wear parts, o-rings, and gaskets",
+      "Static and dynamic balancing of the rotating assembly",
+      "Full test run prior to return to service"
+    ],
+    "beforeAfter": [
+      {
+        "before": {
+          "src": "https://centrifuge-im.s3.amazonaws.com/wp-content/uploads/2021/12/07192727/before.jpg",
+          "alt": "Decanter centrifuge in worn, as-received condition before rebuild at Centrifuge World"
+        },
+        "after": {
+          "src": "https://centrifuge-im.s3.amazonaws.com/wp-content/uploads/2021/12/07192728/after.jpg",
+          "alt": "The same decanter centrifuge after a complete rebuild and reconditioning at Centrifuge World"
+        }
+      }
+    ],
+    "gallery": [
+      {
+        "src": "https://centrifuge-im.s3.amazonaws.com/wp-content/uploads/2022/01/07192617/scroll-refurbished.jpg",
+        "alt": "Refurbished decanter conveyor scroll with restored wear surfaces"
+      },
+      {
+        "src": "https://centrifuge-im.s3.amazonaws.com/wp-content/uploads/2022/01/07192646/bearings-decanters-1-e1641483593312.jpg",
+        "alt": "Replacement bearings staged for a decanter centrifuge rebuild"
+      },
+      {
+        "src": "https://centrifuge-im.s3.amazonaws.com/wp-content/uploads/2022/01/07192642/parts-refitting.jpg",
+        "alt": "Technician refitting reconditioned parts during a decanter centrifuge rebuild"
+      }
+    ],
+    "timeline": "TODO(verify)",
+    "outcome": "TODO(verify)",
+    "hero": {
+      "src": "https://centrifuge-im.s3.amazonaws.com/wp-content/uploads/2021/12/07192728/after.jpg",
+      "alt": "Rebuilt decanter centrifuge after reconditioning at Centrifuge World"
+    },
+    "seoTitle": "Decanter Centrifuge Rebuild Case Study | Centrifuge World",
+    "seoDescription": "See a worn decanter centrifuge fully rebuilt: scroll refurbishment, new bearings, weld repair, balancing, and testing at an independent centrifuge shop since 1939.",
+    "relatedBrands": [
+      {"label": "Alfa Laval", "href": "/brands/alfa-laval/"},
+      {"label": "Flottweg", "href": "/brands/flottweg/"}
+    ],
+    "relatedServices": [
+      {"label": "Decanter Centrifuge Repair", "href": "/services/decanter-centrifuge-repair/"},
+      {"label": "Centrifuge Rebuilds", "href": "/services/centrifuge-rebuilds/"},
+      {"label": "Balancing & Testing", "href": "/services/balancing-testing/"}
+    ],
+    "todos": [
+      "TODO(verify: outcome/performance restored with client)",
+      "TODO(verify: timeline / turnaround with client)",
+      "TODO(verify: any downtime saved, cost, or percentage improvement claims with client)",
+      "TODO(verify: machine make/model and industry with client before publishing)",
+      "TODO(verify: exact scope of work performed on this unit with the shop work order)"
+    ]
+  },
+  {
+    "slug": "bird-hb-2500-decanter-rebuild",
+    "title": "Bird HB-2500 Decanter Centrifuge Rebuild",
+    "clientIndustry": "Confidential oil & gas client",
+    "machineBrandModel": "Bird HB-2500 decanter centrifuge",
+    "problem": "A Bird HB-2500 decanter centrifuge was removed from service for a complete rebuild. The unit shows the wear pattern typical of a solids-handling decanter that has reached the end of a service interval and requires reconditioning of its rotating assembly.",
+    "scopeOfWork": [
+      "Teardown, inspection, and documented condition report",
+      "Reconditioning of the bowl and conveyor assembly",
+      "Weld repair of eroded and worn areas",
+      "Wear-part replacement and refitting",
+      "Balancing and test run before return to service"
+    ],
+    "beforeAfter": [],
+    "gallery": [
+      {
+        "src": "https://centrifuge-im.s3.amazonaws.com/wp-content/uploads/2022/01/07192645/testing-decanter-centrifuge.jpg",
+        "alt": "Decanter centrifuge on the test stand for a post-rebuild test run"
+      },
+      {
+        "src": "https://centrifuge-im.s3.amazonaws.com/wp-content/uploads/2022/01/07192643/centrifuge-welding-e1641483520230.jpg",
+        "alt": "Weld repair being performed on a centrifuge component during rebuild"
+      }
+    ],
+    "timeline": "TODO(verify)",
+    "outcome": "TODO(verify)",
+    "hero": {
+      "src": "https://centrifuge-im.s3.amazonaws.com/wp-content/uploads/2021/12/07192723/BIRD-HB-2500-RA-Rebuild-scaled.jpg",
+      "alt": "Bird HB-2500 decanter centrifuge rotating assembly during rebuild at Centrifuge World"
+    },
+    "seoTitle": "Bird HB-2500 Centrifuge Rebuild Case Study | Centrifuge World",
+    "seoDescription": "Independent Bird HB-2500 decanter centrifuge rebuild: reconditioning, weld repair, wear-part replacement, balancing, and testing. Centrifuge specialists since 1939.",
+    "relatedBrands": [
+      {"label": "Bird", "href": "/brands/bird/"},
+      {"label": "Andritz", "href": "/brands/andritz/"}
+    ],
+    "relatedServices": [
+      {"label": "Decanter Centrifuge Repair", "href": "/services/decanter-centrifuge-repair/"},
+      {"label": "Centrifuge Rebuilds", "href": "/services/centrifuge-rebuilds/"},
+      {"label": "Balancing & Testing", "href": "/services/balancing-testing/"}
+    ],
+    "todos": [
+      "TODO(verify: outcome/performance restored with client)",
+      "TODO(verify: timeline / turnaround with client)",
+      "TODO(verify: any downtime saved, cost, or percentage improvement claims with client)",
+      "TODO(verify: client industry (assumed oil & gas / solids control) with client)",
+      "TODO(verify: exact scope of work performed on this Bird HB-2500 with the shop work order)"
+    ]
+  },
+  {
+    "slug": "alfa-laval-lynx-40-rebuild",
+    "title": "Alfa Laval Lynx 40 Centrifuge Rebuild",
+    "clientIndustry": "Confidential food & beverage client",
+    "machineBrandModel": "Alfa Laval Lynx 40 decanter centrifuge",
+    "problem": "An Alfa Laval Lynx 40 decanter centrifuge came into the shop for repair and reconditioning. The machine required inspection and restoration of worn components to return it to reliable separation performance.",
+    "scopeOfWork": [
+      "Inspection and documented condition report",
+      "Reconditioning and repair of worn components",
+      "Wear-part replacement and refitting",
+      "Balancing and testing prior to return to service"
+    ],
+    "beforeAfter": [],
+    "gallery": [
+      {
+        "src": "https://centrifuge-im.s3.amazonaws.com/wp-content/uploads/2019/10/07193552/centrifuge-repair-1024x771-2.jpg",
+        "alt": "Centrifuge undergoing repair on the shop floor at Centrifuge World"
+      }
+    ],
+    "timeline": "TODO(verify)",
+    "outcome": "TODO(verify)",
+    "hero": {
+      "src": "https://centrifuge-im.s3.amazonaws.com/wp-content/uploads/2022/01/07192636/Lynx40.jpg",
+      "alt": "Alfa Laval Lynx 40 decanter centrifuge at Centrifuge World"
+    },
+    "seoTitle": "Alfa Laval Lynx 40 Rebuild Case Study | Centrifuge World",
+    "seoDescription": "Independent Alfa Laval Lynx 40 decanter centrifuge repair and rebuild: inspection, reconditioning, balancing, and testing. Centrifuge specialists since 1939.",
+    "relatedBrands": [
+      {"label": "Alfa Laval", "href": "/brands/alfa-laval/"},
+      {"label": "Aldec (Alfa Laval)", "href": "/brands/aldec/"}
+    ],
+    "relatedServices": [
+      {"label": "Decanter Centrifuge Repair", "href": "/services/decanter-centrifuge-repair/"},
+      {"label": "Centrifuge Rebuilds", "href": "/services/centrifuge-rebuilds/"},
+      {"label": "Centrifuge Inspections", "href": "/services/centrifuge-inspections/"}
+    ],
+    "todos": [
+      "TODO(verify: outcome/performance restored with client)",
+      "TODO(verify: timeline / turnaround with client)",
+      "TODO(verify: any downtime saved, cost, or percentage improvement claims with client)",
+      "TODO(verify: client industry (assumed food & beverage) with client)",
+      "TODO(verify: exact scope of work performed on this Lynx 40 with the shop work order)"
+    ]
+  },
+  {
+    "slug": "centrisys-cq5000-decanter-rebuild",
+    "title": "Centrisys CQ5000 Decanter Centrifuge Rebuild",
+    "clientIndustry": "Confidential wastewater treatment client",
+    "machineBrandModel": "Centrisys CQ5000-class decanter centrifuge",
+    "problem": "A Centrisys CQ-series decanter centrifuge used for dewatering was brought in for reconditioning. The unit required inspection and restoration of its rotating assembly to return it to dependable dewatering performance.",
+    "scopeOfWork": [
+      "Inspection and documented condition report",
+      "Reconditioning of the bowl and conveyor assembly",
+      "Wear-part replacement and refitting",
+      "Balancing and test run before return to service"
+    ],
+    "beforeAfter": [],
+    "gallery": [
+      {
+        "src": "https://centrifuge-im.s3.amazonaws.com/wp-content/uploads/2021/12/07192720/Custom-decanter-1.jpg",
+        "alt": "Decanter centrifuge in the shop during reconditioning at Centrifuge World"
+      }
+    ],
+    "timeline": "TODO(verify)",
+    "outcome": "TODO(verify)",
+    "hero": {
+      "src": "https://centrifuge-im.s3.amazonaws.com/wp-content/uploads/2020/01/07193402/CQ5000-Cropped-Rear-View.jpg",
+      "alt": "Rear view of a Centrisys CQ5000-class decanter centrifuge at Centrifuge World"
+    },
+    "seoTitle": "Centrisys CQ5000 Centrifuge Rebuild Case Study | Centrifuge World",
+    "seoDescription": "Independent Centrisys CQ5000-class decanter centrifuge repair and rebuild for wastewater dewatering: inspection, reconditioning, balancing, and testing since 1939.",
+    "relatedBrands": [
+      {"label": "Centrisys", "href": "/brands/centrisys/"},
+      {"label": "GEA Westfalia", "href": "/brands/westfalia/"}
+    ],
+    "relatedServices": [
+      {"label": "Decanter Centrifuge Repair", "href": "/services/decanter-centrifuge-repair/"},
+      {"label": "Centrifuge Rebuilds", "href": "/services/centrifuge-rebuilds/"},
+      {"label": "Gearbox Repair", "href": "/services/gearbox-repair/"}
+    ],
+    "todos": [
+      "TODO(verify: outcome/performance restored with client)",
+      "TODO(verify: timeline / turnaround with client)",
+      "TODO(verify: any downtime saved, cost, or percentage improvement claims with client)",
+      "TODO(verify: exact model — image is labeled CQ5000; confirm the serviced model with the shop)",
+      "TODO(verify: client industry (assumed municipal/wastewater dewatering) with client)",
+      "TODO(verify: exact scope of work performed on this unit with the shop work order)"
+    ]
+  },
+  {
+    "slug": "sharples-centrifuge-rebuild",
+    "title": "Sharples Centrifuge Repair and Rebuild",
+    "clientIndustry": "Confidential chemical client",
+    "machineBrandModel": "Sharples decanter/basket centrifuge",
+    "problem": "A Sharples centrifuge was received for repair and rebuild after losing separation performance. As with most Sharples units returning for service, worn bearings, eroded surfaces, and an out-of-balance rotating assembly called for a documented inspection followed by a full shop rebuild.",
+    "scopeOfWork": [
+      "Non-destructive teardown and inspection (NDTI) with a documented condition report",
+      "Bowl and conveyor reconditioning",
+      "Weld repair of mechanical, chemical, and erosion damage",
+      "Wear-part replacement (o-rings, gaskets, bearings)",
+      "In-house fabrication of hard-to-source parts as needed",
+      "Static and dynamic balancing plus a full test run"
+    ],
+    "beforeAfter": [],
+    "gallery": [
+      {
+        "src": "https://centrifuge-im.s3.amazonaws.com/wp-content/uploads/2020/02/07193227/large-decanter.jpg",
+        "alt": "Large decanter centrifuge in the shop at Centrifuge World"
+      }
+    ],
+    "timeline": "TODO(verify)",
+    "outcome": "TODO(verify)",
+    "hero": {
+      "src": "https://centrifuge-im.s3.amazonaws.com/wp-content/uploads/2020/01/07192820/sharples-centrifuge-repair-hero-scaled.jpg",
+      "alt": "Sharples centrifuge undergoing repair at a Centrifuge World service center"
+    },
+    "seoTitle": "Sharples Centrifuge Rebuild Case Study | Centrifuge World",
+    "seoDescription": "Independent Sharples decanter and basket centrifuge repair and rebuild: NDTI inspection, weld repair, parts fabrication, balancing, and testing since 1939.",
+    "relatedBrands": [
+      {"label": "Sharples", "href": "/brands/sharples/"},
+      {"label": "Tolhurst", "href": "/brands/tolhurst/"}
+    ],
+    "relatedServices": [
+      {"label": "Decanter Centrifuge Repair", "href": "/services/decanter-centrifuge-repair/"},
+      {"label": "Basket Centrifuge Repair", "href": "/services/basket-centrifuge-repair/"},
+      {"label": "Parts & Fabrication", "href": "/services/parts-fabrication/"}
+    ],
+    "todos": [
+      "TODO(verify: outcome/performance restored with client)",
+      "TODO(verify: timeline / turnaround with client)",
+      "TODO(verify: any downtime saved, cost, or percentage improvement claims with client)",
+      "TODO(verify: exact Sharples model (e.g. P3400 / P5000 / PM75000) and machine type with the shop)",
+      "TODO(verify: client industry (assumed chemical) with client)",
+      "TODO(verify: exact scope of work performed on this unit with the shop work order)"
+    ]
+  }
+]

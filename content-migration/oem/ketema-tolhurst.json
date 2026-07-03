@@ -1,0 +1,54 @@
+{
+  "slug": "ketema-tolhurst",
+  "name": "Ketema / Tolhurst",
+  "archiveUrl": "http://web.archive.org/web/20240525163555/https://centrifuge.com/ketema-tolhurst/",
+  "answerBox": "Centrifuge World repairs, rebuilds, and supplies parts for Ketema / Tolhurst basket centrifuges. As an independent specialist since 1939, our Houston and Chicago service centers perform full non-destructive inspection, welding, wear-part refitting, precision balancing, and test runs to return your Ketema / Tolhurst machine to peak performance.",
+  "intro": "The Ketema / Tolhurst line of industrial basket centrifuges has long been valued for reliable batch separation and dewatering. Centrifuge World provides independent repair, rebuild, and reverse-engineered parts support to keep these machines running at optimal efficiency.",
+  "disclosure": "Centrifuge World is an independent repair and rebuild specialist. We are not affiliated with Ketema / Tolhurst.",
+  "modelsServiced": [],
+  "typesServiced": [
+    "Basket centrifuge",
+    "Perforate (filtering) basket centrifuge",
+    "Imperforate (solid-bowl) basket centrifuge"
+  ],
+  "capabilities": [
+    { "item": "Non-destructive teardown inspection (NDTI)", "detail": "Complete disassembly and inspection of your Ketema / Tolhurst basket centrifuge, followed by a written report with findings and recommended repairs." },
+    { "item": "Structural welding", "detail": "Repair of areas damaged by mechanical stress, chemical attack, or erosion." },
+    { "item": "Wear-part refitting", "detail": "Replacement of o-rings, gaskets, and other consumable wear items." },
+    { "item": "Component replacement and upgrades", "detail": "Swap of worn or damaged parts and execution of available performance upgrades." },
+    { "item": "Static and dynamic balancing", "detail": "Precision balancing of rotating assemblies based on machine requirements and available tooling." },
+    { "item": "Reverse-engineered parts fabrication", "detail": "In-house manufacture of hard-to-find or long-lead OEM-equivalent parts, often within days." }
+  ],
+  "body": [
+    "Centrifuge World offers a full range of services to help you get the most out of your Ketema / Tolhurst basket centrifuge. All work is performed at our service centers in Houston, Texas and Chicago, Illinois, where our skilled engineers inspect each machine and build the right plan for repair or rebuild.",
+    "For every industrial centrifuge we handle, we provide comprehensive reconditioning and repair designed to keep equipment operating at high efficiency and to reduce process downtime. Routine maintenance is essential to keep a basket centrifuge in top condition, and our engineers are available to troubleshoot issues or schedule an inspection.",
+    "Getting a centrifuge inspection is straightforward: call to schedule, and we dispatch a truck to your location. Once the machine reaches our shop, we perform a complete non-destructive teardown inspection. You then receive a detailed report summarizing the findings, a repair recommendation, and a list of parts that require replacement.",
+    "When Ketema / Tolhurst rotating equipment needs repair, we perform standard maintenance, structural welding of damaged areas, refitting of wear parts such as o-rings and gaskets, replacement of worn components, available upgrades, static and dynamic balancing, and a test run where the equipment allows.",
+    "OEM-equivalent parts for your basket centrifuge are available from Centrifuge World. When a part is hard to source or carries a long lead time, our shop can reverse engineer and fabricate it, frequently turning parts around in a matter of days. For emergency breakdowns, rush service is available around the clock."
+  ],
+  "faqs": [
+    { "question": "Can Centrifuge World rebuild an older Ketema / Tolhurst basket centrifuge?", "answer": "Yes. Our engineers fully disassemble and inspect the machine, then rebuild it with new wear parts, structural repairs, and balancing so it returns to peak operating condition, regardless of age." },
+    { "question": "Do you supply parts for Ketema / Tolhurst centrifuges?", "answer": "We stock OEM-equivalent parts and can reverse engineer and fabricate hard-to-find or long-lead components in-house, often within days." },
+    { "question": "Where is Ketema / Tolhurst centrifuge service performed?", "answer": "All rebuild and repair work is completed at our Houston, Texas and Chicago-area, Illinois service centers, with pickup and delivery arranged by our team." }
+  ],
+  "images": [
+    { "src": "https://centrifuge-im.s3.amazonaws.com/wp-content/uploads/2020/01/07192833/61151602436__73E5579B-BE9B-4595-8C01-6614452E51AC-scaled-e1636755537776.jpeg", "alt": "Ketema / Tolhurst basket centrifuge under repair at Centrifuge World" }
+  ],
+  "relatedBrands": [
+    { "label": "Tolhurst", "href": "/oem/tolhurst" },
+    { "label": "Broadbent", "href": "/oem/broadbent" }
+  ],
+  "relatedServices": [
+    { "label": "Basket Centrifuge Repair", "href": "/services/basket-centrifuge-repair" },
+    { "label": "Centrifuge Rebuilds", "href": "/services/centrifuge-rebuilds" }
+  ],
+  "relatedIndustries": [
+    { "label": "Chemical", "href": "/industries/chemical" }
+  ],
+  "seoTitle": "Ketema / Tolhurst Centrifuge Repair | Centrifuge World",
+  "seoDescription": "Independent Ketema / Tolhurst basket centrifuge repair, rebuild, and parts. Inspection, welding, balancing, and rush service in Houston and Chicago.",
+  "todos": [
+    "TODO(verify: confirm specific Ketema / Tolhurst basket centrifuge model designations to populate modelsServiced)"
+  ],
+  "mergeInto": "tolhurst"
+}

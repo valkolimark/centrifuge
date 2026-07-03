@@ -1,0 +1,101 @@
+{
+  "slug": "derrick",
+  "name": "Derrick",
+  "archiveUrl": "http://web.archive.org/web/20240525181451/https://centrifuge.com/derrick/",
+  "answerBox": "Centrifuge World is an independent specialist in Derrick centrifuge repair and rebuilds, servicing decanter and basket equipment for oil, gas, and process applications. Since 1939 we have inspected, reconditioned, balanced, and fabricated parts from our Texas and Illinois service centers, backed by 24/7 emergency response and in-house parts fabrication.",
+  "intro": "Derrick equipment is used in demanding solid-liquid separation across oil, gas, and industrial processing. Centrifuge World provides independent inspection, repair, rebuild, and maintenance for Derrick decanter and basket centrifuges, restoring worn units to peak performance and reducing process downtime.",
+  "disclosure": "Centrifuge World is an independent repair and rebuild specialist. We are not affiliated with Derrick.",
+  "modelsServiced": [],
+  "typesServiced": [
+    "Decanter centrifuges",
+    "Basket centrifuges"
+  ],
+  "capabilities": [
+    {
+      "item": "Non-destructive teardown inspection (NDTI)",
+      "detail": "We fully disassemble and inspect each Derrick unit, then deliver a documented condition report and rebuild plan before quoting."
+    },
+    {
+      "item": "Full reconditioning and repair",
+      "detail": "We provide comprehensive reconditioning to keep Derrick equipment delivering high efficiency and reducing process downtime."
+    },
+    {
+      "item": "Static and dynamic balancing",
+      "detail": "Rebuilt rotating assemblies are balanced to eliminate vibration and protect bearings, seals, and drive components."
+    },
+    {
+      "item": "Reverse-engineered parts fabrication",
+      "detail": "When a Derrick part is hard to find or backordered, we reverse engineer and fabricate it in-house, often within a few days."
+    }
+  ],
+  "body": [
+    "Derrick decanter and basket centrifuges handle high-throughput solid-liquid separation in oil, gas, and process environments. When bowls, baskets, bearings, seals, or drives wear, precise reconditioning is essential to restore separation performance and cut process downtime. Centrifuge World provides independent repair and rebuild services for Derrick equipment and returns each machine to reliable operation.",
+    "Our process begins with a non-destructive teardown inspection. Our highly qualified service engineers assess the unit and develop the right plan to rebuild it, then provide a written condition report with recommended repairs and a complete parts list so you can approve the scope before work begins. Repairs are completed in our service centers in the Houston, Texas and Chicago, Illinois areas.",
+    "Once approved, our scope for Derrick rotating equipment typically includes standard maintenance when field service is not practical, weld repair of areas damaged by mechanical, chemical, or erosion attack, refitting of wear parts such as O-rings and gaskets, replacement of worn or damaged items, engineered upgrades, static and dynamic balancing, and a test run. Every unit is returned in top condition, operating at peak performance.",
+    "We maintain a large inventory of parts for Derrick centrifuges and can reverse engineer and fabricate hard-to-find components in-house, frequently within a few days. Combined with 24/7 emergency response, Centrifuge World keeps your Derrick equipment running with minimal downtime."
+  ],
+  "faqs": [
+    {
+      "question": "Does Centrifuge World repair Derrick centrifuges?",
+      "answer": "Yes. Centrifuge World is an independent specialist in Derrick decanter and basket centrifuge repair and rebuilds, handling inspection, reconditioning, balancing, and parts fabrication."
+    },
+    {
+      "question": "How does the Derrick repair process begin?",
+      "answer": "Call Centrifuge World to schedule an inspection. We arrange transport to our shop, perform a full non-destructive teardown inspection, and our engineers develop a rebuild plan with a condition report and parts list before any work starts."
+    },
+    {
+      "question": "Can you supply Derrick centrifuge parts?",
+      "answer": "We keep a large inventory of Derrick parts, and when a component is obsolete or backordered our shop reverse engineers and fabricates it in-house, often within a few days."
+    }
+  ],
+  "images": [
+    {
+      "src": "https://centrifuge-im.s3.amazonaws.com/wp-content/uploads/2021/12/07192728/after.jpg",
+      "alt": "Derrick centrifuge after reconditioning by Centrifuge World"
+    },
+    {
+      "src": "https://centrifuge-im.s3.amazonaws.com/wp-content/uploads/2019/02/07193216/IMG_1548.jpeg",
+      "alt": "Derrick centrifuge undergoing repair at Centrifuge World"
+    },
+    {
+      "src": "https://centrifuge-im.s3.amazonaws.com/wp-content/uploads/2020/04/07193139/Messages-Image2776659013.png",
+      "alt": "Derrick centrifuge component inspected during rebuild"
+    },
+    {
+      "src": "https://centrifuge-im.s3.amazonaws.com/wp-content/uploads/2020/04/07193146/Messages-Image471516172.png",
+      "alt": "Derrick centrifuge rotating assembly during reconditioning"
+    }
+  ],
+  "relatedBrands": [
+    {
+      "label": "Hutchison Hayes",
+      "href": "/brands/hutchison-hayes/"
+    },
+    {
+      "label": "Bird",
+      "href": "/brands/bird/"
+    }
+  ],
+  "relatedServices": [
+    {
+      "label": "Decanter Centrifuge Repair",
+      "href": "/services/decanter-centrifuge-repair/"
+    },
+    {
+      "label": "Centrifuge Repair",
+      "href": "/services/centrifuge-repair/"
+    }
+  ],
+  "relatedIndustries": [
+    {
+      "label": "Oil & Gas",
+      "href": "/industries/oil-gas/"
+    }
+  ],
+  "seoTitle": "Derrick Centrifuge Repair & Rebuild Specialists",
+  "seoDescription": "Independent Derrick decanter and basket centrifuge repair and rebuilds for oil and gas. Reconditioning, balancing, parts fabrication.",
+  "todos": [
+    "TODO(verify: confirm specific Derrick centrifuge model designations serviced with client; legacy page listed no model numbers)"
+  ],
+  "mergeInto": null
+}

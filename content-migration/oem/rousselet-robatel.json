@@ -1,0 +1,53 @@
+{
+  "slug": "rousselet-robatel",
+  "name": "Rousselet Robatel",
+  "archiveUrl": null,
+  "answerBox": "Centrifuge World is an independent specialist that repairs, rebuilds, and supplies parts for Rousselet Robatel centrifuges. Our Houston and Chicago service centers deliver full non-destructive inspection, structural welding, wear-part refitting, precision balancing, and reverse-engineered parts to restore your Rousselet Robatel machine to peak performance.",
+  "intro": "Rousselet Robatel centrifuges are used in pharmaceutical, fine chemical, and process separation applications. Centrifuge World provides independent repair, rebuild, and reverse-engineered parts support to keep these machines running at optimal efficiency.",
+  "disclosure": "Centrifuge World is an independent repair and rebuild specialist. We are not affiliated with Rousselet Robatel.",
+  "modelsServiced": [],
+  "typesServiced": [
+    "Basket centrifuge",
+    "Peeler centrifuge",
+    "Centrifugal extractor"
+  ],
+  "capabilities": [
+    { "item": "Non-destructive teardown inspection (NDTI)", "detail": "Complete disassembly and inspection of your Rousselet Robatel centrifuge, followed by a written report with findings and recommended repairs." },
+    { "item": "Structural welding", "detail": "Repair of areas damaged by mechanical stress, chemical attack, or erosion." },
+    { "item": "Wear-part refitting", "detail": "Replacement of o-rings, gaskets, and other consumable wear items." },
+    { "item": "Component replacement and upgrades", "detail": "Replacement of worn or damaged parts and execution of available performance upgrades." },
+    { "item": "Static and dynamic balancing", "detail": "Precision balancing of rotating assemblies to specification." },
+    { "item": "Reverse-engineered parts fabrication", "detail": "In-house manufacture of hard-to-find or long-lead OEM-equivalent parts, often within days." }
+  ],
+  "body": [
+    "Centrifuge World offers a full range of services to help you get the most out of your Rousselet Robatel centrifuge. All work is performed at our service centers in Houston, Texas and Chicago, Illinois, where our skilled engineers inspect each machine and build the right plan for repair or rebuild.",
+    "For every industrial centrifuge we handle, we provide comprehensive reconditioning and repair designed to keep equipment operating at high efficiency and to reduce process downtime. Routine maintenance is essential, and our engineers are available to troubleshoot issues or schedule an inspection.",
+    "Getting an inspection is straightforward: call to schedule, and we dispatch a truck to your location. Once the machine reaches our shop, we perform a complete non-destructive teardown inspection. You then receive a detailed report summarizing the findings, a repair recommendation, and a list of parts that require replacement.",
+    "When Rousselet Robatel rotating equipment needs repair, we perform standard maintenance, structural welding of damaged areas, refitting of wear parts such as o-rings and gaskets, replacement of worn components, available upgrades, static and dynamic balancing, and a test run where the equipment allows.",
+    "OEM-equivalent parts for your Rousselet Robatel centrifuge are available from Centrifuge World. When a part is hard to source or carries a long lead time, our shop can reverse engineer and fabricate it, frequently turning parts around in a matter of days. For emergency breakdowns, rush service is available around the clock."
+  ],
+  "faqs": [
+    { "question": "Does Centrifuge World service Rousselet Robatel centrifuges?", "answer": "Yes. As an independent specialist, we repair and rebuild Rousselet Robatel centrifuges at our Houston and Chicago service centers, including non-destructive inspection, welding, wear-part replacement, and balancing." },
+    { "question": "Can you supply parts for a Rousselet Robatel centrifuge?", "answer": "We supply OEM-equivalent parts and can reverse engineer and fabricate hard-to-find or long-lead components in-house, often within days." },
+    { "question": "What types of Rousselet Robatel machines do you repair?", "answer": "We service filtering and extraction machines, including basket centrifuges, peeler centrifuges, and centrifugal extractors. Contact us with your model to confirm scope." }
+  ],
+  "images": [],
+  "relatedBrands": [
+    { "label": "Broadbent", "href": "/oem/broadbent" },
+    { "label": "Tolhurst", "href": "/oem/tolhurst" }
+  ],
+  "relatedServices": [
+    { "label": "Basket Centrifuge Repair", "href": "/services/basket-centrifuge-repair" },
+    { "label": "Centrifuge Rebuilds", "href": "/services/centrifuge-rebuilds" }
+  ],
+  "relatedIndustries": [
+    { "label": "Pharmaceutical", "href": "/industries/pharmaceutical" }
+  ],
+  "seoTitle": "Rousselet Robatel Centrifuge Repair | Centrifuge World",
+  "seoDescription": "Independent Rousselet Robatel centrifuge repair, rebuild, and parts for basket, peeler, and extraction machines. Inspection, welding, and balancing.",
+  "todos": [
+    "TODO(verify: no Wayback snapshot existed for /rousselet-robatel/; page built from standard sections)",
+    "TODO(verify: confirm Rousselet Robatel model designations and which centrifuge types Centrifuge World actually services before publishing typesServiced)"
+  ],
+  "mergeInto": null
+}

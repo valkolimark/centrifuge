@@ -1,0 +1,49 @@
+{
+  "slug": "contrubex",
+  "name": "Contrubex",
+  "archiveUrl": "http://web.archive.org/web/20240525181525/https://centrifuge.com/contrubex/",
+  "answerBox": "Centrifuge World is an independent specialist in Contrubex decanter and basket centrifuge repair and rebuilds. Since 1939 we have inspected, reconditioned, balanced, and fabricated parts for industrial centrifuges from our Texas and Illinois service centers, with free pickup and delivery and 24/7 emergency response.",
+  "intro": "Contrubex decanter and basket centrifuges are used for demanding solid-liquid separation across process industries. Centrifuge World provides independent inspection, repair, rebuild, and maintenance for Contrubex equipment, restoring worn units to peak performance without OEM cost and lead time.",
+  "disclosure": "Centrifuge World is an independent repair and rebuild specialist. We are not affiliated with Contrubex.",
+  "modelsServiced": [],
+  "typesServiced": [
+    "Decanter centrifuges",
+    "Basket centrifuges"
+  ],
+  "capabilities": [
+    {"item": "Repair and rebuilding", "detail": "We fully recondition Contrubex decanter and basket centrifuges to restore separation performance and reliability."},
+    {"item": "Remanufacturing and fabrication", "detail": "We remanufacture worn components and fabricate replacement parts in-house when OEM supply is slow or unavailable."},
+    {"item": "High-speed dynamic balancing", "detail": "Rebuilt rotating assemblies are dynamically balanced to eliminate vibration and protect bearings, seals, and drives."},
+    {"item": "Vibration analysis", "detail": "We use vibration analysis to diagnose imbalance, bearing wear, and alignment issues before they cause failure."}
+  ],
+  "body": [
+    "Contrubex builds decanter and basket centrifuges for industrial solid-liquid separation. When bowls, baskets, bearings, seals, or drives wear, precise reconditioning is required to recover throughput and separation quality. Centrifuge World provides independent repair and rebuild services for Contrubex equipment and returns each machine to reliable operation.",
+    "Our process begins with a non-destructive teardown inspection. Our highly qualified service engineers assess the unit and develop the right plan to rebuild it, then deliver a written condition report with recommended repairs and a complete parts list so you can approve the scope before work proceeds. We provide free pickup and delivery from either of our service centers.",
+    "Centrifuge World provides full reconditioning and repair for Contrubex centrifuges, including repair and rebuilding, remanufacturing and fabrication, reconditioning, upgrades and retrofits, high-speed dynamic balancing, and vibration analysis. We work with you to improve the efficiency of your equipment, and our two locations in the Houston, Texas and Chicago, Illinois areas make it simple to get your Contrubex machine to us.",
+    "We stock a large inventory of parts for Contrubex centrifuges and can reverse engineer and fabricate hard-to-find components in-house, frequently within a few days. Contrubex equipment is associated with the Siebtechnik lineage; our team is experienced across both. Combined with 24/7 emergency response, Centrifuge World keeps your Contrubex centrifuges running with minimal downtime."
+  ],
+  "faqs": [
+    {"question": "Does Centrifuge World repair Contrubex centrifuges?", "answer": "Yes. Centrifuge World is an independent specialist in Contrubex decanter and basket centrifuge repair and rebuilds, handling inspection, reconditioning, remanufacturing, balancing, vibration analysis, and parts fabrication."},
+    {"question": "How does the Contrubex repair process work?", "answer": "We provide free pickup and delivery, perform a non-destructive teardown inspection, and our engineers develop a rebuild plan with a written condition report and parts list before any work begins."},
+    {"question": "Can you make parts for Contrubex centrifuges?", "answer": "We keep a large inventory of Contrubex parts, and when a component is obsolete or backordered our shop reverse engineers and fabricates it in-house, often within a few days."}
+  ],
+  "images": [],
+  "relatedBrands": [
+    {"label": "Andritz", "href": "/brands/andritz/"},
+    {"label": "Broadbent", "href": "/brands/broadbent/"}
+  ],
+  "relatedServices": [
+    {"label": "Decanter Centrifuge Repair", "href": "/services/decanter-centrifuge-repair/"},
+    {"label": "Basket Centrifuge Repair", "href": "/services/basket-centrifuge-repair/"}
+  ],
+  "relatedIndustries": [
+    {"label": "Chemical Processing", "href": "/industries/chemical/"}
+  ],
+  "seoTitle": "Contrubex Centrifuge Repair & Rebuild Specialists",
+  "seoDescription": "Independent Contrubex decanter and basket centrifuge repair and rebuilds. Reconditioning, remanufacturing, balancing, and parts fabrication.",
+  "todos": [
+    "TODO(verify: confirm brand spelling with client — 'Contrubex' is an uncommon name and may be a legacy misspelling)",
+    "TODO(verify: confirm relationship between Contrubex and Siebtechnik referenced on the legacy page)"
+  ],
+  "mergeInto": null
+}

@@ -1,0 +1,54 @@
+{
+  "slug": "khd-humboldt",
+  "name": "KHD Humboldt",
+  "archiveUrl": "http://web.archive.org/web/20240613225148/https://centrifuge.com/khd-humboldt/",
+  "answerBox": "Centrifuge World is an independent specialist that repairs, rebuilds, and supplies parts for KHD Humboldt Wedag decanter centrifuges. Our Houston and Chicago service centers deliver full non-destructive inspection, bowl and scroll welding, gearbox service, precision balancing, and reverse-engineered parts to restore your KHD Humboldt machine to peak performance.",
+  "intro": "KHD Humboldt Wedag decanter centrifuges are used across wastewater, mining, and industrial dewatering applications. Centrifuge World provides independent repair, rebuild, and parts support to keep these decanters running at high efficiency with minimal downtime.",
+  "disclosure": "Centrifuge World is an independent repair and rebuild specialist. We are not affiliated with KHD Humboldt.",
+  "modelsServiced": [],
+  "typesServiced": [
+    "Decanter centrifuge",
+    "Solid-bowl decanter centrifuge"
+  ],
+  "capabilities": [
+    { "item": "Non-destructive teardown inspection (NDTI)", "detail": "Full disassembly and inspection of your KHD Humboldt Wedag decanter, followed by a written report with findings and repair recommendations." },
+    { "item": "Bowl and scroll repair", "detail": "Welding and rebuild of areas damaged by mechanical stress, chemical attack, or erosion." },
+    { "item": "Wear-part refitting", "detail": "Replacement of o-rings, gaskets, and other consumable wear items." },
+    { "item": "Component replacement and upgrades", "detail": "Replacement of worn or damaged parts and execution of available performance upgrades." },
+    { "item": "Static and dynamic balancing", "detail": "Precision balancing of the rotating assembly to specification." },
+    { "item": "Reverse-engineered parts fabrication", "detail": "In-house manufacture of hard-to-find or long-lead OEM-equivalent parts, often within days." }
+  ],
+  "body": [
+    "Centrifuge World offers a range of service options to enhance the performance of your KHD Humboldt Wedag decanter centrifuge. All work is performed at our service centers in Houston, Texas and Chicago, Illinois, where qualified engineers inspect each machine and develop the right plan to rebuild it.",
+    "We provide comprehensive reconditioning and repair for KHD Humboldt decanter centrifuges, keeping equipment operating at high efficiency and reducing process downtime. Routine maintenance is essential, and our engineers are available to troubleshoot issues or schedule an inspection.",
+    "Getting an inspection is easy: call to set up an appointment and we handle the logistics, dispatching a truck to your facility. Once the decanter reaches our shop, we perform a complete non-destructive teardown inspection and send a repair quote. On approval, we complete the work and return the machine in top condition, operating at peak performance.",
+    "When KHD Humboldt rotating equipment requires repair, we perform standard maintenance, welding of damaged areas, refitting of wear parts such as o-rings and gaskets, replacement of worn components, available upgrades, static and dynamic balancing, and a test run where the equipment allows.",
+    "We carry a large inventory of OEM-equivalent parts for KHD Humboldt Wedag centrifuges. When a part is hard to find or backlogged, our shop can reverse engineer and fabricate it, frequently within a few days. For unexpected breakdowns, rush service is available around the clock."
+  ],
+  "faqs": [
+    { "question": "Does Centrifuge World repair KHD Humboldt Wedag decanter centrifuges?", "answer": "Yes. We provide full repair and rebuild for KHD Humboldt Wedag decanters, including non-destructive inspection, bowl and scroll welding, wear-part replacement, and balancing at our Houston and Chicago service centers." },
+    { "question": "Can you supply parts for a KHD Humboldt decanter?", "answer": "We maintain a large inventory of OEM-equivalent parts and can reverse engineer and fabricate hard-to-find or long-lead components in-house, often within days." },
+    { "question": "How does the inspection process work?", "answer": "Call to schedule and we arrange pickup. After a complete non-destructive teardown inspection at our shop, you receive a written report and quote before any repair work begins." }
+  ],
+  "images": [
+    { "src": "https://centrifuge-im.s3.amazonaws.com/wp-content/uploads/2022/01/07192701/IMG_7073-scaled-e1691528164602.jpg", "alt": "KHD Humboldt Wedag decanter centrifuge being serviced at Centrifuge World" },
+    { "src": "https://centrifuge-im.s3.amazonaws.com/wp-content/uploads/2019/02/07192924/Image-from-iOS-scaled-e1636651361778.jpg", "alt": "Decanter centrifuge rotating assembly under repair at Centrifuge World" }
+  ],
+  "relatedBrands": [
+    { "label": "Andritz", "href": "/oem/andritz" },
+    { "label": "Flottweg", "href": "/oem/flottweg" }
+  ],
+  "relatedServices": [
+    { "label": "Decanter Centrifuge Repair", "href": "/services/decanter-centrifuge-repair" },
+    { "label": "Gearbox Repair", "href": "/services/gearbox-repair" }
+  ],
+  "relatedIndustries": [
+    { "label": "Wastewater Treatment", "href": "/industries/wastewater-treatment" }
+  ],
+  "seoTitle": "KHD Humboldt Decanter Repair | Centrifuge World",
+  "seoDescription": "Independent KHD Humboldt Wedag decanter centrifuge repair, rebuild, and parts. Inspection, welding, balancing, and rush service in Houston and Chicago.",
+  "todos": [
+    "TODO(verify: confirm specific KHD Humboldt Wedag decanter model designations to populate modelsServiced)"
+  ],
+  "mergeInto": null
+}

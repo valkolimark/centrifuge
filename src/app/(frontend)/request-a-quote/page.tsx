@@ -3,7 +3,7 @@ import { SiteShell } from '@/components/layout/SiteShell'
 import { Section } from '@/components/ui/Section'
 import { Breadcrumbs } from '@/components/layout/Breadcrumbs'
 import { AnswerBox } from '@/components/blocks/AnswerBox'
-import { LeadForm } from '@/components/forms/LeadForm'
+import { QuoteForm } from '@/components/forms/QuoteForm'
 import { EmergencyCallout } from '@/components/blocks/EmergencyCallout'
 import { buildMetadata } from '@/lib/seo'
 
@@ -31,7 +31,7 @@ export default function RequestAQuotePage() {
             </AnswerBox>
           </div>
           <div className="mt-8">
-            <LeadForm type="request_quote" />
+            <QuoteForm />
           </div>
         </div>
       </Section>

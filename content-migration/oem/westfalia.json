@@ -1,0 +1,52 @@
+{
+  "slug": "westfalia",
+  "name": "GEA Westfalia",
+  "archiveUrl": "https://web.archive.org/web/20240525162225/https://centrifuge.com/westfalia/",
+  "answerBox": "Centrifuge World repairs and rebuilds GEA Westfalia disc-stack separators and decanter centrifuges. As an independent specialist serving industry since 1939, we inspect, recondition, balance, test, and supply parts for Westfalia equipment at our Houston and Chicago service centers, restoring peak performance.",
+  "intro": "Centrifuge World specializes in GEA Westfalia separator and decanter centrifuge repair, from high-speed disc-stack separators to large-volume decanters, pushers, and peelers.",
+  "disclosure": "Centrifuge World is an independent repair and rebuild specialist. We are not affiliated with GEA Westfalia.",
+  "modelsServiced": [],
+  "typesServiced": ["Disc-stack", "Decanter", "Pusher", "Peeler"],
+  "capabilities": [
+    {"item": "Inspection & NDTI", "detail": "Non-destructive teardown and inspection documents machine condition before work begins."},
+    {"item": "Separator & decanter rebuilds", "detail": "We recondition disc-stack separators and decanter bowls and conveyors to restore performance."},
+    {"item": "Wear-part replacement", "detail": "O-rings, gaskets, bearings, and worn components are refit or replaced to specification."},
+    {"item": "Weld repair", "detail": "We repair damage caused by mechanical wear, chemical attack, and erosion."},
+    {"item": "Balancing & testing", "detail": "Static and dynamic balancing plus a full test run confirm the machine is ready to run."},
+    {"item": "Parts fabrication", "detail": "Hard-to-source Westfalia parts are reverse-engineered and fabricated in-house."}
+  ],
+  "body": [
+    "Centrifuge World specializes in GEA Westfalia separator and decanter centrifuge repair. Our crews service the full range of Westfalia rotating equipment, from high-speed disc-stack separators to large-volume decanters, pushers, and peelers, and we have been repairing Westfalia machines for decades.",
+    "Keeping a Westfalia centrifuge in top operating condition depends on consistent maintenance. Our service engineers can help troubleshoot maintenance issues, advise on condition, and schedule an inspection before small problems grow into failures.",
+    "Every repair starts with a non-destructive teardown and inspection (NDTI). When you schedule service, we can dispatch a truck to your facility, transport the machine to our shop, and complete a full inspection. You then receive a detailed report with recommended repairs and the list of parts required to complete them, so nothing proceeds without your approval.",
+    "Once the scope is approved, our rebuild work covers standard maintenance, weld repair of areas damaged by mechanical, chemical, or erosion attack, refitting of wear parts such as o-rings and gaskets, replacement of worn or damaged components, approved upgrades, and static and dynamic balancing. Before the machine ships back, we complete a full test run to confirm it operates at peak performance.",
+    "We also maintain a large inventory of parts for Westfalia centrifuges. When a component is hard to find or carries a long lead time, our team can reverse-engineer and fabricate it in-house, often with a short turnaround. And when a breakdown can't wait, our emergency and rush repair support returns your Westfalia equipment to service quickly."
+  ],
+  "faqs": [
+    {"question": "Which GEA Westfalia centrifuges do you repair?", "answer": "We service Westfalia disc-stack separators and decanter centrifuges, including pusher and peeler equipment, across high-speed and large-volume applications."},
+    {"question": "Do you supply GEA Westfalia parts?", "answer": "Yes. We keep an inventory of Westfalia parts and can reverse-engineer and fabricate hard-to-find components in-house when a part is on long backlog."},
+    {"question": "How long have you serviced Westfalia equipment?", "answer": "Centrifuge World has repaired Westfalia separators and decanters for decades as an independent service specialist."},
+    {"question": "Do you handle emergency Westfalia repairs?", "answer": "Yes. We provide rush and emergency repair support to get failed Westfalia centrifuges back into production quickly."}
+  ],
+  "images": [
+    {"src": "https://centrifuge-im.s3.amazonaws.com/wp-content/uploads/2020/01/07192818/westfalia-centrifuge-repair-hero-scaled.jpg", "alt": "GEA Westfalia separator centrifuge undergoing repair at a Centrifuge World service center"},
+    {"src": "https://centrifuge-im.s3.amazonaws.com/wp-content/uploads/2022/01/07192707/IMG_2118-scaled.jpg", "alt": "GEA Westfalia decanter centrifuge rotating assembly in the shop"}
+  ],
+  "relatedBrands": [
+    {"label": "Alfa Laval", "href": "/brands/alfa-laval/"},
+    {"label": "Flottweg", "href": "/brands/flottweg/"}
+  ],
+  "relatedServices": [
+    {"label": "Disc-Stack Centrifuge Repair", "href": "/services/disc-stack-centrifuge-repair/"},
+    {"label": "Decanter Centrifuge Repair", "href": "/services/decanter-centrifuge-repair/"}
+  ],
+  "relatedIndustries": [
+    {"label": "Dairy", "href": "/industries/dairy/"}
+  ],
+  "seoTitle": "GEA Westfalia Centrifuge Repair | Centrifuge World",
+  "seoDescription": "Independent GEA Westfalia separator and decanter centrifuge repair, rebuilds, and parts. Inspection, balancing, and testing in Houston and Chicago.",
+  "todos": [
+    "TODO(verify: legacy page claims 'over 40 years' repairing Westfalia equipment — confirm exact tenure before restating a specific number; copy currently says 'for decades')"
+  ],
+  "mergeInto": null
+}

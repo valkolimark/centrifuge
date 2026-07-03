@@ -1,0 +1,105 @@
+{
+  "slug": "broadbent",
+  "name": "Broadbent",
+  "archiveUrl": "http://web.archive.org/web/20211203163101/https://centrifuge.com/broadbent/",
+  "answerBox": "Centrifuge World repairs and rebuilds Broadbent centrifuges, including high-speed disc machines, decanters, pushers and peelers. As an independent specialist operating since 1939, we inspect, machine, balance and reassemble Broadbent equipment at our Houston and Chicago service centers to restore separation performance and reduce plant downtime.",
+  "intro": "Broadbent industrial centrifuges span high-speed disc machines, decanters, pusher centrifuges and peeler centrifuges used across chemical, sugar and process industries. Centrifuge World is an independent repair and rebuild specialist that keeps this equipment running when parts and factory support are hard to source.",
+  "disclosure": "Centrifuge World is an independent repair and rebuild specialist. We are not affiliated with Broadbent.",
+  "modelsServiced": [],
+  "typesServiced": [
+    "Disc-stack centrifuges",
+    "Decanter centrifuges",
+    "Pusher centrifuges",
+    "Peeler centrifuges"
+  ],
+  "capabilities": [
+    {
+      "item": "Non-destructive testing & inspection (NDTI)",
+      "detail": "Incoming inspection with dimensional checks, dye-penetrant and other NDT methods, followed by a written findings-and-recommendations report before any work begins."
+    },
+    {
+      "item": "Bowl and rotating-assembly repair",
+      "detail": "Weld build-up and machining of bowls, hubs and shafts damaged by mechanical wear, chemical attack or erosion, restored to original fits and tolerances."
+    },
+    {
+      "item": "High-speed dynamic balancing",
+      "detail": "Rotating assemblies are balanced and test-run to reduce vibration and protect bearings, seals and gearboxes."
+    },
+    {
+      "item": "Wear-part replacement",
+      "detail": "O-rings, gaskets, seals, bearings and other consumable wear components refitted using new parts."
+    },
+    {
+      "item": "Parts fabrication & reverse engineering",
+      "detail": "In-house machining and reverse engineering of hard-to-find or long-lead components to keep aging equipment in service."
+    }
+  ],
+  "body": [
+    "Centrifuge World provides repair, rebuilding and reconditioning services for the full range of Broadbent centrifuges. From high-speed disc machines to large-volume decanters, pushers and peelers, our service engineers assess wear, damage and process fit before recommending a repair plan.",
+    "Work is carried out at our dedicated service centers in Houston, Texas and Chicago, Illinois. Each incoming machine goes through inspection and non-destructive testing so that bowls, shafts and rotating assemblies can be measured against original tolerances and restored accordingly.",
+    "Maintenance keeps a Broadbent centrifuge running at peak efficiency and reduces the risk of unplanned failures. Our engineers can troubleshoot recurring issues, advise on adjustments for current operating conditions, and identify the components most likely to need replacement at the next service interval.",
+    "We maintain an inventory of parts for Broadbent centrifuges and, when a part is discontinued or on long backorder, we reverse engineer and fabricate replacements in-house. This lets us return equipment to service quickly, often within days rather than the weeks a factory lead time can require.",
+    "After every reconditioning or repair you receive a written report detailing findings, the work performed and recommendations for future service intervals, giving your maintenance team a clear record and greater long-term uptime."
+  ],
+  "faqs": [
+    {
+      "question": "Can Centrifuge World repair Broadbent disc and decanter centrifuges?",
+      "answer": "Yes. We service high-speed Broadbent disc machines, decanters, pushers and peelers, including bowl repair, shaft machining, dynamic balancing and full rebuilds at our Houston and Chicago service centers."
+    },
+    {
+      "question": "What if my Broadbent part is discontinued or on long backorder?",
+      "answer": "We reverse engineer and fabricate hard-to-find Broadbent components in-house. This keeps older machines in service without waiting on extended factory lead times, and repairs can often be turned around in a matter of days."
+    },
+    {
+      "question": "Is Centrifuge World affiliated with Broadbent?",
+      "answer": "No. Centrifuge World is an independent repair and rebuild specialist and is not affiliated with Broadbent. We service Broadbent equipment but are not the original equipment manufacturer."
+    }
+  ],
+  "images": [
+    {
+      "src": "https://centrifuge.com/wp-content/uploads/2020/01/Broadbent-Header-image-2.jpg",
+      "alt": "Broadbent industrial centrifuge serviced by Centrifuge World"
+    },
+    {
+      "src": "https://centrifuge.com/wp-content/uploads/2020/01/L0693a.jpg",
+      "alt": "Broadbent centrifuge component during repair"
+    },
+    {
+      "src": "https://centrifuge.com/wp-content/uploads/2020/01/RG9299a.jpg",
+      "alt": "Broadbent centrifuge rotating assembly inspection"
+    }
+  ],
+  "relatedBrands": [
+    {
+      "label": "Alfa Laval",
+      "href": "/brands/alfa-laval"
+    },
+    {
+      "label": "Westfalia",
+      "href": "/brands/westfalia"
+    }
+  ],
+  "relatedServices": [
+    {
+      "label": "Decanter Centrifuge Repair",
+      "href": "/services/decanter-centrifuge-repair"
+    },
+    {
+      "label": "Centrifuge Rebuilds",
+      "href": "/services/centrifuge-rebuilds"
+    }
+  ],
+  "relatedIndustries": [
+    {
+      "label": "Chemical",
+      "href": "/industries/chemical"
+    }
+  ],
+  "seoTitle": "Broadbent Centrifuge Repair & Rebuilds | Centrifuge World",
+  "seoDescription": "Independent Broadbent centrifuge repair, rebuilds and parts fabrication for disc, decanter, pusher and peeler machines in Houston and Chicago.",
+  "todos": [
+    "TODO(verify: specific Broadbent model designations serviced)",
+    "TODO(verify: source a Broadbent-specific hero image on S3 rather than legacy centrifuge.com-hosted originals)"
+  ],
+  "mergeInto": null
+}

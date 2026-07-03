@@ -1,0 +1,50 @@
+{
+  "slug": "alfa-laval-sharples",
+  "name": "Alfa Laval / Sharples",
+  "archiveUrl": "http://web.archive.org/web/20240525181636/https://centrifuge.com/alfa-laval-sharples/",
+  "answerBox": "Centrifuge World repairs Alfa Laval and Sharples centrifuges, covering both Sharples decanters and Alfa Laval disc-stack separators. As an independent specialist since 1939, we inspect, recondition, balance, and hydraulically test these machines at our Houston and Chicago shops so your separation process returns to peak performance.",
+  "intro": "Alfa Laval and Sharples share a long separation heritage, spanning Sharples decanter centrifuges and Alfa Laval high-speed disc-stack separators. Centrifuge World is an independent shop that services both, from bowl and disc-stack reconditioning to balancing and full hydraulic testing. This page consolidates into our main Alfa Laval brand page.",
+  "disclosure": "Centrifuge World is an independent repair and rebuild specialist. We are not affiliated with Alfa Laval / Sharples.",
+  "modelsServiced": ["BRPX 717 SFV", "Lynx 300"],
+  "typesServiced": ["Decanter centrifuges", "Disc-stack separators", "High-speed separators"],
+  "capabilities": [
+    { "item": "Cleaning and inspection", "detail": "Thorough inspection and cleaning of the bowl, inlet and outlet, and disc stack, with a written condition report from the service engineer." },
+    { "item": "Hard-surfacing", "detail": "Mechanical polishing or coating of disc-stack and bowl surfaces to protect against wear and erosion." },
+    { "item": "Welding and structural repair", "detail": "Return of the centrifuge frame, skid, pipework, and inlet/outlet to original condition." },
+    { "item": "Balancing", "detail": "Bowl balancing to reduce vibration and restore separation performance." },
+    { "item": "Full hydraulic testing", "detail": "Full-capacity hydraulic test prior to shipping the machine back to your plant." }
+  ],
+  "body": [
+    "Sharples decanter centrifuges and Alfa Laval disc-stack separators lose efficiency over time from vibration, wear, and clogging, which lowers output yield. Centrifuge World technicians rebuild both types to restore capacity and reliability, and regular service intervals help ensure peak performance while reducing the risk of unplanned production stops.",
+    "High-speed centrifugal separation is a demanding process, whether your application calls for solids removal, clarification, purification, or polishing. Our engineers have the expertise to recondition Alfa Laval and Sharples equipment for each of these duties, and every completed job comes with a detailed report outlining the findings and, where useful, recommendations to better match the machine to your operating conditions.",
+    "Getting an inspection is straightforward. Call Centrifuge World to schedule it, load the machine onto the truck we dispatch, and our driver delivers it to our shop, where we perform a comprehensive non-destructive testing and inspection. We then clean and inspect the bowl, inlet and outlet, and disc stack, apply hard-surfacing where needed, weld and rebuild structural components, balance the bowl, and run a full-capacity hydraulic test before return.",
+    "We offer flexible service levels to match different budgets, from an annual check-up by factory-trained specialists who inspect, clean, and replace gaskets, seals, and genuine parts, through to full disc-stack reconditioning, bowl balancing, and bearing and gear replacement. As a general guide, we recommend servicing each high-speed separator at least once every 8,000 operating hours or every 12 months, regardless of application."
+  ],
+  "faqs": [
+    { "question": "Who repairs Alfa Laval and Sharples centrifuges?", "answer": "Centrifuge World, an independent centrifuge repair and rebuild specialist operating since 1939. We service both Sharples decanters and Alfa Laval disc-stack separators at our Houston and Chicago facilities, and we are not affiliated with Alfa Laval." },
+    { "question": "How often should an Alfa Laval separator be serviced?", "answer": "We recommend servicing each high-speed separator at least once every 8,000 operating hours or every 12 months, regardless of application. Regular intervals help maintain separation efficiency and reduce the risk of unplanned production stops." },
+    { "question": "Do you service both decanters and disc-stack separators?", "answer": "Yes. We recondition Sharples decanter centrifuges and Alfa Laval disc-stack and high-speed separators, including bowl and disc-stack cleaning, hard-surfacing, welding, balancing, and full hydraulic testing before the unit is returned." }
+  ],
+  "images": [
+    { "src": "https://centrifuge-im.s3.amazonaws.com/wp-content/uploads/2020/01/07192615/Alfa-Laval-BRPX-717-SFV-310SL_44813002_b.jpg", "alt": "Alfa Laval BRPX 717 SFV disc-stack separator serviced by Centrifuge World" },
+    { "src": "https://centrifuge-im.s3.amazonaws.com/wp-content/uploads/2020/01/07192616/Alfa-Laval-Lynx-300_46852001_aa.jpg", "alt": "Alfa Laval Lynx 300 centrifuge" },
+    { "src": "https://centrifuge-im.s3.amazonaws.com/wp-content/uploads/2020/01/07193347/Sharples-Centrifuge.jpg", "alt": "Sharples decanter centrifuge" }
+  ],
+  "relatedBrands": [
+    { "label": "Sharples", "href": "/brands/sharples/" },
+    { "label": "Westfalia", "href": "/brands/westfalia/" }
+  ],
+  "relatedServices": [
+    { "label": "Disc Stack Centrifuge Repair", "href": "/services/disc-stack-centrifuge-repair/" },
+    { "label": "Decanter Centrifuge Repair", "href": "/services/decanter-centrifuge-repair/" }
+  ],
+  "relatedIndustries": [
+    { "label": "Food & Beverage", "href": "/industries/food-beverage/" }
+  ],
+  "seoTitle": "Alfa Laval / Sharples Centrifuge Repair | Centrifuge World",
+  "seoDescription": "Independent Alfa Laval and Sharples centrifuge repair. Decanter and disc-stack separator reconditioning, hard-surfacing, balancing, and hydraulic testing.",
+  "todos": [
+    "TODO(verify: confirm whether this page should 301-merge into /brands/alfa-laval/ or remain distinct; dedicated Alfa Laval and Sharples pages already exist. mergeInto set to alfa-laval.)"
+  ],
+  "mergeInto": "alfa-laval"
+}

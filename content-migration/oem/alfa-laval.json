@@ -1,0 +1,53 @@
+{
+  "slug": "alfa-laval",
+  "name": "Alfa Laval",
+  "archiveUrl": "https://web.archive.org/web/20240525164255/https://centrifuge.com/alfa-laval/",
+  "answerBox": "Centrifuge World repairs and rebuilds Alfa Laval decanter centrifuges and disc-stack separators. As an independent specialist serving industry since 1939, we inspect, recondition, hard-surface, balance, and full-speed test Alfa Laval equipment, then return it to peak separation performance while minimizing downtime.",
+  "intro": "Centrifuge World delivers quick, dependable service for Alfa Laval decanter centrifuges and disc-stack separators, restoring output yield and reliability across your process.",
+  "disclosure": "Centrifuge World is an independent repair and rebuild specialist. We are not affiliated with Alfa Laval.",
+  "modelsServiced": ["Lynx 300"],
+  "typesServiced": ["Decanter", "Disc-stack", "Pusher", "Peeler"],
+  "capabilities": [
+    {"item": "Maintenance & cleaning", "detail": "Full inspection and cleaning of the bowl, inlet/outlet, and disc stack."},
+    {"item": "Hard-surfacing", "detail": "Mechanically polish or coat disc-stack and bowl surfaces to protect against wear."},
+    {"item": "Weld repair", "detail": "Restore frames, skids, pipework, and inlet/outlet components to original condition."},
+    {"item": "Balancing", "detail": "Reduce bowl vibration and improve overall separation performance."},
+    {"item": "Bearing & gear replacement", "detail": "Replace bearings, gears, seals, and gaskets during deeper reconditioning."},
+    {"item": "Full-speed testing", "detail": "Every centrifuge is tested at full operating speed before return shipping."}
+  ],
+  "body": [
+    "Alfa Laval decanter centrifuges gradually lose efficiency as vibration, wear, and clogging take their toll, reducing output yield and raising the risk of unplanned production stops. Regular service keeps Alfa Laval decanters and separators running at peak performance, and Centrifuge World's shops have the skills and tooling to help you get the most out of your equipment.",
+    "High-speed centrifugal separation is demanding work, whether your application calls for solids removal, clarification, purification, or polishing. Because separator maintenance is not always scheduled, Centrifuge World operates service centers that provide quick turnaround and experienced support, keeping downtime to a minimum when a machine needs attention.",
+    "Service begins with a non-destructive teardown and inspection (NDTI). We can collect the machine from your site, bring it to our shop, and produce a written condition report with recommended repairs and the parts required. Our specialists then clean and inspect the machine and replace gaskets, seals, and other parts, from routine annual check-ups through full disc-stack reconditioning, bowl balancing, and bearing and gear replacement.",
+    "For decanters, disc-stack separators, pushers, and peelers, our rebuild scope covers standard maintenance, weld repair of areas damaged by mechanical, chemical, or erosion attack, refitting of wear parts such as o-rings and gaskets, replacement of worn or damaged items, approved upgrades, and static and dynamic balancing. Before shipping, each Alfa Laval centrifuge is tested at full operating speed to confirm it is ready for service.",
+    "When a breakdown can't wait, Centrifuge World offers emergency and rush repair support to return your Alfa Laval equipment to production quickly."
+  ],
+  "faqs": [
+    {"question": "Which Alfa Laval centrifuges do you service?", "answer": "We repair and rebuild Alfa Laval decanter centrifuges and disc-stack separators, as well as pusher and peeler equipment."},
+    {"question": "How often should an Alfa Laval separator be serviced?", "answer": "The legacy guidance is to service or maintain each high-speed separator at least once every 8,000 operating hours or every 12 months. Confirm the interval for your specific machine and application with our engineers."},
+    {"question": "Do you test the centrifuge before returning it?", "answer": "Yes. Every Alfa Laval centrifuge is tested at full operating speed prior to return shipping to verify balance and separation performance."},
+    {"question": "What does hard-surfacing do?", "answer": "Hard-surfacing mechanically polishes or coats disc-stack and bowl surfaces to resist wear, which is critical for maintaining separation efficiency across demanding applications."}
+  ],
+  "images": [
+    {"src": "https://centrifuge-im.s3.amazonaws.com/wp-content/uploads/2020/01/07192616/Alfa-Laval-Lynx-300_46852001_aa.jpg", "alt": "Alfa Laval Lynx 300 decanter centrifuge"},
+    {"src": "https://centrifuge-im.s3.amazonaws.com/wp-content/uploads/2022/01/07192655/IMG_7381-scaled-e1641418885584.jpeg", "alt": "Alfa Laval centrifuge being reconditioned at a Centrifuge World service center"}
+  ],
+  "relatedBrands": [
+    {"label": "Westfalia", "href": "/brands/westfalia/"},
+    {"label": "Sharples", "href": "/brands/sharples/"}
+  ],
+  "relatedServices": [
+    {"label": "Disc-Stack Centrifuge Repair", "href": "/services/disc-stack-centrifuge-repair/"},
+    {"label": "Decanter Centrifuge Repair", "href": "/services/decanter-centrifuge-repair/"}
+  ],
+  "relatedIndustries": [
+    {"label": "Food & Beverage", "href": "/industries/food-beverage/"}
+  ],
+  "seoTitle": "Alfa Laval Centrifuge Repair | Centrifuge World",
+  "seoDescription": "Independent Alfa Laval decanter and disc-stack separator repair, rebuilds, hard-surfacing, balancing, and full-speed testing. Fast, dependable service.",
+  "todos": [
+    "TODO(verify: legacy page states 8,000 operating hours / 12-month service interval as a general recommendation — confirm before presenting as our standard guidance)",
+    "TODO(verify: 'Lynx 300' model appears via an on-page product image, not body prose — confirm we actively service this model before featuring it prominently)"
+  ],
+  "mergeInto": null
+}

@@ -1,0 +1,52 @@
+{
+  "slug": "bird",
+  "name": "Bird",
+  "archiveUrl": "https://web.archive.org/web/20240614225909/https://centrifuge.com/bird/",
+  "answerBox": "Centrifuge World repairs and rebuilds Bird decanter centrifuges, now part of the Andritz line. As an independent specialist serving industry since 1939, we inspect, hard-surface, rebuild gearboxes, balance, and test Bird equipment at our Houston and Chicago service centers, restoring OEM-level performance.",
+  "intro": "Centrifuge World specializes in Bird decanter centrifuge repair, servicing all types of Bird and Bird/Andritz machines from high-speed decanters to pushers and peelers.",
+  "disclosure": "Centrifuge World is an independent repair and rebuild specialist. We are not affiliated with Bird.",
+  "modelsServiced": [],
+  "typesServiced": ["Decanter", "Pusher", "Peeler"],
+  "capabilities": [
+    {"item": "Restore to OEM specification", "detail": "All parts are restored to original manufacturer specifications."},
+    {"item": "Conveyor rebuild & hard-surfacing", "detail": "We rebuild and hard-surface conveyors to resist wear and maintain conveyance."},
+    {"item": "Gearbox & drive rebuild", "detail": "We rebuild gearboxes and drive assemblies to restore reliable operation."},
+    {"item": "Dynamic balancing", "detail": "We dynamically balance the bowl and conveyor to reduce vibration."},
+    {"item": "Frame & casing repair", "detail": "We clean and repair frames and casing assemblies."},
+    {"item": "Test run & controls", "detail": "We test the centrifuge at optimal service speed and repair or modify electrical controls as required."}
+  ],
+  "body": [
+    "Centrifuge World specializes in Bird decanter centrifuge repair and services. We repair all types of Bird and Bird/Andritz centrifuges, from high-speed Bird decanters to pushers and peelers. Our shops in Houston, Texas and the Chicago, Illinois area are equipped to restore your equipment to perform like the day it left the factory.",
+    "Bird centrifuges, sometimes referred to as Andritz Bird decanter centrifuges, are rugged industrial machines valued for process flexibility, automation, and chemical resistance. They are straightforward to set up and operate, have a compact footprint, and carry low running costs, which is why so many remain in service across demanding applications.",
+    "Every repair begins with a non-destructive teardown and inspection (NDTI). Our highly skilled service engineers document the machine's condition and build a detailed plan to fully restore it. From there, our rebuild scope covers restoring all parts to original manufacturer specification, rebuilding and hard-surfacing conveyors, rebuilding gearboxes and drive assemblies, dynamically balancing the bowl and conveyor, cleaning and repairing frames and casing assemblies, testing the centrifuge at optimal service speed, and repairing or modifying electrical controls as required.",
+    "We also supply components for Bird centrifuges. When a part is difficult to locate or carries a long lead time, our team can reverse-engineer and fabricate the item you need in-house, often within a few days, keeping your equipment out of extended backlog waits.",
+    "A note on the brand's history: Bird Machine Company was acquired by Baker Hughes in 1989, merged with Ketema Process Equipment in 1996, and was acquired by Andritz AG in 2003. That lineage is why Bird decanters are now serviced as part of the broader Andritz Separation family."
+  ],
+  "faqs": [
+    {"question": "Are Bird and Andritz centrifuges the same?", "answer": "Bird Machine Company was acquired by Andritz AG in 2003, so Bird decanters are now part of the Andritz line. We service both Bird and Bird/Andritz machines."},
+    {"question": "Which Bird centrifuges do you repair?", "answer": "We repair all types of Bird decanter centrifuges, including high-speed decanters, pushers, and peelers."},
+    {"question": "Do you rebuild Bird gearboxes?", "answer": "Yes. We rebuild gearboxes and drive assemblies, hard-surface conveyors, and dynamically balance the bowl and conveyor as part of a full rebuild."},
+    {"question": "Can you supply hard-to-find Bird parts?", "answer": "Yes. When a Bird part is difficult to locate or on long backlog, we can reverse-engineer and fabricate it in-house, often within a few days."}
+  ],
+  "images": [
+    {"src": "https://centrifuge-im.s3.amazonaws.com/wp-content/uploads/2020/01/07192822/bird-centrifuge-repair-hero-scaled.jpg", "alt": "Bird decanter centrifuge undergoing repair at a Centrifuge World service center"},
+    {"src": "https://centrifuge-im.s3.amazonaws.com/wp-content/uploads/2020/01/07193356/bird-centrifuge.jpg", "alt": "Bird decanter centrifuge in the Centrifuge World shop"}
+  ],
+  "relatedBrands": [
+    {"label": "Andritz", "href": "/brands/andritz/"},
+    {"label": "Tolhurst", "href": "/brands/tolhurst/"}
+  ],
+  "relatedServices": [
+    {"label": "Decanter Centrifuge Repair", "href": "/services/decanter-centrifuge-repair/"},
+    {"label": "Gearbox Repair", "href": "/services/gearbox-repair/"}
+  ],
+  "relatedIndustries": [
+    {"label": "Wastewater Treatment", "href": "/industries/wastewater-treatment/"}
+  ],
+  "seoTitle": "Bird Centrifuge Repair | Centrifuge World",
+  "seoDescription": "Independent Bird (Andritz) decanter centrifuge repair and rebuilds. Conveyor hard-surfacing, gearbox rebuilds, balancing, and testing.",
+  "todos": [
+    "TODO(verify: legacy page advertises a 12-month warranty on Bird repairs — confirm current warranty terms before publishing)"
+  ],
+  "mergeInto": null
+}

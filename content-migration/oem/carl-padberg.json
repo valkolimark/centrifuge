@@ -1,0 +1,52 @@
+{
+  "slug": "carl-padberg",
+  "name": "Carl Padberg",
+  "archiveUrl": "http://web.archive.org/web/20240525175659/https://centrifuge.com/carl-padberg/",
+  "answerBox": "Centrifuge World repairs and rebuilds Carl Padberg (CEPA) centrifuges, including the vertical LS series and other high-speed separation equipment. As an independent specialist serving industrial plants since 1939, we handle inspection, reconditioning, parts fabrication, and dynamic balancing from our Texas and Illinois service centers with 24/7 emergency support.",
+  "intro": "Carl Padberg Zentrifugenbau GmbH, known in the industry as CEPA, builds precision separation equipment used across chemical, pharmaceutical, and process applications. Centrifuge World provides independent repair, rebuild, and maintenance services for Carl Padberg machines, restoring worn or damaged units to original operating tolerances without the cost and lead time of OEM service.",
+  "disclosure": "Centrifuge World is an independent repair and rebuild specialist. We are not affiliated with Carl Padberg.",
+  "modelsServiced": ["LS series"],
+  "typesServiced": [
+    "Vertical centrifuges (LS series)",
+    "Disc-stack centrifuges",
+    "Decanter centrifuges",
+    "Pusher centrifuges",
+    "Peeler centrifuges"
+  ],
+  "capabilities": [
+    {"item": "Non-destructive teardown inspection (NDTI)", "detail": "Every incoming Carl Padberg unit is fully disassembled and inspected before we quote, so you get a documented condition report and a scoped repair list rather than surprises mid-job."},
+    {"item": "Rotor and bowl reconditioning", "detail": "We true, resurface, and rebuild rotating assemblies to restore concentricity and separation performance on high-speed CEPA equipment."},
+    {"item": "High-speed dynamic balancing", "detail": "Rebuilt assemblies are balanced to fine tolerances to eliminate vibration and protect bearings, seals, and drive components."},
+    {"item": "Reverse-engineered parts fabrication", "detail": "When OEM parts are backordered or obsolete, we reverse engineer and fabricate wear parts in-house, often turning them around in a few days."}
+  ],
+  "body": [
+    "Carl Padberg centrifuges, marketed under the CEPA name, are engineered for demanding separation, clarification, washing, and filtration duties. The vertical LS series is designed to filter, rinse, wash, clarify, and separate products, with operating heads configured for specific process caps. Because these machines run at high speed and hold tight tolerances, they depend on precise reconditioning when rotors, bearings, seals, or drives begin to wear.",
+    "Centrifuge World services the full range of Carl Padberg equipment, from high-speed disc-stack machines to decanters, pushers, and peelers. Our process begins with a comprehensive non-destructive teardown inspection. After teardown we deliver a written condition report with recommended repairs and a complete parts list, so you can approve the scope before any work proceeds.",
+    "Once approved, our service engineers execute the repair: welding areas damaged by mechanical, chemical, or erosion attack; refitting wear parts such as O-rings and gaskets; replacing worn or damaged components; performing upgrades; and dynamically balancing the rotating assembly. Every unit is test run where the equipment allows, then returned to service running at peak performance.",
+    "We maintain a large inventory of parts for Carl Padberg centrifuges and can reverse engineer and fabricate hard-to-find components when the OEM supply chain is slow. With service centers in the Houston, Texas and Chicago, Illinois areas and 24/7 emergency response, Centrifuge World keeps your CEPA equipment running with minimal downtime."
+  ],
+  "faqs": [
+    {"question": "Do you repair Carl Padberg (CEPA) LS series centrifuges?", "answer": "Yes. Centrifuge World repairs and rebuilds the Carl Padberg LS series vertical centrifuges along with the brand's disc-stack, decanter, pusher, and peeler equipment. We handle inspection, reconditioning, balancing, and parts fabrication as an independent specialist."},
+    {"question": "Can you supply parts for Carl Padberg centrifuges?", "answer": "We keep a large inventory of parts for Carl Padberg equipment. When a component is obsolete or backordered, our shop reverse engineers and fabricates it in-house, frequently delivering the finished part within a few days."},
+    {"question": "How does the repair process start?", "answer": "Call Centrifuge World to schedule an inspection. We arrange pickup and transport to our shop, perform a full non-destructive teardown inspection, and send you a condition report with recommended repairs and a parts list before any work begins."}
+  ],
+  "images": [
+    {"src": "https://centrifuge-im.s3.amazonaws.com/wp-content/uploads/2020/01/07192603/carl-padberg.jpg", "alt": "Carl Padberg CEPA centrifuge serviced by Centrifuge World"},
+    {"src": "https://centrifuge-im.s3.amazonaws.com/wp-content/uploads/2020/01/07193427/4976_3.jpg", "alt": "Centrifuge rotor assembly reconditioned during a Carl Padberg rebuild"}
+  ],
+  "relatedBrands": [
+    {"label": "Alfa Laval", "href": "/brands/alfa-laval/"},
+    {"label": "GEA Westfalia", "href": "/brands/westfalia/"}
+  ],
+  "relatedServices": [
+    {"label": "Disc-Stack Centrifuge Repair", "href": "/services/disc-stack-centrifuge-repair/"},
+    {"label": "Pusher & Peeler Centrifuge Repair", "href": "/services/pusher-peeler-centrifuge-repair/"}
+  ],
+  "relatedIndustries": [
+    {"label": "Chemical Processing", "href": "/industries/chemical/"}
+  ],
+  "seoTitle": "Carl Padberg (CEPA) Centrifuge Repair & Rebuild",
+  "seoDescription": "Independent Carl Padberg (CEPA) centrifuge repair and rebuilds. LS series, disc-stack, decanter, pusher and peeler equipment restored and balanced.",
+  "todos": [],
+  "mergeInto": null
+}

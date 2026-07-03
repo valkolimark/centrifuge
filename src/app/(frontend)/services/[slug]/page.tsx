@@ -10,7 +10,10 @@ import { EmergencyCallout } from '@/components/blocks/EmergencyCallout'
 import { FAQAccordion } from '@/components/blocks/FAQAccordion'
 import { RelatedLinks } from '@/components/blocks/RelatedLinks'
 import { CTABanner } from '@/components/blocks/CTABanner'
-import { LeadForm } from '@/components/forms/LeadForm'
+import { QuoteForm } from '@/components/forms/QuoteForm'
+import { VideoFacade } from '@/components/blocks/VideoFacade'
+import { SERVICE_HERO, SERVICE_VIDEO } from '@/lib/page-media'
+import { toVideoSource } from '@/lib/videos'
 import { JsonLd } from '@/components/JsonLd'
 import { getPayloadClient } from '@/lib/payload'
 import { buildMetadata } from '@/lib/seo'
@@ -122,6 +125,7 @@ export default async function ServicePage({ params }: { params: Promise<{ slug: 
         eyebrow="Centrifuge service"
         title={h1}
         subtitle={service.intro}
+        image={!service.emergencyVariant && SERVICE_HERO[service.slug] ? SERVICE_HERO[service.slug] : undefined}
       />
 
       <Section>
@@ -159,6 +163,17 @@ export default async function ServicePage({ params }: { params: Promise<{ slug: 
         </Section>
       ) : null}
 
+      {SERVICE_VIDEO[service.slug] ? (
+        <Section>
+          <div className="mx-auto max-w-3xl">
+            <h2>See this work in the shop</h2>
+            <div className="mt-5">
+              <VideoFacade video={toVideoSource({ id: SERVICE_VIDEO[service.slug], title: `${service.title} — Centrifuge World` })} />
+            </div>
+          </div>
+        </Section>
+      ) : null}
+
       <EmergencyCallout />
 
       {faqs.length ? (
@@ -183,7 +198,7 @@ export default async function ServicePage({ params }: { params: Promise<{ slug: 
           <h2>Get a quote for {service.title.toLowerCase()}</h2>
           <p className="mt-2 text-steel-700">Send your machine details for an inspection-first quote.</p>
           <div className="mt-6">
-            <LeadForm type={(service.formType as FormType) || 'request_quote'} prefill={{ serviceNeeded: service.title }} />
+            <QuoteForm />
           </div>
         </div>
       </Section>

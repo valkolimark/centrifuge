@@ -1,0 +1,74 @@
+{
+  "slug": "western-states",
+  "name": "Western States",
+  "archiveUrl": null,
+  "answerBox": "Centrifuge World repairs and rebuilds Western States basket centrifuges at our US service centers in Houston and Chicago. Since 1939 our engineers have delivered inspection, non-destructive testing, rotating-assembly rebuilds, precision balancing, and reverse-engineered replacement parts to restore Western States equipment to peak separation performance and reduce unplanned process downtime.",
+  "intro": "Western States basket centrifuges are built for heavy-duty batch and continuous separation service, and Centrifuge World keeps them productive well beyond their original service life. As an independent centrifuge repair and rebuild specialist since 1939, we inspect, repair, rebuild, and supply parts for Western States machines from our Houston, Texas and Chicago, Illinois shops.",
+  "disclosure": "Centrifuge World is an independent repair and rebuild specialist. We are not affiliated with Western States.",
+  "modelsServiced": [],
+  "typesServiced": [
+    "Basket centrifuges"
+  ],
+  "capabilities": [
+    {
+      "item": "Inspection & NDT",
+      "detail": "Full teardown, non-destructive testing, and dimensional evaluation of baskets, spindles, and drive components, documented in a written findings report with a repair quote."
+    },
+    {
+      "item": "Rebuilds & reconditioning",
+      "detail": "Complete reconditioning of Western States rotating assemblies, including bearing and seal replacement, weld repair of erosion and corrosion damage, and wear-part refits."
+    },
+    {
+      "item": "Parts fabrication",
+      "detail": "Reverse engineering and in-house machining of hard-to-source Western States wear parts, with hard-surfacing and carbide protection when required."
+    },
+    {
+      "item": "Balancing & test runs",
+      "detail": "Static and dynamic balancing of baskets and rotating assemblies followed by a monitored test run to verify vibration levels before the machine ships."
+    },
+    {
+      "item": "Field & emergency service",
+      "detail": "On-site troubleshooting, installation support, and 24/7 emergency response backed by expedited shop turnaround."
+    }
+  ],
+  "body": [
+    "Centrifuge World offers a full range of service options to restore and enhance the performance of your Western States basket centrifuge. All work is completed at our service centers in Houston, Texas and the Chicago, Illinois area, where our qualified service engineers evaluate each machine and develop the right plan to repair or rebuild it.",
+    "Every project begins with inspection. We schedule a pickup, dispatch a truck to your site, and transport the centrifuge to our shop for comprehensive non-destructive testing (NDT). You then receive a written report covering the machine's condition, our recommended services, and the required parts, along with a firm quote before any work proceeds.",
+    "When Western States rotating equipment needs repair, our scope includes standard maintenance, welding of mechanical, chemical, and erosion damage, refitting wear parts such as O-rings and gaskets, replacing worn or damaged items, engineered upgrades, and static or dynamic balancing followed by a documented test run.",
+    "Parts availability keeps aging equipment in service. We maintain an inventory of centrifuge wear parts and, when a Western States component is on long backorder or no longer stocked, our team reverse-engineers and fabricates it in-house, often turning critical parts around within a few days.",
+    "Unexpected breakdowns do not wait for business hours. Our 24/7 emergency line and rush repair service get your Western States centrifuge back into production quickly, whether the fix calls for field support or an expedited shop rebuild."
+  ],
+  "faqs": [
+    {
+      "question": "Who repairs Western States centrifuges?",
+      "answer": "Centrifuge World repairs Western States basket centrifuges as an independent specialist. We are not the OEM, but we have serviced Western States and comparable industrial centrifuges since 1939 from our Houston and Chicago facilities."
+    },
+    {
+      "question": "Can you supply parts for a Western States centrifuge?",
+      "answer": "Yes. We stock centrifuge wear parts and reverse-engineer and machine hard-to-source Western States components in-house, so long OEM lead times and discontinued parts do not keep your machine idle."
+    },
+    {
+      "question": "What does a Western States centrifuge rebuild include?",
+      "answer": "A rebuild can include teardown and NDT inspection, bearing and seal replacement, weld repair, wear-part refits, engineered upgrades, and static and dynamic balancing with a monitored test run before the machine ships back to you."
+    }
+  ],
+  "images": [],
+  "relatedBrands": [
+    { "label": "Tolhurst", "href": "/brands/tolhurst/" },
+    { "label": "Broadbent", "href": "/brands/broadbent/" }
+  ],
+  "relatedServices": [
+    { "label": "Basket Centrifuge Repair", "href": "/services/basket-centrifuge-repair/" },
+    { "label": "Centrifuge Rebuilds", "href": "/services/centrifuge-rebuilds/" }
+  ],
+  "relatedIndustries": [
+    { "label": "Food & Beverage", "href": "/industries/food-beverage/" }
+  ],
+  "seoTitle": "Western States Centrifuge Repair | Centrifuge World",
+  "seoDescription": "Independent Western States basket centrifuge repair and rebuilds since 1939. Inspection, balancing, parts fabrication and 24/7 emergency service in the US.",
+  "todos": [
+    "TODO(verify: confirm the Western States centrifuge types and any specific models the client services; basket listed as the primary type, no legacy content was available to source model numbers)",
+    "TODO(no archived snapshot found for centrifuge.com/western-states/ — this page was built entirely from standard sections; review with client before publish)"
+  ],
+  "mergeInto": null
+}

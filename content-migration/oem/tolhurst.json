@@ -1,0 +1,97 @@
+{
+  "slug": "tolhurst",
+  "name": "Tolhurst",
+  "archiveUrl": "http://web.archive.org/web/20240715182359/https://centrifuge.com/tolhurst/",
+  "answerBox": "Centrifuge World repairs and rebuilds Tolhurst basket centrifuges. As an independent specialist, we inspect each machine, weld and machine damaged components, refit wear parts, and dynamically balance and test-run the assembly at our Houston and Chicago service centers to restore separation performance and reduce downtime.",
+  "intro": "Tolhurst basket centrifuges are long-serving batch separation machines found across chemical, pharmaceutical and process plants. Centrifuge World is an independent repair and rebuild specialist that keeps these machines running when factory support and spare parts are difficult to obtain.",
+  "disclosure": "Centrifuge World is an independent repair and rebuild specialist. We are not affiliated with Tolhurst.",
+  "modelsServiced": [],
+  "typesServiced": [
+    "Basket centrifuges"
+  ],
+  "capabilities": [
+    {
+      "item": "Non-destructive testing & inspection (NDTI)",
+      "detail": "Incoming inspection with dimensional checks, dye-penetrant and other NDT methods, followed by a written findings-and-recommendations report before any work begins."
+    },
+    {
+      "item": "Bowl and rotating-assembly repair",
+      "detail": "Weld build-up and machining of bowls, hubs and shafts damaged by mechanical wear, chemical attack or erosion, restored to original fits and tolerances."
+    },
+    {
+      "item": "High-speed dynamic balancing",
+      "detail": "Rotating assemblies are balanced and test-run to reduce vibration and protect bearings, seals and gearboxes."
+    },
+    {
+      "item": "Wear-part replacement",
+      "detail": "O-rings, gaskets, seals, bearings and other consumable wear components refitted using new parts."
+    },
+    {
+      "item": "Parts fabrication & reverse engineering",
+      "detail": "In-house machining and reverse engineering of hard-to-find or long-lead components to keep aging equipment in service."
+    }
+  ],
+  "body": [
+    "Centrifuge World offers a full range of services to enhance the performance of Tolhurst basket centrifuges. Work is performed at our service centers in Houston, Texas and Chicago, Illinois, where qualified service engineers inspect each machine and develop the right plan to rebuild it.",
+    "Getting a machine inspected is straightforward. Call to schedule an inspection, we dispatch a truck to your site, and once the centrifuge reaches our shop it undergoes a comprehensive non-destructive test and inspection. You then receive a written report with recommendations and a parts list before any repair proceeds.",
+    "Once you approve the plan, our repair scope can include welding of areas damaged by mechanical, chemical or erosion attack, refitting wear parts such as O-rings and gaskets, replacing worn or damaged items, executing upgrades, static and dynamic balancing, and a final test run.",
+    "We maintain a large inventory of parts for Tolhurst centrifuges. When a component is hard to find or on long backorder, we reverse engineer and fabricate it in-house, typically turning it around in a matter of days so your process is not held hostage to factory lead times.",
+    "Rush service is available for unexpected breakdowns, and our team supports emergency repairs to get critical equipment back into production quickly."
+  ],
+  "faqs": [
+    {
+      "question": "Who repairs Tolhurst basket centrifuges?",
+      "answer": "Centrifuge World repairs and rebuilds Tolhurst basket centrifuges as an independent specialist. We inspect, weld and machine damaged parts, refit wear components and balance the assembly at our Houston and Chicago service centers."
+    },
+    {
+      "question": "How does the Tolhurst inspection process work?",
+      "answer": "Call to schedule an inspection and we send a truck to collect your centrifuge. At our shop it undergoes a full non-destructive test and inspection, after which you receive a written report with repair recommendations and a parts list before work begins."
+    },
+    {
+      "question": "Can you make Tolhurst parts that are no longer available?",
+      "answer": "Yes. We stock parts for Tolhurst machines and reverse engineer and fabricate discontinued or long-lead components in-house, often within a few days, to keep older basket centrifuges in service."
+    }
+  ],
+  "images": [
+    {
+      "src": "https://centrifuge-im.s3.amazonaws.com/wp-content/uploads/2020/01/07192810/tolhurst-centrifuge-repair-hero-1.jpg",
+      "alt": "Tolhurst basket centrifuge repair at Centrifuge World"
+    },
+    {
+      "src": "https://centrifuge-im.s3.amazonaws.com/wp-content/uploads/2020/01/07192839/61151599156__E9659B56-565F-4EE7-8111-2AE867D66150.jpeg",
+      "alt": "Tolhurst centrifuge component during rebuild"
+    }
+  ],
+  "relatedBrands": [
+    {
+      "label": "Broadbent",
+      "href": "/brands/broadbent"
+    },
+    {
+      "label": "Heinkel",
+      "href": "/brands/heinkel"
+    }
+  ],
+  "relatedServices": [
+    {
+      "label": "Basket Centrifuge Repair",
+      "href": "/services/basket-centrifuge-repair"
+    },
+    {
+      "label": "Centrifuge Rebuilds",
+      "href": "/services/centrifuge-rebuilds"
+    }
+  ],
+  "relatedIndustries": [
+    {
+      "label": "Pharmaceutical",
+      "href": "/industries/pharmaceutical"
+    }
+  ],
+  "seoTitle": "Tolhurst Centrifuge Repair & Rebuilds | Centrifuge World",
+  "seoDescription": "Independent Tolhurst basket centrifuge repair, rebuilds and parts fabrication. Inspection, welding, balancing and rush service from Houston and Chicago.",
+  "todos": [
+    "TODO(verify: specific Tolhurst model designations serviced)"
+  ],
+  "mergeInto": null
+}

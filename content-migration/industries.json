@@ -1,0 +1,336 @@
+[
+  {
+    "slug": "rendering",
+    "name": "Rendering",
+    "answerBox": "Centrifuge World services centrifuges for rendering plants, repairing and rebuilding the horizontal decanter centrifuges that separate tallow, water, and protein solids. Independent since 1939, we work on 45+ OEM brands across three US facilities, with 24/7 emergency support to keep dewatering and fat-recovery lines running.",
+    "intro": "Rendering operations run their decanter centrifuges hard, dewatering high-temperature slurries of animal fat, bone, and protein around the clock. Abrasive solids and hot grease punish scroll flights, bearings, and bowls, and any downtime backs up the entire cook line. Centrifuge World rebuilds these machines to OEM tolerances, hard-surfaces wear surfaces, and returns balanced, test-run assemblies so your tallow recovery and cake dryness hold their targets. We service every major rendering brand from our Houston and Chicago-area shops and dispatch field techs nationwide.",
+    "typicalEquipment": [
+      {"text": "Horizontal decanter centrifuges for continuous fat, water, and solids separation", "links": [{"label": "Decanter Centrifuge Repair", "href": "/services/decanter-centrifuge-repair/"}]},
+      {"text": "Sharples and Bird solid-bowl decanters common on legacy rendering lines", "links": [{"label": "Sharples", "href": "/brands/sharples/"}, {"label": "Bird", "href": "/brands/bird/"}]},
+      {"text": "Alfa Laval, Flottweg, and Andritz high-throughput decanters for modern tallow recovery", "links": [{"label": "Alfa Laval", "href": "/brands/alfa-laval/"}, {"label": "Flottweg", "href": "/brands/flottweg/"}, {"label": "Andritz", "href": "/brands/andritz/"}]}
+    ],
+    "failureModes": [
+      "Scroll flight wear and tile loss from abrasive bone and grit reducing cake dryness",
+      "Bearing failure and heat from continuous high-temperature, high-load operation",
+      "Bowl and conveyor erosion that pushes the rotating assembly out of balance",
+      "Gearbox wear and torque overloads on heavy, sticky solids",
+      "Corrosion and buildup from hot grease, salts, and cleaning chemistries"
+    ],
+    "relevantServices": [
+      {"label": "Decanter Centrifuge Repair", "href": "/services/decanter-centrifuge-repair/"},
+      {"label": "Centrifuge Rebuilds", "href": "/services/centrifuge-rebuilds/"},
+      {"label": "Parts & Fabrication", "href": "/services/parts-fabrication/"},
+      {"label": "Balancing & Testing", "href": "/services/balancing-testing/"},
+      {"label": "24/7 Emergency Service", "href": "/services/emergency-centrifuge-service/"}
+    ],
+    "relatedBrands": [
+      {"label": "Sharples", "href": "/brands/sharples/"},
+      {"label": "Bird", "href": "/brands/bird/"},
+      {"label": "Alfa Laval", "href": "/brands/alfa-laval/"},
+      {"label": "Flottweg", "href": "/brands/flottweg/"},
+      {"label": "Andritz", "href": "/brands/andritz/"}
+    ],
+    "faqs": [
+      {"question": "Who repairs decanter centrifuges for rendering plants?", "answer": "Centrifuge World repairs and rebuilds rendering decanter centrifuges from every major OEM, including Sharples, Bird, Alfa Laval, Flottweg, and Andritz. We hard-surface scroll flights, rebuild bowls and gearboxes, and balance and test-run the assembly before it ships back to your plant."},
+      {"question": "Can you improve tallow recovery and cake dryness on a worn decanter?", "answer": "Yes. Restoring scroll geometry, tile coverage, and bowl tolerances during a rebuild directly affects separation efficiency. We measure wear against OEM specs, hard-surface high-wear zones, and re-balance the rotating assembly so your machine returns to its designed dewatering and fat-recovery performance."},
+      {"question": "How fast can you respond when a rendering centrifuge goes down?", "answer": "We run a 24/7 emergency line at 832-338-4990 and dispatch field technicians nationwide. Rendering lines cannot sit idle, so we prioritize expedited shop turnaround and can support installation and startup once the rebuilt machine is back on site."}
+    ],
+    "hero": {"src": "https://centrifuge-im.s3.amazonaws.com/wp-content/uploads/2020/02/07193227/large-decanter.jpg", "alt": "Large industrial decanter centrifuge used for rendering fat and solids separation"},
+    "seoTitle": "Rendering Centrifuge Repair & Rebuilds | Centrifuge World",
+    "seoDescription": "Centrifuge World repairs and rebuilds decanter centrifuges for rendering plants. 45+ OEM brands, hard-surfacing, balancing, 24/7 emergency service.",
+    "todos": []
+  },
+  {
+    "slug": "wastewater-treatment",
+    "name": "Wastewater Treatment",
+    "answerBox": "Centrifuge World services centrifuges for wastewater treatment plants, repairing and rebuilding the decanter centrifuges used for sludge dewatering and thickening. Independent since 1939, we work on 45+ OEM brands across three US facilities and offer 24/7 emergency service to keep biosolids handling online.",
+    "intro": "Municipal and industrial wastewater plants depend on decanter centrifuges to thicken and dewater sludge, cutting hauling volume and disposal cost. Grit, polymer, and corrosive digester gases wear scrolls, bowls, and bearings, while a torque overload can stop a dewatering building in minutes. Centrifuge World rebuilds these machines to OEM tolerances, replaces worn tiles and wear liners, rebuilds gearboxes, and balances the rotating assembly. We service every major dewatering brand and support field troubleshooting when cake solids or centrate quality drift off spec.",
+    "typicalEquipment": [
+      {"text": "Solid-bowl decanter centrifuges for sludge thickening and dewatering", "links": [{"label": "Decanter Centrifuge Repair", "href": "/services/decanter-centrifuge-repair/"}]},
+      {"text": "Centrisys and Alfa Laval dewatering decanters common in municipal plants", "links": [{"label": "Centrisys", "href": "/brands/centrisys/"}, {"label": "Alfa Laval", "href": "/brands/alfa-laval/"}]},
+      {"text": "Andritz, Flottweg, and Westfalia high-solids decanters for biosolids handling", "links": [{"label": "Andritz", "href": "/brands/andritz/"}, {"label": "Flottweg", "href": "/brands/flottweg/"}, {"label": "GEA Westfalia", "href": "/brands/westfalia/"}]}
+    ],
+    "failureModes": [
+      "Scroll and tile wear from grit and abrasive solids lowering cake dryness",
+      "Gearbox wear and differential torque overloads that trip the machine offline",
+      "Bearing failure and vibration from continuous unattended operation",
+      "Bowl corrosion and pitting from H2S, chlorides, and polymer chemistries",
+      "Centrate clarity loss as bowl and conveyor tolerances open up"
+    ],
+    "relevantServices": [
+      {"label": "Decanter Centrifuge Repair", "href": "/services/decanter-centrifuge-repair/"},
+      {"label": "Gearbox Repair", "href": "/services/gearbox-repair/"},
+      {"label": "Centrifuge Rebuilds", "href": "/services/centrifuge-rebuilds/"},
+      {"label": "Preventive Maintenance", "href": "/services/preventive-maintenance/"},
+      {"label": "Centrifuge Rentals", "href": "/services/centrifuge-rentals/"}
+    ],
+    "relatedBrands": [
+      {"label": "Centrisys", "href": "/brands/centrisys/"},
+      {"label": "Alfa Laval", "href": "/brands/alfa-laval/"},
+      {"label": "Andritz", "href": "/brands/andritz/"},
+      {"label": "Flottweg", "href": "/brands/flottweg/"},
+      {"label": "GEA Westfalia", "href": "/brands/westfalia/"}
+    ],
+    "faqs": [
+      {"question": "Who repairs sludge dewatering centrifuges for wastewater plants?", "answer": "Centrifuge World repairs and rebuilds municipal and industrial dewatering decanters from Centrisys, Alfa Laval, Andritz, Flottweg, GEA Westfalia, and other OEMs. We rebuild bowls, scrolls, and gearboxes, replace wear tiles and liners, and balance the assembly so cake solids and centrate quality return to spec."},
+      {"question": "Do you rent centrifuges to cover a rebuild?", "answer": "Yes. When a dewatering machine has to come offline, we offer centrifuge rentals to keep biosolids moving while we rebuild your unit, plus field service support for installation and startup. Contact us to confirm availability for your throughput and cake-dryness requirements."},
+      {"question": "Can you help when cake dryness or centrate clarity drops?", "answer": "Yes. Falling cake solids or cloudy centrate usually points to scroll and bowl wear, a torque or differential issue, or a gearbox problem. Our field technicians inspect the machine on site, and our shop restores OEM tolerances during a full rebuild."}
+    ],
+    "hero": {"src": "https://centrifuge-im.s3.amazonaws.com/wp-content/uploads/2021/11/07192816/decanter-centrifuge-repair-hero-scaled.jpg", "alt": "Decanter centrifuge undergoing repair for wastewater sludge dewatering service"},
+    "seoTitle": "Wastewater Centrifuge Repair & Dewatering | Centrifuge World",
+    "seoDescription": "Centrifuge World rebuilds sludge dewatering decanter centrifuges for wastewater plants. 45+ OEM brands, gearbox repair, rentals, 24/7 service.",
+    "todos": []
+  },
+  {
+    "slug": "chemical",
+    "name": "Chemical",
+    "answerBox": "Centrifuge World services centrifuges for chemical processing plants, repairing and rebuilding decanter, disc-stack, pusher, and peeler machines used to separate and dewater process streams. Independent since 1939, we work on 45+ OEM brands across three US facilities, with 24/7 emergency service for continuous production lines.",
+    "intro": "Chemical processors rely on a wide mix of centrifuge types, from solid-bowl decanters and disc-stack separators to pusher and peeler filtering centrifuges recovering crystalline and polymer products. Corrosive feeds, tight product-purity targets, and hazardous-area requirements make precise rebuilds essential. Centrifuge World repairs and rebuilds these machines to OEM tolerances, handling corrosion-resistant alloys, seal systems, and rotating-assembly balancing. We service the specialty brands common in chemical plants and support field inspections when separation quality, throughput, or vibration signals a developing problem.",
+    "typicalEquipment": [
+      {"text": "Pusher and peeler filtering centrifuges for crystalline and polymer product recovery", "links": [{"label": "Pusher & Peeler Centrifuge Repair", "href": "/services/pusher-peeler-centrifuge-repair/"}]},
+      {"text": "Solid-bowl decanters and disc-stack separators for clarification and dewatering", "links": [{"label": "Decanter Centrifuge Repair", "href": "/services/decanter-centrifuge-repair/"}, {"label": "Disc Stack Centrifuge Repair", "href": "/services/disc-stack-centrifuge-repair/"}]},
+      {"text": "Krauss-Maffei, Heinkel, Ferrum, and Andritz process centrifuges", "links": [{"label": "Krauss-Maffei", "href": "/brands/krauss-maffei/"}, {"label": "Heinkel", "href": "/brands/heinkel/"}, {"label": "Ferrum", "href": "/brands/ferrum/"}, {"label": "Andritz", "href": "/brands/andritz/"}]}
+    ],
+    "failureModes": [
+      "Corrosion and pitting of bowls and baskets from aggressive process chemistries",
+      "Seal and bearing failures that risk product contamination or leaks",
+      "Scroll, pusher plate, and peeler mechanism wear degrading separation and purity",
+      "Vibration and imbalance from product buildup or eroded rotating parts",
+      "Loss of throughput and cake dryness as tolerances open up"
+    ],
+    "relevantServices": [
+      {"label": "Pusher & Peeler Centrifuge Repair", "href": "/services/pusher-peeler-centrifuge-repair/"},
+      {"label": "Centrifuge Rebuilds", "href": "/services/centrifuge-rebuilds/"},
+      {"label": "Parts & Fabrication", "href": "/services/parts-fabrication/"},
+      {"label": "Centrifuge Inspections", "href": "/services/centrifuge-inspections/"},
+      {"label": "Balancing & Testing", "href": "/services/balancing-testing/"}
+    ],
+    "relatedBrands": [
+      {"label": "Krauss-Maffei", "href": "/brands/krauss-maffei/"},
+      {"label": "Heinkel", "href": "/brands/heinkel/"},
+      {"label": "Ferrum", "href": "/brands/ferrum/"},
+      {"label": "Andritz", "href": "/brands/andritz/"},
+      {"label": "Alfa Laval", "href": "/brands/alfa-laval/"}
+    ],
+    "faqs": [
+      {"question": "Which chemical-industry centrifuges do you repair?", "answer": "Centrifuge World repairs and rebuilds the full range used in chemical processing, including pusher and peeler filtering centrifuges, solid-bowl decanters, and disc-stack separators from Krauss-Maffei, Heinkel, Ferrum, Andritz, Alfa Laval, and other OEMs. We handle corrosion-resistant alloys, seal systems, and precision balancing."},
+      {"question": "Can you rebuild centrifuges handling corrosive or hazardous streams?", "answer": "Yes. We rebuild machines to OEM tolerances using appropriate corrosion-resistant materials and restore seal and bearing systems that protect product purity. For hazardous-area specifics such as explosion-proofing, we confirm requirements against your machine's original specification before quoting."},
+      {"question": "Can you fabricate replacement parts for older process centrifuges?", "answer": "Yes. Our in-house machining and fabrication shop produces scrolls, baskets, wear components, and other parts for both current and obsolete chemical-industry centrifuges, so an out-of-production machine does not have to be replaced when parts are no longer available from the OEM."}
+    ],
+    "hero": {"src": "https://centrifuge-im.s3.amazonaws.com/wp-content/uploads/2019/10/07193552/centrifuge-repair-1024x771-2.jpg", "alt": "Technician performing precision centrifuge repair for chemical process equipment"},
+    "seoTitle": "Chemical Centrifuge Repair & Rebuilds | Centrifuge World",
+    "seoDescription": "Centrifuge World repairs decanter, disc-stack, pusher, and peeler centrifuges for chemical plants. 45+ OEM brands, custom parts, balancing, 24/7 service.",
+    "todos": []
+  },
+  {
+    "slug": "food-beverage",
+    "name": "Food & Beverage",
+    "answerBox": "Centrifuge World services centrifuges for food and beverage plants, repairing and rebuilding the disc-stack separators, clarifiers, and decanters used to clarify, separate, and dewater products including beer, juice, oils, and starches. Independent since 1939, we cover 45+ OEM brands across three US facilities with 24/7 emergency service.",
+    "intro": "Food and beverage producers use high-speed disc-stack separators and clarifiers to polish beer, juice, and edible oils, and decanters to recover solids and dewater byproducts. These machines demand tight balance, clean separation, and hygienic, well-maintained contact surfaces. Centrifuge World rebuilds disc stacks, bowls, and self-cleaning mechanisms to OEM tolerances, restores seals, and balances and test-runs every assembly. We service the leading separation brands used in breweries and food plants and can support documentation expectations for sanitary equipment on request.",
+    "typicalEquipment": [
+      {"text": "Disc-stack separators and clarifiers for beer, juice, and edible-oil polishing", "links": [{"label": "Disc Stack Centrifuge Repair", "href": "/services/disc-stack-centrifuge-repair/"}]},
+      {"text": "Solid-bowl decanters for solids recovery, starch, and byproduct dewatering", "links": [{"label": "Decanter Centrifuge Repair", "href": "/services/decanter-centrifuge-repair/"}]},
+      {"text": "Alfa Laval, GEA Westfalia, and Flottweg separators and decanters", "links": [{"label": "Alfa Laval", "href": "/brands/alfa-laval/"}, {"label": "GEA Westfalia", "href": "/brands/westfalia/"}, {"label": "Flottweg", "href": "/brands/flottweg/"}]}
+    ],
+    "failureModes": [
+      "Disc-stack erosion and fouling reducing clarification quality",
+      "Self-cleaning bowl and hydraulic mechanism wear causing incomplete desludging",
+      "Sanitary seal and gasket wear risking leaks or product contact issues",
+      "Bearing wear and vibration from high-speed continuous operation",
+      "Bowl imbalance and reduced yield as tolerances drift"
+    ],
+    "relevantServices": [
+      {"label": "Disc Stack Centrifuge Repair", "href": "/services/disc-stack-centrifuge-repair/"},
+      {"label": "Centrifuge Rebuilds", "href": "/services/centrifuge-rebuilds/"},
+      {"label": "Balancing & Testing", "href": "/services/balancing-testing/"},
+      {"label": "Preventive Maintenance", "href": "/services/preventive-maintenance/"},
+      {"label": "Field Service", "href": "/services/field-service/"}
+    ],
+    "relatedBrands": [
+      {"label": "Alfa Laval", "href": "/brands/alfa-laval/"},
+      {"label": "GEA Westfalia", "href": "/brands/westfalia/"},
+      {"label": "Flottweg", "href": "/brands/flottweg/"},
+      {"label": "Andritz", "href": "/brands/andritz/"},
+      {"label": "Tomoe", "href": "/brands/tomoe/"}
+    ],
+    "faqs": [
+      {"question": "Who repairs disc-stack separators for breweries and food plants?", "answer": "Centrifuge World repairs and rebuilds disc-stack separators, clarifiers, and decanters used across food and beverage production, including beer clarification. We service Alfa Laval, GEA Westfalia, Flottweg, and other OEMs, rebuilding disc stacks, self-cleaning bowls, seals, and bearings to OEM tolerances."},
+      {"question": "Can you rebuild a beer centrifuge or clarifier to restore yield?", "answer": "Yes. Disc erosion, fouling, and worn self-cleaning mechanisms cut clarification quality and yield. We restore disc-stack geometry, rebuild the bowl and desludge system, replace seals and bearings, and balance and test-run the machine so it returns to its designed clarity and throughput."},
+      {"question": "Do you support sanitary and documentation requirements for food equipment?", "answer": "We rebuild food and beverage centrifuges with attention to hygienic contact surfaces, seal integrity, and finish, and can provide repair documentation on request. Confirm any specific sanitary standard or certification requirement with our team so we can scope the work to your plant's needs."}
+    ],
+    "hero": {"src": "https://centrifuge-im.s3.amazonaws.com/wp-content/uploads/2022/01/07192645/testing-decanter-centrifuge.jpg", "alt": "Rebuilt centrifuge on the test stand for food and beverage separation service"},
+    "seoTitle": "Food & Beverage Centrifuge Repair | Centrifuge World",
+    "seoDescription": "Centrifuge World repairs disc-stack separators, clarifiers, and decanters for food, beverage, and brewery plants. 45+ OEM brands, balancing, 24/7 service.",
+    "todos": [
+      "TODO(verify: confirm any sanitary/hygienic-design certification or 3-A/EHEDG claim wording with client before publishing specifics)"
+    ]
+  },
+  {
+    "slug": "dairy",
+    "name": "Dairy",
+    "answerBox": "Centrifuge World services centrifuges for dairy plants, repairing and rebuilding the disc-stack separators, clarifiers, and bactofuges used to separate cream and skim, clarify milk, and reduce bacteria. Independent since 1939, we cover 45+ OEM brands across three US facilities with 24/7 emergency service.",
+    "intro": "Dairy processing depends on high-speed disc-stack separators to split cream and skim, clarifiers to remove solids, and bactofuges to reduce bacterial load. These machines run continuously at high speed with strict hygienic and separation-efficiency demands. Centrifuge World rebuilds disc stacks, bowls, and self-desludging mechanisms to OEM tolerances, restores seals, and balances and test-runs each assembly. We service the leading dairy separation brands and can support documentation expectations for sanitary equipment; confirm specific standards with our team.",
+    "typicalEquipment": [
+      {"text": "High-speed disc-stack separators for cream and skim separation", "links": [{"label": "Disc Stack Centrifuge Repair", "href": "/services/disc-stack-centrifuge-repair/"}]},
+      {"text": "Milk clarifiers and bactofuges for solids removal and bacteria reduction", "links": [{"label": "Centrifuge Rebuilds", "href": "/services/centrifuge-rebuilds/"}]},
+      {"text": "Alfa Laval, GEA Westfalia, and ATM (DeLaval) dairy separators", "links": [{"label": "Alfa Laval", "href": "/brands/alfa-laval/"}, {"label": "GEA Westfalia", "href": "/brands/westfalia/"}, {"label": "ATM (DeLaval)", "href": "/brands/atm-delaval/"}]}
+    ],
+    "failureModes": [
+      "Disc-stack wear and fouling reducing cream/skim separation efficiency",
+      "Self-desludging bowl and hydraulic mechanism faults causing incomplete ejection",
+      "Sanitary seal and gasket wear risking leaks or hygienic-surface issues",
+      "Bearing wear and vibration from sustained high-speed operation",
+      "Bowl imbalance and yield loss as tolerances drift out of spec"
+    ],
+    "relevantServices": [
+      {"label": "Disc Stack Centrifuge Repair", "href": "/services/disc-stack-centrifuge-repair/"},
+      {"label": "Centrifuge Rebuilds", "href": "/services/centrifuge-rebuilds/"},
+      {"label": "Balancing & Testing", "href": "/services/balancing-testing/"},
+      {"label": "Preventive Maintenance", "href": "/services/preventive-maintenance/"},
+      {"label": "Field Service", "href": "/services/field-service/"}
+    ],
+    "relatedBrands": [
+      {"label": "Alfa Laval", "href": "/brands/alfa-laval/"},
+      {"label": "GEA Westfalia", "href": "/brands/westfalia/"},
+      {"label": "ATM (DeLaval)", "href": "/brands/atm-delaval/"},
+      {"label": "Andritz", "href": "/brands/andritz/"},
+      {"label": "Flottweg", "href": "/brands/flottweg/"}
+    ],
+    "faqs": [
+      {"question": "Who repairs dairy separators and clarifiers?", "answer": "Centrifuge World repairs and rebuilds dairy disc-stack separators, clarifiers, and bactofuges from Alfa Laval, GEA Westfalia, ATM (DeLaval), and other OEMs. We rebuild disc stacks, self-desludging bowls, seals, and bearings to OEM tolerances and balance the assembly to restore separation efficiency."},
+      {"question": "Can you restore cream/skim separation efficiency on a worn separator?", "answer": "Yes. Worn or fouled disc stacks and drifting bowl tolerances directly reduce separation efficiency. During a rebuild we restore disc geometry, service the self-desludging mechanism, replace seals and bearings, and balance and test-run the machine so it meets its designed cream and skim performance."},
+      {"question": "Do you support sanitary requirements for dairy equipment?", "answer": "We rebuild dairy centrifuges with attention to hygienic contact surfaces, seal integrity, and finish, and provide repair documentation on request. Confirm any specific sanitary standard or certification requirement with our team so the rebuild scope matches your plant's compliance needs."}
+    ],
+    "hero": {"src": "https://centrifuge-im.s3.amazonaws.com/wp-content/uploads/2022/01/07192617/scroll-refurbished.jpg", "alt": "Refurbished centrifuge rotating assembly ready for dairy separation service"},
+    "seoTitle": "Dairy Centrifuge Repair & Rebuilds | Centrifuge World",
+    "seoDescription": "Centrifuge World repairs and rebuilds dairy disc-stack separators, clarifiers, and bactofuges. 45+ OEM brands, balancing, sanitary rebuilds, 24/7 service.",
+    "todos": [
+      "TODO(verify: confirm any sanitary/hygienic-design certification or 3-A claim wording with client before publishing specifics)"
+    ]
+  },
+  {
+    "slug": "oil-gas",
+    "name": "Oil & Gas",
+    "answerBox": "Centrifuge World services centrifuges for oil and gas operations, repairing and rebuilding the decanter centrifuges used for drilling-mud solids control, drill-cuttings dewatering, and produced-water and slop-oil separation. Independent since 1939, we cover 45+ OEM brands across three US facilities with 24/7 emergency service.",
+    "intro": "Upstream and midstream oil and gas operations run decanter centrifuges hard on drilling mud, drill cuttings, tank-bottom sludge, and slop oil. Highly abrasive barite and solids destroy scroll flights and bowls, and a machine down on a rig or at a facility stalls the whole solids-control system. Centrifuge World rebuilds these decanters to OEM tolerances, hard-surfaces and re-tiles wear zones, rebuilds gearboxes, and balances the assembly. We service the brands common in the field and dispatch technicians nationwide.",
+    "typicalEquipment": [
+      {"text": "Solid-bowl decanter centrifuges for drilling-mud solids control and cuttings dewatering", "links": [{"label": "Decanter Centrifuge Repair", "href": "/services/decanter-centrifuge-repair/"}]},
+      {"text": "High-G decanters for produced-water, slop-oil, and tank-bottom separation", "links": [{"label": "Centrifuge Rebuilds", "href": "/services/centrifuge-rebuilds/"}]},
+      {"text": "Derrick, Hutchison Hayes, Alfa Laval, and US Centrifuge decanters", "links": [{"label": "Derrick", "href": "/brands/derrick/"}, {"label": "Hutchison Hayes", "href": "/brands/hutchison-hayes/"}, {"label": "Alfa Laval", "href": "/brands/alfa-laval/"}, {"label": "US Centrifuge", "href": "/brands/us-centrifuge/"}]}
+    ],
+    "failureModes": [
+      "Severe scroll and tile wear from abrasive barite, sand, and drill solids",
+      "Bowl erosion and imbalance from high-solids, high-G operation",
+      "Gearbox wear and torque overloads under heavy cuttings loads",
+      "Bearing failure and vibration in harsh field and rig environments",
+      "Reduced dry-solids discharge and separation as tolerances open up"
+    ],
+    "relevantServices": [
+      {"label": "Decanter Centrifuge Repair", "href": "/services/decanter-centrifuge-repair/"},
+      {"label": "Gearbox Repair", "href": "/services/gearbox-repair/"},
+      {"label": "Centrifuge Rebuilds", "href": "/services/centrifuge-rebuilds/"},
+      {"label": "Field Service", "href": "/services/field-service/"},
+      {"label": "24/7 Emergency Service", "href": "/services/emergency-centrifuge-service/"}
+    ],
+    "relatedBrands": [
+      {"label": "Derrick", "href": "/brands/derrick/"},
+      {"label": "Hutchison Hayes", "href": "/brands/hutchison-hayes/"},
+      {"label": "Alfa Laval", "href": "/brands/alfa-laval/"},
+      {"label": "US Centrifuge", "href": "/brands/us-centrifuge/"},
+      {"label": "Sharples", "href": "/brands/sharples/"}
+    ],
+    "faqs": [
+      {"question": "Who repairs decanter centrifuges for oil and gas solids control?", "answer": "Centrifuge World repairs and rebuilds oilfield decanter centrifuges from Derrick, Hutchison Hayes, Alfa Laval, US Centrifuge, Sharples, and other OEMs. We hard-surface and re-tile scroll flights, rebuild bowls and gearboxes, and balance the assembly for drilling-mud, cuttings, and slop-oil duty."},
+      {"question": "How do you handle the abrasive wear from barite and drill solids?", "answer": "Abrasive solids are the main enemy of oilfield decanters. We restore scroll geometry, apply hard-surfacing and tungsten-carbide tiles to high-wear zones, and rebuild the bowl to OEM tolerances so the machine holds dry-solids discharge and extends the interval before the next rebuild."},
+      {"question": "Can you provide emergency and field service for downed centrifuges?", "answer": "Yes. We run a 24/7 emergency line at 832-338-4990 and dispatch field technicians nationwide for on-site troubleshooting, repair, and startup support. For units that must come to the shop, we prioritize expedited turnaround to keep your solids-control system running."}
+    ],
+    "hero": {"src": "https://centrifuge-im.s3.amazonaws.com/wp-content/uploads/2020/01/07193402/CQ5000-Cropped-Rear-View.jpg", "alt": "High-capacity decanter centrifuge for oil and gas drilling solids control"},
+    "seoTitle": "Oil & Gas Centrifuge Repair | Centrifuge World",
+    "seoDescription": "Centrifuge World rebuilds decanter centrifuges for oil and gas solids control, cuttings, and slop-oil. 45+ OEM brands, hard-surfacing, 24/7 service.",
+    "todos": []
+  },
+  {
+    "slug": "pharmaceutical",
+    "name": "Pharmaceutical",
+    "answerBox": "Centrifuge World services centrifuges for pharmaceutical plants, repairing and rebuilding the peeler, pusher, inverting-filter, basket, and disc-stack machines used to recover and dewater active ingredients and intermediates. Independent since 1939, we cover 45+ OEM brands across three US facilities with 24/7 emergency service.",
+    "intro": "Pharmaceutical and fine-chemical manufacturers depend on filtering and sedimenting centrifuges to isolate, wash, and dewater APIs and intermediates under strict purity and cross-contamination controls. Peeler, pusher, inverting-filter, and basket machines demand precise surface finishes, sound seals, and controlled cleaning. Centrifuge World rebuilds these centrifuges to OEM tolerances, restores contact-surface finish and seal systems, and balances and test-runs each assembly. We service the specialty brands used in pharma and can support documentation expectations; confirm specific standards with our team.",
+    "typicalEquipment": [
+      {"text": "Peeler, pusher, and inverting-filter centrifuges for API and intermediate recovery", "links": [{"label": "Pusher & Peeler Centrifuge Repair", "href": "/services/pusher-peeler-centrifuge-repair/"}]},
+      {"text": "Basket centrifuges for batch filtration, washing, and dewatering", "links": [{"label": "Basket Centrifuge Repair", "href": "/services/basket-centrifuge-repair/"}]},
+      {"text": "Heinkel, Krauss-Maffei, Rousselet Robatel, and Western States centrifuges", "links": [{"label": "Heinkel", "href": "/brands/heinkel/"}, {"label": "Krauss-Maffei", "href": "/brands/krauss-maffei/"}, {"label": "Rousselet Robatel", "href": "/brands/rousselet-robatel/"}, {"label": "Western States", "href": "/brands/western-states/"}]}
+    ],
+    "failureModes": [
+      "Contact-surface finish degradation affecting cleanability and product purity",
+      "Seal and bearing failures risking cross-contamination or leaks",
+      "Peeler, pusher, and basket mechanism wear reducing yield and cake quality",
+      "Vibration and imbalance from product buildup or worn rotating parts",
+      "Corrosion from solvents and cleaning agents on bowls and baskets"
+    ],
+    "relevantServices": [
+      {"label": "Pusher & Peeler Centrifuge Repair", "href": "/services/pusher-peeler-centrifuge-repair/"},
+      {"label": "Basket Centrifuge Repair", "href": "/services/basket-centrifuge-repair/"},
+      {"label": "Centrifuge Rebuilds", "href": "/services/centrifuge-rebuilds/"},
+      {"label": "Balancing & Testing", "href": "/services/balancing-testing/"},
+      {"label": "Centrifuge Inspections", "href": "/services/centrifuge-inspections/"}
+    ],
+    "relatedBrands": [
+      {"label": "Heinkel", "href": "/brands/heinkel/"},
+      {"label": "Krauss-Maffei", "href": "/brands/krauss-maffei/"},
+      {"label": "Rousselet Robatel", "href": "/brands/rousselet-robatel/"},
+      {"label": "Western States", "href": "/brands/western-states/"},
+      {"label": "Carr", "href": "/brands/carr/"}
+    ],
+    "faqs": [
+      {"question": "Who repairs pharmaceutical centrifuges?", "answer": "Centrifuge World repairs and rebuilds pharmaceutical peeler, pusher, inverting-filter, and basket centrifuges from Heinkel, Krauss-Maffei, Rousselet Robatel, Western States, Carr, and other OEMs. We restore contact-surface finishes, seal and bearing systems, and mechanism tolerances, then balance and test-run each machine."},
+      {"question": "Can you rebuild centrifuges to pharma surface-finish and cleanability needs?", "answer": "Yes. We rebuild pharmaceutical centrifuges with attention to product-contact surface finish, seal integrity, and cleanability, and provide repair documentation on request. Confirm any specific cGMP, validation, or certification requirement with our team so we scope surface finishing and documentation to your standard."},
+      {"question": "Do you inspect a centrifuge before quoting a rebuild?", "answer": "Yes. Our inspection-first process assesses baskets, bowls, seals, bearings, and mechanisms against OEM specifications before we quote, so you get a clear scope. This matters in pharma, where contact-surface condition and seal integrity directly affect product purity and compliance."}
+    ],
+    "hero": {"src": "https://centrifuge-im.s3.amazonaws.com/wp-content/uploads/2020/06/07193112/cw-quarantine.jpg", "alt": "Centrifuge staged in a controlled area for pharmaceutical rebuild service"},
+    "seoTitle": "Pharmaceutical Centrifuge Repair | Centrifuge World",
+    "seoDescription": "Centrifuge World rebuilds peeler, pusher, inverting-filter, and basket centrifuges for pharma plants. 45+ OEM brands, surface finishing, 24/7 service.",
+    "todos": [
+      "TODO(verify: confirm any cGMP compliance, validation support, or certification claim wording with client before publishing specifics)"
+    ]
+  },
+  {
+    "slug": "mining-manufacturing",
+    "name": "Mining & Manufacturing",
+    "answerBox": "Centrifuge World services centrifuges for mining and manufacturing operations, repairing and rebuilding the decanter, pusher, screen-bowl, and basket machines used to dewater minerals, tailings, coal fines, and industrial process solids. Independent since 1939, we cover 45+ OEM brands across three US facilities with 24/7 emergency service.",
+    "intro": "Mining and heavy manufacturing operations use centrifuges to dewater mineral concentrates, tailings, coal fines, and process solids in some of the most abrasive service there is. Grit and sharp mineral particles chew through scroll flights, screens, and bowls, and downtime stalls production. Centrifuge World rebuilds decanter, screen-bowl, pusher, and basket centrifuges to OEM tolerances, hard-surfaces and re-tiles high-wear zones, rebuilds gearboxes, and balances the assembly. We service the brands common in these plants and support field troubleshooting nationwide.",
+    "typicalEquipment": [
+      {"text": "Decanter and screen-bowl centrifuges for mineral, tailings, and coal-fines dewatering", "links": [{"label": "Decanter Centrifuge Repair", "href": "/services/decanter-centrifuge-repair/"}]},
+      {"text": "Pusher and basket centrifuges for crystalline and coarse-solids dewatering", "links": [{"label": "Pusher & Peeler Centrifuge Repair", "href": "/services/pusher-peeler-centrifuge-repair/"}, {"label": "Basket Centrifuge Repair", "href": "/services/basket-centrifuge-repair/"}]},
+      {"text": "Siebtechnik, Andritz, Bird, and Western States centrifuges", "links": [{"label": "Siebtechnik", "href": "/brands/siebtechnik/"}, {"label": "Andritz", "href": "/brands/andritz/"}, {"label": "Bird", "href": "/brands/bird/"}, {"label": "Western States", "href": "/brands/western-states/"}]}
+    ],
+    "failureModes": [
+      "Extreme abrasive wear on scroll flights, tiles, and screens from mineral solids",
+      "Bowl and basket erosion driving imbalance and vibration",
+      "Gearbox wear and torque overloads under heavy, coarse solids loads",
+      "Bearing failure in dusty, high-load operating environments",
+      "Loss of cake dryness and throughput as wear parts degrade"
+    ],
+    "relevantServices": [
+      {"label": "Decanter Centrifuge Repair", "href": "/services/decanter-centrifuge-repair/"},
+      {"label": "Parts & Fabrication", "href": "/services/parts-fabrication/"},
+      {"label": "Gearbox Repair", "href": "/services/gearbox-repair/"},
+      {"label": "Centrifuge Rebuilds", "href": "/services/centrifuge-rebuilds/"},
+      {"label": "Balancing & Testing", "href": "/services/balancing-testing/"}
+    ],
+    "relatedBrands": [
+      {"label": "Siebtechnik", "href": "/brands/siebtechnik/"},
+      {"label": "Andritz", "href": "/brands/andritz/"},
+      {"label": "Bird", "href": "/brands/bird/"},
+      {"label": "Western States", "href": "/brands/western-states/"},
+      {"label": "Broadbent", "href": "/brands/broadbent/"}
+    ],
+    "faqs": [
+      {"question": "Who repairs centrifuges for mining and manufacturing plants?", "answer": "Centrifuge World repairs and rebuilds decanter, screen-bowl, pusher, and basket centrifuges from Siebtechnik, Andritz, Bird, Western States, Broadbent, and other OEMs. We hard-surface and re-tile scroll flights, rebuild bowls, screens, and gearboxes, and balance the assembly for abrasive mineral duty."},
+      {"question": "How do you extend wear life on abrasive mineral dewatering?", "answer": "Mineral solids are extremely abrasive. We apply hard-surfacing and tungsten-carbide tiles to scroll flights and other high-wear zones, restore bowl and screen tolerances, and fabricate replacement wear parts in-house so your machine holds cake dryness longer between rebuilds."},
+      {"question": "Can you fabricate parts for older mining centrifuges?", "answer": "Yes. Our in-house machining and fabrication shop produces scrolls, screens, baskets, and wear components for both current and obsolete machines, so an out-of-production mining or manufacturing centrifuge can be kept in service rather than replaced when OEM parts are unavailable."}
+    ],
+    "hero": {"src": "https://centrifuge-im.s3.amazonaws.com/wp-content/uploads/2022/01/07192643/centrifuge-welding-e1641483520230.jpg", "alt": "Welding and hard-surfacing a centrifuge for abrasive mining and manufacturing duty"},
+    "seoTitle": "Mining & Manufacturing Centrifuge Repair | Centrifuge World",
+    "seoDescription": "Centrifuge World rebuilds decanter, screen-bowl, pusher, and basket centrifuges for mining and manufacturing. 45+ OEM brands, hard-surfacing, custom parts.",
+    "todos": []
+  }
+]

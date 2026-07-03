@@ -1,0 +1,49 @@
+{
+  "slug": "ferrum",
+  "name": "Ferrum",
+  "archiveUrl": "https://web.archive.org/web/20240525165529/https://centrifuge.com/ferrum/",
+  "answerBox": "Centrifuge World repairs, rebuilds, and supplies parts for Ferrum decanter and basket centrifuges. As an independent specialist serving industry since 1939, we inspect, recondition, weld-repair, balance, and test your Ferrum equipment at our Houston, Texas and Chicago, Illinois service centers, with 24/7 rush support.",
+  "intro": "Centrifuge World provides comprehensive repair, rebuild, and parts services for Ferrum decanter and basket centrifuges, restoring high efficiency and optimal performance while reducing process downtime.",
+  "disclosure": "Centrifuge World is an independent repair and rebuild specialist. We are not affiliated with Ferrum.",
+  "modelsServiced": [],
+  "typesServiced": ["Decanter", "Basket"],
+  "capabilities": [
+    {"item": "Inspection & NDTI", "detail": "A non-destructive teardown and inspection documents the condition of your Ferrum decanter or basket centrifuge before any work is scoped."},
+    {"item": "Decanter & basket rebuilds", "detail": "We recondition bowls, conveyors, baskets, and rotating assemblies to restore peak performance."},
+    {"item": "Wear-part replacement", "detail": "O-rings, gaskets, bearings, and worn components are refit or replaced to specification."},
+    {"item": "Weld repair", "detail": "We repair damage caused by mechanical wear, chemical attack, and erosion."},
+    {"item": "Balancing & testing", "detail": "Static and dynamic balancing plus a test run confirm the machine is ready to return to service."},
+    {"item": "Parts fabrication", "detail": "Hard-to-source Ferrum parts are reverse-engineered and fabricated in-house, often with a short turnaround."}
+  ],
+  "body": [
+    "Centrifuge World offers a full range of service options to enhance the performance of your Ferrum decanter or basket centrifuge equipment. All work is carried out at our specialized service centers in Houston, Texas and the Chicago, Illinois area, where our qualified service engineers assess each machine and build the right plan to rebuild your Ferrum centrifuge.",
+    "Every repair starts with a non-destructive teardown and inspection (NDTI). Scheduling one is simple: call Centrifuge World, we dispatch a truck to your location, you load the centrifuge, and our driver delivers it to our shop for a comprehensive NDTI. Following the inspection you receive a detailed report with recommendations on the services required and how to proceed, along with a list of the parts needed to complete the repairs, so you can approve the scope before work begins.",
+    "For Ferrum decanter and basket centrifuges, our rebuild services include refitting of wear parts such as o-rings and gaskets, replacement of worn or damaged items, approved upgrades, weld repair, and static and dynamic balancing. Where the equipment allows, we complete a test run before returning your Ferrum centrifuge in top condition, operating at peak performance.",
+    "We also maintain a large inventory of OEM parts for Ferrum centrifuges. When a component is hard to find or on long backlog, our team can reverse-engineer and fabricate it in-house, often turning it around in just a few days. Alongside Ferrum, we service a wide range of other OEM brands, and when a breakdown can't wait, our emergency and rush repair support responds 24/7 to get your equipment back into production quickly."
+  ],
+  "faqs": [
+    {"question": "Which Ferrum centrifuges do you repair?", "answer": "We repair and rebuild Ferrum decanter and basket centrifuges, including reconditioning of bowls, conveyors, baskets, and rotating assemblies."},
+    {"question": "Do you supply Ferrum parts?", "answer": "Yes. We keep an inventory of OEM parts for Ferrum centrifuges and can reverse-engineer and fabricate hard-to-find components in-house when a part is on long backlog."},
+    {"question": "Where is Ferrum service performed?", "answer": "Repairs and rebuilds are carried out at our service centers in Houston, Texas and the Chicago, Illinois area."}
+  ],
+  "images": [
+    {"src": "https://centrifuge-im.s3.amazonaws.com/wp-content/uploads/2020/01/07192825/ferrum-centrifuge-hero-2-scaled.jpg", "alt": "Ferrum centrifuge undergoing repair at a Centrifuge World service center"}
+  ],
+  "relatedBrands": [
+    {"label": "Flottweg", "href": "/brands/flottweg/"},
+    {"label": "Andritz", "href": "/brands/andritz/"}
+  ],
+  "relatedServices": [
+    {"label": "Decanter Centrifuge Repair", "href": "/services/decanter-centrifuge-repair/"},
+    {"label": "Basket Centrifuge Repair", "href": "/services/basket-centrifuge-repair/"}
+  ],
+  "relatedIndustries": [
+    {"label": "Food & Beverage", "href": "/industries/food-beverage/"}
+  ],
+  "seoTitle": "Ferrum Centrifuge Repair | Centrifuge World",
+  "seoDescription": "Independent Ferrum decanter and basket centrifuge repair, rebuilds, and parts. Inspection, balancing, and testing in Houston and Chicago.",
+  "todos": [
+    "TODO(verify: no specific Ferrum model numbers were listed on the legacy page; confirm the Ferrum decanter and basket series serviced before adding models)"
+  ],
+  "mergeInto": null
+}
