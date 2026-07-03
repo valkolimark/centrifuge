@@ -17,7 +17,7 @@ import { buildMetadata } from '@/lib/seo'
 import { SITE_URL, brands } from '@/lib/site'
 import { brandStubBySlug } from '@/lib/stubs'
 import { getBrandContent } from '@/lib/content'
-import { BRAND_VIDEO } from '@/lib/page-media'
+import { BRAND_VIDEO, fallbackBrandHero } from '@/lib/page-media'
 import { toVideoSource } from '@/lib/videos'
 
 export const revalidate = 3600
@@ -61,7 +61,10 @@ export default async function BrandPage({ params }: { params: Promise<{ slug: st
   const faqs = (c?.faqs ?? []).filter((f) => f.question && f.answer)
   // Only S3-hosted images are loadable (allowed in next.config; the live domain is captcha-walled).
   const s3Images = (c?.images ?? []).filter((im) => im.src.includes('centrifuge-im.s3.amazonaws.com'))
-  const heroImg = s3Images[0]
+  // Every brand gets a hero: its own harvested image, else a varied shop-image fallback.
+  const hero = s3Images[0]
+    ? { src: s3Images[0].src, alt: s3Images[0].alt, width: 1600, height: 900 }
+    : { ...fallbackBrandHero(slug), alt: `${name} centrifuge repair at Centrifuge World` }
   const galleryImgs = s3Images.map((im) => ({ src: im.src, alt: im.alt, width: 800, height: 600 }))
   const videoId = BRAND_VIDEO[slug]
 
@@ -95,7 +98,7 @@ export default async function BrandPage({ params }: { params: Promise<{ slug: st
         eyebrow="Brands we service"
         title={`${name} centrifuge repair & rebuilds`}
         subtitle={c?.intro || 'Independent repair, rebuilds, balancing, and parts for your machine.'}
-        image={heroImg ? { src: heroImg.src, alt: heroImg.alt, width: 1600, height: 900 } : undefined}
+        image={hero}
       />
 
       <Section>

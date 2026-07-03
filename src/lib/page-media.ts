@@ -46,8 +46,28 @@ export const BRAND_VIDEO: Record<string, string> = {
   centrisys: 'i1FLleg5gJY',
 }
 
-// Default brand hero when the brand's own harvested images are unavailable.
-export const BRAND_HERO_DEFAULT = img(
-  '2020/02/07193227/large-decanter.jpg',
-  'Industrial centrifuge repair at Centrifuge World',
-)
+// Verified shop-image pool for brand heroes when a brand had no harvested image.
+// (Images come from the client's public S3 bucket used by centrifuge.com.)
+export const BRAND_HERO_POOL: HeroImage[] = [
+  img('2021/11/07192816/decanter-centrifuge-repair-hero-scaled.jpg', 'Industrial centrifuge in the Centrifuge World shop'),
+  img('2020/02/07193227/large-decanter.jpg', 'Decanter centrifuge bowl and rotor'),
+  img('2019/10/07193552/centrifuge-repair-1024x771-2.jpg', 'Centrifuge repair in progress'),
+  img('2021/12/07192723/BIRD-HB-2500-RA-Rebuild-scaled.jpg', 'Centrifuge rebuild in the shop'),
+  img('2022/01/07192645/testing-decanter-centrifuge.jpg', 'Test-running a decanter centrifuge'),
+  img('2022/01/07192617/scroll-refurbished.jpg', 'Refurbished centrifuge scroll conveyor'),
+  img('2022/01/07192643/centrifuge-welding-e1641483520230.jpg', 'Centrifuge component fabrication'),
+  img('2020/06/07193112/cw-quarantine.jpg', 'Industrial centrifuges in the shop'),
+  img('2019/02/07193216/IMG_1548.jpeg', 'Centrifuge on the shop floor'),
+  img('2019/02/07193219/IMG_3518-rotated.jpeg', 'Centrifuge repair work'),
+  img('2021/12/07192720/Custom-decanter-1.jpg', 'Custom decanter centrifuge work'),
+  img('2021/12/07192739/IMG_8060-1.jpg', 'Centrifuge repair on the shop floor'),
+  img('2020/01/07193356/bird-centrifuge.jpg', 'Bird decanter centrifuge'),
+  img('2022/01/07192646/bearings-decanters-1-e1641483593312.jpg', 'Decanter centrifuge bearings'),
+]
+
+// Deterministic fallback hero for a brand (stable + varied across brands).
+export function fallbackBrandHero(slug: string): HeroImage {
+  let h = 0
+  for (const ch of slug) h = (h * 31 + ch.charCodeAt(0)) >>> 0
+  return BRAND_HERO_POOL[h % BRAND_HERO_POOL.length]
+}
