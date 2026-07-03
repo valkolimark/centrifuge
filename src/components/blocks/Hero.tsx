@@ -14,6 +14,7 @@ export function Hero({
   subtitle,
   actions,
   image,
+  media,
 }: {
   variant?: Variant
   eyebrow?: string
@@ -21,6 +22,8 @@ export function Hero({
   subtitle?: ReactNode
   actions?: ReactNode
   image?: { src: string; alt: string; width: number; height: number; priority?: boolean }
+  /** Optional media (e.g. a video) rendered in a right column, top-aligned. */
+  media?: ReactNode
 }) {
   const dark = variant !== 'interior'
   return (
@@ -47,22 +50,25 @@ export function Hero({
       ) : null}
 
       <div className="container-cw relative py-[var(--space-9)]">
-        <div className="max-w-2xl">
-          {eyebrow ? (
-            <p
-              className={cn(
-                'mb-3 text-sm font-semibold uppercase tracking-wide',
-                dark ? 'text-white/85' : 'text-blue',
-              )}
-            >
-              {eyebrow}
-            </p>
-          ) : null}
-          <h1 className={cn(dark && 'text-white')}>{title}</h1>
-          {subtitle ? (
-            <p className={cn('mt-4 text-lg', dark ? 'text-white/90' : 'text-steel-700')}>{subtitle}</p>
-          ) : null}
-          {actions ? <div className="mt-7 flex flex-wrap gap-3">{actions}</div> : null}
+        <div className={cn(media ? 'grid items-start gap-8 lg:grid-cols-2 lg:gap-12' : '')}>
+          <div className="max-w-2xl">
+            {eyebrow ? (
+              <p
+                className={cn(
+                  'mb-3 text-sm font-semibold uppercase tracking-wide',
+                  dark ? 'text-white/85' : 'text-blue',
+                )}
+              >
+                {eyebrow}
+              </p>
+            ) : null}
+            <h1 className={cn(dark && 'text-white')}>{title}</h1>
+            {subtitle ? (
+              <p className={cn('mt-4 text-lg', dark ? 'text-white/90' : 'text-steel-700')}>{subtitle}</p>
+            ) : null}
+            {actions ? <div className="mt-7 flex flex-wrap gap-3">{actions}</div> : null}
+          </div>
+          {media ? <div className="w-full lg:justify-self-end">{media}</div> : null}
         </div>
       </div>
     </section>

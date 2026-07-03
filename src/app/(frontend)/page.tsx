@@ -143,6 +143,19 @@ export default async function HomePage() {
         title="Keep your centrifuges running."
         subtitle="The largest provider and rebuilder of industrial centrifuges in the US — repair, rebuilds, balancing, parts, and 24/7 emergency service for 45+ OEM brands."
         image={{ ...photos.shopHero, priority: true }}
+        media={
+          <div>
+            <VideoFacade video={photos.homeVideo} />
+            <div className="mt-3 text-right">
+              <Link
+                href="/resources/videos/"
+                className="text-sm font-semibold text-white/90 underline underline-offset-2 hover:text-white"
+              >
+                See all videos →
+              </Link>
+            </div>
+          </div>
+        }
         actions={
           <>
             <TrackedButtonLink
@@ -223,23 +236,6 @@ export default async function HomePage() {
         <div className="grid gap-6 lg:grid-cols-2 lg:items-start">
           <BeforeAfterSlider before={photos.before} after={photos.after} />
           <Gallery images={photos.gallery} />
-        </div>
-      </Section>
-
-      <Section tone="subtle">
-        <div className="mb-8 max-w-2xl">
-          <h2>See our shop in action</h2>
-          <p className="mt-2 text-steel-700">
-            Watch how we repair and rebuild industrial centrifuges — then explore more from our shop.
-          </p>
-        </div>
-        <div className="mx-auto max-w-4xl">
-          <VideoFacade video={photos.homeVideo} />
-        </div>
-        <div className="mt-5 text-center">
-          <Link href="/resources/videos/" className="font-semibold text-link hover:text-navy">
-            Watch more videos →
-          </Link>
         </div>
       </Section>
 

@@ -65,7 +65,7 @@ export function organizationSchema(): Json {
     '@id': ORG_ID,
     name: org.name,
     url: SITE_URL,
-    logo: `${SITE_URL}/logo.png`,
+    logo: `${SITE_URL}/logo/cw-logo-black.webp`,
     description: org.description,
     foundingDate: String(org.foundingYear),
     ...(SAME_AS.length ? { sameAs: SAME_AS } : {}),

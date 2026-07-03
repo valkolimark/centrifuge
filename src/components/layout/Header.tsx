@@ -2,6 +2,7 @@
 
 import { useEffect, useRef, useState } from 'react'
 import Link from 'next/link'
+import Image from 'next/image'
 import { navigation, featuredBrands, type NavItem } from '@/lib/site'
 import { ButtonLink } from '@/components/ui/Button'
 import { EmergencyBar } from './EmergencyBar'
@@ -10,11 +11,15 @@ import { cn } from '@/lib/cn'
 
 function Logo() {
   return (
-    <Link href="/" className="flex items-center gap-2 font-heading text-navy" aria-label="Centrifuge World — home">
-      <span className="grid h-9 w-9 place-items-center rounded-button bg-navy text-white font-bold">CW</span>
-      <span className="text-lg font-bold leading-none">
-        Centrifuge<span className="text-blue"> World</span>
-      </span>
+    <Link href="/" className="inline-flex items-center" aria-label="Centrifuge World — home">
+      <Image
+        src="/logo/cw-logo-black.webp"
+        alt="Centrifuge World"
+        width={300}
+        height={100}
+        priority
+        className="h-10 w-auto sm:h-11"
+      />
     </Link>
   )
 }
