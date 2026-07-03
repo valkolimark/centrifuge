@@ -16,20 +16,20 @@ import { getCaseStudies, getCaseStudy } from '@/lib/content'
 
 export const revalidate = 3600
 
-export function generateStaticParams() {
-  return getCaseStudies().map((c) => ({ slug: c.slug }))
+export async function generateStaticParams() {
+  return (await getCaseStudies()).map((c) => ({ slug: c.slug }))
 }
 
 export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }): Promise<Metadata> {
   const { slug } = await params
-  const c = getCaseStudy(slug)
+  const c = await getCaseStudy(slug)
   if (!c) return { title: 'Not found', robots: { index: false } }
   return buildMetadata({ title: c.seoTitle || `${c.title} | Centrifuge World`, description: c.seoDescription }, `/resources/case-studies/${slug}/`)
 }
 
 export default async function CaseStudyPage({ params }: { params: Promise<{ slug: string }> }) {
   const { slug } = await params
-  const c = getCaseStudy(slug)
+  const c = await getCaseStudy(slug)
   if (!c) notFound()
   const url = `${SITE_URL}/resources/case-studies/${slug}/`
   const gallery = (c.gallery ?? []).map((im) => ({ src: im.src, alt: im.alt, width: 800, height: 600 }))

@@ -752,7 +752,58 @@ export interface CaseStudy {
    */
   clientIndustry?: string | null;
   machineBrandModel?: string | null;
+  hero?: {
+    url?: string | null;
+    alt?: string | null;
+  };
   problem?: string | null;
+  scopeItems?:
+    | {
+        value: string;
+        id?: string | null;
+      }[]
+    | null;
+  beforeAfterUrls?:
+    | {
+        beforeUrl: string;
+        beforeAlt?: string | null;
+        afterUrl: string;
+        afterAlt?: string | null;
+        id?: string | null;
+      }[]
+    | null;
+  gallery?:
+    | {
+        /**
+         * Image URL (e.g. an S3 URL).
+         */
+        url: string;
+        alt: string;
+        id?: string | null;
+      }[]
+    | null;
+  /**
+   * TODO(verify) until client confirms.
+   */
+  timeline?: string | null;
+  /**
+   * TODO(verify) until client confirms.
+   */
+  outcome?: string | null;
+  relatedServices?:
+    | {
+        label: string;
+        href: string;
+        id?: string | null;
+      }[]
+    | null;
+  relatedBrands?:
+    | {
+        label: string;
+        href: string;
+        id?: string | null;
+      }[]
+    | null;
   scopeOfWork?: {
     root: {
       type: string;
@@ -770,19 +821,11 @@ export interface CaseStudy {
   } | null;
   beforeAfter?:
     | {
-        before: number | Media;
-        after: number | Media;
+        before?: (number | null) | Media;
+        after?: (number | null) | Media;
         id?: string | null;
       }[]
     | null;
-  /**
-   * TODO(verify) until client confirms.
-   */
-  timeline?: string | null;
-  /**
-   * TODO(verify) until client confirms.
-   */
-  outcome?: string | null;
   /**
    * Search metadata. Title ≤60, description ≤155 characters.
    */
@@ -1526,7 +1569,51 @@ export interface CaseStudiesSelect<T extends boolean = true> {
   slug?: T;
   clientIndustry?: T;
   machineBrandModel?: T;
+  hero?:
+    | T
+    | {
+        url?: T;
+        alt?: T;
+      };
   problem?: T;
+  scopeItems?:
+    | T
+    | {
+        value?: T;
+        id?: T;
+      };
+  beforeAfterUrls?:
+    | T
+    | {
+        beforeUrl?: T;
+        beforeAlt?: T;
+        afterUrl?: T;
+        afterAlt?: T;
+        id?: T;
+      };
+  gallery?:
+    | T
+    | {
+        url?: T;
+        alt?: T;
+        id?: T;
+      };
+  timeline?: T;
+  outcome?: T;
+  relatedServices?:
+    | T
+    | {
+        label?: T;
+        href?: T;
+        id?: T;
+      };
+  relatedBrands?:
+    | T
+    | {
+        label?: T;
+        href?: T;
+        id?: T;
+      };
   scopeOfWork?: T;
   beforeAfter?:
     | T
@@ -1535,8 +1622,6 @@ export interface CaseStudiesSelect<T extends boolean = true> {
         after?: T;
         id?: T;
       };
-  timeline?: T;
-  outcome?: T;
   seo?:
     | T
     | {

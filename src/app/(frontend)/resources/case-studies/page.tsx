@@ -15,8 +15,8 @@ export const metadata: Metadata = buildMetadata(
   '/resources/case-studies/',
 )
 
-export default function CaseStudiesIndex() {
-  const studies = getCaseStudies()
+export default async function CaseStudiesIndex() {
+  const studies = await getCaseStudies()
   return (
     <SiteShell>
       <Breadcrumbs items={[{ name: 'Resources', url: '/resources/' }, { name: 'Case Studies', url: '/resources/case-studies/' }]} />

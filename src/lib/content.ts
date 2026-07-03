@@ -148,11 +148,18 @@ export interface CaseStudyContent {
   relatedServices?: LinkItem[]
   todos?: string[]
 }
-export function getCaseStudies(): CaseStudyContent[] {
+export async function getCaseStudies(): Promise<CaseStudyContent[]> {
+  try {
+    const { getCaseStudiesFromCMS } = await import('./cms')
+    const fromCms = await getCaseStudiesFromCMS()
+    if (fromCms.length) return fromCms
+  } catch {
+    /* DB unavailable → JSON */
+  }
   return readJson<CaseStudyContent[]>('case-studies.json') ?? []
 }
-export function getCaseStudy(slug: string): CaseStudyContent | undefined {
-  return getCaseStudies().find((c) => c.slug === slug)
+export async function getCaseStudy(slug: string): Promise<CaseStudyContent | undefined> {
+  return (await getCaseStudies()).find((c) => c.slug === slug)
 }
 
 // ── Blog ──────────────────────────────────────────────────────
