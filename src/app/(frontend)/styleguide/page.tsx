@@ -20,7 +20,7 @@ import { RelatedLinks } from '@/components/blocks/RelatedLinks'
 import { PhoneLink } from '@/components/ui/PhoneLink'
 import { FormDemo } from './FormDemo'
 import { locations, emergencyPhone } from '@/lib/site'
-import { palette } from '../../../scripts/contrast-pairs'
+import { palette } from '../../../../scripts/contrast-pairs'
 
 // /styleguide — the component library reference. Noindexed (robots + metadata).
 // Every component and variant renders here; it is a CI Lighthouse target.

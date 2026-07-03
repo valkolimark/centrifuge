@@ -1,3 +1,4 @@
+import { withPayload } from '@payloadcms/next/withPayload'
 import { securityHeaders } from './src/lib/security-headers.mjs'
 
 /** @type {import('next').NextConfig} */
@@ -24,4 +25,4 @@ const nextConfig = {
   },
 }
 
-export default nextConfig
+export default withPayload(nextConfig, { devBundleServerPackages: false })

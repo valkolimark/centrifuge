@@ -1,0 +1,148 @@
+/* ─────────────────────────────────────────────────────────────
+   Industrial Blue — Payload admin theme (task 1.2, "sleek back end")
+   Injected app-wide via BrandProvider (admin.components.providers), so it
+   themes every admin screen incl. login. Overrides Payload's neutral theme
+   variables + a few stable component classes to the brand palette.
+   ───────────────────────────────────────────────────────────── */
+:root {
+  --cw-navy: #0b3a6b;
+  --cw-navy-deep: #072546;
+  --cw-blue: #1e6fd9;
+  --cw-blue-600: #1257ad;
+  --cw-steel-100: #f4f6f8;
+  --cw-steel-300: #c9d2db;
+  --cw-steel-500: #6b7a89;
+  --cw-safety: #f26a1b;
+
+  /* Softer, cooler canvas; cards stay white for contrast. */
+  --theme-bg: var(--cw-steel-100);
+  --theme-border-color: var(--cw-steel-300);
+
+  /* Rounder, calmer corners. */
+  --style-radius-s: 5px;
+  --style-radius-m: 7px;
+  --style-radius-l: 10px;
+
+  /* Brand accent used by rules below. */
+  --cw-accent: var(--cw-blue);
+
+  /* Prefer Inter when present; fall back to the system UI stack (no external
+     font request — keeps the admin CSP-clean). */
+  --font-body: 'Inter', system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+}
+
+html[data-theme='light'] {
+  --theme-bg: var(--cw-steel-100);
+}
+
+/* Dark theme: deep navy canvas instead of neutral charcoal. */
+html[data-theme='dark'] {
+  --theme-bg: #061a30;
+  --theme-elevation-0: #0a2846;
+  --theme-elevation-50: #0d2f52;
+  --theme-border-color: #17436e;
+  --cw-accent: #4d95ef;
+}
+
+/* ── Primary buttons → navy, hover blue ─────────────────────── */
+.btn--style-primary:not(.btn--disabled) {
+  --color: #fff;
+  background-color: var(--cw-navy);
+  border-color: var(--cw-navy);
+  color: #fff;
+  transition:
+    background-color 0.15s ease,
+    box-shadow 0.15s ease;
+}
+.btn--style-primary:not(.btn--disabled):hover,
+.btn--style-primary:not(.btn--disabled):focus-visible {
+  background-color: var(--cw-blue);
+  border-color: var(--cw-blue);
+  box-shadow: 0 6px 18px rgb(30 111 217 / 0.28);
+}
+
+/* Secondary buttons: steel outline that warms to blue. */
+.btn--style-secondary:not(.btn--disabled):hover {
+  border-color: var(--cw-blue);
+  color: var(--cw-blue);
+}
+
+/* ── Links + active nav ─────────────────────────────────────── */
+a,
+.nav__link:hover,
+.step-nav a {
+  color: var(--cw-blue-600);
+}
+.nav__link {
+  border-radius: var(--style-radius-s);
+  transition: background-color 0.12s ease;
+}
+.nav__link:hover {
+  background-color: rgb(30 111 217 / 0.08);
+}
+.nav__link.active,
+.nav__link[aria-current='page'] {
+  background-color: rgb(30 111 217 / 0.12);
+  color: var(--cw-navy);
+  box-shadow: inset 3px 0 0 0 var(--cw-blue);
+}
+
+/* ── Focus rings in brand blue ──────────────────────────────── */
+*:focus-visible {
+  outline-color: var(--cw-blue) !important;
+}
+
+/* ── Sidebar / nav chrome ───────────────────────────────────── */
+.nav {
+  background: linear-gradient(180deg, var(--cw-navy-deep), var(--cw-navy));
+}
+.nav .nav__link,
+.nav .nav-group__toggle,
+.nav__label,
+.nav .nav__controls a {
+  color: rgb(255 255 255 / 0.86);
+}
+.nav .nav__link:hover {
+  background-color: rgb(255 255 255 / 0.1);
+  color: #fff;
+}
+.nav .nav__link.active {
+  background-color: rgb(255 255 255 / 0.14);
+  color: #fff;
+  box-shadow: inset 3px 0 0 0 var(--cw-safety);
+}
+.nav-group__label {
+  color: rgb(255 255 255 / 0.55) !important;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  font-size: 11px;
+}
+
+/* ── Cards / controls polish ────────────────────────────────── */
+.card,
+.collection-list,
+.table {
+  border-radius: var(--style-radius-l);
+}
+.pill {
+  border-radius: 999px;
+}
+
+/* ── Login screen ───────────────────────────────────────────── */
+.login {
+  background:
+    radial-gradient(1200px 500px at 50% -10%, rgb(30 111 217 / 0.1), transparent),
+    var(--theme-bg);
+}
+.login .login__wrap,
+.login__form {
+  border-radius: var(--style-radius-l);
+}
+.login__brand {
+  margin-bottom: 1.5rem;
+}
+
+/* ── Header / app bar accent underline ──────────────────────── */
+.app-header {
+  border-bottom: 2px solid var(--cw-blue);
+}
