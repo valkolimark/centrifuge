@@ -222,8 +222,10 @@ export function videoObjectSchema(input: {
   name: string
   description: string
   thumbnailUrl: string
-  uploadDate: string
   embedUrl: string
+  // Optional: Google prefers uploadDate for rich results, but we don't fabricate
+  // it — supply the real date (TODO(verify)) to enable the rich result.
+  uploadDate?: string
 }): Json {
   return {
     '@context': 'https://schema.org',
@@ -231,7 +233,7 @@ export function videoObjectSchema(input: {
     name: input.name,
     description: input.description,
     thumbnailUrl: input.thumbnailUrl,
-    uploadDate: input.uploadDate,
+    ...(input.uploadDate ? { uploadDate: input.uploadDate } : {}),
     embedUrl: input.embedUrl,
   }
 }

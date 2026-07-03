@@ -13,8 +13,10 @@ import { Gallery } from '@/components/blocks/Gallery'
 import { LocationCard } from '@/components/blocks/LocationCard'
 import { FAQAccordion } from '@/components/blocks/FAQAccordion'
 import { CTABanner } from '@/components/blocks/CTABanner'
+import { VideoFacade } from '@/components/blocks/VideoFacade'
 import { JsonLd } from '@/components/JsonLd'
-import { webPageSchema } from '@/lib/schema'
+import { webPageSchema, videoObjectSchema } from '@/lib/schema'
+import { youtubeEmbedUrl } from '@/lib/videos'
 import { buildMetadata } from '@/lib/seo'
 import { SITE_URL, emergencyPhone, locations, org } from '@/lib/site'
 import { photos } from '@/lib/media'
@@ -123,7 +125,17 @@ export default async function HomePage() {
 
   return (
     <SiteShell>
-      <JsonLd data={webPageSchema({ url: `${SITE_URL}/`, name: `${org.name} — Home` })} />
+      <JsonLd
+        data={[
+          webPageSchema({ url: `${SITE_URL}/`, name: `${org.name} — Home` }),
+          videoObjectSchema({
+            name: photos.homeVideo.title,
+            description: 'A fly-through look at industrial centrifuge repair and rebuilds at Centrifuge World.',
+            thumbnailUrl: photos.homeVideo.poster.src,
+            embedUrl: youtubeEmbedUrl(photos.homeVideo.id),
+          }),
+        ]}
+      />
 
       <Hero
         variant="home"
@@ -211,6 +223,23 @@ export default async function HomePage() {
         <div className="grid gap-6 lg:grid-cols-2 lg:items-start">
           <BeforeAfterSlider before={photos.before} after={photos.after} />
           <Gallery images={photos.gallery} />
+        </div>
+      </Section>
+
+      <Section tone="subtle">
+        <div className="mb-8 max-w-2xl">
+          <h2>See our shop in action</h2>
+          <p className="mt-2 text-steel-700">
+            Watch how we repair and rebuild industrial centrifuges — then explore more from our shop.
+          </p>
+        </div>
+        <div className="mx-auto max-w-4xl">
+          <VideoFacade video={photos.homeVideo} />
+        </div>
+        <div className="mt-5 text-center">
+          <Link href="/resources/videos/" className="font-semibold text-link hover:text-navy">
+            Watch more videos →
+          </Link>
         </div>
       </Section>
 

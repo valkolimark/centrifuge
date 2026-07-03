@@ -9,6 +9,9 @@ const blob = 'https://*.public.blob.vercel-storage.com'
 const s3media = 'https://centrifuge-im.s3.amazonaws.com'
 // Cognito Forms (legacy /cw-ez-quote-for-sales/ EZ Quote embed).
 const cognito = 'https://www.cognitoforms.com https://*.cognitoforms.com'
+// YouTube (feature video + /resources/videos gallery, click-to-load facade).
+const youtube = 'https://www.youtube-nocookie.com https://www.youtube.com'
+const ytimg = 'https://i.ytimg.com'
 
 // NOTE: 'unsafe-inline' on script-src is required by GTM's bootstrap snippet loaded via
 // @next/third-parties. Tightening to a nonce is tracked in BACKLOG.md.
@@ -18,12 +21,12 @@ const csp = [
   `object-src 'none'`,
   `frame-ancestors 'self'`,
   `form-action 'self'`,
-  `img-src 'self' data: blob: ${blob} ${s3media} ${cognito} ${gtm} ${ga} https://www.google.com https://maps.googleapis.com https://maps.gstatic.com`,
+  `img-src 'self' data: blob: ${blob} ${s3media} ${ytimg} ${cognito} ${gtm} ${ga} https://www.google.com https://maps.googleapis.com https://maps.gstatic.com`,
   `script-src 'self' 'unsafe-inline' ${gtm} ${turnstile} ${cognito}`,
   `style-src 'self' 'unsafe-inline' ${cognito}`,
   `font-src 'self' data: ${cognito}`,
   `connect-src 'self' ${gtm} ${ga} ${turnstile} ${blob} ${cognito}`,
-  `frame-src 'self' ${turnstile} ${cognito} https://www.google.com https://td.doubleclick.net`,
+  `frame-src 'self' ${turnstile} ${cognito} ${youtube} https://www.google.com https://td.doubleclick.net`,
   `worker-src 'self' blob:`,
   `manifest-src 'self'`,
   `upgrade-insecure-requests`,

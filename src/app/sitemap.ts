@@ -16,6 +16,8 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     '/locations/',
     '/about/',
     '/sell-your-centrifuge/',
+    '/resources/',
+    '/resources/videos/',
     '/cw-ez-quote-for-sales/',
     '/contact-cw/',
     '/privacy-policy/',
