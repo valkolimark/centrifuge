@@ -14,7 +14,7 @@ export function EmergencyCallout({
       <div className="container-cw flex flex-col items-start gap-4 py-8 md:flex-row md:items-center md:justify-between">
         <div className="max-w-2xl">
           <h2 className="text-white">{heading}</h2>
-          <p className="mt-2 text-white/90">{body}</p>
+          <p className="mt-2 text-white">{body}</p>
         </div>
         <ButtonLink
           href={`tel:${emergencyPhone.number}`}

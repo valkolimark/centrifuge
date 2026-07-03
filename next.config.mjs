@@ -8,6 +8,9 @@ const nextConfig = {
   // Every canonical URL on this site uses a trailing slash (nav, brand, service
   // paths). Making that the framework default keeps legacy 301s a single hop.
   trailingSlash: true,
+  // Inline the (small) app CSS into the HTML to remove the render-blocking
+  // stylesheet request (~820ms savings on FCP/LCP).
+  experimental: { inlineCss: true },
   images: {
     formats: ['image/avif', 'image/webp'],
     remotePatterns: [

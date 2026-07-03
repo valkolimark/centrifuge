@@ -44,7 +44,10 @@ export function Hero({
             src={image.src}
             alt={image.alt}
             fill
-            priority={image.priority}
+            // The hero image is the above-the-fold LCP on every page → always high
+            // priority (adds preload + fetchpriority=high).
+            priority={image.priority ?? true}
+            fetchPriority="high"
             sizes="100vw"
             className="object-cover opacity-40"
           />

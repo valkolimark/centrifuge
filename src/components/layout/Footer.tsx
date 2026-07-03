@@ -33,7 +33,7 @@ function FooterCol({ heading, children }: { heading: string; children: React.Rea
   )
 }
 
-const linkCls = 'text-steel-100/90 hover:text-white text-sm'
+const linkCls = 'text-steel-100 hover:text-white text-sm'
 
 export function Footer() {
   return (
@@ -105,7 +105,7 @@ export function Footer() {
                 return (
                   <li key={loc.id} className="text-sm not-italic">
                     <p className="font-semibold text-white">{loc.label}</p>
-                    <p className="text-steel-100/80">
+                    <p className="text-steel-100">
                       {loc.streetAddress}
                       <br />
                       {loc.addressLocality}, {loc.addressRegion} {loc.postalCode}
@@ -120,7 +120,7 @@ export function Footer() {
           </FooterCol>
         </div>
 
-        <div className="mt-8 border-t border-white/15 pt-5 text-sm text-steel-100/80">
+        <div className="mt-8 border-t border-white/15 pt-5 text-sm text-steel-100">
           <p className="mb-2">
             {hours.office.display} · {hours.oncall.display}
           </p>
