@@ -4,14 +4,14 @@ import { notFound } from 'next/navigation'
 import { SiteShell } from '@/components/layout/SiteShell'
 import { Section } from '@/components/ui/Section'
 import { Breadcrumbs } from '@/components/layout/Breadcrumbs'
-import { Gallery } from '@/components/blocks/Gallery'
+import { InventoryGallery } from '@/components/blocks/InventoryGallery'
 import { CTABanner } from '@/components/blocks/CTABanner'
 import { QuoteForm } from '@/components/forms/QuoteForm'
 import { ButtonLink } from '@/components/ui/Button'
 import { JsonLd } from '@/components/JsonLd'
 import { breadcrumbSchema } from '@/lib/schema'
 import { buildMetadata } from '@/lib/seo'
-import { SITE_URL, org } from '@/lib/site'
+import { SITE_URL, org, brands } from '@/lib/site'
 import { getInventory, getInventoryItem, MACHINE_TYPE_LABELS, CONDITION_LABELS, type InventoryItem } from '@/lib/inventory'
 
 export const revalidate = 300
@@ -27,7 +27,7 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
   return buildMetadata(
     {
       title: item.seoTitle || `${item.title} for Sale | Centrifuge World`,
-      description: item.seoDescription || item.shortDescription || `${item.title} — reconditioned used centrifuge for sale from Centrifuge World.`,
+      description: item.seoDescription || item.shortDescription || `${item.title} — used centrifuge for sale from Centrifuge World.`,
     },
     `/inventory/${slug}/`,
   )
@@ -53,7 +53,6 @@ function productSchema(item: InventoryItem, url: string): Record<string, unknown
     itemCondition: CONDITION_SCHEMA[item.condition ?? 'used'] ?? 'https://schema.org/UsedCondition',
     seller: { '@type': 'Organization', name: org.name, url: `${SITE_URL}/` },
   }
-  // Only publish a price when one is actually set (never fabricate).
   if (item.price && !item.priceOnRequest) {
     offer.price = item.price
     offer.priceCurrency = 'USD'
@@ -77,8 +76,9 @@ export default async function InventoryItemPage({ params }: { params: Promise<{ 
   const item = await getInventoryItem(slug)
   if (!item || item.availability === 'sold') notFound()
   const url = `${SITE_URL}/inventory/${slug}/`
-  const gallery = item.images.map((im) => ({ src: im.url, alt: im.alt, width: im.width ?? 1200, height: im.height ?? 900 }))
   const typeLabel = MACHINE_TYPE_LABELS[item.machineType] ?? 'Centrifuge'
+  const brandSlug = item.brand ? brands.find((b) => b.name.toLowerCase() === item.brand!.toLowerCase())?.slug : undefined
+  const inStock = item.availability !== 'sale-pending'
 
   const schema = [
     productSchema(item, url),
@@ -95,55 +95,103 @@ export default async function InventoryItemPage({ params }: { params: Promise<{ 
       <Breadcrumbs items={[{ name: 'Inventory', url: '/inventory/' }, { name: item.title, url: `/inventory/${slug}/` }]} />
 
       <Section>
-        <div className="grid gap-10 lg:grid-cols-2">
-          <div>
-            {gallery.length ? (
-              <Gallery images={gallery} />
-            ) : (
-              <div className="flex aspect-[4/3] items-center justify-center rounded-card border border-steel-300 bg-steel-100 text-steel-500">
-                Photos available on request
-              </div>
-            )}
+        <div className="grid gap-8 lg:grid-cols-12">
+          {/* Left: gallery */}
+          <div className="lg:col-span-5">
+            <InventoryGallery images={item.images} />
           </div>
 
-          <div>
-            <div className="flex flex-wrap gap-2 text-xs font-semibold">
+          {/* Middle: details */}
+          <div className="lg:col-span-4">
+            <h1 className="text-2xl leading-tight sm:text-3xl">{item.title}</h1>
+            {item.brand ? (
+              brandSlug ? (
+                <Link href={`/brands/${brandSlug}/`} className="mt-1 inline-block text-sm font-medium text-link hover:underline">
+                  Visit the {item.brand} page
+                </Link>
+              ) : (
+                <span className="mt-1 inline-block text-sm text-steel-500">{item.brand}</span>
+              )
+            ) : null}
+
+            <div className="mt-3 flex flex-wrap gap-2 text-xs font-semibold">
               <span className="rounded-button bg-steel-100 px-2 py-0.5 text-steel-700">{typeLabel}</span>
               {item.condition ? <span className="rounded-button bg-steel-100 px-2 py-0.5 text-steel-700">{CONDITION_LABELS[item.condition] ?? item.condition}</span> : null}
-              {item.availability === 'sale-pending' ? <span className="rounded-button bg-navy px-2 py-0.5 text-white">Sale pending</span> : null}
+              {item.model ? <span className="rounded-button bg-steel-100 px-2 py-0.5 text-steel-700">Model {item.model}</span> : null}
             </div>
 
-            <h1 className="mt-3">{item.title}</h1>
-            <dl className="mt-4 grid grid-cols-2 gap-x-6 gap-y-1 text-sm">
-              {item.brand ? (<><dt className="text-steel-500">Brand</dt><dd className="text-navy">{item.brand}</dd></>) : null}
-              {item.model ? (<><dt className="text-steel-500">Model</dt><dd className="text-navy">{item.model}</dd></>) : null}
-            </dl>
-            <p className="mt-4 text-2xl font-bold text-navy">{priceLabel(item)}</p>
+            <hr className="my-5 border-steel-300" />
 
-            {item.description ? <p className="mt-4 text-steel-700">{item.description}</p> : null}
-
-            <div className="mt-6 flex flex-wrap gap-3">
-              <ButtonLink href="#request">Request this machine</ButtonLink>
-              <ButtonLink href="/used-centrifuges/" variant="secondary">
-                More {typeLabel.toLowerCase()} machines
-              </ButtonLink>
-            </div>
+            {item.shortDescription ? <p className="font-medium text-navy">{item.shortDescription}</p> : null}
 
             {item.specs.length ? (
-              <div className="mt-8">
-                <h2 className="text-lg">Specifications</h2>
-                <table className="mt-3 w-full text-sm">
+              <div className="mt-4">
+                <h2 className="text-base font-semibold text-navy">Specifications</h2>
+                <table className="mt-2 w-full text-sm">
                   <tbody>
                     {item.specs.map((s) => (
-                      <tr key={s.label} className="border-b border-steel-300">
-                        <th scope="row" className="py-2 pr-4 text-left font-medium text-steel-700">{s.label}</th>
-                        <td className="py-2 text-navy">{s.value}</td>
+                      <tr key={s.label} className="border-b border-steel-300/70">
+                        <th scope="row" className="w-1/2 py-1.5 pr-4 text-left font-medium text-steel-700">{s.label}</th>
+                        <td className="py-1.5 text-navy">{s.value}</td>
                       </tr>
                     ))}
                   </tbody>
                 </table>
               </div>
             ) : null}
+
+            {item.description ? (
+              <div className="mt-4">
+                <h2 className="text-base font-semibold text-navy">About this machine</h2>
+                <p className="mt-2 whitespace-pre-line text-sm text-steel-700">{item.description}</p>
+              </div>
+            ) : null}
+          </div>
+
+          {/* Right: buy box */}
+          <div className="lg:col-span-3">
+            <div className="rounded-card border border-steel-300 bg-white p-5 lg:sticky lg:top-24">
+              <p className="text-2xl font-bold text-navy">{priceLabel(item)}</p>
+              {item.priceOnRequest || !item.price ? (
+                <p className="mt-1 text-xs text-steel-500">We quote after confirming spec, condition &amp; lead time.</p>
+              ) : null}
+
+              <p className={`mt-4 text-lg font-semibold ${inStock ? 'text-[color:var(--color-success)]' : 'text-navy'}`}>
+                {inStock ? 'In stock' : 'Sale pending'}
+              </p>
+
+              <dl className="mt-3 space-y-1.5 text-sm">
+                <div className="flex justify-between gap-3">
+                  <dt className="text-steel-500">Sold by</dt>
+                  <dd className="text-right font-medium text-navy">{org.name}</dd>
+                </div>
+                <div className="flex justify-between gap-3">
+                  <dt className="text-steel-500">Condition</dt>
+                  <dd className="text-right text-navy">{item.condition ? CONDITION_LABELS[item.condition] ?? item.condition : 'Used'}</dd>
+                </div>
+                <div className="flex justify-between gap-3">
+                  <dt className="text-steel-500">Prep</dt>
+                  <dd className="text-right text-navy">Inspected &amp; test-run</dd>
+                </div>
+              </dl>
+
+              <div className="mt-5 flex flex-col gap-2">
+                <ButtonLink href="#request" className="w-full justify-center">
+                  Request this machine
+                </ButtonLink>
+                <ButtonLink href="/contact-cw/" variant="secondary" className="w-full justify-center">
+                  Contact us
+                </ButtonLink>
+              </div>
+
+              <p className="mt-4 border-t border-steel-300 pt-3 text-xs text-steel-500">
+                Nationwide shipping and field commissioning available. Have one to sell?{' '}
+                <Link href="/sell-your-centrifuge/" className="text-link underline">
+                  Sell your centrifuge
+                </Link>
+                .
+              </p>
+            </div>
           </div>
         </div>
       </Section>
@@ -155,9 +203,6 @@ export default async function InventoryItemPage({ params }: { params: Promise<{ 
           <div className="mt-6">
             <QuoteForm />
           </div>
-          <p className="mt-4 text-sm text-steel-500">
-            Prefer to talk? <Link href="/contact-cw/" className="text-link underline">Contact us</Link> or call the numbers in the header.
-          </p>
         </div>
       </Section>
 

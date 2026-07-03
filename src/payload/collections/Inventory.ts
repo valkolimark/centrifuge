@@ -81,7 +81,12 @@ export const Inventory: CollectionConfig = {
       name: 'images',
       type: 'array',
       labels: { singular: 'Photo', plural: 'Photos' },
-      fields: [{ name: 'image', type: 'upload', relationTo: 'media', required: true }],
+      admin: { description: 'Upload a photo, or paste an image URL (e.g. an S3 URL).' },
+      fields: [
+        { name: 'image', type: 'upload', relationTo: 'media', admin: { description: 'Upload, or use the URL field.' } },
+        { name: 'imageUrl', type: 'text', admin: { description: 'Image URL if not uploading.' } },
+        { name: 'alt', type: 'text', admin: { description: 'Describe the photo (used when pasting a URL).' } },
+      ],
     },
     { name: 'featured', type: 'checkbox', defaultValue: false, admin: { position: 'sidebar', description: 'Show first in listings.' } },
     seoField,

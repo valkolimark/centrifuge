@@ -737,9 +737,23 @@ export interface Inventory {
         id?: string | null;
       }[]
     | null;
+  /**
+   * Upload a photo, or paste an image URL (e.g. an S3 URL).
+   */
   images?:
     | {
-        image: number | Media;
+        /**
+         * Upload, or use the URL field.
+         */
+        image?: (number | null) | Media;
+        /**
+         * Image URL if not uploading.
+         */
+        imageUrl?: string | null;
+        /**
+         * Describe the photo (used when pasting a URL).
+         */
+        alt?: string | null;
         id?: string | null;
       }[]
     | null;
@@ -1339,6 +1353,8 @@ export interface InventorySelect<T extends boolean = true> {
     | T
     | {
         image?: T;
+        imageUrl?: T;
+        alt?: T;
         id?: T;
       };
   featured?: T;

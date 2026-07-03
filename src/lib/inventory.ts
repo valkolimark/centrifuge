@@ -46,14 +46,18 @@ export const CONDITION_LABELS: Record<string, string> = {
   'for-parts': 'For parts',
 }
 
-type RawImage = { image?: { url?: string; alt?: string; width?: number; height?: number } | null }
+type RawImage = { image?: { url?: string; alt?: string; width?: number; height?: number } | null; imageUrl?: string | null; alt?: string | null }
 type RawDoc = Record<string, unknown>
 
 function mapItem(d: RawDoc): InventoryItem {
+  const title = (d.title as string) || 'Used centrifuge'
   const images: InventoryImage[] = ((d.images as RawImage[] | undefined) ?? [])
-    .map((row) => row?.image)
-    .filter((im): im is NonNullable<RawImage['image']> => !!im && !!im.url)
-    .map((im) => ({ url: im.url as string, alt: im.alt || (d.title as string) || 'Used centrifuge', width: im.width, height: im.height }))
+    .map((row): InventoryImage | null => {
+      const url = row?.image?.url || row?.imageUrl || undefined
+      if (!url) return null
+      return { url, alt: row?.image?.alt || row?.alt || title, width: row?.image?.width, height: row?.image?.height }
+    })
+    .filter((im): im is InventoryImage => im !== null)
   const seo = (d.seo as { title?: string; description?: string } | undefined) ?? {}
   return {
     id: String(d.id),

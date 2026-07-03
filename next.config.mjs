@@ -22,6 +22,8 @@ const nextConfig = {
       { protocol: 'https', hostname: 'centrifuge-im.s3.amazonaws.com' },
       // YouTube video thumbnails (channel video posters).
       { protocol: 'https', hostname: 'i.ytimg.com' },
+      // Inventory store media (WooCommerce uploads) for seeded listing photos.
+      { protocol: 'https', hostname: 'inventory.centrifuge.com' },
     ],
   },
   async headers() {
