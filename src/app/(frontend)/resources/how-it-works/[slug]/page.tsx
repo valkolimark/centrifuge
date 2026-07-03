@@ -18,13 +18,13 @@ import { toVideoSource, youtubeEmbedUrl } from '@/lib/videos'
 
 export const revalidate = 3600
 
-export function generateStaticParams() {
-  return getHowItWorks().map((h) => ({ slug: h.slug }))
+export async function generateStaticParams() {
+  return (await getHowItWorks()).map((h) => ({ slug: h.slug }))
 }
 
 export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }): Promise<Metadata> {
   const { slug } = await params
-  const h = getHowItWorksItem(slug)
+  const h = await getHowItWorksItem(slug)
   if (!h) return { title: 'Not found', robots: { index: false } }
   return buildMetadata(
     { title: h.seoTitle || `${h.title} | Centrifuge World`, description: h.seoDescription },
@@ -34,7 +34,7 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
 
 export default async function HowItWorksPage({ params }: { params: Promise<{ slug: string }> }) {
   const { slug } = await params
-  const h = getHowItWorksItem(slug)
+  const h = await getHowItWorksItem(slug)
   if (!h) notFound()
   const url = `${SITE_URL}/resources/how-it-works/${slug}/`
   const faqs = (h.faqs ?? []).filter((f) => f.question && f.answer)

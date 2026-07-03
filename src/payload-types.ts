@@ -74,6 +74,7 @@ export interface Config {
     locations: Location;
     posts: Post;
     'case-studies': CaseStudy;
+    'how-it-works': HowItWork;
     inventory: Inventory;
     faqs: Faq;
     media: Media;
@@ -95,6 +96,7 @@ export interface Config {
     locations: LocationsSelect<false> | LocationsSelect<true>;
     posts: PostsSelect<false> | PostsSelect<true>;
     'case-studies': CaseStudiesSelect<false> | CaseStudiesSelect<true>;
+    'how-it-works': HowItWorksSelect<false> | HowItWorksSelect<true>;
     inventory: InventorySelect<false> | InventorySelect<true>;
     faqs: FaqsSelect<false> | FaqsSelect<true>;
     media: MediaSelect<false> | MediaSelect<true>;
@@ -884,6 +886,90 @@ export interface CaseStudy {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "how-it-works".
+ */
+export interface HowItWork {
+  id: number;
+  title: string;
+  /**
+   * URL segment. Auto-generated from the title if left blank.
+   */
+  slug: string;
+  /**
+   * 40–60 word direct answer under the H1 (AEO).
+   */
+  answerBox?: string | null;
+  sections?:
+    | {
+        heading: string;
+        body?:
+          | {
+              text: string;
+              id?: string | null;
+            }[]
+          | null;
+        id?: string | null;
+      }[]
+    | null;
+  signsNeedRepair?:
+    | {
+        value: string;
+        id?: string | null;
+      }[]
+    | null;
+  /**
+   * YouTube video ID (optional).
+   */
+  videoId?: string | null;
+  relatedService?:
+    | {
+        label: string;
+        href: string;
+        id?: string | null;
+      }[]
+    | null;
+  relatedBrands?:
+    | {
+        label: string;
+        href: string;
+        id?: string | null;
+      }[]
+    | null;
+  faqs?:
+    | {
+        question: string;
+        answer: string;
+        id?: string | null;
+      }[]
+    | null;
+  /**
+   * Search metadata. Title ≤60, description ≤155 characters.
+   */
+  seo?: {
+    /**
+     * Unique <title>, ≤60 chars. Falls back to the page title.
+     */
+    title?: string | null;
+    /**
+     * Meta description, ≤155 chars.
+     */
+    description?: string | null;
+    /**
+     * Only if this page should canonicalize to a different URL.
+     */
+    canonicalOverride?: string | null;
+    ogImage?: (number | null) | Media;
+    /**
+     * Exclude from search engines and the sitemap.
+     */
+    noindex?: boolean | null;
+  };
+  updatedAt: string;
+  createdAt: string;
+  _status?: ('draft' | 'published') | null;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "inventory".
  */
 export interface Inventory {
@@ -994,6 +1080,10 @@ export interface Faq {
    * Path to the deep page this answer links to.
    */
   deepLink?: string | null;
+  /**
+   * Sort order within the category.
+   */
+  order?: number | null;
   updatedAt: string;
   createdAt: string;
   _status?: ('draft' | 'published') | null;
@@ -1226,6 +1316,10 @@ export interface PayloadLockedDocument {
     | ({
         relationTo: 'case-studies';
         value: number | CaseStudy;
+      } | null)
+    | ({
+        relationTo: 'how-it-works';
+        value: number | HowItWork;
       } | null)
     | ({
         relationTo: 'inventory';
@@ -1699,6 +1793,67 @@ export interface CaseStudiesSelect<T extends boolean = true> {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "how-it-works_select".
+ */
+export interface HowItWorksSelect<T extends boolean = true> {
+  title?: T;
+  slug?: T;
+  answerBox?: T;
+  sections?:
+    | T
+    | {
+        heading?: T;
+        body?:
+          | T
+          | {
+              text?: T;
+              id?: T;
+            };
+        id?: T;
+      };
+  signsNeedRepair?:
+    | T
+    | {
+        value?: T;
+        id?: T;
+      };
+  videoId?: T;
+  relatedService?:
+    | T
+    | {
+        label?: T;
+        href?: T;
+        id?: T;
+      };
+  relatedBrands?:
+    | T
+    | {
+        label?: T;
+        href?: T;
+        id?: T;
+      };
+  faqs?:
+    | T
+    | {
+        question?: T;
+        answer?: T;
+        id?: T;
+      };
+  seo?:
+    | T
+    | {
+        title?: T;
+        description?: T;
+        canonicalOverride?: T;
+        ogImage?: T;
+        noindex?: T;
+      };
+  updatedAt?: T;
+  createdAt?: T;
+  _status?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "inventory_select".
  */
 export interface InventorySelect<T extends boolean = true> {
@@ -1751,6 +1906,7 @@ export interface FaqsSelect<T extends boolean = true> {
   answer?: T;
   category?: T;
   deepLink?: T;
+  order?: T;
   updatedAt?: T;
   createdAt?: T;
   _status?: T;
@@ -2095,6 +2251,10 @@ export interface TaskSchedulePublish {
       | ({
           relationTo: 'case-studies';
           value: number | CaseStudy;
+        } | null)
+      | ({
+          relationTo: 'how-it-works';
+          value: number | HowItWork;
         } | null)
       | ({
           relationTo: 'inventory';

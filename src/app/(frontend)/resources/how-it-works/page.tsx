@@ -14,8 +14,8 @@ export const metadata: Metadata = buildMetadata(
   '/resources/how-it-works/',
 )
 
-export default function HowItWorksIndex() {
-  const items = getHowItWorks()
+export default async function HowItWorksIndex() {
+  const items = await getHowItWorks()
   return (
     <SiteShell>
       <Breadcrumbs items={[{ name: 'Resources', url: '/resources/' }, { name: 'How Centrifuges Work', url: '/resources/how-it-works/' }]} />

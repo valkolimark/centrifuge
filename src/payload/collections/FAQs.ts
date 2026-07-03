@@ -29,5 +29,6 @@ export const FAQs: CollectionConfig = {
       type: 'text',
       admin: { description: 'Path to the deep page this answer links to.' },
     },
+    { name: 'order', type: 'number', defaultValue: 0, admin: { position: 'sidebar', description: 'Sort order within the category.' } },
   ],
 }

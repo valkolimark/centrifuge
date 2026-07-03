@@ -122,11 +122,47 @@ export interface HowItWorksContent {
   seoDescription?: string
   todos?: string[]
 }
-export function getHowItWorks(): HowItWorksContent[] {
+export async function getHowItWorks(): Promise<HowItWorksContent[]> {
+  try {
+    const { getHowItWorksFromCMS } = await import('./cms')
+    const fromCms = await getHowItWorksFromCMS()
+    if (fromCms.length) return fromCms
+  } catch {
+    /* DB unavailable → JSON */
+  }
   return readJson<HowItWorksContent[]>('how-it-works.json') ?? []
 }
-export function getHowItWorksItem(slug: string): HowItWorksContent | undefined {
-  return getHowItWorks().find((h) => h.slug === slug)
+export async function getHowItWorksItem(slug: string): Promise<HowItWorksContent | undefined> {
+  return (await getHowItWorks()).find((h) => h.slug === slug)
+}
+
+// ── FAQ hub (categorized) ─────────────────────────────────────
+export interface FaqCategory { heading: string; items: { question: string; answer: string }[] }
+interface FaqRow { category: string; question: string; answer: string; order: number }
+const FAQ_CATEGORIES: [string, string][] = [
+  ['repair-rebuilds', 'Repair & Rebuilds'],
+  ['emergency-field', 'Emergency & Field Service'],
+  ['parts-fabrication', 'Parts & Fabrication'],
+  ['buying-selling', 'Buying & Selling'],
+  ['costs-turnaround', 'Costs & Turnaround'],
+]
+export async function getFaqCategories(): Promise<FaqCategory[]> {
+  let rows: FaqRow[] | null = null
+  try {
+    const { getFAQRowsFromCMS } = await import('./cms')
+    const fromCms = await getFAQRowsFromCMS()
+    if (fromCms.length) rows = fromCms
+  } catch {
+    /* DB unavailable → JSON */
+  }
+  if (!rows) rows = readJson<FaqRow[]>('faqs.json') ?? []
+  return FAQ_CATEGORIES.map(([value, heading]) => ({
+    heading,
+    items: rows!
+      .filter((r) => r.category === value)
+      .sort((a, b) => (a.order ?? 0) - (b.order ?? 0))
+      .map((r) => ({ question: r.question, answer: r.answer })),
+  })).filter((c) => c.items.length)
 }
 
 // ── Case studies ──────────────────────────────────────────────
