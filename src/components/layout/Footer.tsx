@@ -125,13 +125,13 @@ export function Footer() {
             {hours.office.display} · {hours.oncall.display}
           </p>
           <div className="flex flex-wrap items-center gap-x-4 gap-y-1">
-            <Link href="/privacy-policy/" className="hover:text-white">
+            <Link href="/privacy-policy/" className="text-steel-100 hover:text-white">
               Privacy Policy
             </Link>
-            <Link href="/terms-of-use/" className="hover:text-white">
+            <Link href="/terms-of-use/" className="text-steel-100 hover:text-white">
               Terms of Use
             </Link>
-            <a href="/sitemap.xml" className="hover:text-white">
+            <a href="/sitemap.xml" className="text-steel-100 hover:text-white">
               Sitemap
             </a>
             <span>© {org.name} · Since {org.foundingYear}</span>
