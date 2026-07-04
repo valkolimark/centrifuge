@@ -195,6 +195,36 @@ body {
   box-shadow: var(--cw-glow);
 }
 
+/* ---- Layout polish (UI-1 feedback): breathing room + card spacing ---- */
+/* Gap between the content and the sidebar + generous horizontal gutters */
+.cw-admin .gutter--left { padding-left: 34px !important; }
+.cw-admin .gutter--right { padding-right: 34px !important; }
+.cw-admin .template-default,
+.cw-admin .collection-list,
+.cw-admin .collection-default,
+.cw-admin .document-fields { padding-left: 8px; padding-right: 8px; }
+
+/* More padding above page titles (list + document headers) */
+.cw-admin .list-header,
+.cw-admin .collection-list__header,
+.cw-admin .doc-header,
+.cw-admin .doc-header__wrapper,
+.cw-admin .step-nav + * > h1 { padding-top: 26px !important; }
+.cw-admin .list-header h1,
+.cw-admin .doc-header h1 { margin-top: 8px; }
+
+/* Cards (field groups, tables, controls) keep clear of the gutter lines */
+.cw-admin .render-fields { padding: 6px 0; }
+.cw-admin .field-type.group-field,
+.cw-admin .group-field { margin: 16px 0 !important; padding: 18px 20px !important; }
+.cw-admin .table,
+.cw-admin .collection-list__wrap { margin: 6px 0; }
+.cw-admin .doc-controls { margin: 10px 0; }
+
+/* Sidebar: give the nav header + groups a touch more room */
+.cw-admin .nav__wrap { padding-top: 2px; }
+.cw-admin .nav { padding-bottom: 18px; }
+
 @media (prefers-reduced-motion: reduce) {
   .cw-admin *,
   .cw-admin *::before,

@@ -81,6 +81,8 @@ export default buildConfig({
     // providers component, plus branded login logo + nav icon.
     components: {
       providers: ['@/payload/admin/BrandProvider'],
+      // Logo lockup pinned to the sidebar top-left, linking back to the dashboard.
+      beforeNavLinks: ['@/payload/admin/NavHeader'],
       graphics: {
         Logo: '@/payload/admin/Logo',
         Icon: '@/payload/admin/Icon',

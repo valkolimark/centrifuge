@@ -41,7 +41,7 @@ export const Inventory: CollectionConfig = {
   versions: contentVersions,
   hooks: publishableHooks,
   fields: [
-    { name: 'title', type: 'text', required: true, admin: { description: 'e.g. "Sharples P-3000 Solid-Bowl Decanter Centrifuge".' } },
+    { name: 'title', type: 'text', required: true, admin: { description: 'e.g. "Sharples P-3000 Solid-Bowl Decanter Centrifuge".', components: { Cell: '@/payload/admin/fields/InventoryThumbCell' } } },
     slugField('title'),
     {
       type: 'row',

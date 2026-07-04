@@ -5,8 +5,21 @@
    empty states. Site-health = mean of redirect audit + schema coverage + content
    completeness + lead-response readiness (no live CWV feed yet). */
 import { getPayloadClient } from '@/lib/payload'
+import { getGa4, type Ga4Data } from '@/lib/ga4'
 import redirectsMap from '@/lib/redirects-data.json'
 import './dashboard.css'
+
+// Build an SVG area path + line path from a session series (viewBox 640x160).
+function seriesPaths(vals: number[]) {
+  const n = vals.length
+  if (n < 2) return { area: '', line: '' }
+  const max = Math.max(1, ...vals)
+  const pts = vals.map((v, i) => [Math.round((i / (n - 1)) * 640), Math.round(150 - (v / max) * 130)] as const)
+  const line = pts.map((p, i) => `${i ? 'L' : 'M'}${p[0]},${p[1]}`).join(' ')
+  const area = `${line} L640,160 L0,160 Z`
+  return { area, line }
+}
+const DONUT_COLORS = ['#3EC9F5', '#2A6BFF', '#8B6CFF', '#FFB020', '#2BD98A']
 
 export const dynamic = 'force-dynamic'
 
@@ -75,7 +88,7 @@ const relAge = (iso: string) => {
 }
 
 export default async function MissionControl() {
-  const d = await loadData()
+  const [d, ga] = await Promise.all([loadData(), getGa4() as Promise<Ga4Data>])
   const score = health(d)
   const has = d.ok
   const R = 72, arc = 2 * Math.PI * R
@@ -121,9 +134,9 @@ export default async function MissionControl() {
             <div className={`k-delta ${has && d.leadsDelta >= 0 ? 'up' : 'down'}`}>{has ? `${d.leadsDelta >= 0 ? '▲' : '▼'} ${Math.abs(d.leadsDelta)}% vs prior week` : '—'}</div>
           </div>
           <div className="kpi">
-            <div className="k-label"><span className="k-ico" style={{ background: '#3EC9F5' }} />Sessions · 7d</div>
-            <div className="k-num">—</div>
-            <div className="k-delta" style={{ color: '#5A6E96' }}>Connect GA4</div>
+            <div className="k-label"><span className="k-ico" style={{ background: '#3EC9F5' }} />Sessions · 30d</div>
+            <div className="k-num">{ga.connected ? ga.totalSessions.toLocaleString('en-US') : '—'}</div>
+            <div className="k-delta" style={{ color: ga.connected ? '#2BD98A' : '#5A6E96' }}>{ga.connected ? 'GA4 · live' : 'Connect GA4'}</div>
           </div>
           <div className="kpi">
             <div className="k-label"><span className="k-ico" style={{ background: '#2BD98A' }} />Quote Requests</div>
@@ -142,21 +155,49 @@ export default async function MissionControl() {
         </div>
       </section>
 
-      {/* ANALYTICS (GA4 empty states, styled) */}
-      <section className="row-analytics">
-        <div className="card">
-          <div className="card-head"><div><div className="card-title">Traffic Command — Google Analytics</div><div className="card-sub">Sessions vs. conversions · last 30 days</div></div><span className="spacer" /><span className="chip violet">GA4 SYNC</span></div>
-          <div className="ga-empty">Connect Google Analytics to chart sessions vs. leads.<code>GA4_PROPERTY_ID + GOOGLE_APPLICATION_CREDENTIALS</code></div>
-        </div>
-        <div className="card">
-          <div className="card-head"><div><div className="card-title">Acquisition Mix</div><div className="card-sub">By channel · 30d</div></div></div>
-          <div className="ga-empty">Channel breakdown appears once GA4 is connected.</div>
-        </div>
-        <div className="card">
-          <div className="card-head"><div><div className="card-title">Top Pages</div><div className="card-sub">Entrances · 30d</div></div></div>
-          <div className="ga-empty">Top entrance pages appear once GA4 is connected.</div>
-        </div>
-      </section>
+      {/* ANALYTICS */}
+      {(() => {
+        const s = seriesPaths(ga.sessions.map((x) => x.sessions))
+        const c = seriesPaths(ga.sessions.map((x) => x.conversions))
+        const acqTotal = ga.acquisition.reduce((a, x) => a + x.sessions, 0) || 1
+        const maxEnt = Math.max(1, ...ga.topPages.map((p) => p.entrances))
+        let off = 0
+        return (
+          <section className="row-analytics">
+            <div className="card">
+              <div className="card-head"><div><div className="card-title">Traffic Command — Google Analytics</div><div className="card-sub">Sessions vs. conversions · last 30 days</div></div><span className="spacer" />{ga.connected ? <span className="chip live">● GA4 LIVE</span> : <span className="chip violet">GA4 SYNC</span>}</div>
+              {ga.connected && ga.sessions.length > 1 ? (
+                <svg viewBox="0 0 640 168" style={{ width: '100%' }} role="img" aria-label="Sessions and conversions, 30 days">
+                  <defs><linearGradient id="fillC" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stopColor="#3EC9F5" stopOpacity=".28" /><stop offset="1" stopColor="#3EC9F5" stopOpacity="0" /></linearGradient></defs>
+                  <g stroke="#1B2C55" strokeWidth="1"><line x1="0" y1="40" x2="640" y2="40" /><line x1="0" y1="80" x2="640" y2="80" /><line x1="0" y1="120" x2="640" y2="120" /></g>
+                  <path d={s.area} fill="url(#fillC)" />
+                  <path d={s.line} fill="none" stroke="#3EC9F5" strokeWidth="2.5" style={{ filter: 'drop-shadow(0 0 6px rgba(62,201,245,.5))' }} />
+                  <path d={c.line} fill="none" stroke="#FFB020" strokeWidth="2" strokeDasharray="5 5" />
+                </svg>
+              ) : <div className="ga-empty">Connect Google Analytics to chart sessions vs. conversions.<code>GA4_PROPERTY_ID + GA4_CREDENTIALS_JSON</code></div>}
+            </div>
+            <div className="card">
+              <div className="card-head"><div><div className="card-title">Acquisition Mix</div><div className="card-sub">By channel · 30d</div></div></div>
+              {ga.connected && ga.acquisition.length ? (
+                <div style={{ display: 'flex', alignItems: 'center', gap: 18 }}>
+                  <svg width="128" height="128" viewBox="0 0 128 128"><g transform="rotate(-90 64 64)" fill="none" strokeWidth="15">
+                    {ga.acquisition.map((a, i) => { const frac = a.sessions / acqTotal; const dash = frac * 314; const el = <circle key={i} cx="64" cy="64" r="50" stroke={DONUT_COLORS[i % DONUT_COLORS.length]} strokeDasharray={`${dash} 314`} strokeDashoffset={-off} />; off += dash; return el })}
+                  </g><text x="64" y="60" textAnchor="middle" fontFamily="var(--font-display)" fontWeight="700" fontSize="19" fill="#EAF2FF">{ga.totalSessions >= 1000 ? `${(ga.totalSessions / 1000).toFixed(1)}k` : ga.totalSessions}</text><text x="64" y="76" textAnchor="middle" fontSize="8" letterSpacing="1.5" fill="#8FA3C8">SESSIONS</text></svg>
+                  <div style={{ display: 'flex', flexDirection: 'column', gap: 9, fontSize: 12 }}>
+                    {ga.acquisition.map((a, i) => <div key={i} style={{ display: 'flex', alignItems: 'center', gap: 8, color: '#8FA3C8' }}><i className="lg" style={{ background: DONUT_COLORS[i % DONUT_COLORS.length] }} />{a.channel}<b style={{ marginLeft: 'auto', fontFamily: 'var(--font-mono)', color: '#EAF2FF' }}>{Math.round((a.sessions / acqTotal) * 100)}%</b></div>)}
+                  </div>
+                </div>
+              ) : <div className="ga-empty">Channel breakdown appears once GA4 is connected.</div>}
+            </div>
+            <div className="card">
+              <div className="card-head"><div><div className="card-title">Top Pages</div><div className="card-sub">Entrances · 30d</div></div></div>
+              {ga.connected && ga.topPages.length ? (
+                <div className="toppages">{ga.topPages.map((p, i) => <div className="tp" key={i}><div className="tp-row"><span className="tp-path">{p.path}</span><b>{p.entrances.toLocaleString('en-US')}</b></div><div className="bar"><i style={{ width: `${Math.round((p.entrances / maxEnt) * 100)}%` }} /></div></div>)}</div>
+              ) : <div className="ga-empty">Top entrance pages appear once GA4 is connected.</div>}
+            </div>
+          </section>
+        )
+      })()}
 
       {/* CRM */}
       <section className="row-crm">

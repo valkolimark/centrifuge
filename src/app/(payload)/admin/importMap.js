@@ -23,10 +23,12 @@ import { BoldFeatureClient as BoldFeatureClient_e70f5e05f09f93e00b997edb1ef0c864
 import { ItalicFeatureClient as ItalicFeatureClient_e70f5e05f09f93e00b997edb1ef0c864 } from '@payloadcms/richtext-lexical/client'
 import { default as default_de10531668fdec792b98e3f3e5a8a1b7 } from '@/payload/admin/fields/SeoPreview'
 import { default as default_e7e54d34cd4b2a606d361fbc7e9b5121 } from '@/payload/admin/fields/AeoPanel'
+import { default as default_9a9105c135e5c012d807bbfbc9befcd9 } from '@/payload/admin/fields/InventoryThumbCell'
 import { default as default_db38555e19f9e06d2a20426d5c6cdd69 } from '@/payload/admin/fields/PdfStudioLink'
 import { default as default_10165f4896d7b6d9d8f4b9f5be3f0979 } from '@/payload/admin/Avatar'
 import { default as default_35226cc228435246f9c5b5ade188ddce } from '@/payload/admin/Icon'
 import { default as default_2ec3e47bf0d2c1bcec071e0c669a53fc } from '@/payload/admin/Logo'
+import { default as default_c5a150173e5527969052658ec2728726 } from '@/payload/admin/NavHeader'
 import { default as default_130c023f17f73b2aa7a082c0b91ef7ca } from '@/payload/admin/BrandProvider'
 import { default as default_84a41906d066def45718a662e1d5f79a } from '@/payload/admin/Dashboard'
 import { CollectionCards as CollectionCards_f9c02e79a4aed9a3924487c0cd4cafb1 } from '@payloadcms/next/rsc'
@@ -58,10 +60,12 @@ export const importMap = {
   "@payloadcms/richtext-lexical/client#ItalicFeatureClient": ItalicFeatureClient_e70f5e05f09f93e00b997edb1ef0c864,
   "@/payload/admin/fields/SeoPreview#default": default_de10531668fdec792b98e3f3e5a8a1b7,
   "@/payload/admin/fields/AeoPanel#default": default_e7e54d34cd4b2a606d361fbc7e9b5121,
+  "@/payload/admin/fields/InventoryThumbCell#default": default_9a9105c135e5c012d807bbfbc9befcd9,
   "@/payload/admin/fields/PdfStudioLink#default": default_db38555e19f9e06d2a20426d5c6cdd69,
   "@/payload/admin/Avatar#default": default_10165f4896d7b6d9d8f4b9f5be3f0979,
   "@/payload/admin/Icon#default": default_35226cc228435246f9c5b5ade188ddce,
   "@/payload/admin/Logo#default": default_2ec3e47bf0d2c1bcec071e0c669a53fc,
+  "@/payload/admin/NavHeader#default": default_c5a150173e5527969052658ec2728726,
   "@/payload/admin/BrandProvider#default": default_130c023f17f73b2aa7a082c0b91ef7ca,
   "@/payload/admin/Dashboard#default": default_84a41906d066def45718a662e1d5f79a,
   "@payloadcms/next/rsc#CollectionCards": CollectionCards_f9c02e79a4aed9a3924487c0cd4cafb1
