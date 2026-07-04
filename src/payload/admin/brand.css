@@ -1,150 +1,205 @@
-/* ─────────────────────────────────────────────────────────────
-   Industrial Blue — Payload admin theme (task 1.2, "sleek back end")
-   Injected app-wide via BrandProvider (admin.components.providers), so it
-   themes every admin screen incl. login. Overrides Payload's neutral theme
-   variables + a few stable component classes to the brand palette.
-   ───────────────────────────────────────────────────────────── */
+/* ============================================================
+   Centrifuge World — "Mission Control" admin theme (Cycle UI-1, Phase A)
+   Dark-only. Overrides Payload's elevation/theme variables to the approved
+   palette, applies the self-hosted fonts (vars from BrandProvider), and restyles
+   the sidebar, cards, buttons, inputs, and login.
+   ============================================================ */
+
 :root {
-  /* "Web Blue" palette to match the site (bright red = emergencies/warnings). */
-  --cw-navy: #00415a;
-  --cw-navy-deep: #001f2b;
-  --cw-blue: #00719c;
-  --cw-blue-600: #00658c;
-  --cw-blue-bright: #00b8ff;
-  --cw-steel-100: #eef3f6;
-  --cw-steel-300: #c2d0d8;
-  --cw-steel-500: #5c7078;
-  --cw-safety: #dd1b24;
-
-  /* Softer, cooler canvas; cards stay white for contrast. */
-  --theme-bg: var(--cw-steel-100);
-  --theme-border-color: var(--cw-steel-300);
-
-  /* Rounder, calmer corners. */
-  --style-radius-s: 5px;
-  --style-radius-m: 7px;
-  --style-radius-l: 10px;
-
-  /* Brand accent used by rules below. */
-  --cw-accent: var(--cw-blue);
-
-  /* Prefer Inter when present; fall back to the system UI stack (no external
-     font request — keeps the admin CSP-clean). */
-  --font-body: 'Inter', system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+  --cw-bg: #060b1a;
+  --cw-bg2: #0a1226;
+  --cw-panel: #0d1832;
+  --cw-panel2: #111f42;
+  --cw-line: #1b2c55;
+  --cw-line-bright: #2a4380;
+  --cw-cyan: #3ec9f5;
+  --cw-cyan-deep: #16a9e0;
+  --cw-blue: #2a6bff;
+  --cw-violet: #8b6cff;
+  --cw-amber: #ffb020;
+  --cw-green: #2bd98a;
+  --cw-red: #ff5c7a;
+  --cw-ink: #eaf2ff;
+  --cw-ink-dim: #8fa3c8;
+  --cw-ink-faint: #5a6e96;
+  --cw-radius: 14px;
+  --cw-glow: 0 0 22px rgba(62, 201, 245, 0.28);
 }
 
-html[data-theme='light'] {
-  --theme-bg: var(--cw-steel-100);
+/* Force the Mission Control palette regardless of Payload's light/dark toggle. */
+html[data-theme='light'],
+html[data-theme='dark'],
+:root {
+  --theme-bg: var(--cw-bg);
+  --theme-input-bg: var(--cw-panel);
+  --theme-text: var(--cw-ink);
+  --theme-border-color: var(--cw-line);
+  --theme-success-500: var(--cw-green);
+  --theme-warning-500: var(--cw-amber);
+  --theme-error-500: var(--cw-red);
+
+  --theme-elevation-0: var(--cw-bg);
+  --theme-elevation-25: #080f22;
+  --theme-elevation-50: var(--cw-bg2);
+  --theme-elevation-100: var(--cw-panel);
+  --theme-elevation-150: var(--cw-panel2);
+  --theme-elevation-200: var(--cw-line);
+  --theme-elevation-250: #23366b;
+  --theme-elevation-300: var(--cw-line-bright);
+  --theme-elevation-400: #3a4f85;
+  --theme-elevation-500: var(--cw-ink-faint);
+  --theme-elevation-600: #6d81a9;
+  --theme-elevation-700: var(--cw-ink-dim);
+  --theme-elevation-800: #b9c7e0;
+  --theme-elevation-900: #d6e0f2;
+  --theme-elevation-1000: var(--cw-ink);
+
+  --color-base-0: var(--cw-bg);
+  --color-base-50: var(--cw-bg2);
+  --color-base-100: var(--cw-panel);
+  --color-base-150: var(--cw-panel2);
+  --color-base-200: var(--cw-line);
+  --color-base-850: #b9c7e0;
+  --color-base-1000: var(--cw-ink);
 }
 
-/* Dark theme: deep navy canvas instead of neutral charcoal. */
-html[data-theme='dark'] {
-  --theme-bg: #061a30;
-  --theme-elevation-0: #0a2846;
-  --theme-elevation-50: #0d2f52;
-  --theme-border-color: #17436e;
-  --cw-accent: #00b8ff;
-}
-
-/* ── Primary buttons → navy, hover blue ─────────────────────── */
-.btn--style-primary:not(.btn--disabled) {
-  --color: #fff;
-  background-color: var(--cw-navy);
-  border-color: var(--cw-navy);
-  color: #fff;
-  transition:
-    background-color 0.15s ease,
-    box-shadow 0.15s ease;
-}
-.btn--style-primary:not(.btn--disabled):hover,
-.btn--style-primary:not(.btn--disabled):focus-visible {
-  background-color: var(--cw-blue);
-  border-color: var(--cw-blue);
-  box-shadow: 0 6px 18px rgb(0 113 156 / 0.28);
-}
-
-/* Secondary buttons: steel outline that warms to blue. */
-.btn--style-secondary:not(.btn--disabled):hover {
-  border-color: var(--cw-blue);
-  color: var(--cw-blue);
-}
-
-/* ── Links + active nav ─────────────────────────────────────── */
-a,
-.nav__link:hover,
-.step-nav a {
-  color: var(--cw-blue-600);
-}
-.nav__link {
-  border-radius: var(--style-radius-s);
-  transition: background-color 0.12s ease;
-}
-.nav__link:hover {
-  background-color: rgb(0 113 156 / 0.08);
-}
-.nav__link.active,
-.nav__link[aria-current='page'] {
-  background-color: rgb(0 113 156 / 0.12);
-  color: var(--cw-navy);
-  box-shadow: inset 3px 0 0 0 var(--cw-blue);
-}
-
-/* ── Focus rings in brand blue ──────────────────────────────── */
-*:focus-visible {
-  outline-color: var(--cw-blue) !important;
-}
-
-/* ── Sidebar / nav chrome ───────────────────────────────────── */
-.nav {
-  background: linear-gradient(180deg, var(--cw-navy-deep), var(--cw-navy));
-}
-.nav .nav__link,
-.nav .nav-group__toggle,
-.nav__label,
-.nav .nav__controls a {
-  color: rgb(255 255 255 / 0.86);
-}
-.nav .nav__link:hover {
-  background-color: rgb(255 255 255 / 0.1);
-  color: #fff;
-}
-.nav .nav__link.active {
-  background-color: rgb(255 255 255 / 0.14);
-  color: #fff;
-  box-shadow: inset 3px 0 0 0 var(--cw-safety);
-}
-.nav-group__label {
-  color: rgb(255 255 255 / 0.55) !important;
-  letter-spacing: 0.04em;
-  text-transform: uppercase;
-  font-size: 11px;
-}
-
-/* ── Cards / controls polish ────────────────────────────────── */
-.card,
-.collection-list,
-.table {
-  border-radius: var(--style-radius-l);
-}
-.pill {
-  border-radius: 999px;
-}
-
-/* ── Login screen ───────────────────────────────────────────── */
-.login {
+html,
+body {
   background:
-    radial-gradient(1200px 500px at 50% -10%, rgb(0 113 156 / 0.1), transparent),
-    var(--theme-bg);
-}
-.login .login__wrap,
-.login__form {
-  border-radius: var(--style-radius-l);
-}
-.login__brand {
-  margin-bottom: 1.5rem;
+    radial-gradient(1100px 600px at 85% -10%, rgba(42, 107, 255, 0.14), transparent 60%),
+    radial-gradient(900px 500px at -10% 30%, rgba(62, 201, 245, 0.1), transparent 55%),
+    var(--cw-bg) !important;
+  color: var(--cw-ink);
 }
 
-/* ── Header / app bar accent underline ──────────────────────── */
-.app-header {
-  border-bottom: 2px solid var(--cw-blue);
+.cw-admin {
+  font-family: var(--font-body), system-ui, sans-serif;
+}
+.cw-admin h1,
+.cw-admin h2,
+.cw-admin h3,
+.cw-admin .nav-group__label,
+.cw-admin .step-nav {
+  font-family: var(--font-display), var(--font-body), sans-serif;
+  letter-spacing: 0.2px;
+}
+.cw-admin code,
+.cw-admin pre {
+  font-family: var(--font-mono), monospace;
+}
+
+/* Focus ring */
+.cw-admin :focus-visible {
+  outline: 2px solid var(--cw-cyan) !important;
+  outline-offset: 2px;
+  border-radius: 6px;
+}
+
+/* ---- Sidebar / nav ---- */
+.cw-admin .nav {
+  background: linear-gradient(180deg, #0a1226 0%, #070e1f 100%);
+  border-right: 1px solid var(--cw-line);
+}
+.cw-admin .nav .nav__link,
+.cw-admin .nav a {
+  color: var(--cw-ink-dim);
+  border-radius: 9px;
+  border: 1px solid transparent;
+  transition: all 0.18s ease;
+}
+.cw-admin .nav .nav__link:hover,
+.cw-admin .nav a:hover {
+  color: var(--cw-ink);
+  background: rgba(62, 201, 245, 0.06);
+}
+.cw-admin .nav .nav__link.active,
+.cw-admin .nav a.active,
+.cw-admin .nav .nav__link--active {
+  color: var(--cw-ink);
+  background: linear-gradient(90deg, rgba(42, 107, 255, 0.22), rgba(62, 201, 245, 0.08));
+  border: 1px solid rgba(62, 201, 245, 0.28);
+  box-shadow: inset 0 0 18px rgba(42, 107, 255, 0.14);
+}
+.cw-admin .nav-group__label {
+  color: var(--cw-ink-faint);
+  text-transform: uppercase;
+  letter-spacing: 2.5px;
+  font-size: 10px;
+}
+
+/* ---- Cards / panels ---- */
+.cw-admin .table,
+.cw-admin .collection-list__wrap,
+.cw-admin .group-field,
+.cw-admin .doc-controls,
+.cw-admin .card,
+.cw-admin .dashboard__group {
+  background: var(--cw-panel);
+  border: 1px solid var(--cw-line);
+  border-radius: var(--cw-radius);
+}
+.cw-admin .table thead th {
+  color: var(--cw-ink-faint);
+  border-bottom: 1px solid var(--cw-line);
+}
+.cw-admin .table tbody tr:hover {
+  background: rgba(62, 201, 245, 0.05);
+}
+
+/* ---- Inputs ---- */
+.cw-admin input,
+.cw-admin textarea,
+.cw-admin select,
+.cw-admin .rs__control {
+  background: var(--cw-panel) !important;
+  border: 1px solid var(--cw-line) !important;
+  color: var(--cw-ink) !important;
+  border-radius: 8px;
+}
+.cw-admin input:focus,
+.cw-admin textarea:focus,
+.cw-admin .rs__control--is-focused {
+  border-color: var(--cw-cyan) !important;
+  box-shadow: 0 0 0 2px rgba(62, 201, 245, 0.18);
+}
+
+/* ---- Buttons: primary = cyan/blue accent ---- */
+.cw-admin .btn--style-primary .btn__content,
+.cw-admin .btn--style-primary {
+  background: linear-gradient(90deg, var(--cw-blue), var(--cw-cyan)) !important;
+  color: #041018 !important;
+  border: none;
+  box-shadow: var(--cw-glow);
+  font-weight: 600;
+}
+.cw-admin .btn--style-primary:hover {
+  filter: brightness(1.08);
+}
+.cw-admin .btn--style-secondary {
+  border: 1px solid var(--cw-line-bright) !important;
+  color: var(--cw-ink) !important;
+  background: rgba(62, 201, 245, 0.04) !important;
+}
+
+/* ---- Login screen ---- */
+.cw-admin .login__wrap,
+.cw-admin .login {
+  background:
+    radial-gradient(900px 500px at 50% -10%, rgba(42, 107, 255, 0.18), transparent 60%),
+    var(--cw-bg);
+}
+.cw-admin .login__form {
+  background: var(--cw-panel);
+  border: 1px solid var(--cw-line);
+  border-radius: 16px;
+  box-shadow: var(--cw-glow);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .cw-admin *,
+  .cw-admin *::before,
+  .cw-admin *::after {
+    animation: none !important;
+    transition: none !important;
+  }
 }
