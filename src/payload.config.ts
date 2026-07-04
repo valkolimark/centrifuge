@@ -73,6 +73,7 @@ export default buildConfig({
   typescript: { outputFile: path.resolve(dirname, 'payload-types.ts') },
   admin: {
     user: Users.slug,
+    avatar: { Component: '@/payload/admin/Avatar' },
     meta: {
       titleSuffix: '· Centrifuge World CMS',
     },

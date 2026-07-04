@@ -237,6 +237,14 @@ export interface Media {
   focalX?: number | null;
   focalY?: number | null;
   sizes?: {
+    avatar?: {
+      url?: string | null;
+      width?: number | null;
+      height?: number | null;
+      mimeType?: string | null;
+      filesize?: number | null;
+      filename?: string | null;
+    };
     thumbnail?: {
       url?: string | null;
       width?: number | null;
@@ -1213,6 +1221,10 @@ export interface Redirect {
 export interface User {
   id: number;
   name: string;
+  /**
+   * Profile photo (image, ≤2 MB — square-cropped on upload).
+   */
+  avatar?: (number | null) | Media;
   role: 'super-admin' | 'editor' | 'content-manager' | 'viewer';
   updatedAt: string;
   createdAt: string;
@@ -2021,6 +2033,16 @@ export interface MediaSelect<T extends boolean = true> {
   sizes?:
     | T
     | {
+        avatar?:
+          | T
+          | {
+              url?: T;
+              width?: T;
+              height?: T;
+              mimeType?: T;
+              filesize?: T;
+              filename?: T;
+            };
         thumbnail?:
           | T
           | {
@@ -2089,6 +2111,7 @@ export interface RedirectsSelect<T extends boolean = true> {
  */
 export interface UsersSelect<T extends boolean = true> {
   name?: T;
+  avatar?: T;
   role?: T;
   updatedAt?: T;
   createdAt?: T;

@@ -15,6 +15,7 @@ export const Media: CollectionConfig = {
   upload: {
     mimeTypes: ['image/*', 'application/pdf'],
     imageSizes: [
+      { name: 'avatar', width: 160, height: 160, position: 'centre' },
       { name: 'thumbnail', width: 400 },
       { name: 'card', width: 800 },
       { name: 'feature', width: 1600 },

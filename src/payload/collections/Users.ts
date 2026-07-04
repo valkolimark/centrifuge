@@ -37,6 +37,13 @@ export const Users: CollectionConfig = {
   fields: [
     { name: 'name', type: 'text', required: true },
     {
+      name: 'avatar',
+      type: 'upload',
+      relationTo: 'media',
+      filterOptions: { mimeType: { contains: 'image' } },
+      admin: { description: 'Profile photo (image, ≤2 MB — square-cropped on upload).' },
+    },
+    {
       name: 'role',
       type: 'select',
       required: true,
