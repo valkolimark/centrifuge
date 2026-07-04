@@ -18,6 +18,7 @@ import { Posts } from './payload/collections/Posts'
 import { CaseStudies } from './payload/collections/CaseStudies'
 import { HowItWorks } from './payload/collections/HowItWorks'
 import { Inventory } from './payload/collections/Inventory'
+import { CompetitorSnapshots } from './payload/collections/CompetitorSnapshots'
 import { FAQs } from './payload/collections/FAQs'
 import { FormSubmissions } from './payload/collections/FormSubmissions'
 import { Redirects } from './payload/collections/Redirects'
@@ -107,6 +108,7 @@ export default buildConfig({
     CaseStudies,
     HowItWorks,
     Inventory,
+    CompetitorSnapshots,
     FAQs,
     Media,
     FormSubmissions,

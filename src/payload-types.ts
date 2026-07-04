@@ -76,6 +76,7 @@ export interface Config {
     'case-studies': CaseStudy;
     'how-it-works': HowItWork;
     inventory: Inventory;
+    'competitor-snapshots': CompetitorSnapshot;
     faqs: Faq;
     media: Media;
     'form-submissions': FormSubmission;
@@ -98,6 +99,7 @@ export interface Config {
     'case-studies': CaseStudiesSelect<false> | CaseStudiesSelect<true>;
     'how-it-works': HowItWorksSelect<false> | HowItWorksSelect<true>;
     inventory: InventorySelect<false> | InventorySelect<true>;
+    'competitor-snapshots': CompetitorSnapshotsSelect<false> | CompetitorSnapshotsSelect<true>;
     faqs: FaqsSelect<false> | FaqsSelect<true>;
     media: MediaSelect<false> | MediaSelect<true>;
     'form-submissions': FormSubmissionsSelect<false> | FormSubmissionsSelect<true>;
@@ -1068,6 +1070,56 @@ export interface Inventory {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "competitor-snapshots".
+ */
+export interface CompetitorSnapshot {
+  id: number;
+  /**
+   * Display name, e.g. "Acme Centrifuge Co."
+   */
+  label: string;
+  domain: string;
+  /**
+   * When this snapshot was captured (from the export).
+   */
+  capturedAt: string;
+  /**
+   * SEO visibility score 0–100.
+   */
+  visibility?: number | null;
+  /**
+   * Count of top-10 ranking keywords.
+   */
+  topKeywords?: number | null;
+  /**
+   * Estimated monthly organic traffic.
+   */
+  estTraffic?: number | null;
+  /**
+   * Visibility change vs. prior snapshot.
+   */
+  delta?: number | null;
+  /**
+   * Placeholder/demo data — replace via CSV import.
+   */
+  isExample?: boolean | null;
+  keywords?:
+    | {
+        query: string;
+        ourRank?: number | null;
+        theirBest?: number | null;
+        /**
+         * Rank change (+ improved, − dropped).
+         */
+        movement?: number | null;
+        id?: string | null;
+      }[]
+    | null;
+  updatedAt: string;
+  createdAt: string;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "faqs".
  */
 export interface Faq {
@@ -1332,6 +1384,10 @@ export interface PayloadLockedDocument {
     | ({
         relationTo: 'inventory';
         value: number | Inventory;
+      } | null)
+    | ({
+        relationTo: 'competitor-snapshots';
+        value: number | CompetitorSnapshot;
       } | null)
     | ({
         relationTo: 'faqs';
@@ -1904,6 +1960,31 @@ export interface InventorySelect<T extends boolean = true> {
   updatedAt?: T;
   createdAt?: T;
   _status?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "competitor-snapshots_select".
+ */
+export interface CompetitorSnapshotsSelect<T extends boolean = true> {
+  label?: T;
+  domain?: T;
+  capturedAt?: T;
+  visibility?: T;
+  topKeywords?: T;
+  estTraffic?: T;
+  delta?: T;
+  isExample?: T;
+  keywords?:
+    | T
+    | {
+        query?: T;
+        ourRank?: T;
+        theirBest?: T;
+        movement?: T;
+        id?: T;
+      };
+  updatedAt?: T;
+  createdAt?: T;
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema

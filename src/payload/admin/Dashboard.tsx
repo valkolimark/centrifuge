@@ -29,12 +29,25 @@ async function loadData() {
   try {
     const payload = await getPayloadClient()
     const now = Date.now()
-    const [subs, inv, brands, services] = await Promise.all([
+    const [subs, inv, brands, services, comp] = await Promise.all([
       payload.find({ collection: 'form-submissions', limit: 500, sort: '-createdAt', depth: 0 }),
       payload.count({ collection: 'inventory', where: { and: [{ _status: { equals: 'published' } }, { availability: { not_equals: 'sold' } }] } }),
       payload.count({ collection: 'oem-brands' }),
       payload.count({ collection: 'services', where: { _status: { equals: 'published' } } }),
+      payload.find({ collection: 'competitor-snapshots', limit: 50, sort: '-capturedAt', depth: 0 }).catch(() => ({ docs: [] as Row[] })),
     ])
+    // Latest capture batch → radar rows; pull keyword rows for the battleground.
+    const compDocs = comp.docs as unknown as Row[]
+    const latestAt = compDocs[0] ? String(compDocs[0].capturedAt) : null
+    const competitors = latestAt ? compDocs.filter((c) => String(c.capturedAt) === latestAt) : []
+    const keywords = competitors.flatMap((c) =>
+      ((c.keywords as Row[] | undefined) ?? []).map((k) => ({
+        query: String(k.query ?? ''),
+        ourRank: Number(k.ourRank) || 0,
+        theirBest: Number(k.theirBest) || 0,
+        movement: Number(k.movement) || 0,
+      })),
+    )
     const docs = subs.docs as unknown as Row[]
     const since = (d: number) => docs.filter((r) => new Date(String(r.createdAt)).getTime() >= now - d)
     const stageCounts = Object.fromEntries(STAGES.map((s) => [s.key, docs.filter((r) => (r.pipelineStage || 'new') === s.key).length]))
@@ -53,6 +66,9 @@ async function loadData() {
       services: services.totalDocs,
       redirects: Object.keys(redirectsMap).length,
       stuck,
+      competitors: competitors.map((c) => ({ label: String(c.label), domain: String(c.domain), visibility: Number(c.visibility) || 0, delta: Number(c.delta) || 0, isExample: !!c.isExample })),
+      keywords: keywords.slice(0, 6),
+      competitorsAt: latestAt,
     }
   } catch {
     return { ok: false } as const
@@ -197,12 +213,44 @@ export default async function MissionControl() {
           </ul>
         </Card>
         <Card>
-          <Title t="Competitor Radar" s="SEO visibility vs. named competitors" />
-          <div style={{ display: 'grid', placeItems: 'center', minHeight: 120, textAlign: 'center', gap: 8, color: 'var(--cw-ink-dim)', fontSize: 13 }}>
-            No snapshot yet. Import an Ahrefs/Semrush export to populate the radar.
-          </div>
+          <Title t="Competitor Radar" s={has && d.competitors.length ? `SEO visibility · data as of ${new Date(String(d.competitorsAt)).toLocaleDateString('en-US')}${d.competitors.some((c) => c.isExample) ? ' · example' : ''}` : 'SEO visibility vs. named competitors'} />
+          {has && d.competitors.length ? (
+            <div style={{ display: 'flex', flexDirection: 'column', gap: 8 }}>
+              {d.competitors.sort((a, b) => b.visibility - a.visibility).map((c) => (
+                <div key={c.domain}>
+                  <div style={{ display: 'flex', justifyContent: 'space-between', fontSize: 12, marginBottom: 3 }}>
+                    <span style={{ color: c.domain === 'centrifuge.com' ? 'var(--cw-cyan)' : 'var(--cw-ink-dim)', fontWeight: c.domain === 'centrifuge.com' ? 700 : 500 }}>{c.label}</span>
+                    <span style={{ fontFamily: 'var(--font-mono)' }}>{c.visibility}{c.delta ? <span style={{ color: c.delta > 0 ? 'var(--cw-green)' : 'var(--cw-red)', marginLeft: 6 }}>{c.delta > 0 ? '▲' : '▼'}{Math.abs(c.delta)}</span> : null}</span>
+                  </div>
+                  <div style={{ height: 8, background: 'var(--cw-bg2)', borderRadius: 4, overflow: 'hidden' }}>
+                    <div style={{ width: `${Math.min(100, c.visibility)}%`, height: '100%', background: c.domain === 'centrifuge.com' ? 'linear-gradient(90deg,var(--cw-blue),var(--cw-cyan))' : 'var(--cw-line-bright)' }} />
+                  </div>
+                </div>
+              ))}
+            </div>
+          ) : (
+            <div style={{ display: 'grid', placeItems: 'center', minHeight: 120, textAlign: 'center', gap: 8, color: 'var(--cw-ink-dim)', fontSize: 13 }}>
+              No snapshot yet. Run <code style={{ fontFamily: 'var(--font-mono)', color: 'var(--cw-cyan)' }}>import-competitor-csv.ts</code> to populate the radar.
+            </div>
+          )}
         </Card>
       </div>
+
+      {has && d.keywords.length ? (
+        <Card style={{ marginTop: 16 }}>
+          <Title t="Keyword Battleground" s="Your rank vs. best competitor" />
+          <div style={{ display: 'grid', gap: 6 }}>
+            {d.keywords.map((k, i) => (
+              <div key={i} style={{ display: 'grid', gridTemplateColumns: '1fr auto auto auto', gap: 12, alignItems: 'center', padding: '7px 10px', background: 'var(--cw-bg2)', border: '1px solid var(--cw-line)', borderRadius: 8, fontSize: 12.5 }}>
+                <span>{k.query}</span>
+                <span style={{ fontFamily: 'var(--font-mono)', color: 'var(--cw-cyan)' }}>you #{k.ourRank}</span>
+                <span style={{ fontFamily: 'var(--font-mono)', color: 'var(--cw-ink-dim)' }}>them #{k.theirBest}</span>
+                <span style={{ fontFamily: 'var(--font-mono)', color: k.movement >= 0 ? 'var(--cw-green)' : 'var(--cw-red)' }}>{k.movement >= 0 ? '▲' : '▼'}{Math.abs(k.movement)}</span>
+              </div>
+            ))}
+          </div>
+        </Card>
+      ) : null}
 
       <footer style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginTop: 20, paddingTop: 14, borderTop: '1px solid var(--cw-line)', fontSize: 11.5, color: 'var(--cw-ink-faint)' }}>
         <span style={{ background: '#fff', padding: '4px 8px', borderRadius: 6 }}>
