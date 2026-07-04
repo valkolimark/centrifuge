@@ -83,6 +83,10 @@ export default buildConfig({
         Logo: '@/payload/admin/Logo',
         Icon: '@/payload/admin/Icon',
       },
+      views: {
+        // Mission Control replaces the default admin landing dashboard (UI-1 Phase B).
+        dashboard: { Component: '@/payload/admin/Dashboard' },
+      },
     },
     livePreview: {
       breakpoints: [

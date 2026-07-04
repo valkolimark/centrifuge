@@ -39,5 +39,20 @@ export const FormSubmissions: CollectionConfig = {
     { name: 'pageSource', type: 'text' },
     { name: 'utm', type: 'json', admin: { description: 'Captured UTM params.' } },
     { name: 'payload', type: 'json', admin: { description: 'Full submitted field set.' } },
+    // CRM groundwork (UI-1 Phase C.4) — powers the Mission Control lead pipeline board.
+    {
+      name: 'pipelineStage',
+      type: 'select',
+      defaultValue: 'new',
+      admin: { position: 'sidebar', description: 'CRM pipeline stage.' },
+      options: [
+        { label: 'New', value: 'new' },
+        { label: 'Contacted', value: 'contacted' },
+        { label: 'Quoted', value: 'quoted' },
+        { label: 'Won', value: 'won' },
+        { label: 'Lost', value: 'lost' },
+      ],
+    },
+    { name: 'estimatedValue', type: 'number', admin: { position: 'sidebar', description: 'Estimated deal value (USD).' } },
   ],
 }

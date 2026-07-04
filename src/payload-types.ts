@@ -1124,6 +1124,14 @@ export interface FormSubmission {
     | number
     | boolean
     | null;
+  /**
+   * CRM pipeline stage.
+   */
+  pipelineStage?: ('new' | 'contacted' | 'quoted' | 'won' | 'lost') | null;
+  /**
+   * Estimated deal value (USD).
+   */
+  estimatedValue?: number | null;
   updatedAt: string;
   createdAt: string;
 }
@@ -1977,6 +1985,8 @@ export interface FormSubmissionsSelect<T extends boolean = true> {
   pageSource?: T;
   utm?: T;
   payload?: T;
+  pipelineStage?: T;
+  estimatedValue?: T;
   updatedAt?: T;
   createdAt?: T;
 }
