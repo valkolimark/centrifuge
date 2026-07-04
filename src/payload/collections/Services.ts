@@ -47,6 +47,7 @@ export const Services: CollectionConfig = {
     },
     { name: 'answerBoxQuestion', type: 'text', admin: { description: 'AEO question (data/faq-bank.md).' } },
     { name: 'answerBox', type: 'textarea', admin: { description: '40–60 word direct answer under the H1.' } },
+    { name: 'aeoPanel', type: 'ui', admin: { components: { Field: '@/payload/admin/fields/AeoPanel' } } },
     { name: 'intro', type: 'textarea', admin: { description: 'Lead paragraph after the answer box.' } },
     {
       name: 'capabilitiesHeading',

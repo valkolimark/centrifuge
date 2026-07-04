@@ -17,6 +17,7 @@ export const Industries: CollectionConfig = {
     { name: 'title', type: 'text', required: true },
     slugField('title'),
     { name: 'answerBox', type: 'textarea', admin: { description: '40–60 word direct answer under the H1 (AEO).' } },
+    { name: 'aeoPanel', type: 'ui', admin: { components: { Field: '@/payload/admin/fields/AeoPanel' } } },
     { name: 'intro', type: 'textarea' },
     {
       name: 'hero',

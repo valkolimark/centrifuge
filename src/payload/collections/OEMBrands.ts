@@ -19,6 +19,7 @@ export const OEMBrands: CollectionConfig = {
     { name: 'featured', type: 'checkbox', defaultValue: false, admin: { position: 'sidebar' } },
     { name: 'mergeInto', type: 'text', admin: { position: 'sidebar', description: 'If set, this brand 301-redirects to /brands/<slug>.' } },
     { name: 'answerBox', type: 'textarea', admin: { description: '40–60 word direct answer under the H1 (AEO).' } },
+    { name: 'aeoPanel', type: 'ui', admin: { components: { Field: '@/payload/admin/fields/AeoPanel' } } },
     { name: 'intro', type: 'textarea', admin: { description: 'Hero subtitle / lead paragraph.' } },
     {
       name: 'disclosure',

@@ -8,6 +8,8 @@ export const seoField: Field = {
   label: 'SEO',
   admin: { description: 'Search metadata. Title ≤60, description ≤155 characters.' },
   fields: [
+    // Live Google-SERP preview + char-counter bars (UI-1 Content Studio SEO inspector).
+    { name: 'seoPreview', type: 'ui', admin: { components: { Field: '@/payload/admin/fields/SeoPreview' } } },
     {
       name: 'title',
       type: 'text',
