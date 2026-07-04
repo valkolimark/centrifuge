@@ -225,6 +225,18 @@ export interface Media {
    * Optional caption; include model numbers where known.
    */
   caption?: string | null;
+  /**
+   * PDF Studio annotation overlay objects.
+   */
+  pdfAnnotations?:
+    | {
+        [k: string]: unknown;
+      }
+    | unknown[]
+    | string
+    | number
+    | boolean
+    | null;
   updatedAt: string;
   createdAt: string;
   url?: string | null;
@@ -2019,6 +2031,7 @@ export interface FaqsSelect<T extends boolean = true> {
 export interface MediaSelect<T extends boolean = true> {
   alt?: T;
   caption?: T;
+  pdfAnnotations?: T;
   updatedAt?: T;
   createdAt?: T;
   url?: T;

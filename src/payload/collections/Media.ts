@@ -34,5 +34,8 @@ export const Media: CollectionConfig = {
       type: 'text',
       admin: { description: 'Optional caption; include model numbers where known.' },
     },
+    // PDF Studio (UI-1 Phase E): entry point + persisted annotation overlay objects.
+    { name: 'pdfStudioLink', type: 'ui', admin: { components: { Field: '@/payload/admin/fields/PdfStudioLink' } } },
+    { name: 'pdfAnnotations', type: 'json', admin: { hidden: true, description: 'PDF Studio annotation overlay objects.' } },
   ],
 }
