@@ -45,5 +45,11 @@ async function fetchGa4(): Promise<Ga4Data> {
   }
 }
 
-// 1-hour cache per the spec.
-export const getGa4 = unstable_cache(fetchGa4, ['ga4-report'], { revalidate: 3600 })
+// 1-hour cache per the spec — but never serve a stale "disconnected" result (so
+// newly-added credentials take effect immediately instead of waiting out the TTL).
+const cachedGa4 = unstable_cache(fetchGa4, ['ga4-report-v2'], { revalidate: 3600 })
+export async function getGa4(): Promise<Ga4Data> {
+  const cached = await cachedGa4()
+  if (cached.connected) return cached
+  return fetchGa4()
+}
