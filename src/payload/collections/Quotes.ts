@@ -171,6 +171,7 @@ export const Quotes: CollectionConfig = {
         { name: 'version', type: 'number' },
         { name: 'sentAt', type: 'date' },
         { name: 'pdf', type: 'upload', relationTo: 'media' },
+        { name: 'docData', type: 'json', admin: { description: 'Exact QuoteView rendered to the client — renders the hosted page "as sent".' } },
         { name: 'htmlHash', type: 'text', admin: { description: 'SHA-256 of the rendered document.' } },
         { name: 'twilioOperationId', type: 'text' },
         {

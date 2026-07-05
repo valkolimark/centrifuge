@@ -9,8 +9,8 @@ import type { CollectionAfterChangeHook } from 'payload'
 import { sendEmail, getOperationStatus, type SendResult } from '@/lib/email/twilio'
 import { renderTemplate } from '@/lib/email/render'
 import { TEMPLATES } from '@/lib/email/templates'
+import { getRecipients, SENDERS } from '@/lib/email/recipients'
 import nap from '../../../data/nap.json'
-import routing from '../../../data/routing.json'
 
 type AnyLead = Record<string, any>
 
@@ -20,19 +20,6 @@ const SOURCE_LABEL: Record<string, string> = {
   emergency: 'Emergency Service',
   'phone-in': 'Phone-in',
   manual: 'Manual',
-}
-
-// Recipients come from the LeadRouting global (single source of truth); fall back to
-// data/routing.json if the global has not been seeded yet.
-async function recipientsFrom(payload: any, req: any): Promise<{ name?: string; email: string }[]> {
-  try {
-    const g: any = await payload.findGlobal({ slug: 'lead-routing', req })
-    const list = (g?.recipients ?? []).filter((r: any) => r?.enabled !== false && r?.email)
-    if (list.length) return list.map((r: any) => ({ name: r.name, email: r.email }))
-  } catch {
-    /* fall through to file defaults */
-  }
-  return routing.recipients.filter((r) => r.enabled !== false).map((r) => ({ name: r.name, email: r.email }))
 }
 
 function internalFields(lead: AnyLead): { label: string; value: string }[] {
@@ -54,14 +41,14 @@ function internalFields(lead: AnyLead): { label: string; value: string }[] {
 /** Route a freshly-created lead. Best-effort; resolves even on failure. */
 export async function routeLead(payload: any, lead: AnyLead, req?: any): Promise<void> {
   const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://centrifuge.com'
-  const from = { address: routing.senders.notifications, name: 'Centrifuge World' }
+  const from = { address: SENDERS.notifications, name: 'Centrifuge World' }
   const isEmergency = lead.sourceForm === 'emergency'
   const emergencyDisplay = nap.phones.emergency.display
   const activity: any[] = [{ type: 'form_received', note: 'Payload validated, lead created', at: new Date().toISOString(), by: 'system' }]
   const patch: AnyLead = {}
 
   try {
-    const recipients = await recipientsFrom(payload, req)
+    const recipients = await getRecipients(payload, req)
     if (!recipients.length) throw new Error('No routing recipients configured')
 
     // 1) Internal batch alert to all recipients.

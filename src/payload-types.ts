@@ -1370,6 +1370,18 @@ export interface Quote {
         sentAt?: string | null;
         pdf?: (number | null) | Media;
         /**
+         * Exact QuoteView rendered to the client — renders the hosted page "as sent".
+         */
+        docData?:
+          | {
+              [k: string]: unknown;
+            }
+          | unknown[]
+          | string
+          | number
+          | boolean
+          | null;
+        /**
          * SHA-256 of the rendered document.
          */
         htmlHash?: string | null;
@@ -2357,6 +2369,7 @@ export interface QuotesSelect<T extends boolean = true> {
         version?: T;
         sentAt?: T;
         pdf?: T;
+        docData?: T;
         htmlHash?: T;
         twilioOperationId?: T;
         recipientStatus?:
