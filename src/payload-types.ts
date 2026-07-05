@@ -80,6 +80,8 @@ export interface Config {
     faqs: Faq;
     media: Media;
     'form-submissions': FormSubmission;
+    leads: Lead;
+    quotes: Quote;
     redirects: Redirect;
     users: User;
     'payload-kv': PayloadKv;
@@ -103,6 +105,8 @@ export interface Config {
     faqs: FaqsSelect<false> | FaqsSelect<true>;
     media: MediaSelect<false> | MediaSelect<true>;
     'form-submissions': FormSubmissionsSelect<false> | FormSubmissionsSelect<true>;
+    leads: LeadsSelect<false> | LeadsSelect<true>;
+    quotes: QuotesSelect<false> | QuotesSelect<true>;
     redirects: RedirectsSelect<false> | RedirectsSelect<true>;
     users: UsersSelect<false> | UsersSelect<true>;
     'payload-kv': PayloadKvSelect<false> | PayloadKvSelect<true>;
@@ -119,11 +123,15 @@ export interface Config {
     'site-settings': SiteSetting;
     'header-nav': HeaderNav;
     footer: Footer;
+    'lead-routing': LeadRouting;
+    'quote-defaults': QuoteDefault;
   };
   globalsSelect: {
     'site-settings': SiteSettingsSelect<false> | SiteSettingsSelect<true>;
     'header-nav': HeaderNavSelect<false> | HeaderNavSelect<true>;
     footer: FooterSelect<false> | FooterSelect<true>;
+    'lead-routing': LeadRoutingSelect<false> | LeadRoutingSelect<true>;
+    'quote-defaults': QuoteDefaultsSelect<false> | QuoteDefaultsSelect<true>;
   };
   locale: null;
   widgets: {
@@ -1209,20 +1217,70 @@ export interface FormSubmission {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "redirects".
+ * via the `definition` "leads".
  */
-export interface Redirect {
+export interface Lead {
   id: number;
+  name?: string | null;
+  company?: string | null;
+  email?: string | null;
+  phone?: string | null;
+  sourceForm?: ('contact' | 'quote-request' | 'emergency' | 'phone-in' | 'manual') | null;
   /**
-   * Legacy path, e.g. /sharples/
+   * Raw submission body.
    */
-  from: string;
+  message?: string | null;
   /**
-   * Target path, e.g. /brands/sharples/
+   * Full original form payload — immutable.
    */
-  to: string;
-  type?: ('301' | '302') | null;
-  note?: string | null;
+  payload?:
+    | {
+        [k: string]: unknown;
+      }
+    | unknown[]
+    | string
+    | number
+    | boolean
+    | null;
+  /**
+   * Pipeline board column.
+   */
+  pipelineStage?: ('new' | 'contacted' | 'quoting' | 'quote-sent' | 'won' | 'lost') | null;
+  /**
+   * Estimated deal value (USD).
+   */
+  estimatedValue?: number | null;
+  /**
+   * Assigned owner. Suggestion only (Ron for quotes, David for emergency) — never auto-assigned.
+   */
+  owner?: (number | null) | User;
+  /**
+   * Twilio Email Operation id for the routing batch send.
+   */
+  twilioOperationId?: string | null;
+  /**
+   * Per-recipient delivery status, polled from the Twilio Operation resource.
+   */
+  delivery?:
+    | {
+        recipient: string;
+        status?: ('queued' | 'delivered' | 'failed' | 'bounced-recovered') | null;
+        timestamp?: string | null;
+        id?: string | null;
+      }[]
+    | null;
+  /**
+   * Auto-appended: stage changes, sends, acknowledgements.
+   */
+  activity?:
+    | {
+        type?: string | null;
+        note?: string | null;
+        at?: string | null;
+        by?: string | null;
+        id?: string | null;
+      }[]
+    | null;
   updatedAt: string;
   createdAt: string;
 }
@@ -1256,6 +1314,117 @@ export interface User {
     | null;
   password?: string | null;
   collection: 'users';
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "quotes".
+ */
+export interface Quote {
+  id: number;
+  /**
+   * Auto-generated CW-Q-{YYYY}-{NNNN}.
+   */
+  quoteNumber?: string | null;
+  /**
+   * Linked lead (nullable for manual quotes).
+   */
+  lead?: (number | null) | Lead;
+  client?: {
+    contactName?: string | null;
+    company?: string | null;
+    email?: string | null;
+    phone?: string | null;
+  };
+  /**
+   * Locked — all quotes issue from Rosharon, TX. Address/phone render from nap.json.
+   */
+  issuingLocation?: 'rosharon' | null;
+  scopeTitle?: string | null;
+  lineItems?:
+    | {
+        description: string;
+        qty?: number | null;
+        unitPrice?: number | null;
+        id?: string | null;
+      }[]
+    | null;
+  /**
+   * Tax rate (%). Seeded from Quote Defaults.
+   */
+  taxRate?: number | null;
+  validDays?: number | null;
+  /**
+   * Computed on send from validDays.
+   */
+  validUntil?: string | null;
+  terms?: string | null;
+  subtotal?: number | null;
+  total?: number | null;
+  status?: ('draft' | 'sent' | 'viewed' | 'accepted' | 'declined' | 'expired') | null;
+  /**
+   * Immutable record of every send. Append-only.
+   */
+  sentSnapshots?:
+    | {
+        version?: number | null;
+        sentAt?: string | null;
+        pdf?: (number | null) | Media;
+        /**
+         * SHA-256 of the rendered document.
+         */
+        htmlHash?: string | null;
+        twilioOperationId?: string | null;
+        recipientStatus?:
+          | {
+              recipient?: string | null;
+              status?: string | null;
+              id?: string | null;
+            }[]
+          | null;
+        id?: string | null;
+      }[]
+    | null;
+  /**
+   * Unguessable token for the hosted quote page.
+   */
+  viewToken?: string | null;
+  /**
+   * Appended by the public /quote/[viewToken] route.
+   */
+  viewEvents?:
+    | {
+        at?: string | null;
+        ip?: string | null;
+        userAgent?: string | null;
+        id?: string | null;
+      }[]
+    | null;
+  decision?: {
+    decidedAt?: string | null;
+    note?: string | null;
+  };
+  updatedAt: string;
+  createdAt: string;
+  _status?: ('draft' | 'published') | null;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "redirects".
+ */
+export interface Redirect {
+  id: number;
+  /**
+   * Legacy path, e.g. /sharples/
+   */
+  from: string;
+  /**
+   * Target path, e.g. /brands/sharples/
+   */
+  to: string;
+  type?: ('301' | '302') | null;
+  note?: string | null;
+  updatedAt: string;
+  createdAt: string;
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
@@ -1424,6 +1593,14 @@ export interface PayloadLockedDocument {
     | ({
         relationTo: 'form-submissions';
         value: number | FormSubmission;
+      } | null)
+    | ({
+        relationTo: 'leads';
+        value: number | Lead;
+      } | null)
+    | ({
+        relationTo: 'quotes';
+        value: number | Quote;
       } | null)
     | ({
         relationTo: 'redirects';
@@ -2108,6 +2285,110 @@ export interface FormSubmissionsSelect<T extends boolean = true> {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "leads_select".
+ */
+export interface LeadsSelect<T extends boolean = true> {
+  name?: T;
+  company?: T;
+  email?: T;
+  phone?: T;
+  sourceForm?: T;
+  message?: T;
+  payload?: T;
+  pipelineStage?: T;
+  estimatedValue?: T;
+  owner?: T;
+  twilioOperationId?: T;
+  delivery?:
+    | T
+    | {
+        recipient?: T;
+        status?: T;
+        timestamp?: T;
+        id?: T;
+      };
+  activity?:
+    | T
+    | {
+        type?: T;
+        note?: T;
+        at?: T;
+        by?: T;
+        id?: T;
+      };
+  updatedAt?: T;
+  createdAt?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "quotes_select".
+ */
+export interface QuotesSelect<T extends boolean = true> {
+  quoteNumber?: T;
+  lead?: T;
+  client?:
+    | T
+    | {
+        contactName?: T;
+        company?: T;
+        email?: T;
+        phone?: T;
+      };
+  issuingLocation?: T;
+  scopeTitle?: T;
+  lineItems?:
+    | T
+    | {
+        description?: T;
+        qty?: T;
+        unitPrice?: T;
+        id?: T;
+      };
+  taxRate?: T;
+  validDays?: T;
+  validUntil?: T;
+  terms?: T;
+  subtotal?: T;
+  total?: T;
+  status?: T;
+  sentSnapshots?:
+    | T
+    | {
+        version?: T;
+        sentAt?: T;
+        pdf?: T;
+        htmlHash?: T;
+        twilioOperationId?: T;
+        recipientStatus?:
+          | T
+          | {
+              recipient?: T;
+              status?: T;
+              id?: T;
+            };
+        id?: T;
+      };
+  viewToken?: T;
+  viewEvents?:
+    | T
+    | {
+        at?: T;
+        ip?: T;
+        userAgent?: T;
+        id?: T;
+      };
+  decision?:
+    | T
+    | {
+        decidedAt?: T;
+        note?: T;
+      };
+  updatedAt?: T;
+  createdAt?: T;
+  _status?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "redirects_select".
  */
 export interface RedirectsSelect<T extends boolean = true> {
@@ -2288,6 +2569,58 @@ export interface Footer {
   createdAt?: string | null;
 }
 /**
+ * Recipients for every form-submission alert (Twilio batch send). Business rule: all four. Never hardcode addresses in code — this is the source of truth.
+ *
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "lead-routing".
+ */
+export interface LeadRouting {
+  id: number;
+  /**
+   * All enabled recipients receive every lead. Disabling one violates the "all four" rule — a warning is shown at send time.
+   */
+  recipients?:
+    | {
+        name: string;
+        email: string;
+        role?: string | null;
+        enabled?: boolean | null;
+        id?: string | null;
+      }[]
+    | null;
+  updatedAt?: string | null;
+  createdAt?: string | null;
+}
+/**
+ * Default terms, tax rate, validity, and footer lines applied to new quote drafts.
+ *
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "quote-defaults".
+ */
+export interface QuoteDefault {
+  id: number;
+  terms?: string | null;
+  /**
+   * Default tax rate (%). Editable per quote.
+   */
+  taxRate?: number | null;
+  /**
+   * Default number of days a quote stays valid.
+   */
+  validDays?: number | null;
+  /**
+   * Footer strip lines on the quote document.
+   */
+  footerLines?:
+    | {
+        text: string;
+        id?: string | null;
+      }[]
+    | null;
+  updatedAt?: string | null;
+  createdAt?: string | null;
+}
+/**
  * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "site-settings_select".
  */
@@ -2328,6 +2661,42 @@ export interface HeaderNavSelect<T extends boolean = true> {
  */
 export interface FooterSelect<T extends boolean = true> {
   structure?: T;
+  updatedAt?: T;
+  createdAt?: T;
+  globalType?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "lead-routing_select".
+ */
+export interface LeadRoutingSelect<T extends boolean = true> {
+  recipients?:
+    | T
+    | {
+        name?: T;
+        email?: T;
+        role?: T;
+        enabled?: T;
+        id?: T;
+      };
+  updatedAt?: T;
+  createdAt?: T;
+  globalType?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "quote-defaults_select".
+ */
+export interface QuoteDefaultsSelect<T extends boolean = true> {
+  terms?: T;
+  taxRate?: T;
+  validDays?: T;
+  footerLines?:
+    | T
+    | {
+        text?: T;
+        id?: T;
+      };
   updatedAt?: T;
   createdAt?: T;
   globalType?: T;

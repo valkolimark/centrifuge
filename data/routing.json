@@ -1,0 +1,13 @@
+{
+  "_comment": "Single source of truth for lead-notification recipients (CYCLE UI-2 §0). Every form submission emails ALL enabled recipients via Twilio. Seeds the LeadRouting global; never hardcode addresses in send code. The business rule is 'all four'.",
+  "recipients": [
+    { "name": "Mark", "email": "mark@p5400.com", "role": "Site admin · primary owner", "enabled": true },
+    { "name": "Ron", "email": "ron@p5400.com", "role": "Sales · quote follow-up", "enabled": true },
+    { "name": "David", "email": "david@p5400.com", "role": "Operations · scheduling", "enabled": true },
+    { "name": "Cynthia", "email": "cynthia@p5400.com", "role": "Office · records & intake", "enabled": true }
+  ],
+  "senders": {
+    "notifications": "notifications@centrifuge.com",
+    "quotes": "quotes@centrifuge.com"
+  }
+}

@@ -21,10 +21,14 @@ import { Inventory } from './payload/collections/Inventory'
 import { CompetitorSnapshots } from './payload/collections/CompetitorSnapshots'
 import { FAQs } from './payload/collections/FAQs'
 import { FormSubmissions } from './payload/collections/FormSubmissions'
+import { Leads } from './payload/collections/Leads'
+import { Quotes } from './payload/collections/Quotes'
 import { Redirects } from './payload/collections/Redirects'
 import { SiteSettings } from './payload/globals/SiteSettings'
 import { HeaderNav } from './payload/globals/HeaderNav'
 import { FooterNav } from './payload/globals/FooterNav'
+import { LeadRouting } from './payload/globals/LeadRouting'
+import { QuoteDefaults } from './payload/globals/QuoteDefaults'
 
 const dirname = path.dirname(fileURLToPath(import.meta.url))
 
@@ -117,10 +121,12 @@ export default buildConfig({
     FAQs,
     Media,
     FormSubmissions,
+    Leads,
+    Quotes,
     Redirects,
     Users,
   ],
-  globals: [SiteSettings, HeaderNav, FooterNav],
+  globals: [SiteSettings, HeaderNav, FooterNav, LeadRouting, QuoteDefaults],
   db: postgresAdapter({
     pool: { connectionString, ...(ssl ? { ssl } : {}) },
     push: process.env.NODE_ENV !== 'production',
