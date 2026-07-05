@@ -90,6 +90,8 @@ export default buildConfig({
       views: {
         // Mission Control replaces the default admin landing dashboard (UI-1 Phase B).
         dashboard: { Component: '@/payload/admin/Dashboard' },
+        // Leads & Quotes workspace — full-screen custom route (UI-2).
+        leadsQuotes: { Component: '@/payload/admin/LeadsQuotes', path: '/leads-quotes' },
       },
     },
     livePreview: {

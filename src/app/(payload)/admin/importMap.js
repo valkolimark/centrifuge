@@ -31,6 +31,7 @@ import { default as default_2ec3e47bf0d2c1bcec071e0c669a53fc } from '@/payload/a
 import { default as default_c5a150173e5527969052658ec2728726 } from '@/payload/admin/NavHeader'
 import { default as default_130c023f17f73b2aa7a082c0b91ef7ca } from '@/payload/admin/BrandProvider'
 import { default as default_84a41906d066def45718a662e1d5f79a } from '@/payload/admin/Dashboard'
+import { default as default_3178edbbfd471e47a6d84f73fd3ccc3b } from '@/payload/admin/LeadsQuotes'
 import { CollectionCards as CollectionCards_f9c02e79a4aed9a3924487c0cd4cafb1 } from '@payloadcms/next/rsc'
 
 /** @type import('payload').ImportMap */
@@ -68,5 +69,6 @@ export const importMap = {
   "@/payload/admin/NavHeader#default": default_c5a150173e5527969052658ec2728726,
   "@/payload/admin/BrandProvider#default": default_130c023f17f73b2aa7a082c0b91ef7ca,
   "@/payload/admin/Dashboard#default": default_84a41906d066def45718a662e1d5f79a,
+  "@/payload/admin/LeadsQuotes#default": default_3178edbbfd471e47a6d84f73fd3ccc3b,
   "@payloadcms/next/rsc#CollectionCards": CollectionCards_f9c02e79a4aed9a3924487c0cd4cafb1
 }
