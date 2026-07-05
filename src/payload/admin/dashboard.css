@@ -16,6 +16,10 @@
 .cw-dash .dash-crumbs b { color: var(--cyan); font-weight: 600; }
 
 .cw-dash .card {
+  /* display:block is deliberate: Payload core CSS ships `.card{display:flex}`
+     (a horizontal row). Without this, that leaks in and lays each card's
+     title bar beside its content instead of above it. */
+  display: block;
   background: linear-gradient(160deg, var(--panel) 0%, #0b152e 100%);
   border: 1px solid var(--line); border-radius: var(--radius);
   padding: 20px; position: relative; overflow: hidden;
