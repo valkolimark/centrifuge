@@ -95,7 +95,7 @@ export default async function MissionControl() {
   const scoreOffset = arc * (1 - score / 100)
 
   return (
-    <div className="cw-dash">
+    <div className="cw-dash" data-ga={ga.connected ? `live-${ga.totalSessions}` : `off:${(ga.reason || '').slice(0, 60)}`}>
       <div className="dash-crumbs">MISSION CONTROL <b>/ Overview</b></div>
 
       {/* HERO */}
