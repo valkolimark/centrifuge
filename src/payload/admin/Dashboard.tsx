@@ -1,3 +1,4 @@
+/* eslint-disable @next/next/no-html-link-for-pages -- all links here target /admin/* (the Payload app), not Next page routes */
 /* Mission Control — custom Payload admin dashboard (Cycle UI-1, Phase B).
    Faithful port of the approved mockup: scoped CSS (.cw-dash) + the mockup's exact
    layout (animated centrifuge gauge, KPI cards, analytics cards, CRM kanban, leads

@@ -2,6 +2,7 @@
    at /admin/leads-quotes is reachable. Registered at admin.components.afterNavLinks. */
 export default function NavLinks() {
   return (
+    // eslint-disable-next-line @next/next/no-html-link-for-pages -- /admin/* is the Payload app, not a Next page route
     <a
       href="/admin/leads-quotes"
       style={{

@@ -1,4 +1,5 @@
-// @ts-nocheck -- verbatim mockup interaction script embedded below; typed wiring lands in later steps
+// eslint-disable-next-line @typescript-eslint/ban-ts-comment
+// @ts-nocheck
 'use client'
 /* eslint-disable */
 /* Leads & Quotes workspace (Cycle UI-2) — pixel-faithful port of
