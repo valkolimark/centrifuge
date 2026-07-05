@@ -1,5 +1,6 @@
 import type { CollectionConfig } from 'payload'
 import { anyAuthenticated, superAdminOnly } from '../access/roles'
+import { leadAfterChange } from '../hooks/leadRouting'
 
 // leads (UI-2 §2.1) — the working lead record that powers the Leads & Quotes pipeline.
 // Created by the native forms (server action, local API) and manually in the admin.
@@ -21,6 +22,8 @@ export const Leads: CollectionConfig = {
     delete: superAdminOnly,
   },
   versions: true,
+  // On create: batch-route to all recipients via Twilio + acknowledge submitter (UI-2 §3).
+  hooks: { afterChange: [leadAfterChange] },
   fields: [
     { name: 'name', type: 'text' },
     { name: 'company', type: 'text' },

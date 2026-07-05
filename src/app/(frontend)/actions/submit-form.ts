@@ -5,8 +5,17 @@ import { getPayloadClient } from '@/lib/payload'
 import { validateSubmission } from '@/lib/forms/schema'
 import { verifyTurnstile } from '@/lib/forms/turnstile'
 import { getFormConfig } from '@/lib/forms/config'
-import { sendLeadNotification } from '@/lib/email/notify'
 import type { FormType } from '@/lib/analytics'
+
+// Map public form types to the leads pipeline source (UI-2).
+const SOURCE_FORM: Record<FormType, 'contact' | 'quote-request' | 'emergency'> = {
+  request_quote: 'quote-request',
+  emergency_service: 'emergency',
+  free_inspection: 'contact',
+  sell_centrifuge: 'contact',
+  contact: 'contact',
+  send_photos: 'contact',
+}
 
 export interface FormState {
   status: 'idle' | 'success' | 'error'
@@ -85,6 +94,9 @@ export async function submitForm(_prev: FormState, formData: FormData): Promise<
     }
   }
 
+  const fullPayload = { ...result.data, photoCount: files.length, photoIds, pageSource }
+
+  // Store the raw submission (kept for the Mission Control dashboard) — best-effort.
   try {
     await payload.create({
       collection: 'form-submissions',
@@ -96,25 +108,33 @@ export async function submitForm(_prev: FormState, formData: FormData): Promise<
         company: result.data.company,
         pageSource,
         utm,
-        payload: { ...result.data, photoCount: files.length, photoIds },
+        payload: fullPayload,
       },
     })
   } catch (err) {
     console.error('[submit-form] failed to store submission', err)
-    return { status: 'error', message: 'Something went wrong saving your request. Please call us.' }
   }
 
-  // Notify the four inboxes (non-blocking failure — the lead is already stored).
+  // Create the lead — its afterChange hook routes the branded Twilio batch email to all
+  // recipients + a submitter acknowledgement (UI-2 §3). The DB write is the lead of
+  // record; if the create fails the submitter still gets a graceful error.
   try {
-    await sendLeadNotification(payload, {
-      type,
-      data: result.data,
-      pageSource,
-      photoCount: files.length,
-      utm,
+    await payload.create({
+      collection: 'leads',
+      data: {
+        name: result.data.name,
+        company: result.data.company,
+        email: result.data.email,
+        phone: result.data.phone,
+        sourceForm: SOURCE_FORM[type],
+        message: (result.data as Record<string, string>).message,
+        payload: fullPayload,
+      },
+      overrideAccess: true,
     })
   } catch (err) {
-    console.error('[submit-form] notification email failed', err)
+    console.error('[submit-form] failed to create lead', err)
+    return { status: 'error', message: 'Something went wrong saving your request. Please call us.' }
   }
 
   return { status: 'success', submittedType: type }
