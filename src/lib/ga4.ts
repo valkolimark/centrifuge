@@ -32,8 +32,8 @@ async function fetchGa4(): Promise<Ga4Data> {
     // Run each report independently so one invalid metric can't blank the whole
     // dashboard. `keyEvents` (GA4's renamed "conversions") and metric availability
     // vary per property, so every non-core report degrades gracefully.
-    type Resp = { rows?: { dimensionValues?: { value?: string }[]; metricValues?: { value?: string }[] }[] }
-    const safe = (p: Promise<[Resp, ...unknown[]]>): Promise<Resp | null> => p.then((r) => r[0]).catch(() => null)
+    type Resp = { rows?: { dimensionValues?: ({ value?: string | null } | null)[] | null; metricValues?: ({ value?: string | null } | null)[] | null }[] | null }
+    const safe = (p: Promise<unknown>): Promise<Resp | null> => p.then((r) => (Array.isArray(r) ? (r[0] as Resp) : null)).catch(() => null)
 
     const [ts, conv, acq, pages] = await Promise.all([
       safe(client.runReport({ property, dateRanges: dr, dimensions: [{ name: 'date' }], metrics: [{ name: 'sessions' }], orderBys: [{ dimension: { dimensionName: 'date' } }] })),
