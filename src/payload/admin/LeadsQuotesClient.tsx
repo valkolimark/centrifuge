@@ -777,6 +777,10 @@ export default function LeadsQuotesClient() {
       setTimeout(()=>{this.textContent='✓ Sent — 202 Accepted';this.style.background='linear-gradient(180deg,#35D69A,#22A876)';this.style.borderColor='#35D69A'},900);
       setTimeout(()=>{this.textContent='Send to Client ▸';this.disabled=false;this.style.background='';this.style.borderColor=''},3200);
     });
+
+    // Deep-link support: /admin/leads-quotes?tab=quotes lands on that tab.
+    const wanted = new URLSearchParams(window.location.search).get('tab')
+    if (wanted) (root.querySelector(`.subnav [data-tab="${wanted}"]`) as HTMLButtonElement | null)?.click()
   }, [])
 
   return <div className="cw-lq" ref={ref} dangerouslySetInnerHTML={{ __html: BODY_HTML }} />

@@ -87,6 +87,8 @@ export default buildConfig({
       providers: ['@/payload/admin/BrandProvider'],
       // Logo lockup pinned to the sidebar top-left, linking back to the dashboard.
       beforeNavLinks: ['@/payload/admin/NavHeader'],
+      // Reachable entry to the full-screen Leads & Quotes workspace (UI-2).
+      afterNavLinks: ['@/payload/admin/NavLinks'],
       graphics: {
         Logo: '@/payload/admin/Logo',
         Icon: '@/payload/admin/Icon',

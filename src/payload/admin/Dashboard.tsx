@@ -36,13 +36,17 @@ async function loadData() {
   try {
     const payload = await getPayloadClient()
     const now = Date.now()
-    const [subs, inv, brands, services, comp] = await Promise.all([
+    const [subs, inv, brands, services, comp, quotes] = await Promise.all([
       payload.find({ collection: 'form-submissions', limit: 500, sort: '-createdAt', depth: 0 }),
       payload.count({ collection: 'inventory', where: { and: [{ _status: { equals: 'published' } }, { availability: { not_equals: 'sold' } }] } }),
       payload.count({ collection: 'oem-brands' }),
       payload.count({ collection: 'services', where: { _status: { equals: 'published' } } }),
       payload.find({ collection: 'competitor-snapshots', limit: 50, sort: '-capturedAt', depth: 0 }).catch(() => ({ docs: [] as Row[] })),
+      payload.find({ collection: 'quotes', where: { status: { in: ['sent', 'viewed'] } }, limit: 500, depth: 0 }).catch(() => ({ docs: [] as Row[] })),
     ])
+    const quoteDocs = quotes.docs as unknown as Row[]
+    const openQuoteValue = quoteDocs.reduce((a, q) => a + (Number(q.total) || 0), 0)
+    const expiringSoon = quoteDocs.filter((q) => q.validUntil && new Date(String(q.validUntil)).getTime() - now <= 7 * DAY && new Date(String(q.validUntil)).getTime() >= now).length
     const docs = subs.docs as unknown as Row[]
     const ageOf = (r: Row) => now - new Date(String(r.createdAt)).getTime()
     const in7 = docs.filter((r) => ageOf(r) <= 7 * DAY).length
@@ -58,6 +62,7 @@ async function loadData() {
       leads7: in7,
       leadsDelta: prev7 ? Math.round(((in7 - prev7) / prev7) * 100) : in7 > 0 ? 100 : 0,
       quoteReqs: docs.filter((r) => String(r.type || '').includes('quote')).length,
+      openQuoteValue, expiringSoon, openQuotes: quoteDocs.length,
       unread: counts.new ?? 0,
       pipelineValue: docs.filter((r) => ['new', 'contacted', 'quoted'].includes(stageOf(r))).reduce((a, r) => a + (Number(r.estimatedValue) || 0), 0),
       byStage, counts,
@@ -138,11 +143,11 @@ export default async function MissionControl() {
             <div className="k-num">{ga.connected ? ga.totalSessions.toLocaleString('en-US') : '—'}</div>
             <div className="k-delta" style={{ color: ga.connected ? '#2BD98A' : '#5A6E96' }}>{ga.connected ? 'GA4 · live' : 'Connect GA4'}</div>
           </div>
-          <div className="kpi">
-            <div className="k-label"><span className="k-ico" style={{ background: '#2BD98A' }} />Quote Requests</div>
-            <div className="k-num">{has ? d.quoteReqs : '—'}</div>
-            <div className="k-delta up">all-time</div>
-          </div>
+          <a className="kpi" href="/admin/leads-quotes?tab=quotes" style={{ textDecoration: 'none', color: 'inherit', display: 'block' }}>
+            <div className="k-label"><span className="k-ico" style={{ background: '#2BD98A' }} />Open Quotes ▸</div>
+            <div className="k-num">{has ? money(d.openQuoteValue) : '—'}</div>
+            <div className="k-delta" style={{ color: has && d.expiringSoon ? '#F5B63F' : '#8FA3C8' }}>{has ? (d.expiringSoon ? `${d.expiringSoon} expiring ≤7d` : `${d.openQuotes} awaiting decision`) : '—'}</div>
+          </a>
           <div className="kpi">
             <div className="k-label"><span className="k-ico" style={{ background: '#FF5C7A' }} />Pipeline Value</div>
             <div className="k-num">{has ? money(d.pipelineValue) : '—'}</div>
@@ -202,7 +207,7 @@ export default async function MissionControl() {
       {/* CRM */}
       <section className="row-crm">
         <div className="card">
-          <div className="card-head"><div><div className="card-title">Lead Pipeline — CRM</div><div className="card-sub">Synced to form submissions</div></div><span className="spacer" /><span className="chip amber">{has ? money(d.pipelineValue) : '—'} IN PIPE</span></div>
+          <div className="card-head"><div><a className="card-title" href="/admin/leads-quotes?tab=pipeline" style={{ textDecoration: 'none', color: 'inherit' }}>Lead Pipeline — CRM ▸</a><div className="card-sub">Synced to form submissions</div></div><span className="spacer" /><span className="chip amber">{has ? money(d.pipelineValue) : '—'} IN PIPE</span></div>
           <div className="kanban">
             {STAGES.map((s) => (
               <div className="kcol" key={s.key}>
@@ -220,7 +225,7 @@ export default async function MissionControl() {
         </div>
 
         <div className="card">
-          <div className="card-head"><div><div className="card-title">Incoming Leads</div><div className="card-sub">Routed to the p5400 inboxes</div></div><span className="spacer" /><span className="chip live">● {has ? d.unread : 0} NEW</span></div>
+          <div className="card-head"><div><a className="card-title" href="/admin/leads-quotes?tab=forms" style={{ textDecoration: 'none', color: 'inherit' }}>Incoming Leads ▸</a><div className="card-sub">Routed to the p5400 inboxes</div></div><span className="spacer" /><span className="chip live">● {has ? d.unread : 0} NEW</span></div>
           <table className="leads-table">
             <thead><tr><th>Contact</th><th>Source</th><th>Stage</th><th>Age</th></tr></thead>
             <tbody>
