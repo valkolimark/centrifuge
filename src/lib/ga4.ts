@@ -28,16 +28,25 @@ async function fetchGa4(): Promise<Ga4Data> {
     const { BetaAnalyticsDataClient } = await import('@google-analytics/data')
     const client = new BetaAnalyticsDataClient({ credentials })
     const property = `properties/${propertyId}`
+    const dr = [{ startDate: '30daysAgo', endDate: 'today' }]
+    // Run each report independently so one invalid metric can't blank the whole
+    // dashboard. `keyEvents` (GA4's renamed "conversions") and metric availability
+    // vary per property, so every non-core report degrades gracefully.
+    type Resp = { rows?: { dimensionValues?: { value?: string }[]; metricValues?: { value?: string }[] }[] }
+    const safe = (p: Promise<[Resp, ...unknown[]]>): Promise<Resp | null> => p.then((r) => r[0]).catch(() => null)
 
-    const [ts, acq, pages] = await Promise.all([
-      client.runReport({ property, dateRanges: [{ startDate: '30daysAgo', endDate: 'today' }], dimensions: [{ name: 'date' }], metrics: [{ name: 'sessions' }, { name: 'conversions' }], orderBys: [{ dimension: { dimensionName: 'date' } }] }),
-      client.runReport({ property, dateRanges: [{ startDate: '30daysAgo', endDate: 'today' }], dimensions: [{ name: 'sessionDefaultChannelGroup' }], metrics: [{ name: 'sessions' }], orderBys: [{ metric: { metricName: 'sessions' }, desc: true }], limit: 5 }),
-      client.runReport({ property, dateRanges: [{ startDate: '30daysAgo', endDate: 'today' }], dimensions: [{ name: 'pagePath' }], metrics: [{ name: 'entrances' }], orderBys: [{ metric: { metricName: 'entrances' }, desc: true }], limit: 5 }),
+    const [ts, conv, acq, pages] = await Promise.all([
+      safe(client.runReport({ property, dateRanges: dr, dimensions: [{ name: 'date' }], metrics: [{ name: 'sessions' }], orderBys: [{ dimension: { dimensionName: 'date' } }] })),
+      safe(client.runReport({ property, dateRanges: dr, dimensions: [{ name: 'date' }], metrics: [{ name: 'keyEvents' }], orderBys: [{ dimension: { dimensionName: 'date' } }] })),
+      safe(client.runReport({ property, dateRanges: dr, dimensions: [{ name: 'sessionDefaultChannelGroup' }], metrics: [{ name: 'sessions' }], orderBys: [{ metric: { metricName: 'sessions' }, desc: true }], limit: 5 })),
+      safe(client.runReport({ property, dateRanges: dr, dimensions: [{ name: 'pagePath' }], metrics: [{ name: 'screenPageViews' }], orderBys: [{ metric: { metricName: 'screenPageViews' }, desc: true }], limit: 5 })),
     ])
+    if (!ts) return EMPTY('GA4 returned no sessions data (check property has traffic / API access)')
 
-    const sessions = (ts[0].rows ?? []).map((r) => ({ date: r.dimensionValues?.[0]?.value ?? '', sessions: Number(r.metricValues?.[0]?.value ?? 0), conversions: Number(r.metricValues?.[1]?.value ?? 0) }))
-    const acquisition = (acq[0].rows ?? []).map((r) => ({ channel: r.dimensionValues?.[0]?.value ?? '—', sessions: Number(r.metricValues?.[0]?.value ?? 0) }))
-    const topPages = (pages[0].rows ?? []).map((r) => ({ path: r.dimensionValues?.[0]?.value ?? '/', entrances: Number(r.metricValues?.[0]?.value ?? 0) }))
+    const convByDate = new Map((conv?.rows ?? []).map((r) => [r.dimensionValues?.[0]?.value ?? '', Number(r.metricValues?.[0]?.value ?? 0)]))
+    const sessions = (ts.rows ?? []).map((r) => { const date = r.dimensionValues?.[0]?.value ?? ''; return { date, sessions: Number(r.metricValues?.[0]?.value ?? 0), conversions: convByDate.get(date) ?? 0 } })
+    const acquisition = (acq?.rows ?? []).map((r) => ({ channel: r.dimensionValues?.[0]?.value ?? '—', sessions: Number(r.metricValues?.[0]?.value ?? 0) }))
+    const topPages = (pages?.rows ?? []).map((r) => ({ path: r.dimensionValues?.[0]?.value ?? '/', entrances: Number(r.metricValues?.[0]?.value ?? 0) }))
     const totalSessions = sessions.reduce((a, s) => a + s.sessions, 0)
     return { connected: true, sessions, acquisition, topPages, totalSessions }
   } catch (e) {
