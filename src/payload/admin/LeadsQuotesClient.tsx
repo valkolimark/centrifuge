@@ -1,3 +1,4 @@
+/* eslint-disable @next/next/no-html-link-for-pages -- every /admin/* link targets the Payload app (full navigation required), not Next page routes */
 'use client'
 /* Leads & Quotes workspace (Cycle UI-2) — the interactive Mission Control client island.
    Renders the real read model (src/lib/leads-quotes/workspace.ts) into the mockup's markup
