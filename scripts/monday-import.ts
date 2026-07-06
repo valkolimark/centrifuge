@@ -14,7 +14,7 @@ for (const l of readFileSync('.env.local', 'utf8').split('\n')) {
 if (!process.env.NODE_ENV) (process.env as Record<string, string>).NODE_ENV = 'production'
 
 const WRITE = process.argv.includes('--write')
-const { listBoards, getBoardItems, itemFields } = await import('@/lib/monday/client')
+const { listBoards, getBoardItems, itemFields, firstLinked } = await import('@/lib/monday/client')
 const { getPayloadClient } = await import('@/lib/payload')
 
 // monday Deal stage → our pipeline stage
@@ -58,19 +58,23 @@ let created = 0, skipped = 0, failed = 0
 async function importItem(it: any, source: 'contacts' | 'deals') {
   if (seen.has(it.id)) { skipped++; return }
   const f = itemFields(it)
+  // Client company = the linked "Accounts" (Monday CRM account). The "Company" dropdown is our
+  // OWN handling entity (Centrifuge World / Mixer Works / Gear World) — never the client's.
+  const clientCompany = firstLinked(f.Accounts)
+  const internalEntity = f.Company || undefined
   const data =
     source === 'contacts'
       ? {
           name: f.name, email: validEmail(f.Email), phone: f.Phone || f['Direct Phone'] || undefined,
-          company: f.Company || undefined, sourceForm: 'manual' as const,
+          company: clientCompany, sourceForm: 'manual' as const,
           message: f.Title ? `Title: ${f.Title}` : undefined,
-          payload: { mondaySource: 'contacts', mondayItemId: it.id, ...f },
+          payload: { mondaySource: 'contacts', mondayItemId: it.id, clientAccount: clientCompany, internalEntity, ...f },
         }
       : {
-          name: f.name, company: f.Company || undefined, sourceForm: 'quote-request' as const,
+          name: f.name, company: clientCompany, sourceForm: 'quote-request' as const,
           pipelineStage: mapStage(f.Stage), estimatedValue: num(f['Deal Value']),
           message: f.Notes || undefined,
-          payload: { mondaySource: 'deals', mondayItemId: it.id, ...f },
+          payload: { mondaySource: 'deals', mondayItemId: it.id, clientAccount: clientCompany, internalEntity, ...f },
         }
   if (!WRITE) { created++; return }
   try {
