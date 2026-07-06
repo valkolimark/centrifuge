@@ -7,8 +7,6 @@ const ga = 'https://www.google-analytics.com https://region1.google-analytics.co
 const turnstile = 'https://challenges.cloudflare.com'
 const blob = 'https://*.public.blob.vercel-storage.com'
 const s3media = 'https://centrifuge-im.s3.amazonaws.com'
-// Cognito Forms (legacy /cw-ez-quote-for-sales/ EZ Quote embed).
-const cognito = 'https://www.cognitoforms.com https://*.cognitoforms.com'
 // YouTube (feature video + /resources/videos gallery, click-to-load facade).
 const youtube = 'https://www.youtube-nocookie.com https://www.youtube.com'
 const ytimg = 'https://i.ytimg.com'
@@ -31,12 +29,12 @@ const csp = [
   `object-src 'none'`,
   `frame-ancestors 'self'`,
   `form-action 'self'`,
-  `img-src 'self' data: blob: ${blob} ${s3media} ${ytimg} ${cognito} ${gtm} ${ga} https://www.google.com https://maps.googleapis.com https://maps.gstatic.com`,
-  `script-src 'self' 'unsafe-inline'${devEval} ${gtm} ${turnstile} ${cognito}`,
-  `style-src 'self' 'unsafe-inline' ${cognito}`,
-  `font-src 'self' data: ${cognito}`,
-  `connect-src 'self' ${gtm} ${ga} ${turnstile} ${blob} ${cognito}`,
-  `frame-src 'self' ${turnstile} ${cognito} ${youtube} https://www.google.com https://td.doubleclick.net`,
+  `img-src 'self' data: blob: ${blob} ${s3media} ${ytimg} ${gtm} ${ga} https://www.google.com https://maps.googleapis.com https://maps.gstatic.com`,
+  `script-src 'self' 'unsafe-inline'${devEval} ${gtm} ${turnstile}`,
+  `style-src 'self' 'unsafe-inline'`,
+  `font-src 'self' data:`,
+  `connect-src 'self' ${gtm} ${ga} ${turnstile} ${blob}`,
+  `frame-src 'self' ${turnstile} ${youtube} https://www.google.com https://td.doubleclick.net`,
   `worker-src 'self' blob:`,
   `manifest-src 'self'`,
   // Force HTTPS on real https deploys only (see httpsDeploy note above); locally over http
