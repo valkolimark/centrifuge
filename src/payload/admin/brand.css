@@ -243,6 +243,18 @@ body {
 .cw-admin .nav__wrap { padding-top: 2px; }
 .cw-admin .nav { padding-bottom: 18px; }
 
+/* ---- Payload chrome fixes (our custom Nav replaces Payload's default) ---- */
+/* Payload renders a sticky nav-collapse toggler pinned to the content top-left. With our
+   custom sidebar — which has its own COLLAPSE control — it overlaps the brand lockup as a
+   stray chevron. Remove it; mobile nav open/close still works via the app-header toggler. */
+.cw-admin .template-default__nav-toggler-wrapper { display: none !important; }
+
+/* The breadcrumb "home" link renders our Icon graphic inside a 16px box. Keep the mark
+   contained so it can't overflow and appear clipped ("cut in half" on the header row). */
+.cw-admin .step-nav__home { overflow: hidden; }
+.cw-admin .step-nav__home img,
+.cw-admin .step-nav__home svg { width: 100%; height: 100%; object-fit: contain; display: block; }
+
 @media (prefers-reduced-motion: reduce) {
   .cw-admin *,
   .cw-admin *::before,

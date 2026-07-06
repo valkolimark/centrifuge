@@ -2,12 +2,15 @@
 // Fixed aspect ratio + object-fit so it can never squish, regardless of the slot.
 export default function Icon() {
   return (
-    <span style={{ display: 'inline-grid', placeItems: 'center', width: 26, height: 26, flex: '0 0 26px' }}>
+    // Fill whatever slot Payload places this in (e.g. the 16px breadcrumb home link) rather
+    // than forcing a fixed 26px, which overflowed and clipped on the header row. Capped so it
+    // never balloons in a larger slot; object-fit keeps the globe's aspect ratio.
+    <span style={{ display: 'grid', placeItems: 'center', width: '100%', height: '100%', maxWidth: 26, maxHeight: 26 }}>
       {/* eslint-disable-next-line @next/next/no-img-element */}
       <img
         src="/logo/cw-icon.png"
         alt="Centrifuge World"
-        style={{ height: 26, width: 26, aspectRatio: '147 / 148', objectFit: 'contain', display: 'block' }}
+        style={{ width: '100%', height: '100%', aspectRatio: '147 / 148', objectFit: 'contain', display: 'block' }}
       />
     </span>
   )
