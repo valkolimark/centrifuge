@@ -2,14 +2,14 @@ import type { Metadata } from 'next'
 import { SiteShell } from '@/components/layout/SiteShell'
 import { Section } from '@/components/ui/Section'
 import { Breadcrumbs } from '@/components/layout/Breadcrumbs'
-import { CognitoForm } from '@/components/forms/CognitoForm'
+import { LeadForm } from '@/components/forms/LeadForm'
 import { LocationCard } from '@/components/blocks/LocationCard'
 import { EmergencyCallout } from '@/components/blocks/EmergencyCallout'
 import { buildMetadata } from '@/lib/seo'
 import { locations } from '@/lib/site'
 
-// Legacy contact URL preserved for Google links (/contact-cw/). Hosts the original
-// Cognito contact form so inbound links keep resolving after cutover.
+// Legacy contact URL preserved for Google links (/contact-cw/). Native contact LeadForm
+// (Turnstile + honeypot; writes into the leads pipeline) — replaced the Cognito embed.
 export const metadata: Metadata = buildMetadata(
   {
     title: 'Contact Centrifuge World | Repair, Rebuilds & 24/7 Service',
@@ -32,7 +32,7 @@ export default function ContactCwPage() {
               that are down now, use the 24/7 emergency line.
             </p>
             <div className="mt-8">
-              <CognitoForm dataKey="6-kP0CxQH0CwXlv_9oww1A" formId="4" />
+              <LeadForm type="contact" />
             </div>
           </div>
           <aside className="space-y-4">
