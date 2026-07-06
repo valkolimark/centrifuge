@@ -15,6 +15,8 @@ const ytimg = 'https://i.ytimg.com'
 
 // NOTE: 'unsafe-inline' on script-src is required by GTM's bootstrap snippet loaded via
 // @next/third-parties. Tightening to a nonce is tracked in BACKLOG.md.
+// Next.js dev mode (fast refresh / eval source maps) needs 'unsafe-eval'; production never does.
+const devEval = process.env.NODE_ENV === 'production' ? '' : " 'unsafe-eval'"
 const csp = [
   `default-src 'self'`,
   `base-uri 'self'`,
@@ -22,14 +24,15 @@ const csp = [
   `frame-ancestors 'self'`,
   `form-action 'self'`,
   `img-src 'self' data: blob: ${blob} ${s3media} ${ytimg} ${cognito} ${gtm} ${ga} https://www.google.com https://maps.googleapis.com https://maps.gstatic.com`,
-  `script-src 'self' 'unsafe-inline' ${gtm} ${turnstile} ${cognito}`,
+  `script-src 'self' 'unsafe-inline'${devEval} ${gtm} ${turnstile} ${cognito}`,
   `style-src 'self' 'unsafe-inline' ${cognito}`,
   `font-src 'self' data: ${cognito}`,
   `connect-src 'self' ${gtm} ${ga} ${turnstile} ${blob} ${cognito}`,
   `frame-src 'self' ${turnstile} ${cognito} ${youtube} https://www.google.com https://td.doubleclick.net`,
   `worker-src 'self' blob:`,
   `manifest-src 'self'`,
-  `upgrade-insecure-requests`,
+  // Force HTTPS in production only; on localhost it would upgrade http→https and break dev.
+  ...(process.env.NODE_ENV === 'production' ? [`upgrade-insecure-requests`] : []),
 ].join('; ')
 
 export const securityHeaders = [

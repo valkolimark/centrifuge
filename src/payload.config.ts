@@ -49,7 +49,23 @@ const ssl = /sslmode=require/.test(connectionString)
   ? { rejectUnauthorized: false }
   : undefined
 
-const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || 'http://localhost:3000'
+// Payload's serverURL is what the ADMIN CLIENT uses as its API base. It must be the origin
+// that actually serves the app — NOT the canonical marketing domain (which may not be cut
+// over yet). Empty ⇒ relative/same-origin, so the admin works from any Vercel alias or the
+// final domain without cross-origin/CSP breakage. Canonical URLs use NEXT_PUBLIC_SITE_URL
+// separately (SEO/email code), not this.
+// serverURL is the origin the ADMIN CLIENT uses as its API base. It MUST match the origin
+// actually serving the app, or the admin's client calls go cross-origin (CSP-blocked) and
+// the admin renders but is inert.
+//   • Default (prod): '' → relative/same-origin, so it works on ANY host that serves the app
+//     — every Vercel alias today, and centrifuge.com later — with NO change at cutover.
+//   • Override: set PAYLOAD_PUBLIC_SERVER_URL to pin an absolute origin (e.g. after cutover,
+//     set it to https://centrifuge.com). This is the single knob to change when the domain moves.
+//   • Dev: localhost so the local admin talks to the local server.
+// `??` (not `||`) so an intentionally-empty override ('') is respected.
+const payloadServerURL =
+  process.env.PAYLOAD_PUBLIC_SERVER_URL ??
+  (process.env.NODE_ENV === 'production' ? '' : 'http://localhost:3000')
 
 // Email + storage adapters are wired only when their secrets exist, so the app
 // builds and boots with placeholder env (Cycle 1). Integration is exercised once
@@ -72,7 +88,7 @@ const storagePlugins = process.env.BLOB_READ_WRITE_TOKEN
   : []
 
 export default buildConfig({
-  serverURL: siteUrl,
+  serverURL: payloadServerURL,
   secret: process.env.PAYLOAD_SECRET || 'dev-secret-change-me',
   typescript: { outputFile: path.resolve(dirname, 'payload-types.ts') },
   admin: {
