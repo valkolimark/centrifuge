@@ -128,6 +128,16 @@ export default function NavClient({ counts, user }: { counts: { brands: number; 
           </div>
         </div>
         <div className="cwn-avatar-hint cwn-profile-text">Click the avatar to upload a photo. PNG / JPG / WebP · max 2&nbsp;MB.</div>
+        <div className="cwn-profile-actions">
+          <a href="/admin/account" className="cwn-profile-action" title="Account settings">
+            <svg viewBox="0 0 24 24"><circle cx="12" cy="8" r="4" /><path d="M4 21v-1a6 6 0 016-6h4a6 6 0 016 6v1" /></svg>
+            <span className="cwn-label">Account</span>
+          </a>
+          <a href="/admin/logout" className="cwn-profile-action cwn-signout" title="Log out">
+            <svg viewBox="0 0 24 24"><path d="M9 21H5a2 2 0 01-2-2V5a2 2 0 012-2h4" /><path d="M16 17l5-5-5-5" /><path d="M21 12H9" /></svg>
+            <span className="cwn-label">Log out</span>
+          </a>
+        </div>
       </div>
     </aside>
   )

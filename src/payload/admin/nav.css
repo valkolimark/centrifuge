@@ -60,6 +60,13 @@
 .cw-nav .cwn-avatar-hint { font-size: 10px; color: var(--cw-ink-faint); margin-top: 9px; line-height: 1.5; }
 .cw-nav .cwn-avatar-input { display: none; }
 
+/* account + sign-out — the only path out of the admin once the custom Nav replaces Payload's default */
+.cw-nav .cwn-profile-actions { display: flex; gap: 8px; margin-top: 12px; padding-top: 12px; border-top: 1px solid var(--cw-line); }
+.cw-nav .cwn-profile-action { flex: 1; display: flex; align-items: center; justify-content: center; gap: 7px; padding: 7px 8px; border-radius: 8px; border: 1px solid var(--cw-line); color: var(--cw-ink-dim); font-weight: 600; font-size: 12px; text-decoration: none; transition: all .15s; }
+.cw-nav .cwn-profile-action svg { width: 15px; height: 15px; flex: 0 0 15px; stroke: currentColor; fill: none; stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; }
+.cw-nav .cwn-profile-action:hover { color: var(--cw-ink); border-color: var(--cw-line-bright); background: rgba(62,201,245,.06); }
+.cw-nav .cwn-profile-action.cwn-signout:hover { color: #fff; border-color: rgba(225,25,0,.5); background: rgba(225,25,0,.14); }
+
 /* ---- collapsed → icon rail ---- */
 .cw-nav-collapsed .cw-nav .cwn-brand { justify-content: center; padding: 20px 0 16px; }
 .cw-nav-collapsed .cw-nav .cwn-brand-word,
@@ -77,3 +84,6 @@
 .cw-nav-collapsed .cw-nav .cwn-avatar-wrap { width: 40px; height: 40px; flex: 0 0 40px; }
 .cw-nav-collapsed .cw-nav .cwn-avatar, .cw-nav-collapsed .cw-nav .cwn-avatar-inner { width: 40px; height: 40px; }
 .cw-nav-collapsed .cw-nav .cwn-avatar-inner { font-size: 14px; }
+.cw-nav-collapsed .cw-nav .cwn-profile-actions { flex-direction: column; gap: 6px; }
+.cw-nav-collapsed .cw-nav .cwn-profile-action .cwn-label { display: none; }
+.cw-nav-collapsed .cw-nav .cwn-profile-action { padding: 8px; }
