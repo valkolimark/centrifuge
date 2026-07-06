@@ -28,6 +28,8 @@ function mapStage(stage = ''): string {
   return 'new'
 }
 const num = (v?: string) => (v ? Number(String(v).replace(/[^0-9.]/g, '')) || undefined : undefined)
+// Payload's email field validates format — drop anything that isn't a real address.
+const validEmail = (e?: string) => (e && /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(e.trim()) ? e.trim() : undefined)
 
 async function pullAll(boardId: string) {
   const items: any[] = []
@@ -52,14 +54,14 @@ const existing = await payload.find({ collection: 'leads', limit: 10000, depth: 
 const seen = new Set((existing.docs as any[]).map((d) => d.payload?.mondayItemId).filter(Boolean))
 console.log('existing leads:', existing.totalDocs, '| already-imported monday ids:', seen.size)
 
-let created = 0, skipped = 0
+let created = 0, skipped = 0, failed = 0
 async function importItem(it: any, source: 'contacts' | 'deals') {
   if (seen.has(it.id)) { skipped++; return }
   const f = itemFields(it)
   const data =
     source === 'contacts'
       ? {
-          name: f.name, email: f.Email || undefined, phone: f.Phone || f['Direct Phone'] || undefined,
+          name: f.name, email: validEmail(f.Email), phone: f.Phone || f['Direct Phone'] || undefined,
           company: f.Company || undefined, sourceForm: 'manual' as const,
           message: f.Title ? `Title: ${f.Title}` : undefined,
           payload: { mondaySource: 'contacts', mondayItemId: it.id, ...f },
@@ -71,13 +73,18 @@ async function importItem(it: any, source: 'contacts' | 'deals') {
           payload: { mondaySource: 'deals', mondayItemId: it.id, ...f },
         }
   if (!WRITE) { created++; return }
-  await payload.create({ collection: 'leads', data: data as any, overrideAccess: true, context: { skipRouting: true } })
-  seen.add(it.id); created++
+  try {
+    await payload.create({ collection: 'leads', data: data as any, overrideAccess: true, context: { skipRouting: true } })
+    seen.add(it.id); created++
+  } catch (e) {
+    failed++
+    console.warn(`skip ${source} "${f.name}": ${(e as Error).message.slice(0, 80)}`)
+  }
 }
 
 for (const it of contactsB ? await pullAll(contactsB.id) : []) await importItem(it, 'contacts')
 for (const it of dealsB ? await pullAll(dealsB.id) : []) await importItem(it, 'deals')
 
-console.log(`\n${WRITE ? 'CREATED' : 'WOULD CREATE'}: ${created} leads · skipped (already imported): ${skipped}`)
+console.log(`\n${WRITE ? 'CREATED' : 'WOULD CREATE'}: ${created} leads · skipped (already imported): ${skipped} · failed: ${failed}`)
 if (!WRITE) console.log('This was a DRY PREVIEW. Re-run with --write to import.')
 process.exit(0)
