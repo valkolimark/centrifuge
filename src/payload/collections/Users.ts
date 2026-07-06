@@ -7,7 +7,9 @@ import { ROLES, isSuperAdmin } from '../access/roles'
 export const Users: CollectionConfig = {
   slug: 'users',
   auth: {
-    maxLoginAttempts: 8,
+    // Production: lock after 8 failed attempts. Development: 0 = no lockout (so local
+    // testing / automated login checks don't lock the account).
+    maxLoginAttempts: process.env.NODE_ENV === 'production' ? 8 : 0,
     lockTime: 10 * 60 * 1000, // 10 minutes
     tokenExpiration: 60 * 60 * 8, // 8h sessions
     forgotPassword: {
