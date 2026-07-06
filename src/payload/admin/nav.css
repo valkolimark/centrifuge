@@ -1,0 +1,79 @@
+/* Mission Control admin sidebar (UI-1 dashboard mockup) — replaces Payload's default
+   Nav. Faithful port of the mockup's .sidebar/.cwn-brand/.cwn-nav/.cwn-profile, scoped to .cw-nav and
+   mapped onto the existing --cw-* theme tokens (fonts come from BrandProvider). Collapses
+   to an icon rail by overriding Payload's --nav-width. */
+
+/* Expanded = mockup width; collapsed = icon rail. Overrides Payload's --nav-width (275px). */
+.cw-admin { --nav-width: 264px; }
+.cw-admin.cw-nav-collapsed { --nav-width: 76px; }
+
+.cw-nav {
+  height: 100vh; width: 100%;
+  position: sticky; top: 0; overflow-y: auto; overflow-x: hidden;
+  background: linear-gradient(180deg, #0a1226 0%, #070e1f 100%);
+  border-right: 1px solid var(--cw-line);
+  display: flex; flex-direction: column;
+  scrollbar-width: thin; scrollbar-color: var(--cw-line) transparent;
+  font-family: var(--font-body), Inter, system-ui, sans-serif;
+}
+.cw-nav * { box-sizing: border-box; }
+
+/* brand */
+.cw-nav .cwn-brand { display: flex; align-items: center; gap: 12px; padding: 20px 18px 16px; border-bottom: 1px solid var(--cw-line); }
+.cw-nav .cwn-brand-icon { width: 44px; height: 44px; flex: 0 0 44px; display: grid; place-items: center; border-radius: 12px; background: radial-gradient(circle at 30% 25%, rgba(62,201,245,.25), rgba(13,24,50,.9)); border: 1px solid var(--cw-line-bright); box-shadow: var(--cw-glow); }
+.cw-nav .cwn-brand-icon img { width: 32px; height: auto; aspect-ratio: 147/148; object-fit: contain; display: block; filter: drop-shadow(0 0 8px rgba(62,201,245,.55)); }
+.cw-nav .cwn-brand-word { line-height: 1.05; min-width: 0; }
+.cw-nav .cwn-brand-word .cwn-cw { font-family: var(--font-display), sans-serif; font-weight: 700; font-size: 19px; letter-spacing: .4px; background: linear-gradient(90deg, #eaf2ff 20%, var(--cw-cyan) 100%); -webkit-background-clip: text; background-clip: text; color: transparent; display: block; }
+.cw-nav .cwn-brand-word .cwn-world { font-family: var(--font-display), sans-serif; font-weight: 500; font-size: 12px; letter-spacing: 5px; color: var(--cw-cyan); text-transform: lowercase; display: block; margin-top: 1px; }
+.cw-nav .cwn-brand-word .cwn-estd { font-size: 9px; letter-spacing: 1.5px; color: var(--cw-ink-faint); text-transform: uppercase; margin-top: 3px; display: block; white-space: nowrap; }
+
+/* nav list */
+.cw-nav .cwn-nav { padding: 14px 12px 8px; flex: 1; }
+.cw-nav .cwn-nav-label { font-family: var(--font-display), sans-serif; font-size: 10px; letter-spacing: 2.5px; color: var(--cw-ink-faint); text-transform: uppercase; padding: 14px 10px 7px; }
+.cw-nav .cwn-nav a { display: flex; align-items: center; gap: 11px; padding: 8px 10px; border-radius: 9px; color: var(--cw-ink-dim); font-weight: 500; font-size: 13.5px; margin-bottom: 1px; position: relative; border: 1px solid transparent; transition: all .18s ease; text-decoration: none; }
+.cw-nav .cwn-nav a:hover { color: var(--cw-ink); background: rgba(62,201,245,.06); }
+.cw-nav .cwn-nav a.cwn-active { color: var(--cw-ink); background: linear-gradient(90deg, rgba(42,107,255,.22), rgba(62,201,245,.08)); border: 1px solid rgba(62,201,245,.28); box-shadow: inset 0 0 18px rgba(42,107,255,.14); }
+.cw-nav .cwn-nav a.cwn-active::before { content: ''; position: absolute; left: -12px; top: 20%; height: 60%; width: 3px; background: var(--cw-cyan); border-radius: 0 3px 3px 0; box-shadow: var(--cw-glow); }
+.cw-nav .cwn-nav a .cwn-label { flex: 1; min-width: 0; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.cw-nav .cwn-nav svg { width: 17px; height: 17px; flex: 0 0 17px; stroke: currentColor; fill: none; stroke-width: 1.7; stroke-linecap: round; stroke-linejoin: round; }
+.cw-nav .cwn-nav .cwn-pill { margin-left: auto; font-family: var(--font-mono), monospace; font-size: 10.5px; font-weight: 600; padding: 1px 7px; border-radius: 20px; background: rgba(255,176,32,.16); color: var(--cw-amber); border: 1px solid rgba(255,176,32,.35); flex: 0 0 auto; }
+.cw-nav .cwn-nav .cwn-pill.cwn-cyan { background: rgba(62,201,245,.13); color: var(--cw-cyan); border-color: rgba(62,201,245,.3); }
+
+/* collapse toggle */
+.cw-nav-toggle { margin: 0 12px 6px; padding: 7px 10px; border-radius: 9px; border: 1px solid var(--cw-line); background: transparent; color: var(--cw-ink-faint); font-size: 11px; font-weight: 600; letter-spacing: .06em; text-transform: uppercase; display: flex; align-items: center; gap: 8px; cursor: pointer; transition: all .15s; font-family: var(--font-display), sans-serif; }
+.cw-nav-toggle:hover { color: var(--cw-ink); border-color: var(--cw-line-bright); background: rgba(62,201,245,.05); }
+.cw-nav-toggle svg { width: 15px; height: 15px; stroke: currentColor; fill: none; stroke-width: 2; flex: 0 0 15px; transition: transform .2s; }
+
+/* profile / avatar */
+.cw-nav .cwn-profile { margin: 12px; padding: 14px; border-radius: var(--cw-radius); background: linear-gradient(160deg, var(--cw-panel) 0%, #0a142c 100%); border: 1px solid var(--cw-line); }
+.cw-nav .cwn-profile-row { display: flex; align-items: center; gap: 12px; }
+.cw-nav .cwn-avatar-wrap { position: relative; width: 52px; height: 52px; flex: 0 0 52px; cursor: pointer; }
+.cw-nav .cwn-avatar { width: 52px; height: 52px; border-radius: 50%; background: conic-gradient(from 180deg, var(--cw-blue), var(--cw-cyan), var(--cw-violet), var(--cw-blue)); padding: 2px; display: block; }
+.cw-nav .cwn-avatar-inner { width: 100%; height: 100%; border-radius: 50%; overflow: hidden; background: var(--cw-panel2); display: grid; place-items: center; font-family: var(--font-display), sans-serif; font-weight: 700; font-size: 17px; color: var(--cw-cyan); }
+.cw-nav .cwn-avatar-inner img { width: 100%; height: 100%; object-fit: cover; display: block; }
+.cw-nav .cwn-avatar-edit { position: absolute; right: -3px; bottom: -3px; width: 21px; height: 21px; border-radius: 50%; background: var(--cw-blue); border: 2px solid var(--cw-bg2); color: #fff; display: grid; place-items: center; font-size: 10px; transition: transform .15s; }
+.cw-nav .cwn-avatar-wrap:hover .cwn-avatar-edit { transform: scale(1.15); box-shadow: var(--cw-glow); }
+.cw-nav .cwn-profile-name { font-weight: 600; font-size: 13.5px; color: var(--cw-ink); }
+.cw-nav .cwn-profile-role { font-size: 11px; color: var(--cw-ink-dim); }
+.cw-nav .cwn-profile-status { display: inline-flex; align-items: center; gap: 5px; font-size: 10.5px; color: var(--cw-green); margin-top: 2px; }
+.cw-nav .cwn-profile-status .cwn-dot { width: 6px; height: 6px; border-radius: 50%; background: var(--cw-green); box-shadow: 0 0 8px var(--cw-green); }
+.cw-nav .cwn-avatar-hint { font-size: 10px; color: var(--cw-ink-faint); margin-top: 9px; line-height: 1.5; }
+.cw-nav .cwn-avatar-input { display: none; }
+
+/* ---- collapsed → icon rail ---- */
+.cw-nav-collapsed .cw-nav .cwn-brand { justify-content: center; padding: 20px 0 16px; }
+.cw-nav-collapsed .cw-nav .cwn-brand-word,
+.cw-nav-collapsed .cw-nav .cwn-nav-label,
+.cw-nav-collapsed .cw-nav .cwn-nav a .cwn-label,
+.cw-nav-collapsed .cw-nav .cwn-nav a .cwn-pill,
+.cw-nav-collapsed .cw-nav .cwn-profile-text,
+.cw-nav-collapsed .cw-nav .cwn-avatar-hint,
+.cw-nav-collapsed .cw-nav-toggle .cwn-toggle-label { display: none; }
+.cw-nav-collapsed .cw-nav .cwn-nav a { justify-content: center; padding: 9px 8px; }
+.cw-nav-collapsed .cw-nav-toggle { justify-content: center; padding: 9px 8px; }
+.cw-nav-collapsed .cw-nav-toggle svg { transform: rotate(180deg); }
+.cw-nav-collapsed .cw-nav .cwn-profile { padding: 10px; }
+.cw-nav-collapsed .cw-nav .cwn-profile-row { justify-content: center; }
+.cw-nav-collapsed .cw-nav .cwn-avatar-wrap { width: 40px; height: 40px; flex: 0 0 40px; }
+.cw-nav-collapsed .cw-nav .cwn-avatar, .cw-nav-collapsed .cw-nav .cwn-avatar-inner { width: 40px; height: 40px; }
+.cw-nav-collapsed .cw-nav .cwn-avatar-inner { font-size: 14px; }
