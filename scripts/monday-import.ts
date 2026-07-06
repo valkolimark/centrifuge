@@ -10,7 +10,8 @@ for (const l of readFileSync('.env.local', 'utf8').split('\n')) {
   const m = l.match(/^([A-Z0-9_]+)=(.*)$/)
   if (m && !process.env[m[1]]) process.env[m[1]] = m[2].replace(/^["']|["']$/g, '')
 }
-process.env.NODE_ENV ||= 'production' // avoid dev schema push; tables already exist
+// avoid dev schema push; tables already exist. (cast: TS types NODE_ENV read-only)
+if (!process.env.NODE_ENV) (process.env as Record<string, string>).NODE_ENV = 'production'
 
 const WRITE = process.argv.includes('--write')
 const { listBoards, getBoardItems, itemFields } = await import('@/lib/monday/client')
