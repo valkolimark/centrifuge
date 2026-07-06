@@ -31,14 +31,26 @@ for (const t of ['quotes', 'leads']) {
   console.log(c.map((r) => `${r.column_name}:${r.data_type}`).join(', '))
 }
 
-const ALTERS = [
-  `ALTER TABLE quotes ADD COLUMN IF NOT EXISTS reference_number varchar`,
-  `ALTER TABLE quotes ADD COLUMN IF NOT EXISTS description varchar`,
-  `ALTER TABLE leads ADD COLUMN IF NOT EXISTS notes varchar`,
+// Versioned collections (Quotes: drafts, Leads: versions) keep a parallel _<name>_v table with
+// version_-prefixed columns — the new fields must be added there too or inserts fail.
+const ADDS: { table: string; column: string }[] = [
+  { table: 'quotes', column: 'reference_number' },
+  { table: 'quotes', column: 'description' },
+  { table: 'leads', column: 'notes' },
+  { table: '_quotes_v', column: 'version_reference_number' },
+  { table: '_quotes_v', column: 'version_description' },
+  { table: '_leads_v', column: 'version_notes' },
 ]
 
+async function tableExists(t: string) {
+  const { rows } = await pool.query(`SELECT to_regclass('public.${t}') AS t`)
+  return !!rows[0]?.t
+}
+
 console.log(`\n=== ${WRITE ? 'APPLYING' : 'WOULD APPLY'} ===`)
-for (const sql of ALTERS) {
+for (const { table, column } of ADDS) {
+  if (!(await tableExists(table))) { console.log(`  skip ${table}.${column} (table absent)`); continue }
+  const sql = `ALTER TABLE ${table} ADD COLUMN IF NOT EXISTS ${column} varchar`
   console.log('  ' + sql)
   if (WRITE) await pool.query(sql)
 }
