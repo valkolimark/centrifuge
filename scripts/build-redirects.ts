@@ -61,6 +61,11 @@ function fallbackEntries(): Redirect[] {
 async function fromCollection(): Promise<Redirect[] | null> {
   try {
     loadEnv()
+    // Read-only step: force production so payload.config disables drizzle `push`. Without this,
+    // NODE_ENV defaults to dev here, which both enables push AND (via Users.ts's env-gated auth
+    // lockout) expects a schema without login_attempts/lock_until — so push would try to DROP
+    // those columns from the shared Neon DB and hang the build on a data-loss prompt.
+    if (process.env.NODE_ENV !== 'production') (process.env as Record<string, string>).NODE_ENV = 'production'
     const { default: config } = await import('../src/payload.config.ts')
     const { getPayload } = await import('payload')
     const payload = await getPayload({ config })

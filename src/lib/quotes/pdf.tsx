@@ -2,14 +2,16 @@
  * to PDF with headless Chrome — the SAME component as the preview/hosted page, so output
  * is pixel-consistent. Serverless (Vercel) uses @sparticuz/chromium; local dev uses an
  * installed Chrome (CHROME_PATH override). Returns the PDF bytes + the SHA-256 of the HTML. */
-import { renderToStaticMarkup } from 'react-dom/server'
 import crypto from 'crypto'
 import { QuoteDocument } from '@/components/quote/QuoteDocument'
 import type { QuoteView } from './view'
 
 const FONTS = 'https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap'
 
-export function quoteHtml(view: QuoteView): string {
+// react-dom/server is dynamic-imported: a static import trips Next 15's App-Router build check
+// ("importing a component that imports react-dom/server") even from a server-only route handler.
+export async function quoteHtml(view: QuoteView): Promise<string> {
+  const { renderToStaticMarkup } = await import('react-dom/server')
   const body = renderToStaticMarkup(<QuoteDocument view={view} />)
   return `<!doctype html><html><head><meta charset="utf-8"><link href="${FONTS}" rel="stylesheet">
 <style>@page{size:Letter;margin:14mm}html,body{margin:0;background:#fff}</style></head><body>${body}</body></html>`
@@ -35,7 +37,7 @@ async function launch() {
 export type QuotePdf = { pdf: Buffer; htmlHash: string; bytes: number }
 
 export async function renderQuotePdf(view: QuoteView): Promise<QuotePdf> {
-  const html = quoteHtml(view)
+  const html = await quoteHtml(view)
   const htmlHash = crypto.createHash('sha256').update(html).digest('hex')
   const browser = await launch()
   try {

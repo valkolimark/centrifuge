@@ -17,6 +17,14 @@ const ytimg = 'https://i.ytimg.com'
 // @next/third-parties. Tightening to a nonce is tracked in BACKLOG.md.
 // Next.js dev mode (fast refresh / eval source maps) needs 'unsafe-eval'; production never does.
 const devEval = process.env.NODE_ENV === 'production' ? '' : " 'unsafe-eval'"
+
+// HTTPS-only hardening (HSTS + upgrade-insecure-requests) must be emitted ONLY on real
+// https deploys. Vercel sets VERCEL=1 in the build environment for every (https) prod/preview
+// deploy — that is the correct discriminator, NOT NODE_ENV, which is also 'production' for a
+// local prod build (`pnpm build && pnpm start`). If emitted over local http these upgrade every
+// subresource to https (blank page, no TLS) and — worse — HSTS `preload` poisons the browser's
+// localhost policy for 2 years. Use http://127.0.0.1:3210 to escape an already-cached policy.
+const httpsDeploy = process.env.VERCEL === '1'
 const csp = [
   `default-src 'self'`,
   `base-uri 'self'`,
@@ -31,16 +39,18 @@ const csp = [
   `frame-src 'self' ${turnstile} ${cognito} ${youtube} https://www.google.com https://td.doubleclick.net`,
   `worker-src 'self' blob:`,
   `manifest-src 'self'`,
-  // Force HTTPS in production only; on localhost it would upgrade http→https and break dev.
-  ...(process.env.NODE_ENV === 'production' ? [`upgrade-insecure-requests`] : []),
+  // Force HTTPS on real https deploys only (see httpsDeploy note above); locally over http
+  // this upgrades every subresource to https and blanks the page.
+  ...(httpsDeploy ? [`upgrade-insecure-requests`] : []),
 ].join('; ')
 
 export const securityHeaders = [
   { key: 'Content-Security-Policy', value: csp },
-  {
-    key: 'Strict-Transport-Security',
-    value: 'max-age=63072000; includeSubDomains; preload',
-  },
+  // HSTS only on real https deploys. Its `preload; includeSubDomains` would otherwise poison
+  // the browser's localhost policy for 2 years when testing a local prod build over http.
+  ...(httpsDeploy
+    ? [{ key: 'Strict-Transport-Security', value: 'max-age=63072000; includeSubDomains; preload' }]
+    : []),
   // Admin (/admin) must be same-origin framable for Payload live preview; SAMEORIGIN keeps
   // the rest of the site frame-safe while allowing it. frame-ancestors 'self' backs this up.
   { key: 'X-Frame-Options', value: 'SAMEORIGIN' },

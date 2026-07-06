@@ -38,12 +38,14 @@ export type SendQuoteResult = {
 export async function sendQuote(
   payload: any,
   quoteId: string | number,
-  opts: { ownerEmail?: string; req?: any } = {},
+  // testEmail: send ONLY to that address (a test-to-self), skipping the client/team send,
+  // the immutable snapshot, and the status/lead transitions — nothing is committed.
+  opts: { ownerEmail?: string; testEmail?: string; req?: any } = {},
 ): Promise<SendQuoteResult> {
   const req = opts.req
   const quote: AnyQuote = await payload.findByID({ collection: 'quotes', id: quoteId, depth: 0, req })
   if (!quote) throw new Error(`Quote ${quoteId} not found`)
-  if (!quote.client?.email) throw new Error('Quote has no client email')
+  if (!opts.testEmail && !quote.client?.email) throw new Error('Quote has no client email')
 
   const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://centrifuge.com'
   const now = new Date()
@@ -81,12 +83,28 @@ export async function sendQuote(
   const emailVars = {
     quoteNumber: quote.quoteNumber,
     scopeTitle: quote.scopeTitle,
-    clientName: quote.client.contactName,
-    clientCompany: quote.client.company,
+    clientName: quote.client?.contactName,
+    clientCompany: quote.client?.company,
     total: view.total,
     validUntil: view.validUntil,
     viewUrl,
     emergencyDisplay: view.emergencyDisplay,
+  }
+
+  // Test-to-self: mail the rendered quote to one address only and return. No CC, no snapshot,
+  // no status/lead change — this is a preview send, nothing about the quote is committed.
+  if (opts.testEmail) {
+    const { html, text } = await renderTemplate(TEMPLATES['quote-delivery'], { ...emailVars, hasPdf: true })
+    const res = await sendEmail({
+      from,
+      to: [{ address: opts.testEmail, name: 'Test recipient' }],
+      replyTo: opts.ownerEmail || SENDERS.quotes,
+      subject: `[TEST] Quote ${quote.quoteNumber} — Centrifuge World`,
+      html,
+      text,
+      attachments: [attachment],
+    })
+    return { version: 0, operationId: res.operationId, pdfAttached: true, bytes: pdf.length, dryRun: res.dryRun }
   }
 
   // Try with the PDF attached; fall back to link-only if over the 10MB limit.

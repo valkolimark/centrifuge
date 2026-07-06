@@ -11,6 +11,10 @@ const nextConfig = {
   // Inline the (small) app CSS into the HTML to remove the render-blocking
   // stylesheet request (~820ms savings on FCP/LCP).
   experimental: { inlineCss: true },
+  // The quote PDF pipeline (src/lib/quotes/pdf.tsx) uses headless Chrome. These packages have
+  // dynamic requires / native binaries webpack can't bundle — keep them external so any server
+  // graph that reaches sendQuote (e.g. the workspace "Send to Client" action) builds cleanly.
+  serverExternalPackages: ['puppeteer-core', '@sparticuz/chromium'],
   images: {
     formats: ['image/avif', 'image/webp'],
     qualities: [45, 60, 75],

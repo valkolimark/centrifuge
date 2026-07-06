@@ -102,6 +102,7 @@ export const Quotes: CollectionConfig = {
   },
   fields: [
     { name: 'quoteNumber', type: 'text', unique: true, index: true, admin: { readOnly: true, description: 'Auto-generated CW-Q-{YYYY}-{NNNN}.' } },
+    { name: 'referenceNumber', type: 'text', admin: { description: 'Client PO / reference number (optional) — shown on the quote alongside the quote number.' } },
     { name: 'lead', type: 'relationship', relationTo: 'leads', admin: { description: 'Linked lead (nullable for manual quotes).' } },
     {
       name: 'client',
@@ -121,6 +122,7 @@ export const Quotes: CollectionConfig = {
       options: [{ label: 'Rosharon, TX', value: 'rosharon' }],
     },
     { name: 'scopeTitle', type: 'text' },
+    { name: 'description', type: 'textarea', admin: { description: 'Longer description / summary of the work, shown under the scope on the quote.' } },
     {
       name: 'lineItems',
       type: 'array',
