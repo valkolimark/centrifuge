@@ -85,10 +85,9 @@ export default buildConfig({
     // providers component, plus branded login logo + nav icon.
     components: {
       providers: ['@/payload/admin/BrandProvider'],
-      // Logo lockup pinned to the sidebar top-left, linking back to the dashboard.
-      beforeNavLinks: ['@/payload/admin/NavHeader'],
-      // Reachable entry to the full-screen Leads & Quotes workspace (UI-2).
-      afterNavLinks: ['@/payload/admin/NavLinks'],
+      // Full custom Mission Control sidebar (brand + grouped nav + profile card,
+      // collapsible to an icon rail) replacing Payload's default Nav.
+      Nav: '@/payload/admin/Nav',
       graphics: {
         Logo: '@/payload/admin/Logo',
         Icon: '@/payload/admin/Icon',
