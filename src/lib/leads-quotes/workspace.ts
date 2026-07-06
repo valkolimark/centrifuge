@@ -58,7 +58,7 @@ export async function getWorkspaceData(): Promise<WorkspaceData> {
       limit: 2000,
       sort: '-createdAt',
       select: {
-        name: true, company: true, email: true, phone: true, sourceForm: true, message: true,
+        name: true, company: true, email: true, phone: true, sourceForm: true, message: true, notes: true,
         pipelineStage: true, estimatedValue: true, delivery: true, createdAt: true,
       },
     }),
@@ -106,6 +106,7 @@ export async function getWorkspaceData(): Promise<WorkspaceData> {
       email: l.email || null,
       phone: l.phone || null,
       message: (l.message || '').slice(0, 400),
+      notes: l.notes || '',
       source: src.label,
       sourceTag: src.tag,
       estimatedValue: value,

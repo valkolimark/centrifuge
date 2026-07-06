@@ -9,7 +9,7 @@
      · New Quote / Save Draft → POST /api/quotes  (hooks auto-gen number, viewToken, totals)
      · Send to Client → POST /api/quotes/:id/send (real sendQuote flow; dry-run aware)
    All fetches are same-origin so they ride the admin session cookie + collection access. */
-import { useMemo, useRef, useState } from 'react'
+import { useEffect, useMemo, useRef, useState } from 'react'
 import type { WorkspaceData, StageColumn, LeadCard, QuoteRow } from '@/lib/leads-quotes/shared'
 import { PIPELINE_STAGES } from '@/lib/leads-quotes/shared'
 import './leads-quotes.css'
@@ -67,6 +67,9 @@ export default function LeadsQuotesClient({ data, userName, userEmail }: { data:
   // drawers
   const [openLead, setOpenLead] = useState<LeadCard | null>(null)
   const [openQuote, setOpenQuote] = useState<QuoteRow | null>(null)
+  const [noteDraft, setNoteDraft] = useState('')
+  const [savingNote, setSavingNote] = useState(false)
+  useEffect(() => { setNoteDraft(openLead?.notes || '') }, [openLead])
 
   // filters
   const [formFilter, setFormFilter] = useState('all')
@@ -80,6 +83,8 @@ export default function LeadsQuotesClient({ data, userName, userEmail }: { data:
   const [bCompany, setBCompany] = useState('')
   const [bEmail, setBEmail] = useState('')
   const [bScope, setBScope] = useState('')
+  const [bRef, setBRef] = useState('')
+  const [bDesc, setBDesc] = useState('')
   const [bLines, setBLines] = useState<BuilderLine[]>([{ d: '', q: '1', u: '0' }])
   const [bTax, setBTax] = useState('8.25')
   const [bDays, setBDays] = useState('30')
@@ -156,6 +161,27 @@ export default function LeadsQuotesClient({ data, userName, userEmail }: { data:
     if (col) await moveLead(id, col.stage, 'contacted')
   }
 
+  async function saveNote() {
+    if (!openLead) return
+    setSavingNote(true)
+    try {
+      const res = await fetch(`/api/leads/${openLead.id}`, {
+        method: 'PATCH',
+        headers: { 'Content-Type': 'application/json' },
+        credentials: 'same-origin',
+        body: JSON.stringify({ notes: noteDraft }),
+      })
+      if (!res.ok) throw new Error(String(res.status))
+      setPipeline((prev) => prev.map((c) => ({ ...c, leads: c.leads.map((l) => (l.id === openLead.id ? { ...l, notes: noteDraft } : l)) })))
+      setOpenLead({ ...openLead, notes: noteDraft })
+      toast('Note saved')
+    } catch {
+      toast('Note save failed')
+    } finally {
+      setSavingNote(false)
+    }
+  }
+
   function startQuoteFor(lead: LeadCard) {
     setSavedQuote(null)
     setBLeadId(lead.id)
@@ -163,6 +189,7 @@ export default function LeadsQuotesClient({ data, userName, userEmail }: { data:
     setBCompany(lead.company === '—' ? '' : lead.company)
     setBEmail(lead.email || '')
     setBScope(lead.message ? lead.message.slice(0, 80) : '')
+    setBRef(''); setBDesc('')
     setBLines([{ d: '', q: '1', u: '0' }])
     setOpenLead(null)
     setTab('builder')
@@ -183,6 +210,8 @@ export default function LeadsQuotesClient({ data, userName, userEmail }: { data:
       ...(bLeadId ? { lead: /^\d+$/.test(bLeadId) ? Number(bLeadId) : bLeadId } : {}),
       client: { contactName: bName, company: bCompany, email: bEmail },
       scopeTitle: bScope,
+      referenceNumber: bRef || undefined,
+      description: bDesc || undefined,
       lineItems: bLines.filter((li) => li.d.trim()).map((li) => ({ description: li.d, qty: num(li.q), unitPrice: num(li.u) })),
       taxRate: num(bTax),
       validDays: parseInt(bDays) || 30,
@@ -205,7 +234,7 @@ export default function LeadsQuotesClient({ data, userName, userEmail }: { data:
 
   function newQuote() {
     setSavedQuote(null); setBLeadId(''); setBName(''); setBCompany(''); setBEmail(''); setBScope('')
-    setBLines([{ d: '', q: '1', u: '0' }]); setContactOpen(false)
+    setBRef(''); setBDesc(''); setBLines([{ d: '', q: '1', u: '0' }]); setContactOpen(false)
     setTab('builder')
   }
 
@@ -520,6 +549,8 @@ export default function LeadsQuotesClient({ data, userName, userEmail }: { data:
                       <div className="field"><label>Issuing Location — locked</label><input value="Rosharon, TX · all quotes issue from Rosharon" disabled style={{ opacity: 0.65, cursor: 'not-allowed' }} /></div>
                       <div className="field"><label>Project / Scope Title</label><input value={bScope} onChange={(e) => setBScope(e.target.value)} /></div>
                     </div>
+                    <div className="field"><label>Reference / PO Number</label><input value={bRef} onChange={(e) => setBRef(e.target.value)} placeholder="client PO / reference (optional)" /></div>
+                    <div className="field"><label>Description</label><textarea rows={2} value={bDesc} onChange={(e) => setBDesc(e.target.value)} placeholder="Longer summary of the work (optional)" /></div>
 
                     <div style={{ margin: '16px 0 6px', fontSize: 10.5, letterSpacing: '.14em', textTransform: 'uppercase', color: 'var(--faint)', fontWeight: 700 }}>Line Items</div>
                     <div className="li-head"><span>Description</span><span style={{ textAlign: 'right' }}>Qty</span><span style={{ textAlign: 'right' }}>Unit $</span><span /></div>
@@ -554,13 +585,13 @@ export default function LeadsQuotesClient({ data, userName, userEmail }: { data:
                   <div className="paper">
                     <div className="p-head">
                       <img src="/logo/cw-logo-black.webp" alt="Centrifuge World" style={{ height: 46, width: 'auto', objectFit: 'contain', display: 'block' }} />
-                      <div className="qn"><span>Quotation</span><b>{savedQuote?.number || 'Draft'}</b></div>
+                      <div className="qn"><span>Quotation</span><b>{savedQuote?.number || 'Draft'}</b>{bRef ? <span style={{ fontSize: 10.5, color: 'var(--paper-dim)', display: 'block', marginTop: 2 }}>Ref: {bRef}</span> : null}</div>
                     </div>
                     <div className="p-rule" />
                     <div className="p-body">
                       <div className="p-meta">
                         <div><div className="t">Prepared For</div><div className="v"><b>{bName || '—'}</b><br /><span>{bCompany || '—'}</span><br /><span style={{ color: 'var(--paper-dim)' }}>{bEmail || '—'}</span></div></div>
-                        <div><div className="t">Scope</div><div className="v">{bScope || '—'}</div></div>
+                        <div><div className="t">Scope</div><div className="v">{bScope || '—'}{bDesc ? <div style={{ marginTop: 5, color: 'var(--paper-dim)', fontWeight: 400, fontSize: 12 }}>{bDesc}</div> : null}</div></div>
                         <div><div className="t">Issued / Valid Until</div><div className="v">{new Date().toLocaleDateString('en-US', { month: 'short', day: '2-digit', year: 'numeric' })}<br /><b>Valid through {validUntilLabel}</b><br /><span style={{ color: 'var(--paper-dim)' }}>Issued from Rosharon, TX</span></div></div>
                       </div>
                       <table className="p-table">
@@ -627,6 +658,11 @@ export default function LeadsQuotesClient({ data, userName, userEmail }: { data:
                 </div>
               </div>
               <div className="dsec"><div className="t">Message</div><div className="msgbox">{openLead.message || 'No message captured.'}</div></div>
+              <div className="dsec"><div className="t">Staff Notes</div>
+                <textarea value={noteDraft} onChange={(e) => setNoteDraft(e.target.value)} rows={4} placeholder="Add notes about this contact…"
+                  style={{ width: '100%', background: 'var(--panel)', border: '1px solid var(--line2)', borderRadius: 8, color: 'var(--ink)', padding: '8px 10px', fontFamily: 'var(--body)', fontSize: 13, resize: 'vertical' }} />
+                <button className="btn sm" onClick={saveNote} disabled={savingNote || noteDraft === (openLead.notes || '')} style={{ marginTop: 8 }}>{savingNote ? 'Saving…' : 'Save note'}</button>
+              </div>
             </div>
             <div className="drawer-f">
               <button className="btn" onClick={() => markContacted(openLead.id)}>Mark Contacted</button>

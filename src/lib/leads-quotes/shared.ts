@@ -21,6 +21,7 @@ export type LeadCard = {
   email: string | null
   phone: string | null
   message: string
+  notes: string // staff notes (editable in the drawer)
   source: string // display label, e.g. "Quote Req"
   sourceTag: string // css tag class, e.g. "quote"
   estimatedValue: number | null

@@ -44,6 +44,7 @@ export const Leads: CollectionConfig = {
       ],
     },
     { name: 'message', type: 'textarea', admin: { description: 'Raw submission body.' } },
+    { name: 'notes', type: 'textarea', admin: { description: 'Staff notes on this contact — free-form, editable.' } },
     {
       name: 'payload',
       type: 'json',
