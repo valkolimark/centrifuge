@@ -1,14 +1,13 @@
-import { CognitoForm } from './CognitoForm'
+import { LeadForm } from './LeadForm'
+import type { FormType } from '@/lib/forms/config'
 
-// Client-standardized lead forms are Cognito. These thin wrappers embed the two
-// provided Cognito forms (EZ Quote #14, Contact #4) so every inline form on the
-// site uses Cognito instead of the native forms engine.
-const COGNITO_KEY = '6-kP0CxQH0CwXlv_9oww1A'
-
-export function QuoteForm() {
-  return <CognitoForm dataKey={COGNITO_KEY} formId="14" />
+// Native inline lead forms (Turnstile + honeypot; submit via the server action into the leads
+// pipeline). Thin wrappers keep page code terse — every inline form on the site is now native.
+// QuoteForm = the native "EZ Quote" (request_quote); ContactForm = the native contact form.
+export function QuoteForm({ type = 'request_quote' }: { type?: FormType } = {}) {
+  return <LeadForm type={type} />
 }
 
 export function ContactForm() {
-  return <CognitoForm dataKey={COGNITO_KEY} formId="4" />
+  return <LeadForm type="contact" />
 }

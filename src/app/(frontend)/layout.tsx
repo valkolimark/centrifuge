@@ -24,9 +24,9 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
     <html lang="en" className={fontVariables}>
       <head>
         {/* next/image proxies S3 + YouTube thumbnails through our own origin, so the
-            browser never connects to those hosts directly. The only cross-origin
-            connection is the Cognito form iframe — warm just that. */}
-        <link rel="dns-prefetch" href="https://www.cognitoforms.com" />
+            browser never connects to those hosts directly. The only cross-origin form
+            dependency is the Cloudflare Turnstile challenge — warm just that. */}
+        <link rel="dns-prefetch" href="https://challenges.cloudflare.com" />
       </head>
       <body>
         <a href="#main" className="skip-link">
