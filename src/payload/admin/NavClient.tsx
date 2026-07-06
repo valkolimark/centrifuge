@@ -20,6 +20,7 @@ const ICON = {
   inventory: svg(<><rect x="3" y="4" width="18" height="16" rx="2" /><path d="M3 9h18M8 4v16" /></>),
   resources: svg(<><path d="M14 3H6a2 2 0 00-2 2v14a2 2 0 002 2h12a2 2 0 002-2V9z" /><path d="M14 3v6h6" /></>),
   crm: svg(<><path d="M17 21v-2a4 4 0 00-4-4H7a4 4 0 00-4 4v2" /><circle cx="10" cy="7" r="4" /><path d="M21 21v-2a4 4 0 00-3-3.87" /></>),
+  contacts: svg(<><rect x="3" y="4" width="18" height="16" rx="2" /><circle cx="9" cy="10" r="2.2" /><path d="M5.5 16.5a3.5 3.5 0 017 0" /><path d="M15 9h3M15 13h3" /></>),
   forms: svg(<><rect x="2" y="5" width="20" height="14" rx="2" /><path d="M2 9l10 6 10-6" /></>),
   quote: svg(<path d="M9 18l6-6-6-6" />),
   locations: svg(<><path d="M4 4h16v16H4z" /><path d="M9 9h6v6H9z" /></>),
@@ -71,6 +72,7 @@ export default function NavClient({ counts, user }: { counts: { brands: number; 
     ] },
     { label: 'Revenue Engine', items: [
       { label: 'CRM & Leads', href: '/admin/leads-quotes?tab=pipeline', icon: ICON.crm, pill: String(counts.newLeads || 0), match: (p) => p.startsWith('/admin/leads-quotes') },
+      { label: 'Contacts', href: '/admin/collections/leads', icon: ICON.contacts, match: coll('leads') },
       { label: 'Form Submissions', href: '/admin/collections/form-submissions', icon: ICON.forms, match: coll('form-submissions') },
       { label: 'Quote Builder', href: '/admin/leads-quotes?tab=builder', icon: ICON.quote, match: () => false },
     ] },

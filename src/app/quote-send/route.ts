@@ -13,8 +13,11 @@ export const dynamic = 'force-dynamic'
 
 export async function POST(req: Request) {
   let quoteId: string | undefined
+  let test = false
   try {
-    quoteId = (await req.json())?.quoteId
+    const body = await req.json()
+    quoteId = body?.quoteId
+    test = body?.test === true
   } catch {
     /* fall through to 400 */
   }
@@ -24,9 +27,14 @@ export async function POST(req: Request) {
   const { user } = await payload.auth({ headers: await nextHeaders() })
   if (!user) return Response.json({ error: 'Not authenticated' }, { status: 401 })
 
+  const email = (user as any).email as string | undefined
   try {
-    const result = await sendQuote(payload, quoteId, { ownerEmail: (user as any).email })
-    return Response.json({ ok: true, ...result })
+    // test=true → send only to the signed-in user (test-to-self), nothing committed.
+    const result = await sendQuote(payload, quoteId, {
+      ownerEmail: email,
+      ...(test ? { testEmail: email } : {}),
+    })
+    return Response.json({ ok: true, test, ...result })
   } catch (err: any) {
     return Response.json({ error: err?.message || 'Send failed' }, { status: 400 })
   }

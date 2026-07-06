@@ -18,5 +18,6 @@ export default async function LeadsQuotes(props: any) {
   }
   const u = props?.user
   const userName = u?.name || (u?.email ? String(u.email).split('@')[0] : 'Mission Control')
-  return <LeadsQuotesClient data={data} userName={userName} />
+  const userEmail = u?.email ? String(u.email) : ''
+  return <LeadsQuotesClient data={data} userName={userName} userEmail={userEmail} />
 }

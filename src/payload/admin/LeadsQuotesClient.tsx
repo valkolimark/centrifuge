@@ -1,4 +1,5 @@
 /* eslint-disable @next/next/no-html-link-for-pages -- every /admin/* link targets the Payload app (full navigation required), not Next page routes */
+/* eslint-disable @next/next/no-img-element -- small static admin-chrome assets in a full-screen island; next/image adds no value here */
 'use client'
 /* Leads & Quotes workspace (Cycle UI-2) — the interactive Mission Control client island.
    Renders the real read model (src/lib/leads-quotes/workspace.ts) into the mockup's markup
@@ -52,7 +53,7 @@ const RAIL = [
   { key: 'res', href: '/admin/collections/media', title: 'Resources / PDF Studio', d: 'M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8zM14 2v6h6' },
 ]
 
-export default function LeadsQuotesClient({ data, userName }: { data: WorkspaceData; userName: string }) {
+export default function LeadsQuotesClient({ data, userName, userEmail }: { data: WorkspaceData; userName: string; userEmail: string }) {
   const initialTab = (typeof window !== 'undefined'
     ? (new URLSearchParams(window.location.search).get('tab') as Tab | null)
     : null) || 'pipeline'
@@ -85,7 +86,12 @@ export default function LeadsQuotesClient({ data, userName }: { data: WorkspaceD
   const [bTerms, setBTerms] = useState(
     '50% deposit on approval, balance net 30 on completion. Freight to/from Rosharon facility included within 150 miles. Quote excludes parts found damaged beyond inspection scope; change orders issued for approval before work proceeds.',
   )
-  const [sending, setSending] = useState(false)
+  const [sending, setSending] = useState<'' | 'save' | 'send' | 'test'>('')
+  // The persisted quote for the current builder session — its number shows on the preview and
+  // subsequent saves update it in place rather than creating duplicate drafts.
+  const [savedQuote, setSavedQuote] = useState<{ number: string; id: string } | null>(null)
+  // Client-contact typeahead: search the 687 leads/contacts, or type a brand-new contact.
+  const [contactOpen, setContactOpen] = useState(false)
 
   const allLeads = useMemo(() => pipeline.flatMap((c) => c.leads), [pipeline])
   const kpis = useMemo(() => {
@@ -106,6 +112,22 @@ export default function LeadsQuotesClient({ data, userName }: { data: WorkspaceD
     setFlash(msg)
     window.clearTimeout((toast as any)._t)
     ;(toast as any)._t = window.setTimeout(() => setFlash(null), 3800)
+  }
+
+  // Client-contact typeahead over the 687 leads/contacts, and the linked lead's display name.
+  const contactMatches = useMemo(() => {
+    const q = bName.trim().toLowerCase()
+    if (q.length < 1) return []
+    return allLeads.filter((l) => `${l.name} ${l.company} ${l.email || ''}`.toLowerCase().includes(q)).slice(0, 8)
+  }, [bName, allLeads])
+  const linkedLeadName = useMemo(() => allLeads.find((l) => l.id === bLeadId)?.name || '', [bLeadId, allLeads])
+
+  function pickContact(l: LeadCard) {
+    setBName(l.name)
+    setBCompany(l.company === '—' ? '' : l.company)
+    setBEmail(l.email || '')
+    setBLeadId(l.id)
+    setContactOpen(false)
   }
 
   // ---------- pipeline drag-drop (persists stage) ----------
@@ -135,11 +157,13 @@ export default function LeadsQuotesClient({ data, userName }: { data: WorkspaceD
   }
 
   function startQuoteFor(lead: LeadCard) {
+    setSavedQuote(null)
     setBLeadId(lead.id)
     setBName(lead.name)
     setBCompany(lead.company === '—' ? '' : lead.company)
     setBEmail(lead.email || '')
     setBScope(lead.message ? lead.message.slice(0, 80) : '')
+    setBLines([{ d: '', q: '1', u: '0' }])
     setOpenLead(null)
     setTab('builder')
   }
@@ -155,7 +179,8 @@ export default function LeadsQuotesClient({ data, userName }: { data: WorkspaceD
 
   async function persistQuote(status: 'draft'): Promise<any> {
     const body = {
-      ...(bLeadId ? { lead: bLeadId } : {}),
+      // Lead ids are numeric (postgres) — send a number so the relationship validates.
+      ...(bLeadId ? { lead: /^\d+$/.test(bLeadId) ? Number(bLeadId) : bLeadId } : {}),
       client: { contactName: bName, company: bCompany, email: bEmail },
       scopeTitle: bScope,
       lineItems: bLines.filter((li) => li.d.trim()).map((li) => ({ description: li.d, qty: num(li.q), unitPrice: num(li.u) })),
@@ -164,44 +189,63 @@ export default function LeadsQuotesClient({ data, userName }: { data: WorkspaceD
       terms: bTerms,
       status,
     }
-    const res = await fetch('/api/quotes', {
-      method: 'POST',
+    // Update the existing draft in place if we already saved one this session, else create.
+    const res = await fetch(savedQuote ? `/api/quotes/${savedQuote.id}` : '/api/quotes', {
+      method: savedQuote ? 'PATCH' : 'POST',
       headers: { 'Content-Type': 'application/json' },
       credentials: 'same-origin',
       body: JSON.stringify(body),
     })
     const json = await res.json()
     if (!res.ok) throw new Error(json?.errors?.[0]?.message || json?.message || 'Create failed')
-    return json.doc
+    const doc = json.doc
+    if (doc?.quoteNumber) setSavedQuote({ number: doc.quoteNumber, id: String(doc.id) })
+    return doc
+  }
+
+  function newQuote() {
+    setSavedQuote(null); setBLeadId(''); setBName(''); setBCompany(''); setBEmail(''); setBScope('')
+    setBLines([{ d: '', q: '1', u: '0' }]); setContactOpen(false)
+    setTab('builder')
   }
 
   async function saveDraft() {
+    if (sending) return
+    setSending('save')
     try {
       const doc = await persistQuote('draft')
       toast(`Draft ${doc.quoteNumber} saved`)
     } catch (e: any) {
       toast('Save failed: ' + e.message)
+    } finally {
+      setSending('')
     }
   }
 
-  async function sendToClient() {
-    if (!bEmail.trim()) return toast('Client email is required to send')
-    setSending(true)
+  async function send(test: boolean) {
+    if (sending) return
+    if (test && !userEmail) return toast('No signed-in email to send a test to')
+    if (!test && !bEmail.trim()) return toast('Client email is required to send')
+    setSending(test ? 'test' : 'send')
     try {
       const doc = await persistQuote('draft')
       const res = await fetch('/quote-send', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         credentials: 'same-origin',
-        body: JSON.stringify({ quoteId: String(doc.id) }),
+        body: JSON.stringify({ quoteId: String(doc.id), test }),
       })
       const result = await res.json()
       if (!res.ok) throw new Error(result?.error || 'Send failed')
-      toast(result.dryRun ? `${doc.quoteNumber}: rendered + snapshotted (DRY RUN — no email sent)` : `${doc.quoteNumber} sent to ${bEmail}`)
+      if (test) {
+        toast(result.dryRun ? `Test rendered for ${userEmail} (DRY RUN — no email sent)` : `Test of ${doc.quoteNumber} sent to ${userEmail}`)
+      } else {
+        toast(result.dryRun ? `${doc.quoteNumber}: rendered + snapshotted (DRY RUN — no email sent)` : `${doc.quoteNumber} sent to ${bEmail}`)
+      }
     } catch (e: any) {
-      toast('Send failed: ' + (e?.message || 'unknown error'))
+      toast((test ? 'Test failed: ' : 'Send failed: ') + (e?.message || 'unknown error'))
     } finally {
-      setSending(false)
+      setSending('')
     }
   }
 
@@ -224,11 +268,7 @@ export default function LeadsQuotesClient({ data, userName }: { data: WorkspaceD
         <div className="topbar">
           <div className="lockup">
             <div className="mark">
-              <svg viewBox="0 0 147 148" xmlns="http://www.w3.org/2000/svg">
-                <defs><linearGradient id="cwlqg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stopColor="#63A5FF" /><stop offset="1" stopColor="#2F7BF6" /></linearGradient></defs>
-                <path d="M73.5 8C38 8 9 37.3 9 74c0 36.7 29 66 64.5 66 27 0 50-16.8 59.6-40.6-8.4 13.5-23.3 22.5-40.2 22.5-26.2 0-47.5-21.4-47.5-47.9S66.7 26 92.9 26c16.9 0 31.8 9 40.2 22.6C123.5 24.8 100.5 8 73.5 8z" fill="url(#cwlqg)" />
-                <circle cx="92" cy="74" r="20" fill="none" stroke="url(#cwlqg)" strokeWidth="9" />
-              </svg>
+              <img src="/logo/cw-icon.png" alt="Centrifuge World" style={{ width: '100%', height: '100%', objectFit: 'contain', display: 'block' }} />
             </div>
             <div className="wordmark"><b>CENTRIFUGE <i>world</i></b><span>Estd 1939 · Mission Control</span></div>
           </div>
@@ -272,7 +312,7 @@ export default function LeadsQuotesClient({ data, userName }: { data: WorkspaceD
             <button className={tab === 'builder' ? 'on' : ''} onClick={() => setTab('builder')}>Quote Builder</button>
             <button className={tab === 'routing' ? 'on' : ''} onClick={() => setTab('routing')}>Routing &amp; Delivery</button>
             <div className="grow" />
-            <button className="btn primary" onClick={() => setTab('builder')}>＋ New Quote</button>
+            <button className="btn primary" onClick={newQuote}>＋ New Quote</button>
           </div>
 
           {/* ---- PIPELINE ---- */}
@@ -444,26 +484,42 @@ export default function LeadsQuotesClient({ data, userName }: { data: WorkspaceD
               <div className="builder">
                 <div>
                   <div className="panel" style={{ padding: '16px 18px 18px' }}>
-                    <div className="field"><label>Linked Lead</label>
-                      <select value={bLeadId} onChange={(e) => {
-                        const id = e.target.value
-                        setBLeadId(id)
-                        const l = allLeads.find((x) => x.id === id)
-                        if (l) { setBName(l.name); setBCompany(l.company === '—' ? '' : l.company); setBEmail(l.email || '') }
-                      }}>
-                        <option value="">— No linked lead (manual quote) —</option>
-                        {allLeads.slice(0, 300).map((l) => <option key={l.id} value={l.id}>{l.name} — {l.company} ({l.source})</option>)}
-                      </select>
+                    {/* Client contact — typeahead over the 687 contacts, or type a brand-new one. */}
+                    <div className="field" style={{ position: 'relative' }}>
+                      <label>Client Contact <span style={{ color: 'var(--faint)', fontWeight: 400, textTransform: 'none', letterSpacing: 0 }}>— search contacts or type a new one</span></label>
+                      <input
+                        value={bName}
+                        placeholder="Search name / company / email…"
+                        autoComplete="off"
+                        onChange={(e) => { setBName(e.target.value); setContactOpen(true); if (bLeadId) setBLeadId('') }}
+                        onFocus={() => setContactOpen(true)}
+                        onBlur={() => window.setTimeout(() => setContactOpen(false), 150)}
+                      />
+                      {contactOpen && contactMatches.length > 0 && (
+                        <div style={{ position: 'absolute', top: '100%', left: 0, right: 0, zIndex: 50, background: 'var(--panel2)', border: '1px solid var(--line2)', borderRadius: 8, marginTop: 4, maxHeight: 260, overflowY: 'auto', boxShadow: '0 12px 32px rgba(0,0,0,.45)' }}>
+                          {contactMatches.map((l) => (
+                            <button key={l.id} type="button" onMouseDown={(e) => { e.preventDefault(); pickContact(l) }}
+                              style={{ display: 'block', width: '100%', textAlign: 'left', padding: '8px 12px', background: 'transparent', border: 'none', borderBottom: '1px solid var(--line)', color: 'var(--ink)', cursor: 'pointer' }}>
+                              <div style={{ fontWeight: 600, fontSize: 13 }}>{l.name}</div>
+                              <div style={{ fontSize: 11.5, color: 'var(--dim)' }}>{l.company}{l.email ? ' · ' + l.email : ''} · {l.source}</div>
+                            </button>
+                          ))}
+                        </div>
+                      )}
+                    </div>
+                    <div style={{ margin: '-4px 0 12px', fontSize: 12, color: 'var(--faint)' }}>
+                      {bLeadId
+                        ? <>Linked to lead: <b style={{ color: 'var(--cyan)' }}>{linkedLeadName}</b> <button type="button" onClick={() => setBLeadId('')} style={{ background: 'none', border: 'none', color: 'var(--dim)', cursor: 'pointer', textDecoration: 'underline', fontSize: 12 }}>unlink</button></>
+                        : <>No lead linked — pick a contact above to link, or leave blank and link after the quote is made.</>}
                     </div>
                     <div className="f2">
-                      <div className="field"><label>Client Contact</label><input value={bName} onChange={(e) => setBName(e.target.value)} /></div>
-                      <div className="field"><label>Company</label><input value={bCompany} onChange={(e) => setBCompany(e.target.value)} /></div>
+                      <div className="field"><label>Company</label><input value={bCompany} onChange={(e) => setBCompany(e.target.value)} placeholder="pulls from contact" /></div>
+                      <div className="field"><label>Client Email</label><input value={bEmail} onChange={(e) => setBEmail(e.target.value)} placeholder="pulls from contact · required to send" /></div>
                     </div>
                     <div className="f2">
-                      <div className="field"><label>Client Email</label><input value={bEmail} onChange={(e) => setBEmail(e.target.value)} placeholder="required to send" /></div>
                       <div className="field"><label>Issuing Location — locked</label><input value="Rosharon, TX · all quotes issue from Rosharon" disabled style={{ opacity: 0.65, cursor: 'not-allowed' }} /></div>
+                      <div className="field"><label>Project / Scope Title</label><input value={bScope} onChange={(e) => setBScope(e.target.value)} /></div>
                     </div>
-                    <div className="field"><label>Project / Scope Title</label><input value={bScope} onChange={(e) => setBScope(e.target.value)} /></div>
 
                     <div style={{ margin: '16px 0 6px', fontSize: 10.5, letterSpacing: '.14em', textTransform: 'uppercase', color: 'var(--faint)', fontWeight: 700 }}>Line Items</div>
                     <div className="li-head"><span>Description</span><span style={{ textAlign: 'right' }}>Qty</span><span style={{ textAlign: 'right' }}>Unit $</span><span /></div>
@@ -491,16 +547,14 @@ export default function LeadsQuotesClient({ data, userName }: { data: WorkspaceD
                   <div className="paper-bar">
                     <span className="t">Live Preview — branded PDF &amp; hosted quote page</span>
                     <div className="grow" />
-                    <button className="btn sm" onClick={saveDraft} disabled={sending}>Save Draft</button>
-                    <button className="btn sm primary" onClick={sendToClient} disabled={sending}>{sending ? 'Sending…' : 'Send to Client ▸'}</button>
+                    <button className="btn sm" onClick={saveDraft} disabled={!!sending}>{sending === 'save' ? 'Saving…' : 'Save Draft'}</button>
+                    <button className="btn sm" onClick={() => send(true)} disabled={!!sending} title={`Send a test copy to ${userEmail || 'yourself'}`}>{sending === 'test' ? 'Sending test…' : 'Send test to self'}</button>
+                    <button className="btn sm primary" onClick={() => send(false)} disabled={!!sending}>{sending === 'send' ? 'Sending…' : 'Send to Client ▸'}</button>
                   </div>
                   <div className="paper">
                     <div className="p-head">
-                      <div className="logo-fb" style={{ display: 'flex' }}>
-                        <div className="mark"><svg viewBox="0 0 147 148" xmlns="http://www.w3.org/2000/svg"><path d="M73.5 8C38 8 9 37.3 9 74c0 36.7 29 66 64.5 66 27 0 50-16.8 59.6-40.6-8.4 13.5-23.3 22.5-40.2 22.5-26.2 0-47.5-21.4-47.5-47.9S66.7 26 92.9 26c16.9 0 31.8 9 40.2 22.6C123.5 24.8 100.5 8 73.5 8z" fill="#1B4FA0" /><circle cx="92" cy="74" r="20" fill="none" stroke="#1B4FA0" strokeWidth="9" /></svg></div>
-                        <b>CENTRIFUGE WORLD</b>
-                      </div>
-                      <div className="qn"><span>Quotation</span><b>Draft</b></div>
+                      <img src="/logo/cw-logo-black.webp" alt="Centrifuge World" style={{ height: 46, width: 'auto', objectFit: 'contain', display: 'block' }} />
+                      <div className="qn"><span>Quotation</span><b>{savedQuote?.number || 'Draft'}</b></div>
                     </div>
                     <div className="p-rule" />
                     <div className="p-body">
@@ -576,6 +630,7 @@ export default function LeadsQuotesClient({ data, userName }: { data: WorkspaceD
             </div>
             <div className="drawer-f">
               <button className="btn" onClick={() => markContacted(openLead.id)}>Mark Contacted</button>
+              <a className="btn" href={`/admin/collections/leads/${openLead.id}`}>Open / Edit ▸</a>
               <button className="btn primary" onClick={() => startQuoteFor(openLead)}>Create Quote ▸</button>
             </div>
           </>

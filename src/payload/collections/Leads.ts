@@ -12,7 +12,9 @@ export const Leads: CollectionConfig = {
   labels: { singular: 'Lead', plural: 'Leads' },
   admin: {
     useAsTitle: 'name',
-    defaultColumns: ['name', 'company', 'sourceForm', 'pipelineStage', 'estimatedValue', 'createdAt'],
+    // Contact-oriented default columns (the sidebar "Contacts" entry lands here) — scroll,
+    // search, and click any row to edit freely.
+    defaultColumns: ['name', 'company', 'email', 'phone', 'pipelineStage', 'estimatedValue', 'createdAt'],
     group: 'Leads',
   },
   access: {
