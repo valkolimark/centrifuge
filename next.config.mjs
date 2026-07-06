@@ -38,6 +38,21 @@ const nextConfig = {
       },
     ]
   },
+  async redirects() {
+    // Retired HubSpot/SiteGround subdomains → their equivalent on the main site. Each host is
+    // added to the Vercel project and pointed at Vercel via DNS so these host redirects fire.
+    const sub = (host, destination) => ({
+      source: '/:path*',
+      has: [{ type: 'host', value: host }],
+      destination,
+      permanent: true,
+    })
+    return [
+      sub('inventory.centrifuge.com', 'https://centrifuge.com/inventory/'),
+      sub('blog.centrifuge.com', 'https://centrifuge.com/resources/blog/'),
+      sub('oem.centrifuge.com', 'https://centrifuge.com/brands/'),
+    ]
+  },
 }
 
 export default withPayload(nextConfig, { devBundleServerPackages: false })
