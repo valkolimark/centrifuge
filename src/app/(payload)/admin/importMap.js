@@ -26,9 +26,10 @@ import { default as default_e7e54d34cd4b2a606d361fbc7e9b5121 } from '@/payload/a
 import { default as default_9a9105c135e5c012d807bbfbc9befcd9 } from '@/payload/admin/fields/InventoryThumbCell'
 import { default as default_db38555e19f9e06d2a20426d5c6cdd69 } from '@/payload/admin/fields/PdfStudioLink'
 import { default as default_10165f4896d7b6d9d8f4b9f5be3f0979 } from '@/payload/admin/Avatar'
-import { default as default_3c442dcfde9f379759b263f03d41b5ce } from '@/payload/admin/Nav'
 import { default as default_35226cc228435246f9c5b5ade188ddce } from '@/payload/admin/Icon'
 import { default as default_2ec3e47bf0d2c1bcec071e0c669a53fc } from '@/payload/admin/Logo'
+import { default as default_556deae2361c94cb65ae87ae48f787ff } from '@/payload/admin/NavLinks'
+import { default as default_c5a150173e5527969052658ec2728726 } from '@/payload/admin/NavHeader'
 import { default as default_130c023f17f73b2aa7a082c0b91ef7ca } from '@/payload/admin/BrandProvider'
 import { default as default_84a41906d066def45718a662e1d5f79a } from '@/payload/admin/Dashboard'
 import { default as default_3178edbbfd471e47a6d84f73fd3ccc3b } from '@/payload/admin/LeadsQuotes'
@@ -64,9 +65,10 @@ export const importMap = {
   "@/payload/admin/fields/InventoryThumbCell#default": default_9a9105c135e5c012d807bbfbc9befcd9,
   "@/payload/admin/fields/PdfStudioLink#default": default_db38555e19f9e06d2a20426d5c6cdd69,
   "@/payload/admin/Avatar#default": default_10165f4896d7b6d9d8f4b9f5be3f0979,
-  "@/payload/admin/Nav#default": default_3c442dcfde9f379759b263f03d41b5ce,
   "@/payload/admin/Icon#default": default_35226cc228435246f9c5b5ade188ddce,
   "@/payload/admin/Logo#default": default_2ec3e47bf0d2c1bcec071e0c669a53fc,
+  "@/payload/admin/NavLinks#default": default_556deae2361c94cb65ae87ae48f787ff,
+  "@/payload/admin/NavHeader#default": default_c5a150173e5527969052658ec2728726,
   "@/payload/admin/BrandProvider#default": default_130c023f17f73b2aa7a082c0b91ef7ca,
   "@/payload/admin/Dashboard#default": default_84a41906d066def45718a662e1d5f79a,
   "@/payload/admin/LeadsQuotes#default": default_3178edbbfd471e47a6d84f73fd3ccc3b,

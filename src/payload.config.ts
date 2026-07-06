@@ -32,13 +32,16 @@ import { QuoteDefaults } from './payload/globals/QuoteDefaults'
 
 const dirname = path.dirname(fileURLToPath(import.meta.url))
 
-// Prefer the non-pooled Neon URL for reliable DDL/schema push; fall back through
-// the other names Neon/CLAUDE.md may provide.
+// RUNTIME must use the POOLED Neon endpoint (…-pooler, PgBouncer). The non-pooled/direct
+// endpoint has a small connection limit and serverless concurrency exhausts it →
+// "remaining connection slots are reserved for roles with the SUPERUSER attribute" → 500s.
+// Schema-push scripts override with the non-pooled URL themselves (DDL needs a direct conn).
 const connectionString =
+  process.env.POSTGRES_URL ||
+  process.env.DATABASE_URL ||
+  process.env.DATABASE_URI ||
   process.env.POSTGRES_URL_NON_POOLING ||
   process.env.DATABASE_URL_UNPOOLED ||
-  process.env.DATABASE_URI ||
-  process.env.DATABASE_URL ||
   ''
 
 // node-postgres does not always honor sslmode=require from the URL. Neon requires
@@ -101,8 +104,10 @@ export default buildConfig({
     // providers component, plus branded login logo + nav icon.
     components: {
       providers: ['@/payload/admin/BrandProvider'],
-      // Full custom Mission Control sidebar (collision-proof cwn-* classes, collapsible).
-      Nav: '@/payload/admin/Nav',
+      // Logo lockup pinned to the sidebar top-left, linking back to the dashboard.
+      beforeNavLinks: ['@/payload/admin/NavHeader'],
+      // Reachable entry to the full-screen Leads & Quotes workspace (UI-2).
+      afterNavLinks: ['@/payload/admin/NavLinks'],
       graphics: {
         Logo: '@/payload/admin/Logo',
         Icon: '@/payload/admin/Icon',
