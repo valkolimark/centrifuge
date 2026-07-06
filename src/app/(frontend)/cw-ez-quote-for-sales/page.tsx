@@ -2,12 +2,12 @@ import type { Metadata } from 'next'
 import { SiteShell } from '@/components/layout/SiteShell'
 import { Section } from '@/components/ui/Section'
 import { Breadcrumbs } from '@/components/layout/Breadcrumbs'
-import { CognitoForm } from '@/components/forms/CognitoForm'
+import { LeadForm } from '@/components/forms/LeadForm'
 import { EmergencyCallout } from '@/components/blocks/EmergencyCallout'
 import { buildMetadata } from '@/lib/seo'
 
-// Legacy URL preserved for Google links (/cw-ez-quote-for-sales/). Hosts the
-// original Cognito "EZ Quote" form so inbound links keep resolving after cutover.
+// Legacy URL preserved for Google links (/cw-ez-quote-for-sales/). Native request-a-quote
+// LeadForm (Turnstile + honeypot; writes into the leads pipeline) — replaced the Cognito embed.
 export const metadata: Metadata = buildMetadata(
   {
     title: 'EZ Quote — Fast Centrifuge Quote | Centrifuge World',
@@ -29,7 +29,7 @@ export default function EzQuotePage() {
             your request and follow up with a quote.
           </p>
           <div className="mt-8">
-            <CognitoForm dataKey="6-kP0CxQH0CwXlv_9oww1A" formId="14" />
+            <LeadForm type="request_quote" />
           </div>
         </div>
       </Section>
