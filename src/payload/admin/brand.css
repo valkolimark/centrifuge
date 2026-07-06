@@ -193,6 +193,24 @@ body {
   border: 1px solid var(--cw-line);
   border-radius: 16px;
   box-shadow: var(--cw-glow);
+  padding: 28px 30px 30px;
+}
+/* Payload gives the submit button large 22px top/bottom margins, leaving a big gap above
+   "Login" and dead space below. Tighten it and make the button full-width. */
+.cw-admin .login__form .form-submit {
+  margin-top: 16px;
+  margin-bottom: 0;
+}
+.cw-admin .login__form .form-submit .btn,
+.cw-admin .login__form .form-submit button {
+  margin-top: 0 !important;
+  margin-bottom: 0 !important;
+  width: 100%;
+}
+/* a touch of separation for the "Forgot password?" link */
+.cw-admin .login__form a {
+  display: inline-block;
+  margin-top: 4px;
 }
 
 /* ---- Layout polish (UI-1 feedback): breathing room + card spacing ---- */
