@@ -23,9 +23,12 @@ export function Turnstile({ onToken }: { onToken?: (token: string) => void }) {
 
   useEffect(() => {
     if (!siteKey || !ready || !ref.current || !window.turnstile) return
+    // NOTE: 'invisible' is NOT a valid explicit-render `size` (valid: normal/flexible/compact),
+    // and passing it silently prevents the widget from rendering / producing a token — which
+    // surfaced as "Anti-spam check failed". Render the managed widget at default size; it
+    // auto-verifies for legitimate visitors and injects the cf-turnstile-response field.
     widgetId.current = window.turnstile.render(ref.current, {
       sitekey: siteKey,
-      size: 'invisible',
       callback: (token: string) => onToken?.(token),
     })
     return () => {
