@@ -32,6 +32,12 @@ export const formLeadInternal: EmailTemplate = {
     </div>
     <h1 style="font-size:20px;margin:6px 0 2px">{{ name | default: 'New lead' }}</h1>
     <div style="color:#5E6C85;font-size:14px;margin-bottom:16px">{{ company }}{% if receivedAt %} · {{ receivedAt }}{% endif %}</div>
+    {% if machine %}<div style="margin:0 0 16px;padding:12px 14px;background:#F5F8FB;border-left:3px solid #00719C;border-radius:0 6px 6px 0">
+      <div style="font-size:11px;font-weight:700;letter-spacing:.05em;text-transform:uppercase;color:#5E6C85">Machine requested · {{ machine.inventoryId }}</div>
+      <div style="font-size:15px;font-weight:600;color:#152238;margin-top:2px">{{ machine.title }}</div>
+      {% if machine.specsLine %}<div style="font-size:12.5px;color:#5E6C85;margin-top:3px">{{ machine.specsLine }}</div>{% endif %}
+      <div style="margin-top:6px"><a href="{{ machine.url }}" style="font-size:13px;color:#00719C;font-weight:600;text-decoration:none">View listing ▸</a></div>
+    </div>{% endif %}
     <table role="presentation" cellpadding="0" cellspacing="0" style="width:100%;font-size:13px;border-collapse:collapse">
       {% for f in fields %}<tr>
         <td style="padding:7px 0;color:#5E6C85;width:150px;vertical-align:top;border-bottom:1px solid #EDF1F6">{{ f.label }}</td>
@@ -44,6 +50,8 @@ export const formLeadInternal: EmailTemplate = {
   `),
   text: `{% if isEmergency %}[EMERGENCY] {% endif %}{{ formTypeLabel }} — {{ name }}{% if company %} ({{ company }}){% endif %}
 {% if receivedAt %}Received: {{ receivedAt }}
+{% endif %}{% if machine %}Machine requested: {{ machine.title }} ({{ machine.inventoryId }})
+{{ machine.url }}
 {% endif %}
 {% for f in fields %}{{ f.label }}: {{ f.value }}
 {% endfor %}{% if message %}

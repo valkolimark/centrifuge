@@ -44,6 +44,12 @@ export async function routeLead(payload: any, lead: AnyLead, req?: any): Promise
   const from = { address: SENDERS.notifications, name: 'Centrifuge World' }
   const isEmergency = lead.sourceForm === 'emergency'
   const emergencyDisplay = nap.phones.emergency.display
+  // Phase 3: inventory-sourced leads carry a machine snapshot in the payload — surface it in
+  // the internal alert (block + subject). specsLine is precomputed (Liquid can't join arrays).
+  const rawMachine = lead.payload && typeof lead.payload === 'object' ? (lead.payload as AnyLead).machine : null
+  const machine = rawMachine
+    ? { ...rawMachine, specsLine: (rawMachine.specsSnapshot || []).slice(0, 3).map((s: AnyLead) => `${s.label}: ${s.value}`).join(' · ') }
+    : null
   const activity: any[] = [{ type: 'form_received', note: 'Payload validated, lead created', at: new Date().toISOString(), by: 'system' }]
   const patch: AnyLead = {}
 
@@ -60,11 +66,14 @@ export async function routeLead(payload: any, lead: AnyLead, req?: any): Promise
       receivedAt: new Date().toLocaleString('en-US', { timeZone: 'America/Chicago' }),
       fields: internalFields(lead),
       message: lead.message,
+      machine,
       leadUrl: `${siteUrl}/admin/collections/leads/${lead.id}`,
       emergencyDisplay,
     })
     const subjectName = lead.name || 'New lead'
-    const subject = `${isEmergency ? '🔴 EMERGENCY: ' : ''}[${SOURCE_LABEL[lead.sourceForm] || 'Lead'}] ${subjectName}${lead.company ? ` — ${lead.company}` : ''}`
+    const subject = machine
+      ? `Quote request — ${machine.title} (${machine.inventoryId})`
+      : `${isEmergency ? '🔴 EMERGENCY: ' : ''}[${SOURCE_LABEL[lead.sourceForm] || 'Lead'}] ${subjectName}${lead.company ? ` — ${lead.company}` : ''}`
     const res: SendResult = await sendEmail({
       from,
       to: recipients.map((r) => ({ address: r.email, name: r.name })),

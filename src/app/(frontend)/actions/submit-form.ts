@@ -5,6 +5,8 @@ import { getPayloadClient } from '@/lib/payload'
 import { validateSubmission } from '@/lib/forms/schema'
 import { verifyTurnstile } from '@/lib/forms/turnstile'
 import { getFormConfig, EQUIPMENT_OPTIONS, BRAND_OPTIONS, URGENCY_OPTIONS, CONDITION_OPTIONS } from '@/lib/forms/config'
+import { getInventoryItem } from '@/lib/inventory'
+import { machineContext } from '@/lib/inventory-machine'
 import type { FormType } from '@/lib/analytics'
 
 const optLabel = (opts: readonly { value: string; label: string }[], v?: string) =>
@@ -96,6 +98,15 @@ export async function submitForm(_prev: FormState, formData: FormData): Promise<
   const pageSource = String(formData.get('_page') || '')
   const utm = safeJson(String(formData.get('_utm') || ''))
 
+  // Phase 3: if the submission came from an inventory machine, re-derive the snapshot
+  // server-side from the slug (authoritative — never trusts the client JSON) and stamp
+  // a durable `machine` snapshot + `inventory/{slug}` source onto the lead. The snapshot
+  // is point-in-time: it survives the inventory doc later being edited or deleted.
+  const machineSlug = safeMachineSlug(String(formData.get('_machine') || ''))
+  const machineItem = machineSlug ? await getInventoryItem(machineSlug) : null
+  const machine = machineItem ? machineContext(machineItem).snapshot : undefined
+  const source = machine ? `inventory/${machineSlug}` : undefined
+
   const payload = await getPayloadClient()
 
   // Best-effort photo storage: upload to the media library when a storage adapter
@@ -118,10 +129,13 @@ export async function submitForm(_prev: FormState, formData: FormData): Promise<
     }
   }
 
-  const fullPayload = { ...result.data, photoCount: files.length, photoIds, pageSource }
+  const fullPayload = { ...result.data, photoCount: files.length, photoIds, pageSource, ...(machine ? { machine, source } : {}) }
   // Human-readable summary of every field — surfaced on both the submission (readonly
   // `details`) and the lead (`message`) so nothing is buried in the raw JSON payload.
-  const details = composeDetails(result.data as Record<string, string>, files.length)
+  const baseDetails = composeDetails(result.data as Record<string, string>, files.length)
+  const details = machine
+    ? `Machine requested: ${machine.title} (${machine.inventoryId})\n${machine.url}\n\n${baseDetails}`
+    : baseDetails
 
   // Store the raw submission (kept for the Mission Control dashboard) — best-effort.
   try {
@@ -173,5 +187,17 @@ function safeJson(s: string): Record<string, string> {
     return s ? (JSON.parse(s) as Record<string, string>) : {}
   } catch {
     return {}
+  }
+}
+
+// Pull just the slug out of the client's `_machine` payload — everything else is re-derived
+// server-side from the slug, so a tampered snapshot can only reference a real listing (or none).
+function safeMachineSlug(s: string): string | undefined {
+  try {
+    const o = s ? (JSON.parse(s) as { slug?: unknown }) : null
+    const slug = o && typeof o.slug === 'string' ? o.slug : ''
+    return /^[a-z0-9-]{1,200}$/.test(slug) ? slug : undefined
+  } catch {
+    return undefined
   }
 }

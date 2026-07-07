@@ -5,6 +5,8 @@ import { Breadcrumbs } from '@/components/layout/Breadcrumbs'
 import { LeadForm } from '@/components/forms/LeadForm'
 import { EmergencyCallout } from '@/components/blocks/EmergencyCallout'
 import { buildMetadata } from '@/lib/seo'
+import { getInventoryItem } from '@/lib/inventory'
+import { machineContext } from '@/lib/inventory-machine'
 
 // Legacy URL preserved for Google links (/cw-ez-quote-for-sales/). Native request-a-quote
 // LeadForm (Turnstile + honeypot; writes into the leads pipeline) — replaced the Cognito embed.
@@ -17,7 +19,12 @@ export const metadata: Metadata = buildMetadata(
   '/cw-ez-quote-for-sales/',
 )
 
-export default function EzQuotePage() {
+// Phase 3: `?machine={slug}` pre-populates the form from an inventory listing. An unknown slug
+// degrades silently to the blank form.
+export default async function EzQuotePage({ searchParams }: { searchParams: Promise<{ machine?: string }> }) {
+  const { machine: machineSlug } = await searchParams
+  const item = machineSlug ? await getInventoryItem(machineSlug) : null
+  const ctx = item && item.availability !== 'sold' ? machineContext(item) : null
   return (
     <SiteShell>
       <Breadcrumbs items={[{ name: 'EZ Quote', url: '/cw-ez-quote-for-sales/' }]} />
@@ -29,7 +36,7 @@ export default function EzQuotePage() {
             your request and follow up with a quote.
           </p>
           <div className="mt-8">
-            <LeadForm type="request_quote" />
+            <LeadForm type="request_quote" prefill={ctx?.prefill} machine={ctx?.snapshot} />
           </div>
         </div>
       </Section>
