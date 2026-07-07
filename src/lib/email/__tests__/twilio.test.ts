@@ -19,7 +19,7 @@ const base = {
 }
 
 describe('twilio buildRequestBody', () => {
-  it('maps to the Twilio Email shape (from/to/content) with reply-to header, cc and merged variables', () => {
+  it('maps to the Twilio Email shape (from/to/content), cc and merged variables, and does NOT set a restricted Reply-To header', () => {
     const body: any = buildRequestBody({
       from: { address: 'quotes@centrifuge.com', name: 'Centrifuge World' },
       to: [{ address: 'client@acme.com', name: 'Client', variables: { firstName: 'Sam' } }],
@@ -35,7 +35,8 @@ describe('twilio buildRequestBody', () => {
     expect(body.to[0].variables).toEqual({ company: 'Acme', firstName: 'Sam' }) // global + recipient merged
     expect(body.content.subject).toBe('Quote')
     expect(body.content.html).toBe('<b>x</b>')
-    expect(body.content.headers['Reply-To']).toBe('ron@p5400.com')
+    // Twilio Email rejects a custom 'Reply-To' header ("restricted"), so it must not be set.
+    expect(body.content.headers).toBeUndefined()
     expect(body.cc).toEqual([{ address: 'mark@p5400.com' }, { address: 'ron@p5400.com' }])
   })
 
