@@ -48,7 +48,9 @@ export const Leads: CollectionConfig = {
     {
       name: 'payload',
       type: 'json',
-      admin: { description: 'Full original form payload — immutable.', readOnly: true },
+      // Hidden from the admin edit view — the Monaco JSON editor made the record page hard to
+      // interact with (couldn't reach estimated value / notes). Still stored + immutable.
+      admin: { description: 'Full original form/import payload — immutable.', readOnly: true, hidden: true },
       access: { update: () => false }, // immutable once written
     },
     {

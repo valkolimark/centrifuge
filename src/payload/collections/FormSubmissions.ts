@@ -38,14 +38,18 @@ export const FormSubmissions: CollectionConfig = {
     { name: 'company', type: 'text' },
     { name: 'details', type: 'textarea', admin: { readOnly: true, description: 'Readable summary of every submitted field (equipment, brand, model, service, urgency, location, message…).' } },
     { name: 'pageSource', type: 'text' },
-    { name: 'utm', type: 'json', admin: { description: 'Captured UTM params.' } },
-    { name: 'payload', type: 'json', admin: { description: 'Full submitted field set.' } },
-    // CRM groundwork (UI-1 Phase C.4) — powers the Mission Control lead pipeline board.
+    // Raw captured data — hidden from the admin edit view. The readable `details` above covers
+    // it, and the Monaco JSON editors made the page hard to interact with. Still stored + in CSV.
+    { name: 'utm', type: 'json', admin: { hidden: true } },
+    { name: 'payload', type: 'json', admin: { hidden: true } },
+    // Form submissions are an immutable raw archive — CRM work (stage, value, notes, quoting)
+    // happens on the matching LEAD, which is what powers the Mission Control pipeline. These
+    // vestigial fields are hidden to avoid confusion (editing them here does nothing downstream).
     {
       name: 'pipelineStage',
       type: 'select',
       defaultValue: 'new',
-      admin: { position: 'sidebar', description: 'CRM pipeline stage.' },
+      admin: { hidden: true },
       options: [
         { label: 'New', value: 'new' },
         { label: 'Contacted', value: 'contacted' },
@@ -54,6 +58,6 @@ export const FormSubmissions: CollectionConfig = {
         { label: 'Lost', value: 'lost' },
       ],
     },
-    { name: 'estimatedValue', type: 'number', admin: { position: 'sidebar', description: 'Estimated deal value (USD).' } },
+    { name: 'estimatedValue', type: 'number', admin: { hidden: true } },
   ],
 }
