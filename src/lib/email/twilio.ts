@@ -92,8 +92,6 @@ export function buildRequestBody(input: SendEmailInput) {
     ...(r.name ? { name: r.name } : {}),
     ...(input.variables || r.variables ? { variables: { ...(input.variables ?? {}), ...(r.variables ?? {}) } } : {}),
   }))
-  const headers: Record<string, string> = {}
-  if (input.replyTo) headers['Reply-To'] = input.replyTo
   const body: Record<string, unknown> = {
     from: { address: from.address, ...(from.name ? { name: asciiOnly(from.name) } : {}) },
     to,
@@ -101,9 +99,11 @@ export function buildRequestBody(input: SendEmailInput) {
       subject: input.subject,
       html: input.html,
       text: input.text,
-      ...(Object.keys(headers).length ? { headers } : {}),
     },
   }
+  // NB: Twilio Email rejects a custom 'Reply-To' header ("restricted and cannot be overridden"),
+  // so we do NOT set one — the internal alert already shows the submitter's email/phone in-body.
+  // TODO(reply-to): re-add via Twilio's dedicated reply-to field once confirmed against a live send.
   if (input.cc?.length) body.cc = input.cc.map((address) => ({ address }))
   if (input.attachments?.length) body.attachments = input.attachments
   if (input.tags) body.tags = input.tags
