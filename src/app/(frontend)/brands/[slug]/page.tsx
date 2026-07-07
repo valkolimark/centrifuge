@@ -11,8 +11,10 @@ import { FAQAccordion } from '@/components/blocks/FAQAccordion'
 import { RelatedLinks } from '@/components/blocks/RelatedLinks'
 import { CTABanner } from '@/components/blocks/CTABanner'
 import { VideoFacade } from '@/components/blocks/VideoFacade'
+import { InventoryCard } from '@/components/blocks/InventoryCard'
 import { ButtonLink } from '@/components/ui/Button'
 import { QuoteForm } from '@/components/forms/QuoteForm'
+import { getInventoryByBrand } from '@/lib/inventory'
 import { JsonLd } from '@/components/JsonLd'
 import { serviceSchema, faqPageSchema, breadcrumbSchema } from '@/lib/schema'
 import { buildMetadata } from '@/lib/seo'
@@ -65,6 +67,7 @@ export default async function BrandPage({ params }: { params: Promise<{ slug: st
   if (c?.mergeInto) redirect(`/brands/${c.mergeInto}/`)
   const name = c?.name || brand.name
   const url = `${SITE_URL}/brands/${slug}/`
+  const stock = await getInventoryByBrand(name)
 
   const answerBox =
     c?.answerBox ||
@@ -186,6 +189,36 @@ export default async function BrandPage({ params }: { params: Promise<{ slug: st
             </ButtonLink>
           </div>
         </div>
+      </Section>
+
+      <Section>
+        <div className="mb-6 flex items-baseline justify-between gap-4">
+          <h2>
+            {name} machines in stock{stock.total ? ` (${stock.total})` : ''}
+          </h2>
+          <Link href={INVENTORY} className="whitespace-nowrap text-sm font-semibold text-link">
+            Browse all machines →
+          </Link>
+        </div>
+        {stock.items.length ? (
+          <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+            {stock.items.map((item) => (
+              <InventoryCard key={item.id} item={item} />
+            ))}
+          </div>
+        ) : (
+          <p className="text-steel-700">
+            No {name} machines in stock right now —{' '}
+            <Link href={INVENTORY} className="text-link underline">
+              browse all inventory
+            </Link>{' '}
+            or{' '}
+            <Link href="/cw-ez-quote-for-sales/" className="text-link underline">
+              request a quote
+            </Link>{' '}
+            and we&apos;ll source one.
+          </p>
+        )}
       </Section>
 
       {videoId ? (

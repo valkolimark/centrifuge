@@ -41,6 +41,11 @@ deploy that accompanies this change.
 - **Destination:** Payload `media` collection → Vercel Blob store `centrifuge-media`
 - **imageUrl references remaining after migration:** 0
 
+## Phase 2 (brand-page inventory cards) — flags
+- **`?brand=` filter on `/inventory`: deferred.** `/inventory` is statically generated (`revalidate = 300`); adding a `searchParams` brand filter would make it dynamic. The "Browse all machines →" link points to unfiltered `/inventory`. Low-effort follow-up if wanted.
+- **`ItemList` structured data: skipped (flagged for Cycle 4).** `data/schema-map.md` defines only `Product` + `Offer` per listing for the inventory hand-off, with no `ItemList` pattern — per the cycle spec, skipped rather than inventing one.
+- Brand matching is normalized (case/space/hyphen/parenthetical-insensitive) since `inventory.brand` is free text; handles "Krauss-Maffei" ↔ "Krauss Maffei". Cards are the shared `InventoryCard` (extracted verbatim from `/inventory`), capped at 6, sorted most-recent-first, with the one-line empty state.
+
 ## Flagged / notes
 - `remotePatterns` still lists `centrifuge-im.s3.amazonaws.com` — still used by non-inventory
   pages (main-site WP media); left intact.

@@ -1,6 +1,5 @@
 import type { Metadata } from 'next'
 import Link from 'next/link'
-import Image from 'next/image'
 import { SiteShell } from '@/components/layout/SiteShell'
 import { Section } from '@/components/ui/Section'
 import { Breadcrumbs } from '@/components/layout/Breadcrumbs'
@@ -11,7 +10,8 @@ import { JsonLd } from '@/components/JsonLd'
 import { breadcrumbSchema } from '@/lib/schema'
 import { buildMetadata } from '@/lib/seo'
 import { SITE_URL } from '@/lib/site'
-import { getInventory, MACHINE_TYPE_LABELS, CONDITION_LABELS, type InventoryItem } from '@/lib/inventory'
+import { getInventory } from '@/lib/inventory'
+import { InventoryCard } from '@/components/blocks/InventoryCard'
 
 export const revalidate = 300
 const HERO = 'https://centrifuge-im.s3.amazonaws.com/wp-content/uploads/2020/01/07192807/sanborn-centrifuge-repair-hero-1.jpg.webp'
@@ -23,44 +23,6 @@ export const metadata: Metadata = buildMetadata(
   },
   '/inventory/',
 )
-
-function priceLabel(item: InventoryItem): string {
-  if (item.price && !item.priceOnRequest) return `$${item.price.toLocaleString('en-US')}`
-  return 'Price on request'
-}
-
-function InventoryCard({ item }: { item: InventoryItem }) {
-  const img = item.images[0]
-  return (
-    <Link
-      href={`/inventory/${item.slug}/`}
-      className="group flex flex-col overflow-hidden rounded-card border border-steel-300 bg-white transition hover:border-blue hover:shadow-card"
-    >
-      <div className="relative aspect-[4/3] w-full overflow-hidden bg-steel-100">
-        {img ? (
-          <Image src={img.url} alt={img.alt} fill sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw" className="object-cover transition group-hover:scale-[1.03]" />
-        ) : (
-          <div className="flex h-full items-center justify-center text-sm text-steel-500">Photo on request</div>
-        )}
-        {item.availability === 'sale-pending' ? (
-          <span className="absolute left-3 top-3 rounded-button bg-navy px-2 py-1 text-xs font-semibold text-white">Sale pending</span>
-        ) : null}
-      </div>
-      <div className="flex flex-1 flex-col p-5">
-        <div className="flex flex-wrap gap-2 text-xs font-semibold">
-          <span className="rounded-button bg-steel-100 px-2 py-0.5 text-steel-700">{MACHINE_TYPE_LABELS[item.machineType] ?? 'Centrifuge'}</span>
-          {item.condition ? <span className="rounded-button bg-steel-100 px-2 py-0.5 text-steel-700">{CONDITION_LABELS[item.condition] ?? item.condition}</span> : null}
-        </div>
-        <h3 className="mt-3 text-lg font-semibold text-navy group-hover:text-blue">{item.title}</h3>
-        {item.shortDescription ? <p className="mt-2 line-clamp-3 text-sm text-steel-700">{item.shortDescription}</p> : null}
-        <div className="mt-auto flex items-center justify-between pt-4">
-          <span className="font-semibold text-navy">{priceLabel(item)}</span>
-          <span className="text-sm font-semibold text-blue" aria-hidden="true">View details →</span>
-        </div>
-      </div>
-    </Link>
-  )
-}
 
 export default async function InventoryPage() {
   const items = await getInventory()
@@ -122,13 +84,6 @@ export default async function InventoryPage() {
                 Shop by type
               </ButtonLink>
             </div>
-            <p className="mt-6 text-sm text-steel-500">
-              You can also browse our{' '}
-              <a href="https://inventory.centrifuge.com" className="text-link underline">
-                full live inventory
-              </a>
-              .
-            </p>
           </div>
         )}
       </Section>
