@@ -42,6 +42,7 @@ export function LeadForm({
   const [photos, setPhotos] = useState<File[]>([])
   const formRef = useRef<HTMLFormElement>(null)
   const [utm, setUtm] = useState('')
+  const [tsReset, setTsReset] = useState(0) // bump → Turnstile mints a fresh token after a failed submit
   const [machine, setMachine] = useState<MachineSnapshot | null>(machineProp ?? null)
   // Keys pre-filled from a machine are rendered *controlled* so removing the machine can clear
   // them (the rest of the form stays uncontrolled and keeps whatever the user typed).
@@ -76,6 +77,8 @@ export function LeadForm({
         setState(res)
         if (res.status === 'success') {
           trackFormSubmit(type, typeof window !== 'undefined' ? window.location.pathname : undefined)
+        } else {
+          setTsReset((k) => k + 1) // spent/expired token on retry otherwise fails anti-spam
         }
       } catch {
         // Network/platform failure (e.g. body-size 413 on a large photo upload). Never let it
@@ -84,6 +87,7 @@ export function LeadForm({
           status: 'error',
           message: 'We could not send your request — it may be too large. Try removing photos, or call us and we will help right away.',
         })
+        setTsReset((k) => k + 1)
       }
     })
   }
@@ -220,7 +224,7 @@ export function LeadForm({
         ) : null}
 
         <div className="sm:col-span-2">
-          <Turnstile />
+          <Turnstile resetSignal={tsReset} />
           <Button type="submit" size="lg" variant={type === 'emergency_service' ? 'emergency' : 'primary'} disabled={pending}>
             {pending ? 'Sending…' : config.submitLabel}
           </Button>
