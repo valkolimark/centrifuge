@@ -67,10 +67,11 @@ export async function submitForm(_prev: FormState, formData: FormData): Promise<
   }
   const config = getFormConfig(type)
 
-  // Collect scalar fields (skip files + control fields).
+  // Collect scalar fields (skip files + control fields). The Turnstile token is verified
+  // separately (read straight off formData), so keep it out of the stored payload/email.
   const raw: Record<string, string> = {}
   for (const [key, value] of formData.entries()) {
-    if (typeof value === 'string' && !key.startsWith('_') && key !== 'photos') {
+    if (typeof value === 'string' && !key.startsWith('_') && key !== 'photos' && key !== 'cf-turnstile-response') {
       raw[key] = value
     }
   }
