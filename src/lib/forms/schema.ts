@@ -39,8 +39,9 @@ export interface ValidationResult {
 }
 
 export function validateSubmission(type: FormType, raw: Record<string, unknown>): ValidationResult {
-  // Honeypot: any value → silent reject (treated as spam).
-  if (typeof raw.company_website === 'string' && raw.company_website.trim() !== '') {
+  // Honeypot: any value → silent reject (treated as spam). Field name kept in sync with
+  // Honeypot.tsx (contact_time — deliberately not autofill-attractive).
+  if (typeof raw.contact_time === 'string' && raw.contact_time.trim() !== '') {
     return { ok: false, errors: { _spam: 'rejected' } }
   }
   const schema = buildFormSchema(type)

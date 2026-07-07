@@ -91,7 +91,9 @@ export async function submitForm(_prev: FormState, formData: FormData): Promise<
   const result = validateSubmission(type, raw)
   if (!result.ok || !result.data) {
     if (result.errors?._spam) {
-      // Honeypot tripped — pretend success so bots get no signal.
+      // Honeypot tripped — pretend success so bots get no signal. Log it (not to the user) so a
+      // false positive (e.g. autofill filling the honeypot) is visible instead of a silent drop.
+      console.warn('[submit-form] honeypot tripped — submission dropped', { page: String(formData.get('_page') || ''), type })
       return { status: 'success', submittedType: type }
     }
     return { status: 'error', errors: result.errors, message: 'Please fix the highlighted fields.' }
