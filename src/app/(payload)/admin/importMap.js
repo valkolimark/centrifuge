@@ -25,6 +25,7 @@ import { default as default_de10531668fdec792b98e3f3e5a8a1b7 } from '@/payload/a
 import { default as default_e7e54d34cd4b2a606d361fbc7e9b5121 } from '@/payload/admin/fields/AeoPanel'
 import { default as default_9a9105c135e5c012d807bbfbc9befcd9 } from '@/payload/admin/fields/InventoryThumbCell'
 import { default as default_db38555e19f9e06d2a20426d5c6cdd69 } from '@/payload/admin/fields/PdfStudioLink'
+import { default as default_02b8ec95ef14c4a4dc363c9086f278ac } from '@/payload/admin/fields/SubmissionPhotos'
 import { default as default_10165f4896d7b6d9d8f4b9f5be3f0979 } from '@/payload/admin/Avatar'
 import { default as default_3c442dcfde9f379759b263f03d41b5ce } from '@/payload/admin/Nav'
 import { default as default_35226cc228435246f9c5b5ade188ddce } from '@/payload/admin/Icon'
@@ -64,6 +65,7 @@ export const importMap = {
   "@/payload/admin/fields/AeoPanel#default": default_e7e54d34cd4b2a606d361fbc7e9b5121,
   "@/payload/admin/fields/InventoryThumbCell#default": default_9a9105c135e5c012d807bbfbc9befcd9,
   "@/payload/admin/fields/PdfStudioLink#default": default_db38555e19f9e06d2a20426d5c6cdd69,
+  "@/payload/admin/fields/SubmissionPhotos#default": default_02b8ec95ef14c4a4dc363c9086f278ac,
   "@/payload/admin/Avatar#default": default_10165f4896d7b6d9d8f4b9f5be3f0979,
   "@/payload/admin/Nav#default": default_3c442dcfde9f379759b263f03d41b5ce,
   "@/payload/admin/Icon#default": default_35226cc228435246f9c5b5ade188ddce,

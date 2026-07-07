@@ -45,6 +45,10 @@ export const formLeadInternal: EmailTemplate = {
       </tr>{% endfor %}
     </table>
     {% if message %}<div style="margin:16px 0;padding:12px 14px;background:#F5F8FB;border-left:3px solid #00719C;border-radius:0 6px 6px 0;font-size:13.5px;line-height:1.6;color:#2A3646">{{ message }}</div>{% endif %}
+    {% if photos %}<div style="margin:16px 0">
+      <div style="font-size:11px;font-weight:700;letter-spacing:.05em;text-transform:uppercase;color:#5E6C85;margin-bottom:8px">Photos ({{ photos.size }})</div>
+      {% for ph in photos %}<a href="{{ ph.url }}" style="text-decoration:none"><img src="{{ ph.thumb }}" alt="Uploaded photo" width="88" height="88" style="border-radius:6px;border:1px solid #EDF1F6;object-fit:cover;margin:0 6px 6px 0" /></a>{% endfor %}
+    </div>{% endif %}
     <div style="margin-top:22px">${btn('{{ leadUrl }}', 'Open in Mission Control ▸')}</div>
     <p style="font-size:12px;color:#8A98AC;margin-top:18px">Reply directly to this email to respond to {{ name | default: 'the submitter' }}.</p>
   `),
@@ -57,7 +61,10 @@ export const formLeadInternal: EmailTemplate = {
 {% endfor %}{% if message %}
 Message:
 {{ message }}
-{% endif %}
+{% endif %}{% if photos %}
+Photos:
+{% for ph in photos %}{{ ph.url }}
+{% endfor %}{% endif %}
 Open in Mission Control: {{ leadUrl }}
 Reply to this email to respond directly to the submitter.`,
 }
