@@ -40,6 +40,7 @@ const ADDS: { table: string; column: string }[] = [
   { table: '_quotes_v', column: 'version_reference_number' },
   { table: '_quotes_v', column: 'version_description' },
   { table: '_leads_v', column: 'version_notes' },
+  { table: 'form_submissions', column: 'details' },
 ]
 
 async function tableExists(t: string) {
