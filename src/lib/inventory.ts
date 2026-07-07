@@ -97,6 +97,35 @@ export async function getInventory(): Promise<InventoryItem[]> {
   }
 }
 
+// Available machines for a given OEM brand (CYCLE-INV-1 Phase 2). `brand` is a free-text field,
+// so match on a normalized comparison (case/space/hyphen/parenthetical-insensitive) — handles
+// "Krauss-Maffei" ↔ "Krauss Maffei" etc. Returns the most-recently-listed first + the full count.
+const normBrand = (s: string) => s.toLowerCase().replace(/\([^)]*\)/g, '').replace(/[^a-z0-9]+/g, '')
+export async function getInventoryByBrand(brandName: string, limit = 6): Promise<{ items: InventoryItem[]; total: number }> {
+  const target = normBrand(brandName || '')
+  if (!target) return { items: [], total: 0 }
+  try {
+    const payload = await getPayloadClient()
+    const res = await payload.find({
+      collection: 'inventory',
+      where: { and: [{ _status: { equals: 'published' } }, { availability: { equals: 'available' } }] },
+      sort: '-createdAt',
+      depth: 1,
+      limit: 300,
+    })
+    const matches = res.docs
+      .map((d) => mapItem(d as unknown as RawDoc))
+      .filter((i) => {
+        const b = normBrand(i.brand || '')
+        if (!b) return false
+        return b === target || (target.length >= 5 && (b.includes(target) || target.includes(b)))
+      })
+    return { items: matches.slice(0, limit), total: matches.length }
+  } catch {
+    return { items: [], total: 0 }
+  }
+}
+
 export async function getInventoryItem(slug: string): Promise<InventoryItem | null> {
   try {
     const payload = await getPayloadClient()
