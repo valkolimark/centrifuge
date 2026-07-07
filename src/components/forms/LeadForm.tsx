@@ -71,10 +71,19 @@ export function LeadForm({
     fd.delete('photos')
     photos.forEach((f) => fd.append('photos', f, f.name))
     startTransition(async () => {
-      const res = await submitForm(state, fd)
-      setState(res)
-      if (res.status === 'success') {
-        trackFormSubmit(type, typeof window !== 'undefined' ? window.location.pathname : undefined)
+      try {
+        const res = await submitForm(state, fd)
+        setState(res)
+        if (res.status === 'success') {
+          trackFormSubmit(type, typeof window !== 'undefined' ? window.location.pathname : undefined)
+        }
+      } catch {
+        // Network/platform failure (e.g. body-size 413 on a large photo upload). Never let it
+        // bubble to the error boundary and blank the page — show an inline, recoverable message.
+        setState({
+          status: 'error',
+          message: 'We could not send your request — it may be too large. Try removing photos, or call us and we will help right away.',
+        })
       }
     })
   }

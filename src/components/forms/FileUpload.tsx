@@ -3,11 +3,12 @@
 import { useState } from 'react'
 import { cn } from '@/lib/cn'
 
-// FileUpload (task 1.4): client-side image compression to <=2MB per image, max 6.
+// FileUpload (task 1.4): client-side image compression to <=1MB per image, max 6.
 // Uses canvas re-encode; large photos from phones shrink before upload. The Cycle 2
-// forms engine reads the compressed File list off this component's state.
+// forms engine reads the compressed File list off this component's state. The 1MB target
+// keeps a full 6-photo upload (~6MB) within the Server Action / platform body limit.
 const MAX_FILES = 6
-const MAX_BYTES = 2 * 1024 * 1024
+const MAX_BYTES = 1 * 1024 * 1024
 
 async function compressImage(file: File): Promise<File> {
   if (!file.type.startsWith('image/') || file.size <= MAX_BYTES) return file
@@ -69,7 +70,7 @@ export function FileUpload({
   return (
     <div>
       <label className="mb-1 block text-sm font-medium text-steel-700">
-        {label} <span className="text-steel-500">(up to {MAX_FILES}, ≤2MB each after compression)</span>
+        {label} <span className="text-steel-500">(up to {MAX_FILES}, ≤1MB each after compression)</span>
       </label>
       <input
         type="file"
