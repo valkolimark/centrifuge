@@ -1,5 +1,5 @@
 import type { CollectionConfig } from 'payload'
-import { anyAuthenticated, contentManagerUp, publicRead } from '../access/roles'
+import { anyAuthenticated, contentManagerUp, publicReadAlways } from '../access/roles'
 
 // Media (task 1.2). Alt text is a required field (CLAUDE.md / DoD). Files are stored
 // on Vercel Blob (adapter wired in payload.config); sharp generates responsive sizes.
@@ -7,7 +7,9 @@ export const Media: CollectionConfig = {
   slug: 'media',
   admin: { group: 'Library' },
   access: {
-    read: publicRead,
+    // Media has no drafts/_status — use the always-public reader (publicRead's
+    // `_status: published` filter 500s the /api/media/file route on this collection).
+    read: publicReadAlways,
     create: contentManagerUp,
     update: contentManagerUp,
     delete: anyAuthenticated,
