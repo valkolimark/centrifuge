@@ -36,6 +36,7 @@ export const FormSubmissions: CollectionConfig = {
     { name: 'email', type: 'email' },
     { name: 'phone', type: 'text' },
     { name: 'company', type: 'text' },
+    { name: 'details', type: 'textarea', admin: { readOnly: true, description: 'Readable summary of every submitted field (equipment, brand, model, service, urgency, location, message…).' } },
     { name: 'pageSource', type: 'text' },
     { name: 'utm', type: 'json', admin: { description: 'Captured UTM params.' } },
     { name: 'payload', type: 'json', admin: { description: 'Full submitted field set.' } },

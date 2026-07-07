@@ -1179,6 +1179,10 @@ export interface FormSubmission {
   email?: string | null;
   phone?: string | null;
   company?: string | null;
+  /**
+   * Readable summary of every submitted field (equipment, brand, model, service, urgency, location, message…).
+   */
+  details?: string | null;
   pageSource?: string | null;
   /**
    * Captured UTM params.
@@ -1230,6 +1234,10 @@ export interface Lead {
    * Raw submission body.
    */
   message?: string | null;
+  /**
+   * Staff notes on this contact — free-form, editable.
+   */
+  notes?: string | null;
   /**
    * Full original form payload — immutable.
    */
@@ -1324,6 +1332,10 @@ export interface Quote {
    */
   quoteNumber?: string | null;
   /**
+   * Client PO / reference number (optional) — shown on the quote alongside the quote number.
+   */
+  referenceNumber?: string | null;
+  /**
    * Linked lead (nullable for manual quotes).
    */
   lead?: (number | null) | Lead;
@@ -1338,6 +1350,10 @@ export interface Quote {
    */
   issuingLocation?: 'rosharon' | null;
   scopeTitle?: string | null;
+  /**
+   * Longer description / summary of the work, shown under the scope on the quote.
+   */
+  description?: string | null;
   lineItems?:
     | {
         description: string;
@@ -2285,6 +2301,7 @@ export interface FormSubmissionsSelect<T extends boolean = true> {
   email?: T;
   phone?: T;
   company?: T;
+  details?: T;
   pageSource?: T;
   utm?: T;
   payload?: T;
@@ -2304,6 +2321,7 @@ export interface LeadsSelect<T extends boolean = true> {
   phone?: T;
   sourceForm?: T;
   message?: T;
+  notes?: T;
   payload?: T;
   pipelineStage?: T;
   estimatedValue?: T;
@@ -2335,6 +2353,7 @@ export interface LeadsSelect<T extends boolean = true> {
  */
 export interface QuotesSelect<T extends boolean = true> {
   quoteNumber?: T;
+  referenceNumber?: T;
   lead?: T;
   client?:
     | T
@@ -2346,6 +2365,7 @@ export interface QuotesSelect<T extends boolean = true> {
       };
   issuingLocation?: T;
   scopeTitle?: T;
+  description?: T;
   lineItems?:
     | T
     | {

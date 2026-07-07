@@ -4,8 +4,32 @@ import { headers } from 'next/headers'
 import { getPayloadClient } from '@/lib/payload'
 import { validateSubmission } from '@/lib/forms/schema'
 import { verifyTurnstile } from '@/lib/forms/turnstile'
-import { getFormConfig } from '@/lib/forms/config'
+import { getFormConfig, EQUIPMENT_OPTIONS, BRAND_OPTIONS, URGENCY_OPTIONS, CONDITION_OPTIONS } from '@/lib/forms/config'
 import type { FormType } from '@/lib/analytics'
+
+const optLabel = (opts: readonly { value: string; label: string }[], v?: string) =>
+  (v && opts.find((o) => o.value === v)?.label) || v
+
+// Compose a human-readable summary of every submitted field so the lead's `message`
+// (shown in the pipeline drawer + CRM) carries the full picture, not just the free text.
+// The complete raw field set is still stored verbatim in `payload`.
+function composeDetails(data: Record<string, string>, photoCount: number): string {
+  const rows: Array<[string, string | undefined]> = [
+    ['Location', data.location],
+    ['Equipment', optLabel(EQUIPMENT_OPTIONS, data.equipment)],
+    ['Brand', optLabel(BRAND_OPTIONS, data.brand)],
+    ['Model', data.model],
+    ['Service needed', data.serviceNeeded],
+    ['Urgency', optLabel(URGENCY_OPTIONS, data.urgency)],
+    ['Condition', optLabel(CONDITION_OPTIONS, data.condition)],
+    ['Asking price', data.askingPrice],
+  ]
+  const lines = rows.filter(([, v]) => v && String(v).trim()).map(([k, v]) => `${k}: ${v}`)
+  if (photoCount) lines.push(`Photos attached: ${photoCount}`)
+  const details = lines.join('\n')
+  const free = data.message?.trim()
+  return [details, free].filter(Boolean).join('\n\n')
+}
 
 // Map public form types to the leads pipeline source (UI-2).
 const SOURCE_FORM: Record<FormType, 'contact' | 'quote-request' | 'emergency'> = {
@@ -95,6 +119,9 @@ export async function submitForm(_prev: FormState, formData: FormData): Promise<
   }
 
   const fullPayload = { ...result.data, photoCount: files.length, photoIds, pageSource }
+  // Human-readable summary of every field — surfaced on both the submission (readonly
+  // `details`) and the lead (`message`) so nothing is buried in the raw JSON payload.
+  const details = composeDetails(result.data as Record<string, string>, files.length)
 
   // Store the raw submission (kept for the Mission Control dashboard) — best-effort.
   try {
@@ -107,6 +134,7 @@ export async function submitForm(_prev: FormState, formData: FormData): Promise<
         phone: result.data.phone,
         company: result.data.company,
         pageSource,
+        details,
         utm,
         payload: fullPayload,
       },
@@ -127,7 +155,7 @@ export async function submitForm(_prev: FormState, formData: FormData): Promise<
         email: result.data.email,
         phone: result.data.phone,
         sourceForm: SOURCE_FORM[type],
-        message: (result.data as Record<string, string>).message,
+        message: details,
         payload: fullPayload,
       },
       overrideAccess: true,
