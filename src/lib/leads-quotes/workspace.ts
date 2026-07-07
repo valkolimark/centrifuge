@@ -59,7 +59,7 @@ export async function getWorkspaceData(): Promise<WorkspaceData> {
       sort: '-createdAt',
       select: {
         name: true, company: true, email: true, phone: true, sourceForm: true, message: true, notes: true,
-        pipelineStage: true, estimatedValue: true, delivery: true, createdAt: true,
+        pipelineStage: true, estimatedValue: true, delivery: true, createdAt: true, payload: true,
       },
     }),
     payload.find({
@@ -76,6 +76,13 @@ export async function getWorkspaceData(): Promise<WorkspaceData> {
 
   const leads = leadsRes.docs as any[]
   const quotes = quotesRes.docs as any[]
+
+  // Phase 3: inventory-sourced leads carry payload.machine — show the INV id in the source
+  // column (e.g. "INV-0042") so staff can tell the lead came from a specific listing.
+  const machineIdOf = (l: any): string | null =>
+    l?.payload && typeof l.payload === 'object' && l.payload.machine && typeof l.payload.machine.inventoryId === 'string'
+      ? l.payload.machine.inventoryId
+      : null
 
   // Latest quote per lead → surfaces the CW-Q number + value on Quote-Sent/Won/Lost cards.
   const quoteByLead = new Map<string, { quoteNumber: string; total: number }>()
@@ -107,7 +114,7 @@ export async function getWorkspaceData(): Promise<WorkspaceData> {
       phone: l.phone || null,
       message: (l.message || '').slice(0, 400),
       notes: l.notes || '',
-      source: src.label,
+      source: machineIdOf(l) ?? src.label,
       sourceTag: src.tag,
       estimatedValue: value,
       quoteNumber: linked?.quoteNumber ?? null,
@@ -131,7 +138,7 @@ export async function getWorkspaceData(): Promise<WorkspaceData> {
       return {
         id: String(l.id),
         receivedAt: l.createdAt,
-        source: src.label,
+        source: machineIdOf(l) ?? src.label,
         sourceTag: src.tag,
         name: person(l.name, l.email),
         company: l.company || '—',

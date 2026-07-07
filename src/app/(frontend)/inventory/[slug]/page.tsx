@@ -13,6 +13,7 @@ import { breadcrumbSchema } from '@/lib/schema'
 import { buildMetadata } from '@/lib/seo'
 import { SITE_URL, org, brands } from '@/lib/site'
 import { getInventory, getInventoryItem, MACHINE_TYPE_LABELS, CONDITION_LABELS, type InventoryItem } from '@/lib/inventory'
+import { machineContext } from '@/lib/inventory-machine'
 
 export const revalidate = 300
 
@@ -76,6 +77,8 @@ export default async function InventoryItemPage({ params }: { params: Promise<{ 
   const item = await getInventoryItem(slug)
   if (!item || item.availability === 'sold') notFound()
   const url = `${SITE_URL}/inventory/${slug}/`
+  // Phase 3: pre-populate the embedded quote form from this machine.
+  const { snapshot: machineSnapshot, prefill: machinePrefill } = machineContext(item)
   const typeLabel = MACHINE_TYPE_LABELS[item.machineType] ?? 'Centrifuge'
   const brandSlug = item.brand ? brands.find((b) => b.name.toLowerCase() === item.brand!.toLowerCase())?.slug : undefined
   const inStock = item.availability !== 'sale-pending'
@@ -201,7 +204,7 @@ export default async function InventoryItemPage({ params }: { params: Promise<{ 
           <h2>Request this {typeLabel.toLowerCase()} centrifuge</h2>
           <p className="mt-2 text-steel-700">Send your details and our team will confirm availability, price, and lead time.</p>
           <div className="mt-6">
-            <QuoteForm />
+            <QuoteForm prefill={machinePrefill} machine={machineSnapshot} />
           </div>
         </div>
       </Section>

@@ -46,6 +46,14 @@ deploy that accompanies this change.
 - **`ItemList` structured data: skipped (flagged for Cycle 4).** `data/schema-map.md` defines only `Product` + `Offer` per listing for the inventory hand-off, with no `ItemList` pattern — per the cycle spec, skipped rather than inventing one.
 - Brand matching is normalized (case/space/hyphen/parenthetical-insensitive) since `inventory.brand` is free text; handles "Krauss-Maffei" ↔ "Krauss Maffei". Cards are the shared `InventoryCard` (extracted verbatim from `/inventory`), capped at 6, sorted most-recent-first, with the one-line empty state.
 
+## Phase 3 (quote pre-population from a machine) — notes
+- **Detail page → "Request this machine"** already scrolled to the embedded form (`#request`); the form now receives the machine (context callout + pre-filled Equipment/Brand/Model/Message) via `machineContext(item)`.
+- **`?machine={slug}`** supported on `/cw-ez-quote-for-sales/` (the canonical EZ-quote page CTAs point to). Unknown/sold slug degrades silently to the blank form. The page is now dynamic (reads `searchParams`).
+- **Snapshot is server-derived, not client-trusted:** the submit action reads only the slug from the hidden `_machine` field, re-fetches the listing, and rebuilds the snapshot with `machineContext` — so a tampered payload can only reference a real listing (or none). The snapshot + `source: "inventory/{slug}"` are stored in the lead's immutable `payload` JSON, so they survive the inventory doc being later edited or deleted.
+- **Email:** the internal (four-recipient) alert renders a machine block (HTML + text) and uses subject `Quote request — {title} (INV-####)` when a machine is present. Live sends remain gated by `LEADS_EMAIL_DRY_RUN` (kept true this cycle — no live sends).
+- **Workspace:** the Form-Leads / pipeline source column shows the machine's `INV-####` for inventory-sourced leads (falls back to the normal source label otherwise).
+- **Remove control:** the pre-filled fields are rendered controlled so "Remove" clears the context block, the pre-fills, and the hidden `_machine` payload; all fields stay editable.
+
 ## Flagged / notes
 - `remotePatterns` still lists `centrifuge-im.s3.amazonaws.com` — still used by non-inventory
   pages (main-site WP media); left intact.
