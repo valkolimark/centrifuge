@@ -10,7 +10,10 @@ const nextConfig = {
   trailingSlash: true,
   // Inline the (small) app CSS into the HTML to remove the render-blocking
   // stylesheet request (~820ms savings on FCP/LCP).
-  experimental: { inlineCss: true },
+  // bodySizeLimit lifts the 1 MB Server Action default so photo-bearing form submissions
+  // (FileUpload compresses to ≤1 MB each, up to 6) don't 413. The platform still caps the
+  // request body, so the client also fails gracefully on oversized submissions.
+  experimental: { inlineCss: true, serverActions: { bodySizeLimit: '8mb' } },
   // The quote PDF pipeline (src/lib/quotes/pdf.tsx) uses headless Chrome. These packages have
   // dynamic requires / native binaries webpack can't bundle — keep them external so any server
   // graph that reaches sendQuote (e.g. the workspace "Send to Client" action) builds cleanly.
