@@ -26,8 +26,8 @@ const nextConfig = {
       { protocol: 'https', hostname: 'centrifuge-im.s3.amazonaws.com' },
       // YouTube video thumbnails (channel video posters).
       { protocol: 'https', hostname: 'i.ytimg.com' },
-      // Inventory store media (WooCommerce uploads) for seeded listing photos.
-      { protocol: 'https', hostname: 'inventory.centrifuge.com' },
+      // (inventory.centrifuge.com removed — all inventory photos migrated into Payload media/
+      //  Vercel Blob; the host was retired to a /inventory/ redirect in the Phase-2 DNS cutover.)
     ],
   },
   async headers() {
