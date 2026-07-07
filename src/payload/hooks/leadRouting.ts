@@ -29,8 +29,9 @@ function internalFields(lead: AnyLead): { label: string; value: string }[] {
   if (lead.company) rows.push({ label: 'Company', value: String(lead.company) })
   rows.push({ label: 'Source form', value: SOURCE_LABEL[lead.sourceForm] || String(lead.sourceForm || 'Contact') })
   if (lead.estimatedValue) rows.push({ label: 'Est. value', value: `$${Number(lead.estimatedValue).toLocaleString('en-US')}` })
-  // Surface any extra scalar fields captured in the original payload.
-  const seen = new Set(['name', 'email', 'phone', 'company', 'message'])
+  // Surface any extra scalar fields captured in the original payload — but never the anti-spam
+  // artifacts (Turnstile token, honeypot) or noisy internals; they aren't lead data.
+  const seen = new Set(['name', 'email', 'phone', 'company', 'message', 'cf-turnstile-response', 'company_website', 'photoIds', 'photoCount'])
   for (const [k, v] of Object.entries(lead.payload || {})) {
     if (seen.has(k) || v == null || typeof v === 'object') continue
     rows.push({ label: k.replace(/[_-]/g, ' ').replace(/\b\w/g, (c) => c.toUpperCase()), value: String(v) })
