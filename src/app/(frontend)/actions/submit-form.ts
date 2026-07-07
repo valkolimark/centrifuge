@@ -7,6 +7,7 @@ import { verifyTurnstile } from '@/lib/forms/turnstile'
 import { getFormConfig, EQUIPMENT_OPTIONS, BRAND_OPTIONS, URGENCY_OPTIONS, CONDITION_OPTIONS } from '@/lib/forms/config'
 import { getInventoryItem } from '@/lib/inventory'
 import { machineContext } from '@/lib/inventory-machine'
+import { SITE_URL } from '@/lib/site'
 import type { FormType } from '@/lib/analytics'
 
 const optLabel = (opts: readonly { value: string; label: string }[], v?: string) =>
@@ -114,23 +115,29 @@ export async function submitForm(_prev: FormState, formData: FormData): Promise<
   // is configured; otherwise record the count (integration deferred until BLOB token).
   const files = formData.getAll('photos').filter((v): v is File => v instanceof File && v.size > 0)
   const photoIds: (string | number)[] = []
+  // Absolute URLs (+ thumbnail) captured at upload time so both the email and the admin
+  // thumbnail strip can show the photos without re-resolving media ids.
+  const photoUrls: Array<{ url: string; thumb: string; name: string }> = []
+  const abs = (u?: string | null) => (u ? (u.startsWith('http') ? u : `${SITE_URL}${u}`) : '')
   if (files.length && process.env.BLOB_READ_WRITE_TOKEN) {
     for (const file of files.slice(0, 6)) {
       try {
         const buffer = Buffer.from(await file.arrayBuffer())
-        const media = await payload.create({
+        const media: any = await payload.create({
           collection: 'media',
           data: { alt: `${config.title} photo from ${result.data.name || 'submitter'}` },
           file: { data: buffer, mimetype: file.type, name: file.name, size: file.size },
         })
         photoIds.push(media.id)
+        const full = abs(media.url)
+        if (full) photoUrls.push({ url: full, thumb: abs(media.sizes?.thumbnail?.url) || full, name: media.filename || file.name })
       } catch {
         // ignore individual upload failure; submission still records
       }
     }
   }
 
-  const fullPayload = { ...result.data, photoCount: files.length, photoIds, pageSource, ...(machine ? { machine, source } : {}) }
+  const fullPayload = { ...result.data, photoCount: files.length, photoIds, photoUrls, pageSource, ...(machine ? { machine, source } : {}) }
   // Human-readable summary of every field — surfaced on both the submission (readonly
   // `details`) and the lead (`message`) so nothing is buried in the raw JSON payload.
   const baseDetails = composeDetails(result.data as Record<string, string>, files.length)

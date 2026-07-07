@@ -51,6 +51,8 @@ export async function routeLead(payload: any, lead: AnyLead, req?: any): Promise
   const machine = rawMachine
     ? { ...rawMachine, specsLine: (rawMachine.specsSnapshot || []).slice(0, 3).map((s: AnyLead) => `${s.label}: ${s.value}`).join(' · ') }
     : null
+  // Photos the submitter uploaded (absolute urls captured at submit time) → shown in the alert.
+  const photos = lead.payload && typeof lead.payload === 'object' ? (lead.payload as AnyLead).photoUrls || null : null
   const activity: any[] = [{ type: 'form_received', note: 'Payload validated, lead created', at: new Date().toISOString(), by: 'system' }]
   const patch: AnyLead = {}
 
@@ -68,6 +70,7 @@ export async function routeLead(payload: any, lead: AnyLead, req?: any): Promise
       fields: internalFields(lead),
       message: lead.message,
       machine,
+      photos,
       leadUrl: `${siteUrl}/admin/collections/leads/${lead.id}`,
       emergencyDisplay,
     })

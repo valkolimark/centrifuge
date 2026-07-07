@@ -37,6 +37,8 @@ export const FormSubmissions: CollectionConfig = {
     { name: 'phone', type: 'text' },
     { name: 'company', type: 'text' },
     { name: 'details', type: 'textarea', admin: { readOnly: true, description: 'Readable summary of every submitted field (equipment, brand, model, service, urgency, location, message…).' } },
+    // Thumbnail strip of any photos the submitter uploaded (reads payload.photoUrls; no column).
+    { name: 'photos', type: 'ui', admin: { components: { Field: '@/payload/admin/fields/SubmissionPhotos' } } },
     { name: 'pageSource', type: 'text' },
     // Raw captured data — hidden from the admin edit view. The readable `details` above covers
     // it, and the Monaco JSON editors made the page hard to interact with. Still stored + in CSV.

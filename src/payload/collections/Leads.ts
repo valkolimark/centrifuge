@@ -44,6 +44,8 @@ export const Leads: CollectionConfig = {
       ],
     },
     { name: 'message', type: 'textarea', admin: { description: 'Raw submission body.' } },
+    // Thumbnail strip of any photos the submitter uploaded (reads payload.photoUrls; no column).
+    { name: 'photos', type: 'ui', admin: { components: { Field: '@/payload/admin/fields/SubmissionPhotos' } } },
     { name: 'notes', type: 'textarea', admin: { description: 'Staff notes on this contact — free-form, editable.' } },
     {
       name: 'payload',
