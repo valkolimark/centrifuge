@@ -5,7 +5,7 @@ import { Breadcrumbs } from '@/components/layout/Breadcrumbs'
 import { ServiceGrid, type ServiceCardItem } from '@/components/blocks/ServiceCard'
 import { EmergencyCallout } from '@/components/blocks/EmergencyCallout'
 import { CTABanner } from '@/components/blocks/CTABanner'
-import { getPayloadClient } from '@/lib/payload'
+import { getServices } from '@/lib/content'
 import { buildMetadata } from '@/lib/seo'
 
 export const revalidate = 3600
@@ -19,31 +19,17 @@ export const metadata: Metadata = buildMetadata(
   '/services/',
 )
 
-async function getServices(): Promise<ServiceCardItem[]> {
-  try {
-    const payload = await getPayloadClient()
-    const res = await payload.find({
-      collection: 'services',
-      where: { _status: { equals: 'published' } },
-      limit: 100,
-      depth: 0,
-      sort: 'title',
-    })
-    return res.docs.map((d) => {
-      const doc = d as { title: string; slug: string; answerBox?: string }
-      return {
-        title: doc.title,
-        href: `/services/${doc.slug}/`,
-        description: (doc.answerBox ?? '').split('. ')[0] + '.',
-      }
-    })
-  } catch {
-    return []
-  }
+async function getServiceCards(): Promise<ServiceCardItem[]> {
+  const docs = await getServices()
+  return docs.map((doc) => ({
+    title: doc.title,
+    href: `/services/${doc.slug}/`,
+    description: (doc.answerBox ?? '').split('. ')[0] + '.',
+  }))
 }
 
 export default async function ServicesIndexPage() {
-  const services = await getServices()
+  const services = await getServiceCards()
   return (
     <SiteShell>
       <Breadcrumbs items={[{ name: 'Services', url: '/services/' }]} />

@@ -15,66 +15,23 @@ import { VideoFacade } from '@/components/blocks/VideoFacade'
 import { SERVICE_HERO, SERVICE_VIDEO } from '@/lib/page-media'
 import { toVideoSource } from '@/lib/videos'
 import { JsonLd } from '@/components/JsonLd'
-import { getPayloadClient } from '@/lib/payload'
-import { stripTodo } from '@/lib/content'
+import { getService, getServices, stripTodo } from '@/lib/content'
 import { buildMetadata } from '@/lib/seo'
 import { SITE_URL } from '@/lib/site'
 import {
   serviceSchema,
   faqPageSchema,
   breadcrumbSchema,
-  type QA,
 } from '@/lib/schema'
-import type { FormType } from '@/lib/analytics'
 
 // ISR: rebuilt on publish via the collection's revalidate hook.
 export const revalidate = 3600
 export const dynamicParams = true
 
 interface LinkItem { label: string; href: string }
-interface ServiceDoc {
-  slug: string
-  title: string
-  h1?: string
-  formType?: FormType
-  answerBoxQuestion?: string
-  answerBox?: string
-  intro?: string
-  capabilitiesHeading?: string
-  capabilities?: { item: string; detail?: string }[]
-  processHeading?: string
-  process?: { title: string; description?: string }[]
-  faqs?: QA[]
-  relatedServices?: LinkItem[]
-  relatedBrands?: LinkItem[]
-  relatedIndustries?: LinkItem[]
-  emergencyVariant?: boolean
-  seo?: { title?: string; description?: string; noindex?: boolean; canonicalOverride?: string }
-}
-
-async function getService(slug: string): Promise<ServiceDoc | null> {
-  try {
-    const payload = await getPayloadClient()
-    const res = await payload.find({
-      collection: 'services',
-      where: { slug: { equals: slug } },
-      limit: 1,
-      depth: 1,
-    })
-    return (res.docs[0] as unknown as ServiceDoc) ?? null
-  } catch {
-    return null
-  }
-}
 
 export async function generateStaticParams() {
-  try {
-    const payload = await getPayloadClient()
-    const res = await payload.find({ collection: 'services', limit: 100, depth: 0, where: { _status: { equals: 'published' } } })
-    return res.docs.map((d) => ({ slug: (d as { slug: string }).slug }))
-  } catch {
-    return []
-  }
+  return (await getServices()).map((s) => ({ slug: s.slug }))
 }
 
 export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }): Promise<Metadata> {

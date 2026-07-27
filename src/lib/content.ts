@@ -107,6 +107,45 @@ export async function getIndustry(slug: string): Promise<IndustryContent | undef
   return (await getIndustries()).find((i) => i.slug === slug)
 }
 
+// ── Services ──────────────────────────────────────────────────
+// Payload-first so /admin edits win. The JSON snapshot (regenerate with
+// `pnpm tsx scripts/export-services-json.ts`) keeps these pages rendering when the
+// DB is unreachable — without it a DB outage makes every service route 404, and ISR
+// caches that 404 for an hour. See content-migration/services.json.
+export interface ServiceContent {
+  slug: string
+  title: string
+  h1?: string
+  formType?: 'request_quote' | 'emergency_service' | 'free_inspection' | 'contact' | 'send_photos'
+  answerBoxQuestion?: string
+  answerBox?: string
+  intro?: string
+  capabilitiesHeading?: string
+  capabilities?: { item: string; detail?: string }[]
+  processHeading?: string
+  process?: { title: string; description?: string }[]
+  faqs?: { question: string; answer: string }[]
+  relatedServices?: LinkItem[]
+  relatedBrands?: LinkItem[]
+  relatedIndustries?: LinkItem[]
+  emergencyVariant?: boolean
+  seo?: { title?: string; description?: string; noindex?: boolean; canonicalOverride?: string }
+}
+export async function getServices(): Promise<ServiceContent[]> {
+  try {
+    const { getServicesFromCMS } = await import('./cms')
+    const fromCms = await getServicesFromCMS()
+    if (fromCms.length) return fromCms
+  } catch {
+    /* DB unavailable → JSON */
+  }
+  const docs = readJson<ServiceContent[]>('services.json') ?? []
+  return [...docs].sort((a, b) => a.title.localeCompare(b.title))
+}
+export async function getService(slug: string): Promise<ServiceContent | undefined> {
+  return (await getServices()).find((s) => s.slug === slug)
+}
+
 // ── How it works ──────────────────────────────────────────────
 export interface HowItWorksContent {
   slug: string

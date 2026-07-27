@@ -75,7 +75,7 @@ interface Svc {
   seoDescription: string
 }
 
-const REBUILD_PROCESS = [
+export const REBUILD_PROCESS = [
   step('Inspect', 'Full teardown inspection and failure analysis to find the root cause.'),
   step('Quote', 'A clear, inspection-first scope of work and price — no surprises.'),
   step('Rebuild', 'Repair or rebuild worn components to restore OEM performance.'),
@@ -84,7 +84,7 @@ const REBUILD_PROCESS = [
   step('Return', 'Documented, crated, and returned ready to install.'),
 ]
 
-const SERVICES: Svc[] = [
+export const SERVICES: Svc[] = [
   {
     slug: 'centrifuge-repair',
     title: 'Centrifuge Repair',
@@ -450,6 +450,31 @@ const SERVICES: Svc[] = [
   },
 ]
 
+// The authored doc for one service. Shared by the seeder and by
+// scripts/export-services-json.ts, so the JSON fallback snapshot in
+// content-migration/services.json can never drift from what gets seeded.
+export function toDoc(s: Svc) {
+  return {
+    title: s.title,
+    slug: s.slug,
+    h1: s.title,
+    formType: s.formType || 'request_quote',
+    emergencyVariant: !!s.emergencyVariant,
+    answerBoxQuestion: s.answerBoxQuestion,
+    answerBox: s.answerBox,
+    intro: s.intro,
+    capabilitiesHeading: 'What we do',
+    capabilities: s.capabilities,
+    processHeading: 'How it works',
+    process: s.process ?? REBUILD_PROCESS,
+    faqs: s.faqs,
+    relatedServices: s.relatedServices,
+    relatedBrands: s.relatedBrands,
+    relatedIndustries: s.relatedIndustries,
+    seo: { title: `${s.title} | Centrifuge World`.slice(0, 60), description: truncate(s.seoDescription, 155) },
+  }
+}
+
 async function main() {
   loadEnv()
   const { default: config } = await import('../src/payload.config.ts')
@@ -457,26 +482,7 @@ async function main() {
 
   for (const s of SERVICES) {
     const existing = await payload.find({ collection: 'services', where: { slug: { equals: s.slug } }, limit: 1 })
-    const data = {
-      title: s.title,
-      slug: s.slug,
-      h1: s.title,
-      formType: s.formType || 'request_quote',
-      emergencyVariant: !!s.emergencyVariant,
-      answerBoxQuestion: s.answerBoxQuestion,
-      answerBox: s.answerBox,
-      intro: s.intro,
-      capabilitiesHeading: 'What we do',
-      capabilities: s.capabilities,
-      processHeading: 'How it works',
-      process: s.process ?? REBUILD_PROCESS,
-      faqs: s.faqs,
-      relatedServices: s.relatedServices,
-      relatedBrands: s.relatedBrands,
-      relatedIndustries: s.relatedIndustries,
-      seo: { title: `${s.title} | Centrifuge World`.slice(0, 60), description: truncate(s.seoDescription, 155) },
-      _status: 'published' as const,
-    }
+    const data = { ...toDoc(s), _status: 'published' as const }
     if (existing.docs.length) {
       await payload.update({ collection: 'services', id: existing.docs[0].id, data })
       console.log(`updated: ${s.slug}`)
@@ -489,7 +495,10 @@ async function main() {
   process.exit(0)
 }
 
-main().catch((e) => {
-  console.error(e)
-  process.exit(1)
-})
+// Only seed when run directly — this module is also imported for its SERVICES data.
+if (process.argv[1] && fileURLToPath(import.meta.url) === resolve(process.argv[1])) {
+  main().catch((e) => {
+    console.error(e)
+    process.exit(1)
+  })
+}
