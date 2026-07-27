@@ -13,7 +13,7 @@ import { buildMetadata } from '@/lib/seo'
 import { SITE_URL } from '@/lib/site'
 import { getBlogPosts, getBlogPost } from '@/lib/content'
 
-export const revalidate = 3600
+export const revalidate = 86400
 
 export async function generateStaticParams() {
   return (await getBlogPosts()).map((p) => ({ slug: p.slug }))

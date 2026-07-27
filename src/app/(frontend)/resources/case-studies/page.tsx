@@ -8,7 +8,7 @@ import { CTABanner } from '@/components/blocks/CTABanner'
 import { buildMetadata } from '@/lib/seo'
 import { getCaseStudies } from '@/lib/content'
 
-export const revalidate = 3600
+export const revalidate = 86400
 
 export const metadata: Metadata = buildMetadata(
   { title: 'Centrifuge Rebuild Case Studies | Centrifuge World', description: 'Documented industrial centrifuge rebuild projects — decanter, Bird, Alfa Laval, Centrisys, and Sharples machines restored by Centrifuge World.' },

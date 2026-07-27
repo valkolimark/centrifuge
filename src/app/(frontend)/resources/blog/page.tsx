@@ -8,7 +8,7 @@ import { CTABanner } from '@/components/blocks/CTABanner'
 import { buildMetadata } from '@/lib/seo'
 import { getBlogPosts } from '@/lib/content'
 
-export const revalidate = 3600
+export const revalidate = 86400
 
 export const metadata: Metadata = buildMetadata(
   { title: 'Centrifuge Repair Blog | Centrifuge World', description: 'Guidance on industrial centrifuge repair cost, warning signs, emergency response, and inspections from Centrifuge World.' },

@@ -25,7 +25,7 @@ import {
 } from '@/lib/schema'
 
 // ISR: rebuilt on publish via the collection's revalidate hook.
-export const revalidate = 3600
+export const revalidate = 86400
 export const dynamicParams = true
 
 interface LinkItem { label: string; href: string }

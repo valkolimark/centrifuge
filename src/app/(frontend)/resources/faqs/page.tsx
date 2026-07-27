@@ -10,7 +10,7 @@ import { buildMetadata } from '@/lib/seo'
 import { SITE_URL } from '@/lib/site'
 import { getFaqCategories } from '@/lib/content'
 
-export const revalidate = 3600
+export const revalidate = 86400
 
 export const metadata: Metadata = buildMetadata(
   { title: 'Centrifuge Repair FAQs | Centrifuge World', description: 'Answers to common questions about industrial centrifuge repair, rebuilds, emergency service, parts fabrication, and buying or selling used centrifuges.' },

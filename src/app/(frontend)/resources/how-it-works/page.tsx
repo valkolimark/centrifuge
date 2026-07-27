@@ -7,7 +7,7 @@ import { CTABanner } from '@/components/blocks/CTABanner'
 import { buildMetadata } from '@/lib/seo'
 import { getHowItWorks } from '@/lib/content'
 
-export const revalidate = 3600
+export const revalidate = 86400
 
 export const metadata: Metadata = buildMetadata(
   { title: 'How Centrifuges Work | Centrifuge World', description: 'Plain-language guides to how decanter, basket, disc-stack, pusher, peeler, and nozzle centrifuges work — and the signs each type needs repair.' },

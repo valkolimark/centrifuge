@@ -14,7 +14,7 @@ import { buildMetadata } from '@/lib/seo'
 import { SITE_URL } from '@/lib/site'
 import { getCaseStudies, getCaseStudy } from '@/lib/content'
 
-export const revalidate = 3600
+export const revalidate = 86400
 
 export async function generateStaticParams() {
   return (await getCaseStudies()).map((c) => ({ slug: c.slug }))

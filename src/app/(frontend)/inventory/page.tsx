@@ -13,7 +13,11 @@ import { SITE_URL } from '@/lib/site'
 import { getInventory } from '@/lib/inventory'
 import { InventoryCard } from '@/components/blocks/InventoryCard'
 
-export const revalidate = 300
+// 6h, not 5min: the inventory collection now triggers on-demand revalidation of this
+// route on every publish/delete (payload/hooks/revalidate.ts), so listings still update
+// the moment stock changes. The timer is only a backstop — at 300s these 46 routes were
+// generating ~550 Payload queries an hour and the bulk of the site's database load.
+export const revalidate = 21600
 const HERO = 'https://centrifuge-im.s3.amazonaws.com/wp-content/uploads/2020/01/07192807/sanborn-centrifuge-repair-hero-1.jpg.webp'
 
 export const metadata: Metadata = buildMetadata(

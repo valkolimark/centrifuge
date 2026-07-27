@@ -8,7 +8,7 @@ import { CTABanner } from '@/components/blocks/CTABanner'
 import { getServices } from '@/lib/content'
 import { buildMetadata } from '@/lib/seo'
 
-export const revalidate = 3600
+export const revalidate = 86400
 
 export const metadata: Metadata = buildMetadata(
   {

@@ -7,7 +7,7 @@ import { getInventory } from '@/lib/inventory'
 
 // Sitemap: static routes + published services + content routes (brands/industries/
 // how-it-works/case-studies/blog). Merged brands (redirects) are excluded.
-export const revalidate = 3600
+export const revalidate = 86400
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const now: MetadataRoute.Sitemap = []

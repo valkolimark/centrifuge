@@ -16,7 +16,7 @@ import { SITE_URL } from '@/lib/site'
 import { getHowItWorks, getHowItWorksItem } from '@/lib/content'
 import { toVideoSource, youtubeEmbedUrl } from '@/lib/videos'
 
-export const revalidate = 3600
+export const revalidate = 86400
 
 export async function generateStaticParams() {
   return (await getHowItWorks()).map((h) => ({ slug: h.slug }))

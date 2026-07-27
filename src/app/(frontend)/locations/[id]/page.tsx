@@ -16,7 +16,7 @@ import { localBusinessSchema, breadcrumbSchema, faqPageSchema } from '@/lib/sche
 import { buildMetadata } from '@/lib/seo'
 import { SITE_URL, locations, type Location } from '@/lib/site'
 
-export const revalidate = 3600
+export const revalidate = 86400
 
 // Display name + metro + hero per facility. Houston uses the "Houston (Rosharon), TX"
 // pattern (marketed as Houston; physical address is Rosharon).

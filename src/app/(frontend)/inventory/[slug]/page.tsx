@@ -15,7 +15,8 @@ import { SITE_URL, org, brands } from '@/lib/site'
 import { getInventory, getInventoryItem, MACHINE_TYPE_LABELS, CONDITION_LABELS, type InventoryItem } from '@/lib/inventory'
 import { machineContext } from '@/lib/inventory-machine'
 
-export const revalidate = 300
+// 6h backstop — publish/delete revalidates this route on demand. See inventory/page.tsx.
+export const revalidate = 21600
 
 export async function generateStaticParams() {
   return (await getInventory()).map((i) => ({ slug: i.slug }))

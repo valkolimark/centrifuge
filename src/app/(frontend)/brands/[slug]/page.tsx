@@ -24,7 +24,7 @@ import { getBrandContent } from '@/lib/content'
 import { BRAND_VIDEO, fallbackBrandHero } from '@/lib/page-media'
 import { toVideoSource } from '@/lib/videos'
 
-export const revalidate = 3600
+export const revalidate = 86400
 const INVENTORY = '/inventory/'
 
 // Map a brand's serviced types to the matching "used centrifuges" category for

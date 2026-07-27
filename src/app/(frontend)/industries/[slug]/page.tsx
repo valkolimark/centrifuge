@@ -17,7 +17,7 @@ import { SITE_URL } from '@/lib/site'
 import { INDUSTRIES, industryBySlug } from '@/lib/stubs'
 import { getIndustry } from '@/lib/content'
 
-export const revalidate = 3600
+export const revalidate = 86400
 
 export function generateStaticParams() {
   return INDUSTRIES.map((i) => ({ slug: i.slug }))
