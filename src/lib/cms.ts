@@ -3,7 +3,7 @@
 // and falls back to the JSON files if the DB is empty/unavailable — so the site
 // works whether or not a given collection has been migrated yet.
 import { getPayloadClient } from './payload'
-import type { BrandContent, IndustryContent, CaseStudyContent, BlogPostContent, HowItWorksContent, LinkItem } from './content'
+import type { BrandContent, IndustryContent, CaseStudyContent, BlogPostContent, HowItWorksContent, ServiceContent, LinkItem } from './content'
 
 type Row = Record<string, unknown>
 const links = (v: unknown): LinkItem[] =>
@@ -163,6 +163,51 @@ export async function getHowItWorksFromCMS(): Promise<HowItWorksContent[]> {
   const payload = await getPayloadClient()
   const res = await payload.find({ collection: 'how-it-works', where: { _status: { equals: 'published' } }, depth: 0, limit: 100 })
   return res.docs.map((d) => mapHowItWorks(d as unknown as Row))
+}
+
+// ── Services ────────────────────────────────────────────────
+function mapService(d: Row): ServiceContent {
+  const seo = (d.seo as { title?: string; description?: string; noindex?: boolean; canonicalOverride?: string } | undefined) ?? {}
+  return {
+    slug: d.slug as string,
+    title: d.title as string,
+    h1: (d.h1 as string) || undefined,
+    formType: (d.formType as ServiceContent['formType']) || undefined,
+    answerBoxQuestion: (d.answerBoxQuestion as string) || undefined,
+    answerBox: (d.answerBox as string) || undefined,
+    intro: (d.intro as string) || undefined,
+    capabilitiesHeading: (d.capabilitiesHeading as string) || undefined,
+    capabilities: Array.isArray(d.capabilities)
+      ? (d.capabilities as Row[]).map((c) => ({ item: String(c.item ?? ''), detail: (c.detail as string) || undefined })).filter((c) => c.item)
+      : [],
+    processHeading: (d.processHeading as string) || undefined,
+    process: Array.isArray(d.process)
+      ? (d.process as Row[]).map((p) => ({ title: String(p.title ?? ''), description: (p.description as string) || undefined })).filter((p) => p.title)
+      : [],
+    faqs: faqs(d.faqs),
+    relatedServices: links(d.relatedServices),
+    relatedBrands: links(d.relatedBrands),
+    relatedIndustries: links(d.relatedIndustries),
+    emergencyVariant: !!d.emergencyVariant,
+    seo: {
+      title: seo.title || undefined,
+      description: seo.description || undefined,
+      noindex: seo.noindex,
+      canonicalOverride: seo.canonicalOverride || undefined,
+    },
+  }
+}
+
+export async function getServicesFromCMS(): Promise<ServiceContent[]> {
+  const payload = await getPayloadClient()
+  const res = await payload.find({
+    collection: 'services',
+    where: { _status: { equals: 'published' } },
+    sort: 'title',
+    depth: 0,
+    limit: 100,
+  })
+  return (res.docs as unknown as Row[]).map(mapService)
 }
 
 // ── FAQs (flat rows; grouped into categories by content.ts) ──

@@ -1,8 +1,7 @@
 import type { MetadataRoute } from 'next'
 import { SITE_URL, brands, locations } from '@/lib/site'
 import { INDUSTRIES } from '@/lib/stubs'
-import { getPayloadClient } from '@/lib/payload'
-import { getBrandContent, getHowItWorks, getCaseStudies, getBlogPosts } from '@/lib/content'
+import { getBrandContent, getHowItWorks, getCaseStudies, getBlogPosts, getServices } from '@/lib/content'
 import { USED_CATEGORIES } from '@/content/used-centrifuges'
 import { getInventory } from '@/lib/inventory'
 
@@ -19,14 +18,8 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     add(p, p === '/' ? 1 : 0.7),
   )
 
-  // Services from Payload
-  try {
-    const payload = await getPayloadClient()
-    const res = await payload.find({ collection: 'services', where: { _status: { equals: 'published' } }, limit: 100, depth: 0 })
-    for (const d of res.docs) add(`/services/${(d as { slug: string }).slug}/`, 0.8)
-  } catch {
-    /* DB unavailable at build */
-  }
+  // Services (Payload-first, JSON fallback — so a DB outage can't empty the sitemap)
+  for (const s of await getServices()) add(`/services/${s.slug}/`, 0.8)
 
   // Brands with harvested content (skip merged → they redirect)
   for (const b of brands) {
