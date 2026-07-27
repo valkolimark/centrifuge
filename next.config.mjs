@@ -14,6 +14,15 @@ const nextConfig = {
   // (FileUpload compresses to ≤1 MB each, up to 6) don't 413. The platform still caps the
   // request body, so the client also fails gracefully on oversized submissions.
   experimental: { inlineCss: true, serverActions: { bodySizeLimit: '8mb' } },
+  // The content-migration/*.json snapshots are the fallback every content loader in
+  // src/lib/content.ts reads when Payload is unreachable. Next's file tracing picked
+  // them up for some route bundles but not others (the sitemap route traced zero of
+  // them), which made the fallbacks build-time-only: during the 2026-07-24 Neon outage
+  // the sitemap regenerated at runtime, found no JSON, and collapsed from 104 URLs to
+  // 34. Include them explicitly so every route can read them at runtime too.
+  outputFileTracingIncludes: {
+    '/**': ['./content-migration/**/*.json'],
+  },
   // The quote PDF pipeline (src/lib/quotes/pdf.tsx) uses headless Chrome. These packages have
   // dynamic requires / native binaries webpack can't bundle — keep them external so any server
   // graph that reaches sendQuote (e.g. the workspace "Send to Client" action) builds cleanly.

@@ -1,3 +1,5 @@
+import { readFileSync, existsSync } from 'node:fs'
+import { join } from 'node:path'
 import { getPayloadClient } from './payload'
 
 export interface InventorySpec {
@@ -49,7 +51,9 @@ export const CONDITION_LABELS: Record<string, string> = {
 type RawImage = { image?: { url?: string; alt?: string; width?: number; height?: number } | null; imageUrl?: string | null; alt?: string | null }
 type RawDoc = Record<string, unknown>
 
-function mapItem(d: RawDoc): InventoryItem {
+// Exported so scripts/export-inventory-json.ts produces the exact same shape the
+// runtime uses — the snapshot can't drift from mapItem.
+export function mapItem(d: RawDoc): InventoryItem {
   const title = (d.title as string) || 'Used centrifuge'
   const images: InventoryImage[] = ((d.images as RawImage[] | undefined) ?? [])
     .map((row): InventoryImage | null => {
@@ -80,7 +84,22 @@ function mapItem(d: RawDoc): InventoryItem {
   }
 }
 
-// Published, non-sold inventory for the public site (empty array if DB is down).
+// Snapshot fallback, mirroring the other content loaders (src/lib/content.ts). Without
+// it a DB outage returned [], /inventory/[slug] called notFound(), and ISR cached that
+// 404 for an hour — the same failure that took out the service pages on 2026-07-24.
+// Regenerate with `pnpm tsx scripts/export-inventory-json.ts`.
+function readInventorySnapshot(): InventoryItem[] {
+  try {
+    const p = join(process.cwd(), 'content-migration', 'inventory.json')
+    if (!existsSync(p)) return []
+    const docs = JSON.parse(readFileSync(p, 'utf8')) as InventoryItem[]
+    return docs.filter((d) => d.availability !== 'sold')
+  } catch {
+    return []
+  }
+}
+
+// Published, non-sold inventory for the public site. Payload first; snapshot if it's down.
 export async function getInventory(): Promise<InventoryItem[]> {
   try {
     const payload = await getPayloadClient()
@@ -91,10 +110,11 @@ export async function getInventory(): Promise<InventoryItem[]> {
       depth: 1,
       limit: 300,
     })
-    return res.docs.map((d) => mapItem(d as unknown as RawDoc))
+    if (res.docs.length) return res.docs.map((d) => mapItem(d as unknown as RawDoc))
   } catch {
-    return []
+    /* DB unavailable → snapshot */
   }
+  return readInventorySnapshot()
 }
 
 // Available machines for a given OEM brand (CYCLE-INV-1 Phase 2). `brand` is a free-text field,
@@ -136,8 +156,11 @@ export async function getInventoryItem(slug: string): Promise<InventoryItem | nu
       limit: 1,
     })
     const doc = res.docs[0]
-    return doc ? mapItem(doc as unknown as RawDoc) : null
-  } catch {
+    // Only fall through to the snapshot when the DB is unreachable — a genuine
+    // "no such machine" must stay a 404, not resurrect a deleted listing.
+    if (doc) return mapItem(doc as unknown as RawDoc)
     return null
+  } catch {
+    return readInventorySnapshot().find((i) => i.slug === slug) ?? null
   }
 }
