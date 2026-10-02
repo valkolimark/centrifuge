@@ -10,49 +10,16 @@ import { sendEmail, getOperationStatus, type SendResult } from '@/lib/email/twil
 import { renderTemplate } from '@/lib/email/render'
 import { TEMPLATES } from '@/lib/email/templates'
 import { getRecipients, SENDERS } from '@/lib/email/recipients'
+import { buildLeadEmail } from '@/lib/email/lead-view'
 import nap from '../../../data/nap.json'
 
 type AnyLead = Record<string, any>
-
-const SOURCE_LABEL: Record<string, string> = {
-  contact: 'Contact',
-  'quote-request': 'Quote Request',
-  emergency: 'Emergency Service',
-  'phone-in': 'Phone-in',
-  manual: 'Manual',
-}
-
-function internalFields(lead: AnyLead): { label: string; value: string }[] {
-  const rows: { label: string; value: string }[] = []
-  if (lead.email) rows.push({ label: 'Email', value: String(lead.email) })
-  if (lead.phone) rows.push({ label: 'Phone', value: String(lead.phone) })
-  if (lead.company) rows.push({ label: 'Company', value: String(lead.company) })
-  rows.push({ label: 'Source form', value: SOURCE_LABEL[lead.sourceForm] || String(lead.sourceForm || 'Contact') })
-  if (lead.estimatedValue) rows.push({ label: 'Est. value', value: `$${Number(lead.estimatedValue).toLocaleString('en-US')}` })
-  // Surface any extra scalar fields captured in the original payload — but never the anti-spam
-  // artifacts (Turnstile token, honeypot) or noisy internals; they aren't lead data.
-  const seen = new Set(['name', 'email', 'phone', 'company', 'message', 'cf-turnstile-response', 'company_website', 'contact_time', 'photoIds', 'photoCount', 'photoUrls'])
-  for (const [k, v] of Object.entries(lead.payload || {})) {
-    if (seen.has(k) || v == null || typeof v === 'object') continue
-    rows.push({ label: k.replace(/[_-]/g, ' ').replace(/\b\w/g, (c) => c.toUpperCase()), value: String(v) })
-  }
-  return rows
-}
 
 /** Route a freshly-created lead. Best-effort; resolves even on failure. */
 export async function routeLead(payload: any, lead: AnyLead, req?: any): Promise<void> {
   const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://centrifuge.com'
   const from = { address: SENDERS.notifications, name: 'Centrifuge World' }
-  const isEmergency = lead.sourceForm === 'emergency'
   const emergencyDisplay = nap.phones.emergency.display
-  // Phase 3: inventory-sourced leads carry a machine snapshot in the payload — surface it in
-  // the internal alert (block + subject). specsLine is precomputed (Liquid can't join arrays).
-  const rawMachine = lead.payload && typeof lead.payload === 'object' ? (lead.payload as AnyLead).machine : null
-  const machine = rawMachine
-    ? { ...rawMachine, specsLine: (rawMachine.specsSnapshot || []).slice(0, 3).map((s: AnyLead) => `${s.label}: ${s.value}`).join(' · ') }
-    : null
-  // Photos the submitter uploaded (absolute urls captured at submit time) → shown in the alert.
-  const photos = lead.payload && typeof lead.payload === 'object' ? (lead.payload as AnyLead).photoUrls || null : null
   const activity: any[] = [{ type: 'form_received', note: 'Payload validated, lead created', at: new Date().toISOString(), by: 'system' }]
   const patch: AnyLead = {}
 
@@ -60,24 +27,18 @@ export async function routeLead(payload: any, lead: AnyLead, req?: any): Promise
     const recipients = await getRecipients(payload, req)
     if (!recipients.length) throw new Error('No routing recipients configured')
 
-    // 1) Internal batch alert to all recipients.
-    const internal = await renderTemplate(TEMPLATES['form-lead-internal'], {
-      isEmergency,
-      formTypeLabel: SOURCE_LABEL[lead.sourceForm] || 'New Lead',
-      name: lead.name,
-      company: lead.company,
-      receivedAt: new Date().toLocaleString('en-US', { timeZone: 'America/Chicago' }),
-      fields: internalFields(lead),
-      message: lead.message,
-      machine,
-      photos,
-      leadUrl: `${siteUrl}/admin/collections/leads/${lead.id}`,
+    // 1) Internal batch alert to all recipients. Layout + labels live in lib/email/lead-view.
+    const { view, subject } = buildLeadEmail(lead, {
+      siteUrl,
       emergencyDisplay,
+      hoursDisplay: nap.hours.office.display,
+      oncallDisplay: nap.hours.oncall.display,
+      recipientNames: recipients.map((r) => {
+        const first = (r.name || r.email.split('@')[0]).split(/\s+/)[0]
+        return first.charAt(0).toUpperCase() + first.slice(1)
+      }),
     })
-    const subjectName = lead.name || 'New lead'
-    const subject = machine
-      ? `Quote request — ${machine.title} (${machine.inventoryId})`
-      : `${isEmergency ? '🔴 EMERGENCY: ' : ''}[${SOURCE_LABEL[lead.sourceForm] || 'Lead'}] ${subjectName}${lead.company ? ` — ${lead.company}` : ''}`
+    const internal = await renderTemplate(TEMPLATES['form-lead-internal'], view)
     const res: SendResult = await sendEmail({
       from,
       to: recipients.map((r) => ({ address: r.email, name: r.name })),
