@@ -1,6 +1,8 @@
 import { describe, it, expect, beforeEach } from 'vitest'
 import {
   buildRequestBody,
+  buildSendGridBody,
+  transport,
   estimateSizeBytes,
   sendEmail,
   getOperationStatus,
@@ -19,7 +21,7 @@ const base = {
 }
 
 describe('twilio buildRequestBody', () => {
-  it('maps to the Twilio Email shape (from/to/content), cc and merged variables, and does NOT set a restricted Reply-To header', () => {
+  it('maps to the Twilio Email shape (from/to/content), folds cc into to, merges variables, and does NOT set a restricted Reply-To header', () => {
     const body: any = buildRequestBody({
       from: { address: 'quotes@centrifuge.com', name: 'Centrifuge World' },
       to: [{ address: 'client@acme.com', name: 'Client', variables: { firstName: 'Sam' } }],
@@ -37,12 +39,66 @@ describe('twilio buildRequestBody', () => {
     expect(body.content.html).toBe('<b>x</b>')
     // Twilio Email rejects a custom 'Reply-To' header ("restricted"), so it must not be set.
     expect(body.content.headers).toBeUndefined()
-    expect(body.cc).toEqual([{ address: 'mark@p5400.com' }, { address: 'ron@p5400.com' }])
+    // No cc in the Twilio Email schema: cc'd addresses each get their own copy via `to`.
+    expect(body.cc).toBeUndefined()
+    expect(body.to.map((r: any) => r.address)).toEqual(['client@acme.com', 'mark@p5400.com', 'ron@p5400.com'])
+  })
+
+  it('puts attachments inside content (Twilio Email schema)', () => {
+    const att = { filename: 'q.pdf', content: 'QUJD', type: 'application/pdf' }
+    const body: any = buildRequestBody({ ...base, attachments: [att] })
+    expect(body.content.attachments).toEqual([att])
+    expect(body.attachments).toBeUndefined()
   })
 
   it('strips Unicode from the from display name (Twilio rejects Unicode in from)', () => {
     const body: any = buildRequestBody({ ...base, from: { address: 'a@b.com', name: 'Café ☕ World' } })
     expect(/[^\x20-\x7E]/.test(body.from.name)).toBe(false)
+  })
+})
+
+describe('sendgrid buildSendGridBody', () => {
+  it('sets reply_to, cc (deduped against to), text before html, and attachments', () => {
+    const body: any = buildSendGridBody({
+      from: { address: 'notifications@centrifuge.com', name: 'Centrifuge World' },
+      to: [{ address: 'mark@p5400.com', name: 'Mark' }, 'ron@p5400.com'],
+      cc: ['ron@p5400.com', 'david@p5400.com'],
+      replyTo: 'jordan@example.com',
+      subject: 'New lead',
+      html: '<p>x</p>',
+      text: 'x',
+      attachments: [{ filename: 'q.pdf', content: 'QUJD', type: 'application/pdf' }],
+    })
+    expect(body.reply_to).toEqual({ email: 'jordan@example.com' })
+    expect(body.personalizations[0].to).toEqual([{ email: 'mark@p5400.com', name: 'Mark' }, { email: 'ron@p5400.com' }])
+    expect(body.personalizations[0].cc).toEqual([{ email: 'david@p5400.com' }])
+    expect(body.from).toEqual({ email: 'notifications@centrifuge.com', name: 'Centrifuge World' })
+    expect(body.content.map((c: any) => c.type)).toEqual(['text/plain', 'text/html'])
+    expect(body.attachments[0]).toEqual({ content: 'QUJD', filename: 'q.pdf', type: 'application/pdf', disposition: 'attachment' })
+  })
+
+  it('omits reply_to and cc when not given', () => {
+    const body: any = buildSendGridBody(base)
+    expect(body.reply_to).toBeUndefined()
+    expect(body.personalizations[0].cc).toBeUndefined()
+  })
+
+  it('uses SendGrid only when SENDGRID_API_KEY is set', () => {
+    delete process.env.SENDGRID_API_KEY
+    expect(transport()).toBe('twilio')
+    process.env.SENDGRID_API_KEY = 'SG.test'
+    expect(transport()).toBe('sendgrid')
+    expect(hasCredentials()).toBe(true)
+    delete process.env.SENDGRID_API_KEY
+  })
+
+  it('SendGrid operations report PROCESSING without a network call', async () => {
+    process.env.SENDGRID_API_KEY = 'SG.test'
+    process.env.LEADS_EMAIL_DRY_RUN = 'false'
+    const s = await getOperationStatus('sg_abc123')
+    expect(s.status).toBe('PROCESSING')
+    delete process.env.SENDGRID_API_KEY
+    delete process.env.LEADS_EMAIL_DRY_RUN
   })
 })
 
@@ -66,6 +122,7 @@ describe('twilio dry-run (default, no credentials)', () => {
     delete process.env.TWILIO_API_KEY_SECRET
     delete process.env.TWILIO_ACCOUNT_SID
     delete process.env.TWILIO_AUTH_TOKEN
+    delete process.env.SENDGRID_API_KEY
     delete process.env.LEADS_EMAIL_DRY_RUN
   })
 

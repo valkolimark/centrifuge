@@ -10,9 +10,15 @@
  *
  * Content is rendered app-side (see ./render) and sent as final HTML+text; per-recipient
  * `variables` are still forwarded for Twilio-side Liquid should a template ever need them.
+ *
+ * SendGrid transport: Twilio Email has no reply-to field and rejects a Reply-To header, and
+ * it has no cc. When SENDGRID_API_KEY is set, sends go through SendGrid's v3 Mail Send API
+ * instead (same account/authenticated domain under the hood), which supports reply_to, cc and
+ * attachments natively. Without the key, Twilio Email is used as before.
  */
 
 const API_BASE = 'https://comms.twilio.com/v1'
+const SENDGRID_URL = 'https://api.sendgrid.com/v3/mail/send'
 const MAX_MESSAGE_BYTES = 10 * 1024 * 1024 // 10 MB incl. attachments
 const MAX_RETRIES = 3
 
@@ -63,7 +69,10 @@ function creds() {
   if (acct && token) return { user: acct, pass: token }
   return null
 }
-export const hasCredentials = () => creds() !== null
+const sendgridKey = () => process.env.SENDGRID_API_KEY || ''
+export const hasCredentials = () => creds() !== null || !!sendgridKey()
+/** Which transport a live send uses. SendGrid wins when its key is set (reply-to support). */
+export const transport = (): 'sendgrid' | 'twilio' => (sendgridKey() ? 'sendgrid' : 'twilio')
 // Dry-run is the default. Only real when explicitly disabled AND credentials exist.
 export const isDryRun = () => process.env.LEADS_EMAIL_DRY_RUN !== 'false' || !hasCredentials()
 
@@ -92,6 +101,11 @@ export function buildRequestBody(input: SendEmailInput) {
     ...(r.name ? { name: r.name } : {}),
     ...(input.variables || r.variables ? { variables: { ...(input.variables ?? {}), ...(r.variables ?? {}) } } : {}),
   }))
+  // Twilio Email has no cc: each `to` entry gets its own copy, so cc'd addresses join `to`.
+  const toSet = new Set(to.map((r) => r.address.toLowerCase()))
+  for (const address of input.cc ?? []) {
+    if (!toSet.has(address.toLowerCase())) { to.push({ address }); toSet.add(address.toLowerCase()) }
+  }
   const body: Record<string, unknown> = {
     from: { address: from.address, ...(from.name ? { name: asciiOnly(from.name) } : {}) },
     to,
@@ -99,15 +113,38 @@ export function buildRequestBody(input: SendEmailInput) {
       subject: input.subject,
       html: input.html,
       text: input.text,
+      // Attachments live inside `content` in the Twilio Email schema.
+      ...(input.attachments?.length ? { attachments: input.attachments } : {}),
     },
   }
-  // NB: Twilio Email rejects a custom 'Reply-To' header ("restricted and cannot be overridden"),
-  // so we do NOT set one — the internal alert already shows the submitter's email/phone in-body.
-  // TODO(reply-to): re-add via Twilio's dedicated reply-to field once confirmed against a live send.
-  if (input.cc?.length) body.cc = input.cc.map((address) => ({ address }))
-  if (input.attachments?.length) body.attachments = input.attachments
+  // NB: Twilio Email has no reply-to field and rejects a 'Reply-To' header ("restricted and
+  // cannot be overridden"), so replyTo is dropped here. Set SENDGRID_API_KEY to honor it.
   if (input.tags) body.tags = input.tags
   return body
+}
+
+// ── request body (SendGrid v3 Mail Send shape) ──────────────────────────────
+export function buildSendGridBody(input: SendEmailInput) {
+  const from = asAddress(input.from)
+  const to = input.to.map(asRecipient).map((r) => ({ email: r.address, ...(r.name ? { name: r.name } : {}) }))
+  // SendGrid rejects an address that appears in both to and cc.
+  const seen = new Set(to.map((r) => r.email.toLowerCase()))
+  const cc = (input.cc ?? []).filter((e) => !seen.has(e.toLowerCase()) && (seen.add(e.toLowerCase()), true)).map((email) => ({ email }))
+  return {
+    personalizations: [{ to, ...(cc.length ? { cc } : {}) }],
+    from: { email: from.address, ...(from.name ? { name: from.name } : {}) },
+    ...(input.replyTo ? { reply_to: { email: input.replyTo } } : {}),
+    subject: input.subject,
+    // text/plain must precede text/html.
+    content: [
+      ...(input.text ? [{ type: 'text/plain', value: input.text }] : []),
+      { type: 'text/html', value: input.html },
+    ],
+    ...(input.attachments?.length
+      ? { attachments: input.attachments.map((a) => ({ content: a.content, filename: a.filename, type: a.type, disposition: 'attachment' })) }
+      : {}),
+    ...(input.tags ? { custom_args: input.tags } : {}),
+  }
 }
 
 function authHeader(): string {
@@ -151,10 +188,24 @@ export async function sendEmail(input: SendEmailInput): Promise<SendResult> {
     // Never call Twilio in dry-run. Log a compact record; return a synthetic operation id.
     // eslint-disable-next-line no-console
     console.info('[twilio:dry-run] would send email', {
-      from: body.from, to: recipients, cc: input.cc ?? [], subject: input.subject,
+      transport: transport(), from: body.from, to: recipients, cc: input.cc ?? [], subject: input.subject,
       replyTo: input.replyTo, attachments: (input.attachments ?? []).map((a) => a.filename), bytes,
     })
     return { dryRun: true, operationId: `dry_${Date.now().toString(36)}`, operationLocation: null, recipients }
+  }
+
+  if (transport() === 'sendgrid') {
+    const sg = await fetchWithRetry(SENDGRID_URL, {
+      method: 'POST',
+      headers: { Authorization: `Bearer ${sendgridKey()}`, 'Content-Type': 'application/json' },
+      body: JSON.stringify(buildSendGridBody(input)),
+    })
+    if (sg.status !== 202) {
+      const detail = await sg.text().catch(() => '')
+      throw new Error(`SendGrid send failed: ${sg.status} ${detail.slice(0, 300)}`)
+    }
+    // 202 = accepted for delivery. SendGrid has no operation to poll (see getOperationStatus).
+    return { dryRun: false, operationId: `sg_${sg.headers.get('x-message-id') || Date.now().toString(36)}`, operationLocation: null, recipients }
   }
 
   const res = await fetchWithRetry(`${API_BASE}/Emails`, {
@@ -178,6 +229,10 @@ export async function sendEmail(input: SendEmailInput): Promise<SendResult> {
 export async function getOperationStatus(operationId: string): Promise<OperationStatus> {
   if (isDryRun() || operationId.startsWith('dry_')) {
     return { dryRun: true, id: operationId, status: 'COMPLETED', stats: { total: 0, delivered: 0 } }
+  }
+  // SendGrid sends are accepted (202) but have no pollable operation; delivery stays "queued".
+  if (operationId.startsWith('sg_')) {
+    return { dryRun: false, id: operationId, status: 'PROCESSING', stats: {} }
   }
   const res = await fetchWithRetry(`${API_BASE}/Emails/Operations/${operationId}`, {
     method: 'GET',
