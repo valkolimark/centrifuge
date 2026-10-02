@@ -47,3 +47,4 @@ lhci_reports/
 # env (all env files ignored EXCEPT the committed template)
 .env*
 !.env.example
+.email-preview/

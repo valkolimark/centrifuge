@@ -4,16 +4,15 @@
 import type { EmailTemplate } from '../render'
 
 // Shared branded shell. `{{ body }}` is pre-rendered inner HTML injected via Liquid raw.
-const BAND = '#12356E,#1B4FA0 55%,#2A6AD1'
-const shell = (inner: string) => `<!doctype html><html><body style="margin:0;background:#EEF3F6;font-family:-apple-system,Segoe UI,Inter,Arial,sans-serif;color:#152238">
+const shell = (inner: string) => `<!doctype html><html><head><meta charset="utf-8"></head><body style="margin:0;background:#EEF3F6;font-family:-apple-system,Segoe UI,Inter,Arial,sans-serif;color:#152238">
   <table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="background:#EEF3F6;padding:24px 0"><tr><td align="center">
-    <table role="presentation" width="600" cellpadding="0" cellspacing="0" style="width:600px;max-width:600px;background:#fff;border-radius:8px;overflow:hidden;box-shadow:0 6px 24px rgba(7,37,70,.10)">
-      <tr><td style="background:linear-gradient(90deg,${BAND});padding:18px 28px">
-        <span style="font-family:'Rajdhani',Arial,sans-serif;font-weight:700;font-size:20px;letter-spacing:.04em;color:#fff">CENTRIFUGE <span style="color:#9FD0FF">WORLD</span></span>
-        <span style="display:block;font-size:10px;letter-spacing:.18em;color:#BFD8F5;text-transform:uppercase;margin-top:2px">Est. 1939 · Industrial Centrifuge Repair & Rebuild</span>
+    <table role="presentation" width="600" cellpadding="0" cellspacing="0" style="width:600px;max-width:600px;background:#fff;border:1px solid #C2D0D8;border-radius:6px;overflow:hidden">
+      <tr><td style="background:#00415A;padding:18px 28px">
+        <span style="font-family:Archivo,Arial,sans-serif;font-weight:700;font-size:18px;letter-spacing:.06em;color:#fff">CENTRIFUGE <span style="color:#00B8FF">WORLD</span></span>
+        <span style="display:block;font-size:10px;letter-spacing:.18em;color:#C2D0D8;text-transform:uppercase;margin-top:2px">Est. 1939 · Industrial Centrifuge Repair & Rebuild</span>
       </td></tr>
       <tr><td style="padding:28px">${inner}</td></tr>
-      <tr><td style="background:#F2F6FC;padding:14px 28px;font-size:11px;color:#5E6C85">
+      <tr><td style="background:#EEF3F6;padding:14px 28px;font-size:11px;color:#5C7078">
         centrifuge.com · Rosharon TX · Franklin Park IL · Alsip IL · 24/7 emergency {{ emergencyDisplay }}
       </td></tr>
     </table>
@@ -24,49 +23,108 @@ const btn = (href: string, label: string) =>
   `<a href="${href}" style="display:inline-block;background:#00719C;color:#fff;text-decoration:none;font-weight:600;font-size:14px;padding:11px 22px;border-radius:4px">${label}</a>`
 
 // ── form-lead-internal — internal alert to all four recipients ────────────────
+// Own layout (not shell): reading order follows the next action — who, call/email, what they
+// need, their words, their files, contact. Data comes pre-shaped from lib/email/lead-view.
+// Every customer-supplied value is `| escape`d in HTML (Liquid does not auto-escape).
+const C = { navy: '#00415A', deep: '#001F2B', blue: '#00719C', bright: '#00B8FF', s100: '#EEF3F6', s300: '#C2D0D8', s500: '#5C7078', s700: '#16303B', red: '#E11900' }
+const sectionLabel = (t: string) =>
+  `<div style="font-size:11px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:${C.s500};margin:0 0 10px">${t}</div>`
+const section = (inner: string) => `<tr><td class="px" style="padding:22px 28px;border-top:1px solid ${C.s100}">${inner}</td></tr>`
+const actionBtn = (href: string, label: string, bg: string, fg: string, border: string) =>
+  `<a href="${href}" style="display:inline-block;background:${bg};color:${fg};border:2px solid ${border};text-decoration:none;font-weight:700;font-size:15px;padding:11px 20px;border-radius:4px;margin:0 8px 8px 0">${label}</a>`
+const labelCell = `padding:8px 12px 8px 0;font-size:13px;color:${C.s500};width:140px;vertical-align:top`
+
 export const formLeadInternal: EmailTemplate = {
-  html: shell(`
-    <div style="margin-bottom:6px">
-      {% if isEmergency %}<span style="display:inline-block;background:#E11900;color:#fff;font-size:11px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;padding:3px 10px;border-radius:5px">Emergency</span>
-      {% else %}<span style="display:inline-block;background:#E6F0F7;color:#00719C;font-size:11px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;padding:3px 10px;border-radius:5px">{{ formTypeLabel }}</span>{% endif %}
+  html: `<!doctype html><html><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<style>@media (max-width:480px){.px{padding-left:18px!important;padding-right:18px!important}.card{width:100%!important}}</style></head>
+<body style="margin:0;background:${C.s100};font-family:Inter,-apple-system,'Segoe UI',Arial,sans-serif;color:${C.s700}">
+<table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="background:${C.s100};padding:20px 0"><tr><td align="center" style="padding:0 8px">
+<table role="presentation" class="card" width="600" cellpadding="0" cellspacing="0" style="width:600px;max-width:100%;background:#FFFFFF;border:1px solid ${C.s300};border-radius:6px;overflow:hidden">
+  {% if isEmergency %}<tr><td style="background:${C.red};padding:12px 28px;color:#FFFFFF;font-size:14px;font-weight:700;letter-spacing:.02em">EMERGENCY — equipment down. Call back now.</td></tr>{% endif %}
+  <tr><td style="background:${C.navy};padding:16px 28px">
+    <table role="presentation" width="100%" cellpadding="0" cellspacing="0"><tr>
+      <td style="font-family:Archivo,Arial,sans-serif;font-weight:700;font-size:17px;letter-spacing:.06em;color:#FFFFFF">CENTRIFUGE <span style="color:${C.bright}">WORLD</span></td>
+      <td align="right"><span style="display:inline-block;background:{% if isEmergency %}${C.red}{% else %}${C.deep}{% endif %};color:#FFFFFF;font-size:11px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;padding:5px 10px;border-radius:4px">{{ formLabel | escape }}</span></td>
+    </tr></table>
+  </td></tr>
+  <tr><td class="px" style="padding:26px 28px 18px">
+    <div style="font-size:12px;color:${C.s500};margin-bottom:6px">New lead #{{ leadId }} · {{ receivedAt }}</div>
+    <div style="font-family:Archivo,Arial,sans-serif;font-size:26px;line-height:1.2;font-weight:700;color:${C.s700}">{{ name | escape }}</div>
+    {% if subline %}<div style="font-size:15px;color:${C.s500};margin:4px 0 0">{{ subline | escape }}</div>{% endif %}
+    <div style="margin-top:18px">
+      {% if phone %}${actionBtn('tel:{{ phoneHref }}', 'Call {{ phone | escape }}', '{% if isEmergency %}' + C.red + '{% else %}' + C.blue + '{% endif %}', '#FFFFFF', '{% if isEmergency %}' + C.red + '{% else %}' + C.blue + '{% endif %}')}{% endif %}
+      {% if mailtoHref %}${actionBtn('{{ mailtoHref | escape }}', 'Email {{ firstName | escape }}', '#FFFFFF', C.blue, C.blue)}{% else %}<span style="display:inline-block;font-size:13px;color:${C.s500};padding:13px 0">No email given — phone only</span>{% endif %}
     </div>
-    <h1 style="font-size:20px;margin:6px 0 2px">{{ name | default: 'New lead' }}</h1>
-    <div style="color:#5E6C85;font-size:14px;margin-bottom:16px">{{ company }}{% if receivedAt %} · {{ receivedAt }}{% endif %}</div>
-    {% if machine %}<div style="margin:0 0 16px;padding:12px 14px;background:#F5F8FB;border-left:3px solid #00719C;border-radius:0 6px 6px 0">
-      <div style="font-size:11px;font-weight:700;letter-spacing:.05em;text-transform:uppercase;color:#5E6C85">Machine requested · {{ machine.inventoryId }}</div>
-      <div style="font-size:15px;font-weight:600;color:#152238;margin-top:2px">{{ machine.title }}</div>
-      {% if machine.specsLine %}<div style="font-size:12.5px;color:#5E6C85;margin-top:3px">{{ machine.specsLine }}</div>{% endif %}
-      <div style="margin-top:6px"><a href="{{ machine.url }}" style="font-size:13px;color:#00719C;font-weight:600;text-decoration:none">View listing ▸</a></div>
-    </div>{% endif %}
-    <table role="presentation" cellpadding="0" cellspacing="0" style="width:100%;font-size:13px;border-collapse:collapse">
-      {% for f in fields %}<tr>
-        <td style="padding:7px 0;color:#5E6C85;width:150px;vertical-align:top;border-bottom:1px solid #EDF1F6">{{ f.label }}</td>
-        <td style="padding:7px 0;color:#152238;border-bottom:1px solid #EDF1F6">{{ f.value }}</td>
-      </tr>{% endfor %}
-    </table>
-    {% if message %}<div style="margin:16px 0;padding:12px 14px;background:#F5F8FB;border-left:3px solid #00719C;border-radius:0 6px 6px 0;font-size:13.5px;line-height:1.6;color:#2A3646">{{ message }}</div>{% endif %}
-    {% if photos %}<div style="margin:16px 0">
-      <div style="font-size:11px;font-weight:700;letter-spacing:.05em;text-transform:uppercase;color:#5E6C85;margin-bottom:8px">Photos ({{ photos.size }})</div>
-      {% for ph in photos %}<a href="{{ ph.url }}" style="text-decoration:none"><img src="{{ ph.thumb }}" alt="Uploaded photo" width="88" height="88" style="border-radius:6px;border:1px solid #EDF1F6;object-fit:cover;margin:0 6px 6px 0" /></a>{% endfor %}
-    </div>{% endif %}
-    <div style="margin-top:22px">${btn('{{ leadUrl }}', 'Open in Mission Control ▸')}</div>
-    <p style="font-size:12px;color:#8A98AC;margin-top:18px">Reply directly to this email to respond to {{ name | default: 'the submitter' }}.</p>
-  `),
-  text: `{% if isEmergency %}[EMERGENCY] {% endif %}{{ formTypeLabel }} — {{ name }}{% if company %} ({{ company }}){% endif %}
-{% if receivedAt %}Received: {{ receivedAt }}
-{% endif %}{% if machine %}Machine requested: {{ machine.title }} ({{ machine.inventoryId }})
-{{ machine.url }}
-{% endif %}
-{% for f in fields %}{{ f.label }}: {{ f.value }}
-{% endfor %}{% if message %}
-Message:
+  </td></tr>
+  {% if whatHappened %}${section(`${sectionLabel('What happened')}<div style="font-size:16px;line-height:1.55;color:${C.s700};background:#FFF4F2;border:1px solid #F5C6BF;border-radius:6px;padding:14px 16px">{{ whatHappened | escape | newline_to_br }}</div>`)}{% endif %}
+  {% if machine %}${section(`${sectionLabel('Machine requested · {{ machine.inventoryId | escape }}')}
+    <table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="border:1px solid ${C.s300};border-radius:6px"><tr><td style="padding:14px 16px">
+      <div style="font-size:16px;font-weight:700;color:${C.s700}">{{ machine.title | escape }}</div>
+      {% if machine.specsLine %}<div style="font-size:13px;color:${C.s500};margin:2px 0 0">{{ machine.specsLine | escape }}</div>{% endif %}
+      <div style="margin-top:8px"><a href="{{ machine.url | escape }}" style="font-size:14px;font-weight:600;color:${C.blue}">View listing</a></div>
+    </td></tr></table>`)}{% endif %}
+  {% if request.size > 0 %}${section(`${sectionLabel('What they need')}<table role="presentation" width="100%" cellpadding="0" cellspacing="0">{% for r in request %}<tr>
+      <td style="${labelCell};border-bottom:1px solid ${C.s100}">{{ r.label | escape }}</td>
+      <td style="padding:8px 0;font-size:15px;color:${C.s700};font-weight:600;border-bottom:1px solid ${C.s100}">{% if r.tone == 'crit' %}<span style="display:inline-block;background:${C.red};color:#FFFFFF;font-weight:700;font-size:12px;padding:3px 9px;border-radius:4px">{{ r.value | escape }}</span>{% elsif r.tone == 'warn' %}<span style="display:inline-block;background:#FFF2D6;color:#7A4B00;font-weight:700;font-size:12px;padding:3px 9px;border-radius:4px">{{ r.value | escape }}</span>{% elsif r.tone == 'ok' %}<span style="display:inline-block;background:#E3F3EB;color:#1E6B47;font-weight:700;font-size:12px;padding:3px 9px;border-radius:4px">{{ r.value | escape }}</span>{% else %}{{ r.value | escape }}{% endif %}</td>
+    </tr>{% endfor %}</table>`)}{% endif %}
+  {% if message %}${section(`${sectionLabel('Their message')}<div style="font-size:15px;line-height:1.6;color:${C.s700};background:${C.s100};border-radius:6px;padding:14px 16px">{{ message | escape | newline_to_br }}</div>`)}{% endif %}
+  {% if photoCount > 0 %}${section(`${sectionLabel('Attachments ({{ photoCount }}) — open without logging in')}
+    <table role="presentation" width="100%" cellpadding="0" cellspacing="0">{% for ph in photos %}<tr>
+      <td width="64" style="padding:6px 12px 6px 0;vertical-align:middle"><a href="{{ ph.url | escape }}"><img src="{{ ph.thumb | escape }}" alt="" width="56" height="56" style="display:block;width:56px;height:56px;object-fit:cover;border-radius:4px;border:1px solid ${C.s300};background:${C.s100}" /></a></td>
+      <td style="padding:6px 0;vertical-align:middle"><div style="font-size:14px;font-weight:600;color:${C.s700};word-break:break-all">{{ ph.name | escape }}</div>{% if ph.meta %}<div style="font-size:12px;color:${C.s500}">{{ ph.meta }}</div>{% endif %}</td>
+      <td align="right" style="padding:6px 0 6px 8px;vertical-align:middle;white-space:nowrap"><a href="{{ ph.url | escape }}" style="font-size:14px;font-weight:600;color:${C.blue};text-decoration:none">View</a><span style="color:${C.s300}">&nbsp;|&nbsp;</span><a href="{{ ph.downloadUrl | escape }}" style="font-size:14px;font-weight:600;color:${C.blue};text-decoration:none">Download</a></td>
+    </tr>{% endfor %}</table>`)}{% endif %}
+  ${section(`${sectionLabel('Contact')}<table role="presentation" width="100%" cellpadding="0" cellspacing="0">
+    <tr><td style="${labelCell}">Phone</td><td style="padding:8px 0;font-size:14px">{% if phone %}<a href="tel:{{ phoneHref }}" style="color:${C.blue};font-weight:600">{{ phone | escape }}</a>{% else %}<span style="color:${C.s500}">Not provided</span>{% endif %}</td></tr>
+    <tr><td style="${labelCell}">Email</td><td style="padding:8px 0;font-size:14px">{% if email %}<a href="mailto:{{ email | escape }}" style="color:${C.blue};font-weight:600">{{ email | escape }}</a>{% else %}<span style="color:${C.s500}">Not provided</span>{% endif %}</td></tr>
+    {% if company %}<tr><td style="${labelCell}">Company</td><td style="padding:8px 0;font-size:14px;color:${C.s700}">{{ company | escape }}</td></tr>{% endif %}
+    {% if location %}<tr><td style="${labelCell}">Location</td><td style="padding:8px 0;font-size:14px;color:${C.s700}">{{ location | escape }}</td></tr>{% endif %}
+    {% if pageUrl %}<tr><td style="${labelCell}">Submitted from</td><td style="padding:8px 0;font-size:13px;word-break:break-all"><a href="{{ pageUrl | escape }}" style="color:${C.blue}">{{ pagePath | escape }}</a></td></tr>{% endif %}
+  </table>`)}
+  <tr><td class="px" style="background:${C.s100};padding:16px 28px;font-size:12px;line-height:1.6;color:${C.s500}">
+    <a href="{{ leadUrl }}" style="color:${C.blue};font-weight:600">Open lead #{{ leadId }} in Mission Control</a> (login required){% if recipientsLine %} · Sent to {{ recipientsLine | escape }}{% endif %}<br>
+    24/7 emergency line {{ emergencyDisplay }} · {{ hoursDisplay }}, {{ oncallDisplay }}
+  </td></tr>
+</table>
+</td></tr></table>
+</body></html>`,
+  text: `{% if isEmergency %}*** EMERGENCY — equipment down. Call back now. ***
+
+{% endif %}{{ formLabel | upcase }} — Lead #{{ leadId }}
+{{ receivedAt }}
+
+{{ name }}
+{% if subline %}{{ subline }}
+{% endif %}Call:  {% if phone %}{{ phone }}{% else %}not provided{% endif %}
+Email: {% if email %}{{ email }}{% else %}not provided{% endif %}
+{% if whatHappened %}
+WHAT HAPPENED
+-------------
+{{ whatHappened }}
+{% endif %}{% if machine %}
+MACHINE REQUESTED — {{ machine.inventoryId }}
+---------------------
+{{ machine.title }}
+{% if machine.specsLine %}{{ machine.specsLine }}
+{% endif %}{{ machine.url }}
+{% endif %}{% if request.size > 0 %}
+WHAT THEY NEED
+--------------
+{% for r in request %}{{ r.label }}: {{ r.value }}
+{% endfor %}{% endif %}{% if message %}
+THEIR MESSAGE
+-------------
 {{ message }}
-{% endif %}{% if photos %}
-Photos:
-{% for ph in photos %}{{ ph.url }}
+{% endif %}{% if photoCount > 0 %}
+ATTACHMENTS ({{ photoCount }}) — no login needed
+----------------------------
+{% for ph in photos %}{{ ph.name }}{% if ph.meta %} ({{ ph.meta }}){% endif %}
+  {{ ph.url }}
 {% endfor %}{% endif %}
-Open in Mission Control: {{ leadUrl }}
-Reply to this email to respond directly to the submitter.`,
+{% if pageUrl %}Submitted from: {{ pageUrl }}
+{% endif %}Open in Mission Control: {{ leadUrl }}
+
+24/7 emergency line {{ emergencyDisplay }}`,
 }
 
 // ── form-lead-ack — auto-acknowledgement to the submitter ─────────────────────

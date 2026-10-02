@@ -1,22 +1,12 @@
 import { describe, it, expect } from 'vitest'
 import { renderTemplate } from '../render'
 import { TEMPLATES } from '../templates'
+import { buildLeadEmail } from '../lead-view'
+import { SAMPLE_LEADS, CTX } from '../__fixtures__/leads'
 
 const FIXTURES: Record<string, Record<string, unknown>> = {
-  'form-lead-internal': {
-    isEmergency: true,
-    formTypeLabel: 'Emergency Service',
-    name: 'Tom Okafor',
-    company: 'LoneStar Chemical',
-    receivedAt: 'Jul 05, 2026 · 09:14 CT',
-    fields: [
-      { label: 'Email', value: 'tom@lonestar.com' },
-      { label: 'Phone', value: '(281) 555-0164' },
-    ],
-    message: 'Decanter down on line 2, vibration alarm then hard stop.',
-    leadUrl: 'https://centrifuge.com/admin/collections/leads/abc123',
-    emergencyDisplay: '832-338-4990',
-  },
+  // Full coverage of the new-lead email lives in lead-view.test.ts.
+  'form-lead-internal': buildLeadEmail(SAMPLE_LEADS.emergency, CTX).view,
   'form-lead-ack': {
     name: 'Priya Nair',
     hoursDisplay: 'Mon–Fri: 6:00 AM – 6:00 PM',
@@ -60,15 +50,6 @@ describe('email templates render with fixture data', () => {
       }
     })
   }
-
-  it('form-lead-internal surfaces the emergency flag, payload fields, message and deep link', async () => {
-    const { html, text } = await renderTemplate(TEMPLATES['form-lead-internal'], FIXTURES['form-lead-internal'])
-    expect(html).toContain('Emergency')
-    expect(html).toContain('tom@lonestar.com')
-    expect(html).toContain('/admin/collections/leads/abc123')
-    expect(text).toContain('[EMERGENCY]')
-    expect(text).toContain('Decanter down on line 2')
-  })
 
   it('quote-delivery shows number, total, valid-until and the hosted link, and notes the PDF', async () => {
     const { html } = await renderTemplate(TEMPLATES['quote-delivery'], FIXTURES['quote-delivery'])

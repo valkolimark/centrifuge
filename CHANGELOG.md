@@ -3,6 +3,20 @@
 All notable changes to the Centrifuge.com rebuild are recorded here.
 Format loosely follows [Keep a Changelog](https://keepachangelog.com/); dates are ISO (YYYY-MM-DD).
 
+## 2026-10-02
+
+### Lead notifications (email)
+
+**Changed**
+- **Redesigned new-lead email** — reorganized around what the team does next: name + Call/Email buttons, "What they need" with human labels (no more `alfa-laval` / `this-week` slugs), the customer's message once with line breaks kept, attachments, contact. Emergencies get a red banner and "What happened" first. Real form names (Free Inspection, Sell Your Centrifuge, Send Photos) instead of "Contact", and descriptive subjects. Web Blue styling on all transactional emails.
+- **Attachments open without logging in** — each photo has View and Download links straight to Vercel Blob (no `/api/media/file` proxy, so they work even if the app or database is down). Lead-photo filenames get a random suffix so public URLs aren't guessable.
+
+**Fixed**
+- **HTML injection in lead emails** — customer-supplied text is now escaped in the HTML email (Liquid does not auto-escape).
+
+**Added**
+- `scripts/preview-lead-email.ts` (render samples to files) and `scripts/send-test-lead-email.ts` (send samples to one address).
+
 ## 2026-07-07
 
 ### Inventory ↔ quote integration (CYCLE-INV-1)

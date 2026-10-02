@@ -1,5 +1,6 @@
 'use server'
 
+import { randomBytes } from 'node:crypto'
 import { headers } from 'next/headers'
 import { getPayloadClient } from '@/lib/payload'
 import { validateSubmission } from '@/lib/forms/schema'
@@ -8,6 +9,7 @@ import { getFormConfig, EQUIPMENT_OPTIONS, BRAND_OPTIONS, URGENCY_OPTIONS, CONDI
 import { getInventoryItem } from '@/lib/inventory'
 import { machineContext } from '@/lib/inventory-machine'
 import { SITE_URL } from '@/lib/site'
+import { blobPublicUrl } from '@/lib/blob-url'
 import type { FormType } from '@/lib/analytics'
 
 const optLabel = (opts: readonly { value: string; label: string }[], v?: string) =>
@@ -118,8 +120,9 @@ export async function submitForm(_prev: FormState, formData: FormData): Promise<
   const files = formData.getAll('photos').filter((v): v is File => v instanceof File && v.size > 0)
   const photoIds: (string | number)[] = []
   // Absolute URLs (+ thumbnail) captured at upload time so both the email and the admin
-  // thumbnail strip can show the photos without re-resolving media ids.
-  const photoUrls: Array<{ url: string; thumb: string; name: string }> = []
+  // thumbnail strip can show the photos without re-resolving media ids. Prefer the direct
+  // Blob URL so email links open without logging in and without the app/database.
+  const photoUrls: Array<{ url: string; thumb: string; name: string; size?: number }> = []
   const abs = (u?: string | null) => (u ? (u.startsWith('http') ? u : `${SITE_URL}${u}`) : '')
   if (files.length && process.env.BLOB_READ_WRITE_TOKEN) {
     for (const file of files.slice(0, 6)) {
@@ -128,18 +131,20 @@ export async function submitForm(_prev: FormState, formData: FormData): Promise<
         const media: any = await payload.create({
           collection: 'media',
           data: { alt: `${config.title} photo from ${result.data.name || 'submitter'}` },
-          file: { data: buffer, mimetype: file.type, name: file.name, size: file.size },
+          // Random suffix: lead photos are publicly readable, so their URLs must not be guessable.
+          file: { data: buffer, mimetype: file.type, name: file.name.replace(/(\.[^.]+)?$/, `-${randomBytes(5).toString('hex')}$1`), size: file.size },
         })
         photoIds.push(media.id)
-        const full = abs(media.url)
-        if (full) photoUrls.push({ url: full, thumb: abs(media.sizes?.thumbnail?.url) || full, name: media.filename || file.name })
+        const full = blobPublicUrl(media.filename) || abs(media.url)
+        const thumb = blobPublicUrl(media.sizes?.thumbnail?.filename) || abs(media.sizes?.thumbnail?.url) || full
+        if (full) photoUrls.push({ url: full, thumb, name: file.name, size: media.filesize || file.size })
       } catch {
         // ignore individual upload failure; submission still records
       }
     }
   }
 
-  const fullPayload = { ...result.data, photoCount: files.length, photoIds, photoUrls, pageSource, ...(machine ? { machine, source } : {}) }
+  const fullPayload = { ...result.data, formType: type, photoCount: files.length, photoIds, photoUrls, pageSource, ...(machine ? { machine, source } : {}) }
   // Human-readable summary of every field — surfaced on both the submission (readonly
   // `details`) and the lead (`message`) so nothing is buried in the raw JSON payload.
   const baseDetails = composeDetails(result.data as Record<string, string>, files.length)
