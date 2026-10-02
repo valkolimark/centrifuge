@@ -1,7 +1,7 @@
 /* Send the sample new-lead emails (quote with photos, emergency, inventory machine) to one
  * address, subjects prefixed [TEST]. No DB writes, no leads created. Used by the admin route
  * /api/admin/test-lead-email (production has the Twilio creds) and scripts/send-test-lead-email.ts. */
-import { sendEmail } from './twilio'
+import { sendEmail, transport } from './twilio'
 import { renderTemplate } from './render'
 import { TEMPLATES } from './templates'
 import { buildLeadEmail } from './lead-view'
@@ -31,12 +31,14 @@ export async function sendTestLeadEmails(to: string, siteUrl = CTX.siteUrl) {
   }
   const ctx = { ...CTX, siteUrl, emergencyDisplay: nap.phones.emergency.display, hoursDisplay: nap.hours.office.display, oncallDisplay: nap.hours.oncall.display, now: new Date() }
 
-  const results: Array<{ sample: string; subject: string; operationId: string | null; dryRun: boolean }> = []
+  const results: Array<{ sample: string; subject: string; replyTo: string | null; transport: string; operationId: string | null; dryRun: boolean }> = []
   for (const [sample, lead] of Object.entries(leads)) {
     const { view, subject } = buildLeadEmail(lead, ctx)
     const { html, text } = await renderTemplate(TEMPLATES['form-lead-internal'], view)
-    const res = await sendEmail({ from: { address: SENDERS.notifications, name: 'Centrifuge World' }, to: [to], subject: `[TEST] ${subject}`, html, text })
-    results.push({ sample, subject: `[TEST] ${subject}`, operationId: res.operationId, dryRun: res.dryRun })
+    // Same reply-to as a real lead (the customer), so hitting Reply shows where it would go.
+    const replyTo = (lead as Record<string, any>).email || undefined
+    const res = await sendEmail({ from: { address: SENDERS.notifications, name: 'Centrifuge World' }, to: [to], subject: `[TEST] ${subject}`, html, text, replyTo })
+    results.push({ sample, subject: `[TEST] ${subject}`, replyTo: replyTo ?? null, transport: transport(), operationId: res.operationId, dryRun: res.dryRun })
   }
   return results
 }

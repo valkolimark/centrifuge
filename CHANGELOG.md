@@ -3,6 +3,17 @@
 All notable changes to the Centrifuge.com rebuild are recorded here.
 Format loosely follows [Keep a Changelog](https://keepachangelog.com/); dates are ISO (YYYY-MM-DD).
 
+## 2026-10-02 (later)
+
+### Lead notifications (email)
+
+**Fixed**
+- **Reply goes to the customer** — Twilio Email has no reply-to field and rejects a `Reply-To` header, so replies to lead alerts went to notifications@. Sends now go through SendGrid's v3 Mail Send API when `SENDGRID_API_KEY` is set (the same SendGrid account that already authenticates centrifuge.com), which sets `reply_to` to the submitter. Quote emails get the same fix (reply goes to the quote owner). Without the key, Twilio Email is still used.
+- **Quote CC and PDF attachments on Twilio** — the request put `cc` and `attachments` at the top level, where the Twilio Email schema doesn't define them (it has no `cc`, and attachments belong inside `content`), so they were likely ignored. Not confirmed against a past live quote send. Attachments now sit inside `content`, and CC'd addresses are sent their own copy (Twilio Email has no CC). On SendGrid both are native.
+
+**Added**
+- The test-email route (`/api/admin/test-lead-email/`) reports which service sent each sample and sets reply-to like a real lead.
+
 ## 2026-10-02
 
 ### Lead notifications (email)
