@@ -16,6 +16,7 @@ Format loosely follows [Keep a Changelog](https://keepachangelog.com/); dates ar
 
 **Added**
 - `scripts/preview-lead-email.ts` (render samples to files) and `scripts/send-test-lead-email.ts` (send samples to one address).
+- `GET /api/admin/test-lead-email[?to=]` — sends the [TEST] sample lead emails from production (where the Twilio creds live). Admin session required; recipient must be on the lead-routing list.
 
 ## 2026-07-07
 
