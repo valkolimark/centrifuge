@@ -3,7 +3,7 @@
 import { useEffect, useRef, useState, useTransition } from 'react'
 import Image from 'next/image'
 import Link from 'next/link'
-import { getFormConfig, type FormType } from '@/lib/forms/config'
+import { getFormConfig, type FormConfig, type FormType } from '@/lib/forms/config'
 import type { MachineSnapshot } from '@/lib/inventory-machine'
 import { TextField, TextareaField, SelectField } from './Field'
 import { FileUpload } from './FileUpload'
@@ -29,14 +29,17 @@ export function LeadForm({
   machine: machineProp,
   className,
   compact = false,
+  config: configOverride,
 }: {
   type: FormType
   prefill?: Partial<Record<string, string>>
   machine?: MachineSnapshot | null
   className?: string
   compact?: boolean
+  /** Optional presentation override (labels, field order, submit text) for the same form type. */
+  config?: FormConfig
 }) {
-  const config = getFormConfig(type)
+  const config = configOverride && configOverride.type === type ? configOverride : getFormConfig(type)
   const [state, setState] = useState<FormState>({ status: 'idle' })
   const [pending, startTransition] = useTransition()
   const [photos, setPhotos] = useState<File[]>([])

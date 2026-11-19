@@ -168,3 +168,23 @@ export const FORMS: Record<FormType, FormConfig> = {
 export function getFormConfig(type: FormType): FormConfig {
   return FORMS[type]
 }
+
+/** Email landing pages (Nov 2026 campaign): the approved field set and wording, presented over the existing
+ *  `contact` form type so submissions use the same server action, leads pipeline and GA4 form_type. The server
+ *  validates against FORMS.contact (name, email and phone required); company and the message are also required in
+ *  the browser here, and "Machine make and type" travels as `model` (shown as "Model" in the lead details). */
+export function emailLandingForm(title: string, submitLabel: string): FormConfig {
+  return {
+    ...FORMS.contact,
+    title,
+    submitLabel,
+    fields: [
+      FIELD.name,
+      { ...FIELD.company, required: true },
+      { ...FIELD.email, label: 'Work email' },
+      FIELD.phone,
+      { ...FIELD.model, label: 'Machine make and type' },
+      { ...FIELD.message, label: 'What is it doing?', required: true },
+    ],
+  }
+}
