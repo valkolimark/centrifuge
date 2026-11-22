@@ -40,12 +40,18 @@ export const LOGO_VARIANT = 'full-color' as const
 export const HOURS_LINE = 'Monday to Friday, 6 AM to 6 PM. On call 24/7.'
 
 /** Social share image (og:image and twitter:image) for the HOME PAGE ONLY. /og-default.png 404s.
- *  'logo' (default) = public/og-home-cw-logo.png, 1200x630, the full-color CW logo (scaled only,
+ *  'logo' (original white option) = public/og-home-cw-logo.png, 1200x630, the full-color CW logo (scaled only,
  *  not recolored or edited) centered on white. No machine photo while CW photo rights are held.
+ *  'logoTint' (r2 default) = public/og-home-cw-logo-tint-520.png, same unaltered logo scaled to 520px,
+ *  centered on #eef7fa, so it survives a centered square crop. The white 'logo' file is kept.
  *  'hero' = public/og-home-hero-w015.jpg, byte-identical to the Review-cleared CW23 W-015 crop
  *  (1240x771, sha e8a99cce3906). Use only after Mark clears the photo rights. */
-export const OG_IMAGE: 'logo' | 'hero' = 'logo' as 'logo' | 'hero'
-const OG_IMAGE_FILES = { logo: '/og-home-cw-logo.png', hero: '/og-home-hero-w015.jpg' } as const
+export const OG_IMAGE: 'logo' | 'logoTint' | 'hero' = 'logoTint' as 'logo' | 'logoTint' | 'hero'
+const OG_IMAGE_FILES = {
+  logo: '/og-home-cw-logo.png',
+  logoTint: '/og-home-cw-logo-tint-520.png',
+  hero: '/og-home-hero-w015.jpg',
+} as const
 export const OG_IMAGE_PATH = OG_IMAGE_FILES[OG_IMAGE]
 
 /** Rosharon address as COMPANY.md writes it, HOME PAGE ONLY. data/nap.json keeps

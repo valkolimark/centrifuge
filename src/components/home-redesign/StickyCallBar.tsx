@@ -5,7 +5,7 @@ import { TelLink } from './TelLink'
 import { PRIMARY_PHONE_ROLE, primaryDisplay } from './config'
 
 // Phone-only (under 768, CSS) fixed call bar. Hidden at the top of the page and while the
-// hero call or the S5 band call is on screen; shown mid-page and at the end. While hidden it is
+// hero, S5 band or footer call is on screen; otherwise shown after 400px. While hidden it is
 // aria-hidden and out of the tab order. The slide is CSS (240ms) and is off under reduced motion.
 export function StickyCallBar({ watchIds }: { watchIds: string[] }) {
   const [on, setOn] = useState(false)

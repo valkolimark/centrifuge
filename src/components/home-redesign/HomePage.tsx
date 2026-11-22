@@ -96,6 +96,19 @@ const READY = [
   'Where the machine is (city and state)',
 ]
 
+// Keeps Review's HOURS_LINE byte-for-byte as text; only short phrases are no-wrap.
+function HoursLine() {
+  return HOURS_LINE.split(/(\d+ (?:AM|PM)\.?|On call 24\/7\.)/).map((part, i) =>
+    i % 2 ? (
+      <span key={i} className="cwh-nw">
+        {part}
+      </span>
+    ) : (
+      part
+    ),
+  )
+}
+
 function CallButton({ id }: { id?: string }) {
   return (
     <TelLink id={id} role={PRIMARY_PHONE_ROLE} className="cwh-btn cwh-btn-call cwh-btn-lg">
@@ -137,18 +150,19 @@ export function HomePage() {
               <p className="cwh-label cwh-tf">Call toll-free</p>
               <CallButton id="cwh-herocall" />
               <p className="cwh-sec-wrap">
-                <Link className="cwh-sec" href={FORM_HREF}>
+                <Link prefetch={false} className="cwh-sec" href={FORM_HREF}>
                   Send Us the Details
                 </Link>
               </p>
             </div>
-            <div className="cwh-photo-wrap cwh-enter cwh-enter-2">
+            <div className="cwh-photo-wrap">
               <span className="cwh-shape cwh-shape-aqua" aria-hidden="true" />
               <div className="cwh-photo">
                 <Image
                   src={heroPhoto.src}
                   alt={heroPhoto.alt}
                   priority
+                  fetchPriority="high"
                   sizes="(min-width: 1200px) 640px, (min-width: 768px) 54vw, calc(100vw - 32px)"
                   quality={75}
                 />
@@ -167,6 +181,10 @@ export function HomePage() {
                   <>
                     In business <span className="cwh-nw">since 1939</span>
                   </>
+                ) : f.includes('disc-stack') ? (
+                  <>
+                    {f.split('disc-stack')[0]}<span className="cwh-nw">disc-stack</span>{f.split('disc-stack')[1]}
+                  </>
                 ) : (
                   f
                 )}
@@ -183,7 +201,7 @@ export function HomePage() {
               <ul className="cwh-ticks">
                 {SERVICES.map((s) => (
                   <li key={s.label}>
-                    <Link href={s.href}>{s.label}</Link>
+                    <Link prefetch={false} href={s.href}>{s.label}</Link>
                   </li>
                 ))}
               </ul>
@@ -194,7 +212,7 @@ export function HomePage() {
                 Westfalia, Hutchison Hayes, Sharples, Tolhurst, Aldec and Ametek.
               </p>
               <p className="cwh-more">
-                <Link href="/brands/">All brands</Link>
+                <Link prefetch={false} href="/brands/">All brands</Link>
               </p>
               <h2>Industries We Serve</h2>
               <p>Oil and gas, food and beverage, chemical, pharmaceutical, wastewater, mining, dairy and rendering.</p>
@@ -248,7 +266,7 @@ export function HomePage() {
                 <p className="cwh-label cwh-tf">Call toll-free</p>
                 <CallButton id="cwh-bandcall" />
                 <p className="cwh-sec-wrap">
-                  <Link className="cwh-sec" href={FORM_HREF}>
+                  <Link prefetch={false} className="cwh-sec" href={FORM_HREF}>
                     Send Us the Details
                   </Link>
                 </p>
@@ -261,7 +279,7 @@ export function HomePage() {
         <section className="cwh-blk cwh-tint" aria-labelledby="cwh-loc">
           <div className="cwh-wrap">
             <h2 id="cwh-loc">Locations</h2>
-            <p className="cwh-hours">{HOURS_LINE}</p>
+            <p className="cwh-hours"><HoursLine /></p>
             <div className="cwh-locs">
               <div className="cwh-loc">
                 <figure className="cwh-map">
@@ -343,7 +361,7 @@ export function HomePage() {
                 ))}
               </dl>
               <p className="cwh-more">
-                <Link href="/resources/faqs/">All FAQs</Link>
+                <Link prefetch={false} href="/resources/faqs/">All FAQs</Link>
               </p>
             </div>
           </section>
@@ -355,58 +373,58 @@ export function HomePage() {
         <div className="cwh-wrap cwh-fgrid">
           <div className="cwh-fbrand">
             <Image src={logo} alt="Centrifuge World" width={150} height={48} sizes="150px" />
-            <TelLink role={PRIMARY_PHONE_ROLE} className="cwh-btn cwh-btn-call">
+            <TelLink id="cwh-footercall" role={PRIMARY_PHONE_ROLE} className="cwh-btn cwh-btn-call">
               <span className="cwh-num">{primaryDisplay}</span>
             </TelLink>
-            <p className="cwh-fhours">{HOURS_LINE}</p>
+            <p className="cwh-fhours"><HoursLine /></p>
           </div>
           <div>
             <p className="cwh-label">Services</p>
             <ul>
-              <li><Link href="/services/centrifuge-repair/">Centrifuge Repair</Link></li>
-              <li><Link href="/services/centrifuge-rebuilds/">Centrifuge Rebuilds</Link></li>
-              <li><Link href="/services/decanter-centrifuge-repair/">Decanter Centrifuge Repair</Link></li>
-              <li><Link href="/services/">View All Services</Link></li>
+              <li><Link prefetch={false} href="/services/centrifuge-repair/">Centrifuge Repair</Link></li>
+              <li><Link prefetch={false} href="/services/centrifuge-rebuilds/">Centrifuge Rebuilds</Link></li>
+              <li><Link prefetch={false} href="/services/decanter-centrifuge-repair/">Decanter Centrifuge Repair</Link></li>
+              <li><Link prefetch={false} href="/services/">View All Services</Link></li>
             </ul>
           </div>
           <div>
             <p className="cwh-label">Brands</p>
             <ul>
-              <li><Link href="/brands/alfa-laval/">Alfa Laval</Link></li>
-              <li><Link href="/brands/sharples/">Sharples</Link></li>
-              <li><Link href="/brands/westfalia/">GEA Westfalia</Link></li>
-              <li><Link href="/brands/">All Brands</Link></li>
+              <li><Link prefetch={false} href="/brands/alfa-laval/">Alfa Laval</Link></li>
+              <li><Link prefetch={false} href="/brands/sharples/">Sharples</Link></li>
+              <li><Link prefetch={false} href="/brands/westfalia/">GEA Westfalia</Link></li>
+              <li><Link prefetch={false} href="/brands/">All Brands</Link></li>
             </ul>
           </div>
           <div>
             <p className="cwh-label">Industries</p>
             <ul>
-              <li><Link href="/industries/rendering/">Rendering</Link></li>
-              <li><Link href="/industries/wastewater-treatment/">Wastewater Treatment</Link></li>
-              <li><Link href="/industries/">All Industries</Link></li>
+              <li><Link prefetch={false} href="/industries/rendering/">Rendering</Link></li>
+              <li><Link prefetch={false} href="/industries/wastewater-treatment/">Wastewater Treatment</Link></li>
+              <li><Link prefetch={false} href="/industries/">All Industries</Link></li>
             </ul>
           </div>
           <div>
             <p className="cwh-label">Company</p>
             <ul>
-              <li><Link href="/about/">About</Link></li>
-              <li><Link href="/locations/">Locations</Link></li>
-              <li><Link href="/used-centrifuges/">Buy Used Centrifuges</Link></li>
-              <li><Link href="/resources/faqs/">FAQs</Link></li>
-              <li><Link href="/contact-cw/">Contact</Link></li>
+              <li><Link prefetch={false} href="/about/">About</Link></li>
+              <li><Link prefetch={false} href="/locations/">Locations</Link></li>
+              <li><Link prefetch={false} href="/used-centrifuges/">Buy Used Centrifuges</Link></li>
+              <li><Link prefetch={false} href="/resources/faqs/">FAQs</Link></li>
+              <li><Link prefetch={false} href="/contact-cw/">Contact</Link></li>
             </ul>
           </div>
         </div>
         <div className="cwh-wrap cwh-legal">
           <p>Copyright © 2026 Centrifuge World, All rights reserved.</p>
           <p>
-            <Link href="/privacy-policy/">Privacy Policy</Link>
-            <Link href="/terms-of-use/">Terms of Use</Link>
+            <Link prefetch={false} href="/privacy-policy/">Privacy Policy</Link>
+            <Link prefetch={false} href="/terms-of-use/">Terms of Use</Link>
           </p>
         </div>
       </footer>
 
-      <StickyCallBar watchIds={['cwh-herocall', 'cwh-bandcall']} />
+      <StickyCallBar watchIds={['cwh-herocall', 'cwh-bandcall', 'cwh-footercall']} />
     </div>
   )
 }

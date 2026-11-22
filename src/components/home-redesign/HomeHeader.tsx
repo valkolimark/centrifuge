@@ -52,8 +52,8 @@ export function HomeHeader({ nav }: { nav: HomeNavItem[] }) {
   return (
     <header className="cwh-header">
       <div className="cwh-wrap cwh-hbar">
-        <Link className="cwh-logo" href="/" aria-label="Centrifuge World home">
-          <Image src={logo} alt="Centrifuge World" width={140} height={45} priority={false} sizes="140px" />
+        <Link prefetch={false} className="cwh-logo" href="/" aria-label="Centrifuge World home">
+          <Image src={logo} alt="Centrifuge World" width={140} height={45} loading="eager" sizes="140px" />
         </Link>
 
         <nav ref={navRef} className="cwh-nav" aria-label="Main">
@@ -66,7 +66,7 @@ export function HomeHeader({ nav }: { nav: HomeNavItem[] }) {
                     <ul className="cwh-dd-panel">
                       {n.items.map((it) => (
                         <li key={it.href}>
-                          <Link href={it.href}>{it.label}</Link>
+                          <Link prefetch={false} href={it.href}>{it.label}</Link>
                         </li>
                       ))}
                     </ul>
@@ -74,7 +74,7 @@ export function HomeHeader({ nav }: { nav: HomeNavItem[] }) {
                 </li>
               ) : (
                 <li key={n.label}>
-                  <Link href={n.href}>{n.label}</Link>
+                  <Link prefetch={false} href={n.href}>{n.label}</Link>
                 </li>
               ),
             )}
@@ -101,7 +101,7 @@ export function HomeHeader({ nav }: { nav: HomeNavItem[] }) {
           <ul>
             {nav.map((n) => (
               <li key={n.label}>
-                <Link href={n.href} onClick={() => setOpen(false)}>
+                <Link prefetch={false} href={n.href} onClick={() => setOpen(false)}>
                   {n.label}
                 </Link>
               </li>
