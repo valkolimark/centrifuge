@@ -13,6 +13,7 @@ import {
   HOME_FAQ_KEYS,
   HOME_FONT,
   HOURS_LINE,
+  MAP_CAPTION,
   PRIMARY_PHONE_ROLE,
   SHOW_ALSIP,
   SHOW_FAQ,
@@ -74,7 +75,7 @@ const NAV: HomeNavItem[] = [
 
 const SERVICES = [
   { label: 'Balancing', href: '/services/balancing-testing/' },
-  { label: 'Repair and rebuild', href: '/services/centrifuge-repair/' },
+  { label: 'Repair and rebuild', href: '/services/' },
   { label: 'Centrifuge parts', href: '/services/parts-fabrication/' },
   { label: 'Field service', href: '/services/field-service/' },
   { label: '24/7 service', href: '/services/emergency-centrifuge-service/' },
@@ -168,7 +169,7 @@ export function HomePage() {
               <h2 id="cwh-does">What Centrifuge World Does</h2>
               <ul className="cwh-ticks">
                 {SERVICES.map((s) => (
-                  <li key={s.href}>
+                  <li key={s.label}>
                     <Link href={s.href}>{s.label}</Link>
                   </li>
                 ))}
@@ -250,7 +251,10 @@ export function HomePage() {
             <p className="cwh-hours">{HOURS_LINE}</p>
             <div className="cwh-locs">
               <div className="cwh-loc">
-                <Image src={mapHouston} alt="Map of the Houston area" sizes="(min-width: 768px) 560px, calc(100vw - 32px)" />
+                <figure className="cwh-map">
+                  <Image src={mapHouston} alt="Map of the Houston area" sizes="(min-width: 768px) 560px, calc(100vw - 32px)" />
+                  <figcaption>{MAP_CAPTION}</figcaption>
+                </figure>
                 <div className="cwh-loc-body">
                   <h3>Houston Location</h3>
                   <p>
@@ -269,7 +273,10 @@ export function HomePage() {
                 </div>
               </div>
               <div className="cwh-loc">
-                <Image src={mapChicago} alt="Map of the Chicago area" sizes="(min-width: 768px) 560px, calc(100vw - 32px)" />
+                <figure className="cwh-map">
+                  <Image src={mapChicago} alt="Map of the Chicago area" sizes="(min-width: 768px) 560px, calc(100vw - 32px)" />
+                  <figcaption>{MAP_CAPTION}</figcaption>
+                </figure>
                 <div className="cwh-loc-body">
                   <h3>Chicago Location</h3>
                   <p>

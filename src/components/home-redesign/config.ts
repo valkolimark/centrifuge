@@ -21,7 +21,7 @@ export const SHOW_ALSIP = true
 /** D5 FAQ. A short block near the bottom, live-site FAQ copy word for word. */
 export const SHOW_FAQ = true
 /** Which live-site FAQ entries to show, in order (keys of HOME_FAQ_BANK below). Cap 3. */
-export const HOME_FAQ_KEYS: Array<keyof typeof HOME_FAQ_BANK> = ['whoRepairs', 'otherBrands', 'signs']
+export const HOME_FAQ_KEYS: Array<keyof typeof HOME_FAQ_BANK> = ['whoRepairs', 'otherBrands']
 
 /** D8 hero photo. 'w015' = Centrifuge_W-015 rotating assembly in the Review-cleared CW23 crop.
  *  'openedDecanter' = W-022 opened decanter (then S3 shows W-015 instead). */
@@ -38,6 +38,24 @@ export const LOGO_VARIANT = 'full-color' as const
  *  Same hours as the live site ("Mon–Fri: 6:00 AM – 6:00 PM · On-Call 24/7", data/nap.json, unchanged).
  *  No time zone, per Review. */
 export const HOURS_LINE = 'Monday to Friday, 6 AM to 6 PM. On call 24/7.'
+
+/** Social share image (og:image and twitter:image) for the HOME PAGE ONLY. /og-default.png 404s.
+ *  'logo' (default) = public/og-home-cw-logo.png, 1200x630, the full-color CW logo (scaled only,
+ *  not recolored or edited) centered on white. No machine photo while CW photo rights are held.
+ *  'hero' = public/og-home-hero-w015.jpg, byte-identical to the Review-cleared CW23 W-015 crop
+ *  (1240x771, sha e8a99cce3906). Use only after Mark clears the photo rights. */
+export const OG_IMAGE: 'logo' | 'hero' = 'logo' as 'logo' | 'hero'
+const OG_IMAGE_FILES = { logo: '/og-home-cw-logo.png', hero: '/og-home-hero-w015.jpg' } as const
+export const OG_IMAGE_PATH = OG_IMAGE_FILES[OG_IMAGE]
+
+/** Rosharon address as COMPANY.md writes it, HOME PAGE ONLY. data/nap.json keeps
+ *  "7650 CR 48, Unit C" for every other page and for schema. */
+export const HOME_ADDRESS_OVERRIDE: Record<string, string> = {
+  houston: '7650 CR 48 unit C, Rosharon, TX 77583',
+}
+
+/** Caption under each map image (Google basemap captures; Review requires attribution). */
+export const MAP_CAPTION = 'Map data \u00a9 Google'
 
 /** Primary CTA phone role in data/nap.json. 'main' = (800) 208-6075 toll-free. */
 export const PRIMARY_PHONE_ROLE = 'main' as const
@@ -58,25 +76,21 @@ export const loc = (id: string): Location => {
   return l
 }
 export const addressLine = (l: Location) =>
-  `${l.streetAddress}, ${l.addressLocality}, ${l.addressRegion} ${l.postalCode}`
+  HOME_ADDRESS_OVERRIDE[l.id] ?? `${l.streetAddress}, ${l.addressLocality}, ${l.addressRegion} ${l.postalCode}`
 
-/** Live-site FAQ copy, word for word (src/app/(frontend)/page.tsx on main, live centrifuge.com).
- *  Not yet Review-cleared for the redesigned page. Entries with the 832 line or the
- *  "fraction of replacement" claim are left out of the default selection. */
+/** Live-site FAQ copy (src/app/(frontend)/page.tsx on main, live centrifuge.com).
+ *  Review (f05b6f0 verdict, Nov 21): whoRepairs first sentence changed to Review's exact wording,
+ *  rest word for word; "What are signs..." dropped (no source backs the list). The 832-line and
+ *  "fraction of replacement" entries are not used. */
 export const HOME_FAQ_BANK = {
   whoRepairs: {
     question: 'Who repairs industrial centrifuges?',
     answer:
-      'Centrifuge World has repaired and rebuilt industrial centrifuges since 1939. From three US facilities we service 45+ OEM brands with shop repair, field service, balancing, parts fabrication, and a 24/7 emergency line.',
+      'Centrifuge World has been in business since 1939. From three US facilities we service 45+ OEM brands with shop repair, field service, balancing, parts fabrication, and a 24/7 emergency line.',
   },
   otherBrands: {
     question: 'Do you work on brands other than the original manufacturer?',
     answer:
       'Yes. Centrifuge World is an independent repair and rebuild specialist servicing 45+ OEM brands, including Sharples, Alfa Laval, GEA Westfalia, Andritz, Bird, and Flottweg.',
-  },
-  signs: {
-    question: 'What are signs a centrifuge needs repair?',
-    answer:
-      'Common indicators include vibration, bearing noise or heat, reduced separation quality, scroll or conveyor wear, leaks, gearbox issues, and amperage spikes.',
   },
 } as const

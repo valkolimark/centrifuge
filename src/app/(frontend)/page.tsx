@@ -1,6 +1,7 @@
 import type { Metadata } from 'next'
 import { JsonLd } from '@/components/JsonLd'
 import { HomePage } from '@/components/home-redesign/HomePage'
+import { OG_IMAGE_PATH } from '@/components/home-redesign/config'
 import { webPageSchema } from '@/lib/schema'
 import { buildMetadata } from '@/lib/seo'
 import { SITE_URL, mainPhone, org } from '@/lib/site'
@@ -18,6 +19,8 @@ export const metadata: Metadata = buildMetadata(
     title: 'Industrial Centrifuge Repair & Rebuilds | Centrifuge World',
     // Approved CW23 email/landing lede + approved CTA wording. Dash free.
     description: `Centrifuge World balances, repairs and rebuilds centrifuges. Call 1 ${mainPhone.display}.`,
+    // Home-only social image (OG_IMAGE toggle). Other pages keep the shared default.
+    ogImage: `${SITE_URL}${OG_IMAGE_PATH}`,
   },
   '/',
 )

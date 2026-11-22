@@ -162,7 +162,9 @@
 @media (min-width: 768px) { .cwh-locs { grid-template-columns: 1fr 1fr; } }
 .cwh-loc { border: 1px solid var(--line); border-radius: var(--r-card); overflow: hidden; background: #fff; }
 .cwh-loc img { width: 100%; aspect-ratio: 16 / 9; object-fit: cover; }
-.cwh-loc-body { padding: 18px 22px 22px; }
+.cwh-map { margin: 0; }
+.cwh-map figcaption { padding: 6px 22px 0; font-size: 12px; line-height: 1.4; font-weight: 500; color: var(--muted); }
+.cwh-loc-body { padding: 14px 22px 22px; }
 .cwh-loc-body h3 { margin-bottom: 2px; }
 .cwh a.cwh-tel { display: inline-flex; align-items: center; column-gap: 0.3em; min-height: 48px; font-weight: 700; }
 .cwh a.cwh-tel-quiet { font-weight: 600; color: var(--muted); }
@@ -172,7 +174,7 @@
 
 /* FAQ, open text */
 .cwh-faq { margin: 24px 0 0; display: grid; grid-template-columns: 1fr; gap: 24px; }
-@media (min-width: 900px) { .cwh-faq { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 32px; } }
+@media (min-width: 900px) { .cwh-faq { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 32px; } }
 .cwh-faq > div { border-top: 3px solid var(--blue); padding-top: 16px; }
 .cwh-faq dt { font-weight: 800; color: var(--navy); font-size: 18px; line-height: 1.3; }
 .cwh-faq dd { margin: 8px 0 0; max-width: 62ch; }
