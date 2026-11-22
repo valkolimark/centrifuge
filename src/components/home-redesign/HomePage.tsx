@@ -125,7 +125,11 @@ export function HomePage() {
           <div className="cwh-wrap cwh-hero-grid">
             <div className="cwh-card cwh-enter">
               <span className="cwh-shape cwh-shape-plum" aria-hidden="true" />
-              <p className="cwh-label cwh-eyebrow">Industrial centrifuge repair &amp; rebuilds since 1939</p>
+              <p className="cwh-label cwh-eyebrow">
+                {/* Text is Review's exact line. The nowrap spans only control where it breaks. */}
+                Industrial centrifuge <span className="cwh-nw">repair &amp; rebuilds.</span>{' '}
+                <span className="cwh-nw">In business since 1939.</span>
+              </p>
               <h1 id="cwh-h1">
                 Keep your centrifuges <em>running.</em>
               </h1>
