@@ -87,7 +87,7 @@
   .cwh-dd { position: relative; }
   .cwh-dd-panel {
     position: absolute; top: 100%; left: -16px; min-width: 260px; list-style: none; margin: 0; padding: 8px;
-    background: #fff; border: 1px solid var(--line); border-radius: 16px; box-shadow: 0 18px 50px rgba(21, 59, 107, 0.14);
+    background: #fff; border: 1px solid var(--line); border-radius: 16px;
   }
   .cwh-dd-panel a { display: flex; align-items: center; min-height: 48px; padding: 0 12px; border-radius: 10px; color: var(--ink); font-weight: 600; font-size: 15px; text-decoration: none; }
   .cwh-dd-panel a:hover { background: var(--tint); color: var(--navy); }
