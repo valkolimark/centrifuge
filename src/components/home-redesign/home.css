@@ -129,8 +129,16 @@
 
 /* S2 facts */
 .cwh-facts { border-bottom: 1px solid var(--line); background: #fff; }
-.cwh-facts ul { list-style: none; margin-block: 0; padding-block: 20px; display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
-.cwh-facts li { text-wrap: balance; font-weight: 700; color: var(--navy); font-size: 16px; line-height: 1.35; padding-left: 14px; border-left: 3px solid var(--blue); }
+/* Under 400px: one column of compact rows with a hairline between items (Creative, Nov 21).
+   400 to 1023: 2 columns. 1024+: 4 columns. */
+.cwh-facts ul { list-style: none; margin-block: 0; padding-block: 8px; display: grid; grid-template-columns: 1fr; gap: 0; }
+.cwh-facts li { text-wrap: balance; font-weight: 700; color: var(--navy); font-size: 16px; line-height: 1.35; padding: 9px 0 9px 14px; border-left: 3px solid var(--blue); }
+.cwh-facts li:not(:last-child) { box-shadow: 0 1px 0 var(--line); }
+@media (min-width: 400px) {
+  .cwh-facts ul { padding-block: 20px; grid-template-columns: 1fr 1fr; gap: 16px; }
+  .cwh-facts li { padding: 0 0 0 14px; }
+  .cwh-facts li:not(:last-child) { box-shadow: none; }
+}
 @media (min-width: 1024px) { .cwh-facts ul { grid-template-columns: repeat(4, minmax(0, 1fr)); } }
 
 /* sections */
