@@ -1,38 +1,70 @@
-'use client'
+import type { ReactNode } from 'react'
+import type { EmailLandingPicture } from './content'
+import { LandingPicture } from './LandingPicture'
 
-import Image from 'next/image'
-import { useEffect, useRef, type ReactNode } from 'react'
-import { useReducedMotion } from './useReducedMotion'
+// Hero for the Nov 23/25/30 email landings. Photos sit in rounded rectangle
+// frames (gated r7c). No blob or liquid photo mask.
+function Title({ slug, title }: { slug: string; title: string }) {
+  if (slug === 'centrifuge-balancing') {
+    return <>Centrifuge Vibrating? Ask About <em>Balancing</em></>
+  }
+  if (slug === 'centrifuge-247-thanksgiving') {
+    return <>Centrifuge Down Over Thanksgiving? <em>24/7</em> Service</>
+  }
+  if (slug === 'decanter-bowl-rebuild-before-after') {
+    return <>Decanter Bowls <em>Before</em> and <em>After</em> Rebuild</>
+  }
+  return <>{title}</>
+}
 
-// DRAFT. Hero with the liquid photo drop (Creative rev 2, section 13). No animation dependency:
-// SMIL blob morph started from JS only when motion is allowed, CSS entrance (<=600ms), call ring x2.
-// Reduced motion: nothing starts, shapes stay still. Blob path data: copy from the staged page's <svg> (seeded, per page).
-export function LiquidHero({ title, lede, photos, actions }: {
-  title: string; lede: string; photos: { src: string; alt: string; caption: string; width: number; height: number }[]; actions: ReactNode
+export function LiquidHero({
+  slug,
+  title,
+  lede,
+  photos,
+  actions,
+}: {
+  slug: string
+  title: string
+  lede: string
+  photos: EmailLandingPicture[]
+  actions: ReactNode
 }) {
-  const ref = useRef<HTMLDivElement>(null)
-  const reduced = useReducedMotion()
-  useEffect(() => {
-    if (reduced || !ref.current) return
-    ref.current.classList.add('motion-ok')
-    ref.current.querySelectorAll<SVGAnimateElement>('animate[data-morph]').forEach((a) => { try { a.beginElement() } catch {} })
-  }, [reduced])
+  const isPair = photos.length === 2
   return (
-    <div ref={ref} className="el-hero relative overflow-hidden bg-[#eef7fa]">
-      <div className="mx-auto grid max-w-6xl items-center gap-10 px-6 pb-16 pt-8 lg:grid-cols-[1.05fr_.95fr] lg:pt-16">
+    <div className={`el-hero${isPair ? ' has-pair' : ''}`}>
+      <div className="el-hero-wrap">
         <div>
-          <h1 className="text-balance">{title}</h1>
+          <h1 className={title.length > 40 ? 'long' : undefined}>
+            <Title slug={slug} title={title} />
+          </h1>
           <span className="el-h1-rule" aria-hidden="true" />
           <p className="el-lede">{lede}</p>
-          <div className="flex flex-wrap gap-3">{actions}</div>
+          <div className="el-ctas">{actions}</div>
         </div>
-        <div className="el-photo relative">
-          {/* decorative svg (brand liquid + plum group drop + white rim) goes here, aria-hidden */}
-          {photos.map((p, i) => (
-            <Image key={p.src} src={p.src} alt={p.alt} width={p.width} height={p.height} priority={i === 0}
-              fetchPriority={i === 0 ? 'high' : undefined} sizes="(max-width:900px) 92vw, 560px" className="el-photo-img h-auto w-full" />
-          ))}
-        </div>
+        {isPair ? (
+          <div className="el-photo el-two">
+            <div className="el-pair" role="group" aria-label="Before and after photos">
+              {photos.map((p) => (
+                <figure key={p.src}>
+                  <div className="el-frame">
+                    <LandingPicture photo={p} className="el-r7-img" />
+                  </div>
+                </figure>
+              ))}
+            </div>
+          </div>
+        ) : (
+          photos[0] && (
+            <div className="el-photo">
+              <figure>
+                <div className="el-frame">
+                  <LandingPicture photo={photos[0]} className="el-r7-img" />
+                </div>
+              </figure>
+            </div>
+          )
+        )}
       </div>
     </div>
   )

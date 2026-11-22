@@ -43,7 +43,7 @@ export function StickyCallBar({ role, number, label }: { role: string; number: s
   return (
     <div className={`el-mcall sm:hidden ${hidden ? 'invisible' : ''}`}>
       <a href={`tel:${number}`} className="el-btn el-btn-call w-full" onClick={() => trackPhoneClick(role, number)} data-cta-position="lp-sticky-call">
-        <span className="whitespace-nowrap">{lab}:</span> <span className="whitespace-nowrap">{num}</span>
+        <span className="whitespace-nowrap">{'\u260E\u00A0'}{lab}:</span> <span className="whitespace-nowrap">{num}</span>
       </a>
     </div>
   )

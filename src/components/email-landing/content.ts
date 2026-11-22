@@ -1,11 +1,23 @@
-// GENERATED from _build/copy.json (Content, Review approved 12:00 AM CT Nov 19, 2026). Do not hand-edit copy here;
-// re-run the generator if Content changes a word. Synced Nov 19 to the approved static landings (ledes "1 (800)", CW 25 photo
-// and strip alt). Images in public/images/email-landing/ are the shipped, EXIF-free derivatives.
+// Synced Nov 21 to the Creative-gated r7c static landings (CW23, CW25, CW30),
+// including the CW30 R-3 AFTER image (no lazy load; preload stays on BEFORE).
+// Visible copy, alt text, headings, CTAs, phone and form wording match the gated HTML.
 export type EmailLandingSection = { h2: string; paras: string[]; items: string[] }
-export type EmailLandingPhoto = { src: string; caption: string; alt: string; width: number; height: number }
+export type EmailLandingPicture = {
+  src: string
+  webpSrcSet: string
+  sizes: string
+  width: number
+  height: number
+  alt: string
+  priority?: boolean
+  eager?: boolean
+}
 export type EmailLandingContent = {
   key: string; slug: string; title: string; lede: string; heroCall: string; formButton: string
-  sections: EmailLandingSection[]; bodyCall: string; photos: EmailLandingPhoto[]; beforeAfter: boolean
+  sections: EmailLandingSection[]; bodyCall: string
+  heroPhotos: EmailLandingPicture[]
+  tiles: EmailLandingPicture[]
+  gallery: EmailLandingPicture[]
   form: { heading: string; fields: string[]; button: string; under: string }; bandText: string; sticky: string
 }
 export const emailLandingPages: Record<string, EmailLandingContent> = {
@@ -73,19 +85,25 @@ export const emailLandingPages: Record<string, EmailLandingContent> = {
       }
     ],
     "bodyCall": "Call Centrifuge World: 1 (800) 208-6075",
-    "photos": [
+    "heroPhotos": [
       {
-        "src": "/images/email-landing/2026-11-23-cw/cw-decanter-rotating-assembly-shop-stand.webp", "width": 1240, "height": 1120,
-        "caption": "DECANTER ROTATING ASSEMBLY ON A SHOP STAND",
+        "src": "/images/email-landing/2026-11-23-cw/lp-hero-r7-1240.jpg",
+        "webpSrcSet": "/images/email-landing/2026-11-23-cw/lp-hero-r7-640.webp 640w, /images/email-landing/2026-11-23-cw/lp-hero-r7-1240.webp 1240w",
+        "sizes": "(max-width:600px) calc(100vw - 32px), (max-width:1023px) 560px, 520px",
+        "width": 1240, "height": 771, "priority": true,
         "alt": "Decanter centrifuge rotating assembly on a shop stand"
-      },
+      }
+    ],
+    "tiles": [],
+    "gallery": [
       {
-        "src": "/images/email-landing/2026-11-23-cw/cw-opened-decanter.webp", "width": 800, "height": 800,
-        "caption": "OPENED DECANTER CENTRIFUGE",
+        "src": "/images/email-landing/2026-11-23-cw/lp-g0-r7-880.jpg",
+        "webpSrcSet": "/images/email-landing/2026-11-23-cw/lp-g0-r7-480.webp 480w, /images/email-landing/2026-11-23-cw/lp-g0-r7-880.webp 880w",
+        "sizes": "(max-width:900px) calc(100vw - 32px), 440px",
+        "width": 880, "height": 862,
         "alt": "Decanter centrifuge with its casing opened on a blue base"
       }
     ],
-    "beforeAfter": false,
     "form": {
       "heading": "Tell Us What You Have",
       "fields": [
@@ -158,19 +176,39 @@ export const emailLandingPages: Record<string, EmailLandingContent> = {
       }
     ],
     "bodyCall": "Call Centrifuge World: 1 (800) 208-6075",
-    "photos": [
+    "heroPhotos": [
       {
-        "src": "/images/email-landing/2026-11-25-cw/cw25-decanter-rotating-assembly.webp", "width": 1240, "height": 1120,
-        "caption": "DECANTER ROTATING ASSEMBLY, CLOSE UP",
+        "src": "/images/email-landing/2026-11-25-cw/lp-hero-r7-1240.jpg",
+        "webpSrcSet": "/images/email-landing/2026-11-25-cw/lp-hero-r7-640.webp 640w, /images/email-landing/2026-11-25-cw/lp-hero-r7-1240.webp 1240w",
+        "sizes": "(max-width:600px) calc(100vw - 32px), (max-width:1023px) 560px, 520px",
+        "width": 1240, "height": 930, "priority": true,
         "alt": "Close view of a decanter rotating assembly with an orange cover at the drive end, sitting in a frame"
-      },
-      {
-        "src": "/images/email-landing/2026-11-25-cw/cw-collage-three-decanters.webp", "width": 990, "height": 230,
-        "caption": "DECANTERS, BOWLS AND ROTATING ASSEMBLIES ON THE SHOP FLOOR",
-        "alt": "Three shop photos of steel rotating assemblies on green steel stands and strapped to a wooden pallet"
       }
     ],
-    "beforeAfter": false,
+    "tiles": [
+      {
+        "src": "/images/email-landing/2026-11-25-cw/lp-t0-322.jpg",
+        "webpSrcSet": "/images/email-landing/2026-11-25-cw/lp-t0-322.webp 322w",
+        "sizes": "161px",
+        "width": 322, "height": 230,
+        "alt": "Three shop photos: a decanter rotating assembly on a green steel stand, a rotating assembly strapped to a wooden pallet, and an opened decanter on a blue frame with its cover raised"
+      },
+      {
+        "src": "/images/email-landing/2026-11-25-cw/lp-t1-322.jpg",
+        "webpSrcSet": "/images/email-landing/2026-11-25-cw/lp-t1-322.webp 322w",
+        "sizes": "161px",
+        "width": 322, "height": 230,
+        "alt": ""
+      },
+      {
+        "src": "/images/email-landing/2026-11-25-cw/lp-t2-r7e-322.jpg",
+        "webpSrcSet": "/images/email-landing/2026-11-25-cw/lp-t2-r7e-322.webp 322w",
+        "sizes": "161px",
+        "width": 322, "height": 230,
+        "alt": ""
+      }
+    ],
+    "gallery": [],
     "form": {
       "heading": "Tell Us What You Have",
       "fields": [
@@ -190,7 +228,7 @@ export const emailLandingPages: Record<string, EmailLandingContent> = {
   "decanter-bowl-rebuild-before-after": {
     "key": "2026-11-30-cw",
     "slug": "decanter-bowl-rebuild-before-after",
-    "title": "Decanter Bowls Before and After Rebuild",  // Review default Nov 19; original: "Inside a Decanter Bowl Rebuild: Before and After" (Mark decides Sat)
+    "title": "Decanter Bowls Before and After Rebuild",
     "lede": "Decanter bowl photos, before rebuild and after rebuild. Centrifuge World: 1 (800) 208-6075.",
     "heroCall": "Call Centrifuge World: 1 (800) 208-6075",
     "formButton": "Send Us the Details",
@@ -240,24 +278,32 @@ export const emailLandingPages: Record<string, EmailLandingContent> = {
       }
     ],
     "bodyCall": "Call Centrifuge World: 1 (800) 208-6075",
-    "photos": [
+    "heroPhotos": [
       {
-        "src": "/images/email-landing/2026-11-30-cw/cw-decanter-bowl-before-rebuild.webp", "width": 400, "height": 440,
-        "caption": "DECANTER BOWL BEFORE REBUILD",
+        "src": "/images/email-landing/2026-11-30-cw/lp-pair0-r7-900.jpg",
+        "webpSrcSet": "/images/email-landing/2026-11-30-cw/lp-pair0-r7-480.webp 480w, /images/email-landing/2026-11-30-cw/lp-pair0-r7-900.webp 900w",
+        "sizes": "(max-width:600px) 46vw, 290px",
+        "width": 900, "height": 425, "priority": true,
         "alt": "Decanter bowl with a worn, discolored surface lying in an open wooden crate"
       },
       {
-        "src": "/images/email-landing/2026-11-30-cw/cw-decanter-bowl-after-rebuild.webp", "width": 760, "height": 836,
-        "caption": "DECANTER BOWL AFTER REBUILD",
+        "src": "/images/email-landing/2026-11-30-cw/lp-pair1-r7d-900.jpg",
+        "webpSrcSet": "/images/email-landing/2026-11-30-cw/lp-pair1-r7d-480.webp 480w, /images/email-landing/2026-11-30-cw/lp-pair1-r7d-900.webp 900w",
+        "sizes": "(max-width:600px) 46vw, 290px",
+        "width": 900, "height": 700, "eager": true,
         "alt": "Decanter bowl with bright machined metal surfaces and an orange drive pulley lying in a wooden crate"
-      },
+      }
+    ],
+    "tiles": [],
+    "gallery": [
       {
-        "src": "/images/email-landing/2026-11-30-cw/cw-scroll-conveyor.webp", "width": 800, "height": 800,
-        "caption": "DECANTER SCROLL CONVEYOR",
+        "src": "/images/email-landing/2026-11-30-cw/lp-g0-r7-880.jpg",
+        "webpSrcSet": "/images/email-landing/2026-11-30-cw/lp-g0-r7-480.webp 480w, /images/email-landing/2026-11-30-cw/lp-g0-r7-880.webp 880w",
+        "sizes": "(max-width:900px) calc(100vw - 32px), 440px",
+        "width": 880, "height": 1173,
         "alt": "Helical decanter scroll conveyor on a shop pallet"
       }
     ],
-    "beforeAfter": true,
     "form": {
       "heading": "Tell Us What You Have",
       "fields": [
