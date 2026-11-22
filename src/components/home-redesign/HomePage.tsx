@@ -83,7 +83,7 @@ const SERVICES = [
 ]
 
 const FACTS = [
-  'Since 1939',
+  'In business since 1939',
   'More than 45 centrifuge brands',
   'Decanter, basket, disc-stack, pusher and peeler',
   'Houston and the Chicago area',
@@ -161,7 +161,16 @@ export function HomePage() {
         <div className="cwh-facts">
           <ul className="cwh-wrap">
             {FACTS.map((f) => (
-              <li key={f}>{f}</li>
+              <li key={f}>
+                {/* Review's exact text; nowrap only keeps "since 1939" from orphaning 1939 at 390/768. */}
+                {f === 'In business since 1939' ? (
+                  <>
+                    In business <span className="cwh-nw">since 1939</span>
+                  </>
+                ) : (
+                  f
+                )}
+              </li>
             ))}
           </ul>
         </div>
