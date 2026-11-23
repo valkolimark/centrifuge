@@ -1,0 +1,87 @@
+/* Port of the staged page's CSS that Tailwind classes do not cover. Import from the (frontend) layout or the
+   component. Motion tokens and timings match Creative rev 2 section 13. Reduced motion disables everything. */
+:root{--ease-out:cubic-bezier(.22,1,.36,1);--t-m:450ms;--t-l:600ms}
+.el-btn{display:inline-flex;flex-wrap:wrap;align-items:center;justify-content:center;column-gap:.3em;font-weight:800;border-radius:999px;padding:16px 28px;min-height:56px;font-size:18px;line-height:1.2;text-align:center;text-box-trim:trim-both;text-box-edge:cap alphabetic}
+.el-btn-call{background:#e8000b;color:#fff;position:relative} .el-btn-call:hover{background:#c4000a}
+.el-h1-rule{display:block;width:104px;height:7px;border-radius:7px;background:linear-gradient(90deg,#2388c2,#56c7d8);transform-origin:left center;margin:0 0 22px}
+.el-lede{font-size:21px;font-weight:600;color:#3b3f4a;margin:0 0 30px;max-width:30em}
+.el-checks{list-style:none;padding:0} .el-checks li{display:flex;gap:14px;margin:0 0 14px;font-size:18px}
+.el-checks li::before{content:"";flex:0 0 22px;height:22px;border-radius:50% 45% 55% 50%;background:#56c7d8;margin-top:3px}
+.el-reveal{opacity:0;transform:translateY(20px);transition:opacity var(--t-m) var(--ease-out),transform var(--t-m) var(--ease-out)}
+.el-reveal.is-in{opacity:1;transform:none}
+@keyframes el-ruleIn{from{transform:scaleX(0)}to{transform:scaleX(1)}}
+@keyframes el-ring{from{opacity:.55;transform:scale(1)}to{opacity:0;transform:scale(1.06,1.4)}}
+.motion-ok .el-h1-rule{animation:el-ruleIn 300ms var(--ease-out) 120ms both}
+.el-btn-call::after{content:"";position:absolute;inset:-3px;border-radius:inherit;border:2px solid #e8000b;opacity:0;pointer-events:none}
+.motion-ok .el-btn-call::after{animation:el-ring 900ms var(--ease-out) 360ms 2}
+.el-mcall{position:fixed;inset:auto 0 0 0;z-index:40;padding:10px 12px calc(10px + env(safe-area-inset-bottom));background:rgba(255,255,255,.97);border-top:1px solid #e6edf3}
+@media (prefers-reduced-motion:reduce){.el-reveal{opacity:1;transform:none;transition:none}.motion-ok *,.motion-ok *::after{animation:none!important}}
+/* Hosted Montserrat (next/font/local, see font.ts) on the email landing content only */
+.el-root,.el-root :where(h1,h2,h3,h4,p,li,a,span,strong,figcaption,label,input,textarea,select,button){font-family:var(--font-email-landing),Arial,Helvetica,sans-serif}
+.el-root :where(button,input,textarea,select){font:inherit}
+/* Gated r7c layout: rounded rectangle photo frames, no blob/liquid masks, no captions. */
+.el-root{--el-navy:#153b6b;--el-tint:#f3f7fb;color:#1a1d24}
+.el-root h1,.el-root h2,.el-root h3{color:var(--el-navy);font-weight:800;text-wrap:balance}
+.el-root h1{font-size:clamp(32px,5vw,56px);line-height:1.08;margin:0 0 0}
+.el-root h2{font-size:clamp(24px,3vw,32px);margin:0}
+.el-root h3{font-size:22px}
+.el-section{padding:48px 24px}
+@media (min-width:900px){.el-section{padding:64px 24px}}
+.el-hero{position:relative;overflow:hidden;background:var(--el-tint)}
+.el-hero-wrap{display:grid;grid-template-columns:1fr;gap:22px;align-items:center;padding:28px 24px 40px;max-width:1200px;margin:0 auto}
+@media (min-width:1024px){
+  .el-hero-wrap{grid-template-columns:1.05fr .95fr;gap:40px;padding:64px 24px 72px;align-items:center}
+  .el-hero.has-pair .el-hero-wrap{grid-template-columns:minmax(0,560px) minmax(0,600px);align-items:start}
+}
+@media (min-width:1200px){
+  .el-hero-wrap{grid-template-columns:minmax(0,660px) minmax(0,480px);justify-content:space-between}
+  .el-hero.has-pair .el-hero-wrap{grid-template-columns:minmax(0,560px) minmax(0,600px)}
+}
+.el-ctas{display:flex;flex-wrap:wrap;gap:14px}
+@media (max-width:900px){.el-ctas .el-btn{width:100%}}
+@media (min-width:601px) and (max-width:1023px){.el-hero .el-ctas{flex-direction:column;align-items:flex-start}}
+.el-photo{margin:0 auto;width:100%;max-width:560px;min-width:0}
+.el-photo.el-two{max-width:600px}
+@media (min-width:1024px){.el-photo{max-width:520px}.el-photo.el-two{max-width:600px}}
+.el-frame{margin:0;border-radius:18px;overflow:hidden;background:#fff;box-shadow:0 0 0 1px rgba(16,24,40,.08),0 14px 34px -16px rgba(16,24,40,.38)}
+.el-frame img,.el-r7-img{display:block;width:100%;height:auto}
+.el-pair{display:flex;gap:10px;align-items:flex-start}
+.el-pair figure{margin:0;min-width:0;flex:1 1 0}
+@media (min-width:600px){.el-pair{gap:14px}}
+.el-detail{display:grid;grid-template-columns:1fr;gap:36px;align-items:start;max-width:1200px;margin:0 auto}
+@media (min-width:900px){.el-detail{grid-template-columns:1.2fr .8fr;gap:56px}}
+.el-block{margin-top:40px}
+.el-block:first-child{margin-top:0}
+.el-block p{margin:12px 0 0;font-size:18px;line-height:1.55}
+.el-block h2 + p,.el-block h2 + ul{margin-top:14px}
+.el-body-call{margin-top:28px}
+.el-aside{display:grid;gap:36px;align-content:start}
+.el-form{background:#fff;border-radius:28px;padding:30px;box-shadow:0 18px 50px rgba(21,59,107,.14);border:1px solid #e6edf3}
+.el-form h3{margin:0 0 16px}
+.el-under{margin-top:12px;font-size:15px;color:#3b3f4a}
+.el-gallery{display:grid;grid-template-columns:minmax(0,440px);justify-content:center}
+.el-gimg{display:block;width:100%;height:auto;aspect-ratio:auto;object-fit:contain;clip-path:none;border-radius:18px;box-shadow:0 0 0 1px rgba(16,24,40,.08),0 14px 34px -16px rgba(16,24,40,.38)}
+.el-tiles{margin:28px 0 8px}
+.el-tiles .row{display:grid;grid-template-columns:repeat(3,min(161px,calc((100% - 20px)/3)));justify-content:center;gap:10px}
+.el-tiles.left .row{justify-content:start}
+.el-tiles img{width:100%;max-width:161px;height:auto;aspect-ratio:7/5;object-fit:cover;border-radius:12px;display:block}
+.el-band{position:relative;overflow:hidden;background:#153b6b;color:#fff;border-radius:40px;margin:0 24px;padding:64px 24px}
+.el-band h2{color:#fff;margin:0;max-width:16em}
+.el-band-wrap{max-width:1200px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;gap:30px;flex-wrap:wrap}
+@media (max-width:900px){.el-band{margin:0 12px;border-radius:28px;padding:44px 24px}.el-band .el-btn{width:100%}}
+.el-locs{display:grid;grid-template-columns:1fr;gap:28px;max-width:1200px;margin:0 auto}
+@media (min-width:700px){.el-locs{grid-template-columns:1fr 1fr}}
+.el-loc{background:#fff;border:1px solid #e6edf3;border-radius:28px;overflow:hidden;box-shadow:0 10px 30px rgba(21,59,107,.08)}
+.el-loc img{width:100%;height:auto;display:block;aspect-ratio:800/564;object-fit:cover}
+.el-loc div{padding:18px 22px 22px}
+.el-loc h3{margin:0 0 4px;color:var(--el-navy);font-size:22px;font-weight:800}
+.el-loc p{margin:2px 0;font-size:17px}
+.el-loc-phone{display:inline-block;padding:11px 0;line-height:22px;color:var(--el-navy);font-weight:800;text-decoration:none}
+
+.el-root a.el-btn-form{background:#fff;color:#153b6b;border:3px solid #153b6b;border-radius:999px;padding:16px 28px;min-height:56px;font-size:18px;font-weight:800;line-height:1.2;box-shadow:none;gap:10px}
+.el-root a.el-btn-form:hover{background:#f3f7fb;border-color:#153b6b;color:#153b6b}
+.el-root .el-band a.el-btn-form,.el-root a.el-btn-form-on-dark{background:transparent;color:#fff;border:3px solid #fff}
+.el-root .el-band a.el-btn-form:hover,.el-root a.el-btn-form-on-dark:hover{background:rgba(255,255,255,.1);color:#fff;border-color:#fff}
+
+.el-root .el-form form button[type=submit]{width:100%;background:#e8000b;color:#fff;border:0;border-radius:999px;font-weight:800;font-size:18px;min-height:56px;padding:16px 28px;box-shadow:none}
+.el-root .el-form form button[type=submit]:hover{background:#c4000a;color:#fff}
