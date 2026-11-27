@@ -39,6 +39,15 @@ Format loosely follows [Keep a Changelog](https://keepachangelog.com/); dates ar
 **Notes**
 - The model is representative (48 x 30 inch class, top-driven, bottom discharge; dimensions approximated from public listings), not a drawing of a specific make or model. The page says so under the viewer.
 
+### Interactive 3D disc stack centrifuge
+
+**Added**
+- **3D disc stack centrifuge on the disc stack repair page** — `/services/disc-stack-centrifuge-repair/#inside-the-machine` gets a click-to-load, whole-machine fly-apart of a self-cleaning disc stack centrifuge: hood with feed pipe and discharge housing, centripetal pump, bowl top and lock ring, a 24-disc stack that fans out, distributor, sliding piston and seal, bowl bottom with ejection ports, solids collector, spindle with bearings and housing, flat-belt drive with a side-mounted motor, and the frame. 23 identifiable parts; the disc stack turns once it is exposed.
+- **Homepage band** — "Open up a disc stack centrifuge", between "Three US facilities" and the FAQ, with a tracked CTA to the explorer.
+
+**Notes**
+- The model is representative (self-cleaning clarifier style, flat-belt drive; dimensions are plausible approximations), not a drawing of a specific make or model. The page says so under the viewer.
+
 ## 2026-10-02
 
 ### Lead notifications (email)

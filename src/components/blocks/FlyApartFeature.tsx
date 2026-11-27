@@ -5,8 +5,8 @@ import { TrackedButtonLink } from '@/components/ui/TrackedButtonLink'
 
 // Homepage feature bands that point to the interactive 3D models on the service pages.
 // Static: poster images and a link — no 3D code loads here. Colour comes from the Web
-// Blue ramp only (deep → navy → blue with a bright-blue glow). The two bands mirror each
-// other (image right / image left) so they read as a pair rather than a repeat.
+// Blue ramp only (deep → navy → blue with a bright-blue glow). Consecutive bands alternate
+// sides (image right / image left) so they read as a set rather than a repeat.
 interface FeatureImage {
   src: string
   alt: string
@@ -69,6 +69,30 @@ const FEATURES = {
       },
     ],
     mirrored: true,
+  },
+  discstack: {
+    heading: 'Open up a disc stack centrifuge',
+    body: 'Explore a self-cleaning disc stack centrifuge in 3D: bowl, disc stack, sliding piston, centripetal pump, spindle, and belt drive. Fly it apart and zoom in on any part.',
+    points: ['Fly it apart', 'See the disc stack', 'Zoom in on any part'],
+    cta: 'Explore the 3D disc stack centrifuge',
+    href: '/services/disc-stack-centrifuge-repair/#inside-the-machine',
+    ctaLabel: 'Home — Explore the 3D disc stack centrifuge',
+    ctaLocation: 'home_discstack_3d',
+    images: [
+      {
+        src: '/images/discstack-3d/assembled.webp',
+        alt: '3D render of a self-cleaning disc stack centrifuge with a side-mounted motor and a conical hood',
+        width: 904,
+        height: 973,
+      },
+      {
+        src: '/images/discstack-3d/exploded.webp',
+        alt: 'The same disc stack centrifuge exploded vertically: hood, centripetal pump, bowl top, disc stack, distributor, sliding piston, bowl bottom, solids collector, spindle, and frame',
+        width: 468,
+        height: 1122,
+      },
+    ],
+    mirrored: false,
   },
 } satisfies Record<string, Feature>
 

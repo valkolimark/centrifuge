@@ -49,6 +49,13 @@ const FLYAPART_BY_SLUG: Record<string, { model: FlyApartModelKey; id: string; he
     intro:
       'Rotate the machine, fly it apart, and click any part to see what it does, from the top drive and spindle bearings down to the basket, plow, and discharge chute.',
   },
+  'disc-stack-centrifuge-repair': {
+    model: 'discstack',
+    id: 'inside-the-machine',
+    heading: 'Inside a disc stack centrifuge',
+    intro:
+      'Rotate the machine, fly it apart, and click any part to see what it does: the bowl, disc stack, sliding piston, and centripetal pump, down to the spindle bearings and belt drive.',
+  },
 }
 
 export async function generateStaticParams() {

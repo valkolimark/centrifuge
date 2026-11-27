@@ -270,6 +270,8 @@ export default async function HomePage() {
         </div>
       </Section>
 
+      <FlyApartFeature model="discstack" />
+
       <Section tone="subtle">
         <div className="mb-6 max-w-2xl">
           <h2>Frequently asked questions</h2>
