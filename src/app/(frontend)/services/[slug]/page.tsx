@@ -54,7 +54,7 @@ const FLYAPART_BY_SLUG: Record<string, { model: FlyApartModelKey; id: string; he
     id: 'inside-the-machine',
     heading: 'Inside a disc stack centrifuge',
     intro:
-      'Rotate the machine, fly it apart, and click any part to see what it does: the bowl, disc stack, sliding piston, and centripetal pump, down to the spindle bearings and belt drive.',
+      'Rotate the machine, fly it apart, and click any part to see what it does: the bowl, disc stack, sliding piston, paring disc, and operating-water parts, down to the spindle bearings and drive.',
   },
 }
 

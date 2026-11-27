@@ -88,8 +88,8 @@ const FEATURES = {
       {
         src: '/images/discstack-3d/exploded.webp',
         alt: 'The same disc stack centrifuge exploded vertically: hood, centripetal pump, bowl top, disc stack, distributor, sliding piston, bowl bottom, solids collector, spindle, and frame',
-        width: 422,
-        height: 1090,
+        width: 380,
+        height: 1086,
       },
     ],
     mirrored: false,
