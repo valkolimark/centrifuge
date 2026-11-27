@@ -1,13 +1,15 @@
-// three.js viewer for the decanter rotating-assembly fly-apart.
+// three.js viewer for the interactive 3D fly-apart models (see lib/flyapart-models.ts).
 //
 // This module is ONLY ever loaded through a dynamic import() from
-// components/blocks/DecanterExplorer.tsx after the visitor clicks "Explore in 3D",
+// components/blocks/FlyApartExplorer.tsx after the visitor clicks "Explore in 3D",
 // so three.js never ships in a page's initial JavaScript. Do not import it statically.
 //
-// The GLB carries one baked clip (assembled → fully apart). The viewer scrubs that
-// clip with a 0..1 progress value, keeps the assembly framed as it grows, and
-// reports which part is under the pointer. Rendering is on demand: the loop stops
-// whenever nothing is moving or the canvas is off screen.
+// Each GLB carries one baked clip (assembled → fully apart). The viewer scrubs that
+// clip with a 0..1 progress value, keeps the model framed as it grows, reports which
+// part is under the pointer, and zooms toward the last part the visitor clicked.
+// Rendering is on demand: the loop stops whenever nothing is moving or the canvas is
+// off screen. Wheel and pinch zoom are deliberately off so the canvas never hijacks
+// page scrolling; zoom is driven by the explorer's buttons.
 import {
   ACESFilmicToneMapping,
   AnimationClip,
@@ -36,7 +38,7 @@ import { DRACOLoader } from 'three/addons/loaders/DRACOLoader.js'
 import { OrbitControls } from 'three/addons/controls/OrbitControls.js'
 import { RoomEnvironment } from 'three/addons/environments/RoomEnvironment.js'
 
-export interface DecanterViewerOptions {
+export interface FlyApartViewerOptions {
   canvas: HTMLCanvasElement
   modelUrl: string
   dracoPath: string
@@ -45,23 +47,36 @@ export interface DecanterViewerOptions {
   /** Highlight colour for the hovered part (any CSS colour). */
   accent: string
   reducedMotion: boolean
+  /** Node that turns slowly once the model is mostly apart. */
+  spin?: { node: string; axis: 'x' | 'y' | 'z' }
+  /** Height of the shadow-catching floor. */
+  floorY: number
+  /** Starting camera direction, in degrees. */
+  view: { azimuth: number; elevation: number }
   onReady: () => void
   onError: (err: unknown) => void
   /** p: 0 assembled … 1 fully apart. playingTo is the play() target, or null when idle/scrubbing. */
   onProgress: (p: number, playingTo: 0 | 1 | null) => void
   onFocus: (key: string | null) => void
+  /** Zoom target changed (1 = whole model in view). */
+  onZoom: (zoom: number) => void
 }
 
-export interface DecanterViewerHandle {
+export interface FlyApartViewerHandle {
   setProgress: (p: number) => void
   play: (to: 0 | 1) => void
+  /** Multiply the zoom by `factor` (clamped to ZOOM_MIN..ZOOM_MAX). */
+  zoomBy: (factor: number) => void
+  /** Back to the whole model, centred. */
+  resetView: () => void
   dispose: () => void
 }
 
+export const ZOOM_MIN = 1
+export const ZOOM_MAX = 6
 const PLAY_SECONDS = 5.2
-const FLOOR_Y = -0.42
 
-export function createDecanterViewer(opts: DecanterViewerOptions): DecanterViewerHandle {
+export function createFlyApartViewer(opts: FlyApartViewerOptions): FlyApartViewerHandle {
   const { canvas } = opts
   const partKeys = new Set(opts.partKeys)
 
@@ -78,18 +93,17 @@ export function createDecanterViewer(opts: DecanterViewerOptions): DecanterViewe
   scene.environment = envTarget.texture
   scene.environmentIntensity = 0.95
 
-  const camera = new PerspectiveCamera(32, 16 / 9, 0.05, 100)
-  const az = MathUtils.degToRad(-34)
-  const el = MathUtils.degToRad(17)
+  const camera = new PerspectiveCamera(32, 16 / 9, 0.05, 200)
+  const az = MathUtils.degToRad(opts.view.azimuth)
+  const el = MathUtils.degToRad(opts.view.elevation)
   camera.position
     .set(Math.sin(az) * Math.cos(el), Math.sin(el), Math.cos(az) * Math.cos(el))
     .multiplyScalar(6)
 
   const key = new DirectionalLight(0xffffff, 1.6)
-  key.position.set(-1.5, 7, 3)
   key.castShadow = true
-  key.shadow.mapSize.set(2048, 1024)
-  Object.assign(key.shadow.camera, { left: -4.2, right: 4.2, top: 2, bottom: -2, near: 1, far: 14 })
+  key.shadow.mapSize.set(2048, 2048)
+  Object.assign(key.shadow.camera, { left: -4.5, right: 4.5, top: 4, bottom: -4, near: 1, far: 30 })
   key.shadow.radius = 9
   key.shadow.blurSamples = 16
   key.shadow.bias = -0.0005
@@ -97,14 +111,14 @@ export function createDecanterViewer(opts: DecanterViewerOptions): DecanterViewe
   rim.position.set(3, 3, -6)
   scene.add(key, key.target, rim)
 
-  const ground = new Mesh(new PlaneGeometry(40, 40), new ShadowMaterial({ opacity: 0.32 }))
+  const ground = new Mesh(new PlaneGeometry(60, 60), new ShadowMaterial({ opacity: 0.32 }))
   ground.rotation.x = -Math.PI / 2
-  ground.position.y = FLOOR_Y
+  ground.position.y = opts.floorY
   ground.receiveShadow = true
   scene.add(ground)
 
   const controls = new OrbitControls(camera, canvas)
-  controls.enableZoom = false // never hijack page scroll
+  controls.enableZoom = false // never hijack page scroll; zoom comes from the explorer's buttons
   controls.enablePan = false
   controls.enableDamping = true
   controls.dampingFactor = 0.08
@@ -114,7 +128,7 @@ export function createDecanterViewer(opts: DecanterViewerOptions): DecanterViewe
 
   // ── state ────────────────────────────────────────────────────────────────
   let model: Object3D | null = null
-  let scroll: Object3D | undefined
+  let spinNode: Object3D | undefined
   let mixer: AnimationMixer | null = null
   let action: AnimationAction | null = null
   let clipStart = 0
@@ -125,6 +139,9 @@ export function createDecanterViewer(opts: DecanterViewerOptions): DecanterViewe
   let applied = -1
   let target: 0 | 1 | null = null
   let focused: string | null = null
+  let anchorKey: string | null = null // last clicked part: where zoom heads
+  let zoomGoal = 1
+  let zoom = 1
   let dragging = false
   let idleAt = 0
   let visible = true
@@ -135,6 +152,7 @@ export function createDecanterViewer(opts: DecanterViewerOptions): DecanterViewe
   let dist = 6
 
   const box = new Box3()
+  const anchorBox = new Box3()
   const center = new Vector3()
   const raycaster = new Raycaster()
   const pointer = new Vector2()
@@ -144,6 +162,7 @@ export function createDecanterViewer(opts: DecanterViewerOptions): DecanterViewe
   const tmpP = new Vector3()
   const tmpDir = new Vector3()
   const tmpBefore = new Vector3()
+  const tmpWant = new Vector3()
 
   function wake() {
     if (raf || disposed || !model) return
@@ -180,13 +199,15 @@ export function createDecanterViewer(opts: DecanterViewerOptions): DecanterViewe
     wake()
   }
 
-  function pick(e: PointerEvent) {
-    if (!model) return
+  function pick(e: PointerEvent): string | null {
+    if (!model) return null
     const b = canvas.getBoundingClientRect()
     pointer.set(((e.clientX - b.left) / b.width) * 2 - 1, -((e.clientY - b.top) / b.height) * 2 + 1)
     raycaster.setFromCamera(pointer, camera)
     const hit = raycaster.intersectObject(model, true)[0]
-    focus(hit ? ((hit.object.userData.partKey as string | undefined) ?? null) : null)
+    const k = hit ? ((hit.object.userData.partKey as string | undefined) ?? null) : null
+    focus(k)
+    return k
   }
 
   // Distance at which the whole box fits the view from direction `dir`.
@@ -237,30 +258,51 @@ export function createDecanterViewer(opts: DecanterViewerOptions): DecanterViewe
       model.updateMatrixWorld(true)
       box.setFromObject(model)
     }
-    if (scroll && progress > 0.6 && !opts.reducedMotion) {
-      // Turn the conveyor once the bowl has cleared it, so the flights read as a screw.
-      scroll.rotation.x += dt * 0.7 * Math.min(1, (progress - 0.6) / 0.3)
+    if (spinNode && opts.spin && progress > 0.6 && !opts.reducedMotion) {
+      // Turn the rotor once it is exposed, so the flights / basket read as rotating parts.
+      spinNode.rotation[opts.spin.axis] += dt * 0.7 * Math.min(1, (progress - 0.6) / 0.3)
       busy = true
     }
 
-    controls.autoRotate = !opts.reducedMotion && !dragging && !focused && now > idleAt
+    const kz = snap ? 1 : 1 - Math.exp(-dt * 6)
+    zoom += (zoomGoal - zoom) * kz
+    if (Math.abs(zoomGoal - zoom) < 1e-3) zoom = zoomGoal
+    else busy = true
+
+    controls.autoRotate = !opts.reducedMotion && !dragging && !focused && zoomGoal === 1 && now > idleAt
     if (controls.autoRotate) busy = true
     tmpBefore.copy(camera.position)
     controls.update()
 
-    // Keep the assembly framed: follow its centre and fit distance for the current view direction.
+    // Keep the model framed: follow its centre and fit distance for the current view direction.
+    // When zoomed in, head for the last clicked part instead of the centre of everything.
     const dir = tmpDir.copy(camera.position).sub(controls.target).normalize()
-    const want = fitDistance(dir)
+    const want = Math.max(fitDistance(dir) / zoom, 0.35)
+    box.getCenter(tmpWant)
+    const anchorMeshes = anchorKey ? byKey.get(anchorKey) : undefined
+    if (anchorMeshes && zoom > 1) {
+      anchorBox.makeEmpty()
+      for (const m of anchorMeshes) anchorBox.expandByObject(m)
+      tmpWant.lerp(anchorBox.getCenter(tmpC), MathUtils.smoothstep(zoom, 1, 1.6))
+    }
     const k = snap ? 1 : 1 - Math.exp(-dt * 7)
     snap = false
     dist += (want - dist) * k
-    center.lerp(box.getCenter(tmpC), k)
+    center.lerp(tmpWant, k)
     controls.target.copy(center)
     camera.position.copy(center).addScaledVector(dir, dist)
     camera.lookAt(center)
-    key.target.position.set(center.x, 0, 0)
-    key.position.set(center.x - 1.5, 7, 3)
-    if (Math.abs(want - dist) > 1e-3 || tmpBefore.distanceToSquared(camera.position) > 1e-8) busy = true
+    box.getCenter(tmpC)
+    const lightY = Math.max(7, box.max.y + 4)
+    key.position.set(tmpC.x - 1.5, lightY, tmpC.z + 3)
+    key.target.position.set(tmpC.x, tmpC.y, tmpC.z)
+    if (
+      Math.abs(want - dist) > 1e-3 ||
+      center.distanceToSquared(tmpWant) > 1e-7 ||
+      tmpBefore.distanceToSquared(camera.position) > 1e-8
+    ) {
+      busy = true
+    }
 
     renderer.render(scene, camera)
     // `!raf`: a callback fired during this frame may already have scheduled the next one.
@@ -297,8 +339,11 @@ export function createDecanterViewer(opts: DecanterViewerOptions): DecanterViewe
     downAt = [e.clientX, e.clientY]
   }
   const onUp = (e: PointerEvent) => {
-    // A tap (no drag) identifies the part on touch screens.
-    if (downAt && Math.hypot(e.clientX - downAt[0], e.clientY - downAt[1]) < 6) pick(e)
+    // A click or tap (no drag) identifies the part and makes it the zoom anchor.
+    if (downAt && Math.hypot(e.clientX - downAt[0], e.clientY - downAt[1]) < 6) {
+      anchorKey = pick(e)
+      wake()
+    }
   }
   controls.addEventListener('start', onStart)
   controls.addEventListener('end', onEnd)
@@ -339,7 +384,7 @@ export function createDecanterViewer(opts: DecanterViewerOptions): DecanterViewe
           else byKey.set(k, [mesh])
         }
       })
-      scroll = model.getObjectByName('Scroll_Hub')
+      spinNode = opts.spin ? model.getObjectByName(opts.spin.node) : undefined
       scene.add(model)
 
       // One clip whether the export wrote a single clip or one per part.
@@ -382,6 +427,21 @@ export function createDecanterViewer(opts: DecanterViewerOptions): DecanterViewe
       }
       target = to
       opts.onProgress(progress, to)
+      wake()
+    },
+    zoomBy(factor) {
+      const next = Math.min(ZOOM_MAX, Math.max(ZOOM_MIN, zoomGoal * factor))
+      // Snap to exactly 1 near the bottom so "whole model" is a clean resting state.
+      zoomGoal = next < ZOOM_MIN * 1.05 ? ZOOM_MIN : next
+      if (opts.reducedMotion) zoom = zoomGoal
+      opts.onZoom(zoomGoal)
+      wake()
+    },
+    resetView() {
+      zoomGoal = ZOOM_MIN
+      anchorKey = null
+      if (opts.reducedMotion) zoom = zoomGoal
+      opts.onZoom(zoomGoal)
       wake()
     },
     dispose() {

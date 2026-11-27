@@ -12,7 +12,7 @@ import { RelatedLinks } from '@/components/blocks/RelatedLinks'
 import { CTABanner } from '@/components/blocks/CTABanner'
 import { QuoteForm } from '@/components/forms/QuoteForm'
 import { VideoFacade } from '@/components/blocks/VideoFacade'
-import { DecanterExplorer } from '@/components/blocks/DecanterExplorer'
+import { FlyApartExplorer } from '@/components/blocks/FlyApartExplorer'
 import { SERVICE_HERO, SERVICE_VIDEO } from '@/lib/page-media'
 import { toVideoSource } from '@/lib/videos'
 import { JsonLd } from '@/components/JsonLd'
@@ -140,7 +140,7 @@ export default async function ServicePage({ params }: { params: Promise<{ slug: 
                 conveyor, gearbox, and bearings we restore and balance in a decanter repair.
               </p>
             </div>
-            <DecanterExplorer />
+            <FlyApartExplorer model="decanter" />
           </div>
         </Section>
       ) : null}

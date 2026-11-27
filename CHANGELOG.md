@@ -18,6 +18,8 @@ Format loosely follows [Keep a Changelog](https://keepachangelog.com/); dates ar
 - **Homepage feature band** — a Web Blue gradient section between "Centrifuge types we service" and "Industries we serve" with an exploded render and a tracked "Explore the 3D decanter" CTA to the explorer.
 - **Facade pattern, nothing in first load** — like `VideoFacade`, the page ships only a poster image. `three` (new dependency, an exception to the 5 KB animation-library rule, made at the client's request), the self-hosted Draco decoder (`/public/draco`), and the 453 KB model (`/public/models`) are fetched only after the click. No CSP change: the decoder runs as JS, not WASM.
 - GA4 `cta_click` events: `Home — Explore the 3D decanter`, `Explore in 3D`, `3D — Fly apart`.
+- **Zoom controls** — the viewer has Zoom in, Zoom out, and Reset view buttons. Clicking or tapping a part makes it the zoom target, so visitors can inspect any component up close. Mouse-wheel and pinch zoom stay off so the viewer never hijacks page scrolling.
+- **Viewer generalized for more models** — `DecanterExplorer` / `decanter-viewer` / `decanter-parts` became `FlyApartExplorer` / `flyapart-viewer` / `flyapart-models` (a registry keyed by model), ready for additional machines.
 
 **Notes**
 - The model is representative (14-inch class, dimensions approximated from public listings), not a drawing of a specific make or model; the page says so under the viewer.
