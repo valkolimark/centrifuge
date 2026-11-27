@@ -13,3 +13,6 @@ Ideas and follow-ups deferred from a cycle's scope (CLAUDE.md rule 6).
 - **`BeforeAfterSlider` breaks the homepage in `pnpm dev`.** `next/image` throws on `fill` + `style.width` in development only (production renders). Pre-existing; fix the slider so the homepage can be previewed locally.
 - **Reuse the explorer elsewhere** (e.g. `/resources/how-it-works/decanter/`) and add more models (disc stack, basket) if the decanter one earns engagement.
 - **Confirm the model layout with the shop** — gearbox on the liquid end and feed tube through the solids end are assumptions; swap ends in the Blender source if the reference machine differs.
+
+## Fonts (from the 2026-11-23 Vercel build failures)
+- **Public-site fonts still use `next/font/google`.** `src/lib/fonts.ts` (Archivo, Inter) fetches from Google at build time, the same mechanism that broke the admin fonts. It did not fail in the affected builds, but it carries the same risk. Move it to `next/font/local` with committed files (check fallback-metric overrides so CLS does not change).
