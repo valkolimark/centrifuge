@@ -3,6 +3,19 @@
 All notable changes to the Centrifuge.com rebuild are recorded here.
 Format loosely follows [Keep a Changelog](https://keepachangelog.com/); dates are ISO (YYYY-MM-DD).
 
+## 2026-11-26
+
+### Interactive 3D decanter
+
+**Added**
+- **3D rotating-assembly explorer on the decanter repair page** — `/services/decanter-centrifuge-repair/#rotating-assembly` gets a click-to-load 3D model of a decanter rotating assembly (bowl, scroll conveyor, hubs, bearings, gearbox). Visitors can rotate it, fly it apart with a button or slider, and point at or tap a part to see its name and what it does. A text list of all 26 parts sits under the viewer for screen readers and search.
+- **Homepage feature band** — a Web Blue gradient section between "Centrifuge types we service" and "Industries we serve" with an exploded render and a tracked "Explore the 3D decanter" CTA to the explorer.
+- **Facade pattern, nothing in first load** — like `VideoFacade`, the page ships only a poster image. `three` (new dependency, an exception to the 5 KB animation-library rule, made at the client's request), the self-hosted Draco decoder (`/public/draco`), and the 453 KB model (`/public/models`) are fetched only after the click. No CSP change: the decoder runs as JS, not WASM.
+- GA4 `cta_click` events: `Home — Explore the 3D decanter`, `Explore in 3D`, `3D — Fly apart`.
+
+**Notes**
+- The model is representative (14-inch class, dimensions approximated from public listings), not a drawing of a specific make or model; the page says so under the viewer.
+
 ## 2026-10-02
 
 ### Lead notifications (email)
