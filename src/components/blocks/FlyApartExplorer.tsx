@@ -22,7 +22,7 @@ import type { FlyApartViewerHandle } from '@/lib/flyapart-viewer'
 // it. Nothing is overlaid on the canvas, so the UI can never cover the model. Both strips
 // render from the start (controls disabled until the model loads) and the info strip has
 // a fixed height, so loading the model or hovering a part never shifts the page.
-const IDLE_HINT = 'Drag to rotate. Click or tap a part to identify it, then use + to zoom in on it.'
+const IDLE_HINT = 'Drag to rotate. Click a part to identify it and + to zoom in on it. Double-click a part to view it on its own.'
 const POSTER_HINT = 'Select Explore in 3D to load the interactive model.'
 const ZOOM_STEP = 1.5
 // Mirrors ZOOM_MIN / ZOOM_MAX in lib/flyapart-viewer.ts, which must not be imported statically.
@@ -82,12 +82,13 @@ export function FlyApartExplorer({
   const [status, setStatus] = useState<Status>('idle')
   const [progress, setProgress] = useState(0)
   const [playingTo, setPlayingTo] = useState<0 | 1 | null>(null)
-  const [focusKey, setFocusKey] = useState<string | null>(null)
+  const [focus, setFocus] = useState<{ key: string; unit: string | null } | null>(null)
+  const [isolated, setIsolated] = useState<{ key: string; unit: string | null } | null>(null)
   const [zoom, setZoom] = useState(1)
   const [variant, setVariant] = useState(model.variants?.options[0].key)
   const canvasRef = useRef<HTMLCanvasElement>(null)
   const viewer = useRef<FlyApartViewerHandle | null>(null)
-  const tracked = useRef({ fly: false, zoom: false })
+  const tracked = useRef({ fly: false, zoom: false, isolate: false })
 
   useEffect(
     () => () => {
@@ -120,7 +121,14 @@ export function FlyApartExplorer({
           setProgress(p)
           setPlayingTo(to)
         },
-        onFocus: setFocusKey,
+        onFocus: (key, unit) => setFocus(key ? { key, unit } : null),
+        onIsolate: (key, unit) => {
+          setIsolated(key ? { key, unit } : null)
+          if (key && !tracked.current.isolate) {
+            tracked.current.isolate = true
+            trackCtaClick('3D — Isolate part', location)
+          }
+        },
         onZoom: setZoom,
       })
     } catch {
@@ -152,8 +160,11 @@ export function FlyApartExplorer({
     trackCtaClick(`3D — ${model.variants?.label}: ${label}`, location)
   }
 
-  const info = focusKey ? model.parts.find((p) => p.key === focusKey) : undefined
+  // The info strip describes the part under the pointer, else the isolated part, else the model.
+  const shown = focus ?? isolated
+  const info = shown ? model.parts.find((p) => p.key === shown.key) : undefined
   const infoTag = info ? variantTag(model, info) : undefined
+  const infoUnit = info && shown?.unit ? `${info.unitName ?? 'Piece'} ${shown.unit}` : undefined
 
   return (
     <div className={className}>
@@ -162,6 +173,7 @@ export function FlyApartExplorer({
         <div className="h-[6.25rem] overflow-hidden border-b border-white/10 px-4 py-3 text-white sm:h-[5.25rem]" aria-live="polite">
           <p className="text-sm font-semibold leading-snug">
             {info ? info.name : model.title}
+            {infoUnit ? <span className="ml-2 font-normal text-white/85">{infoUnit}</span> : null}
             {infoTag ? (
               <span className="ml-2 rounded-pill bg-white/10 px-2 py-0.5 text-xs font-medium text-white/85">{infoTag}</span>
             ) : null}
@@ -290,6 +302,17 @@ export function FlyApartExplorer({
               <path d="M3 4v5h5" />
             </IconButton>
           </div>
+
+          {/* Only while a part is isolated. It sits last in the strip, so the controls above never move. */}
+          {isolated ? (
+            <button
+              type="button"
+              onClick={() => viewer.current?.exitIsolation()}
+              className="min-h-[44px] w-full rounded-button bg-white px-5 text-[0.95rem] font-semibold text-navy transition-colors duration-150 hover:bg-steel-100 focus-visible:outline-white"
+            >
+              <span aria-hidden="true">← </span>Back to machine
+            </button>
+          ) : null}
         </div>
       </div>
 

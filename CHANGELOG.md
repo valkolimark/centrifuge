@@ -48,6 +48,14 @@ Format loosely follows [Keep a Changelog](https://keepachangelog.com/); dates ar
 **Notes**
 - The model is representative (self-cleaning clarifier style, flat-belt drive; dimensions are plausible approximations), not a drawing of a specific make or model. The page says so under the viewer.
 
+### 3D viewer: isolate a part, individual discs, worm gear drive
+
+**Added**
+- **Double-click to isolate a part** — on every model, double-clicking (or double-tapping) a part hides everything else and frames that part alone so it can be turned around and zoomed. Double-clicking again, or the "Back to machine" button, returns it. The fly-apart position is kept.
+- **Individual discs** — the disc stack's 24 discs are picked one at a time ("Disc 16 of 24"), fan out far enough to tell apart, and can each be isolated.
+- **Worm gear drive option** on the disc stack model — a Drive toggle switches between the flat-belt drive and a worm gear drive (horizontal flanged motor, centrifugal clutch, horizontal shaft with bearings, bronze worm wheel, worm on the spindle, gear housing).
+- **Spindle shown on its own** — in the exploded disc stack view the spindle now comes out to the side instead of staying threaded through its bearings and housing.
+
 ## 2026-10-02
 
 ### Lead notifications (email)
