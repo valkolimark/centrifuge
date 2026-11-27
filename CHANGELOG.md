@@ -34,6 +34,7 @@ Format loosely follows [Keep a Changelog](https://keepachangelog.com/); dates ar
 - **Electric or hydraulic drive** — a Drive toggle in the viewer switches the basket model between an electric drive (motor on an inline gearbox) and a hydraulic drive (radial-piston motor with pressure and return hoses). Both sit on the same pedestal and coupling; parts that belong to one drive are tagged in the parts list.
 - **Raised sight glass** — the lid's sight glass is now a 400 mm glass on a raised, flanged nozzle with a bolted frame, so it reads clearly from any angle.
 - **Nothing overlays the model** — part information moved to a fixed-height strip above the 3D canvas and every control (fly-apart, slider, drive toggle, zoom) to a strip below it, on both models. The canvas is unobstructed at every screen size, and loading or hovering never shifts the page.
+- **Homepage band for the basket centrifuge** — a second Web Blue feature band ("See inside a basket centrifuge") between "How a rebuild works" and "Rebuilt, not replaced", mirrored against the decanter band, with the assembled and exploded renders and a tracked CTA to the basket explorer. `DecanterFeature` became `FlyApartFeature` and renders both bands.
 
 **Notes**
 - The model is representative (48 x 30 inch class, top-driven, bottom discharge; dimensions approximated from public listings), not a drawing of a specific make or model. The page says so under the viewer.
