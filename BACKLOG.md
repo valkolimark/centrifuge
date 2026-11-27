@@ -7,3 +7,6 @@ Ideas and follow-ups deferred from a cycle's scope (CLAUDE.md rule 6).
 - **Customer acknowledgement email redesign.** It picked up the Web Blue header but keeps its old layout.
 - **Per-form-type routing** (e.g. quotes → Ron, emergencies → David) instead of all four recipients on every lead.
 - **Legacy `src/lib/email/notify.ts` + `scripts/test-form.ts`** are unused by the live path (and the script still uses the old `company_website` honeypot). Remove or update.
+
+## Fonts (from the 2026-11-23 Vercel build failures)
+- **Public-site fonts still use `next/font/google`.** `src/lib/fonts.ts` (Archivo, Inter) fetches from Google at build time, the same mechanism that broke the admin fonts. It did not fail in the affected builds, but it carries the same risk. Move it to `next/font/local` with committed files (check fallback-metric overrides so CLS does not change).
