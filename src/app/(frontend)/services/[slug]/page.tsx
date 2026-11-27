@@ -12,7 +12,8 @@ import { RelatedLinks } from '@/components/blocks/RelatedLinks'
 import { CTABanner } from '@/components/blocks/CTABanner'
 import { QuoteForm } from '@/components/forms/QuoteForm'
 import { VideoFacade } from '@/components/blocks/VideoFacade'
-import { FlyApartExplorer } from '@/components/blocks/FlyApartExplorer'
+import { FlyApartSection } from '@/components/blocks/FlyApartSection'
+import type { FlyApartModelKey } from '@/lib/flyapart-models'
 import { SERVICE_HERO, SERVICE_VIDEO } from '@/lib/page-media'
 import { toVideoSource } from '@/lib/videos'
 import { JsonLd } from '@/components/JsonLd'
@@ -31,9 +32,24 @@ export const dynamicParams = true
 
 interface LinkItem { label: string; href: string }
 
-// The interactive 3D rotating assembly renders on this service page only
-// (linked from the homepage feature band — see DecanterFeature).
-const DECANTER_3D_SLUG = 'decanter-centrifuge-repair'
+// Interactive 3D fly-apart models, by service slug. The decanter anchor is linked from
+// the homepage feature band (see DecanterFeature) — keep its id stable.
+const FLYAPART_BY_SLUG: Record<string, { model: FlyApartModelKey; id: string; heading: string; intro: string }> = {
+  'decanter-centrifuge-repair': {
+    model: 'decanter',
+    id: 'rotating-assembly',
+    heading: 'Inside a decanter rotating assembly',
+    intro:
+      'Rotate the assembly, fly it apart, and point at any part to see what it does: the bowl, scroll conveyor, gearbox, and bearings we restore and balance in a decanter repair.',
+  },
+  'basket-centrifuge-repair': {
+    model: 'basket',
+    id: 'inside-the-machine',
+    heading: 'Inside a basket centrifuge',
+    intro:
+      'Rotate the machine, fly it apart, and click any part to see what it does, from the top drive and spindle bearings down to the basket, plow, and discharge chute.',
+  },
+}
 
 export async function generateStaticParams() {
   return (await getServices()).map((s) => ({ slug: s.slug }))
@@ -130,20 +146,7 @@ export default async function ServicePage({ params }: { params: Promise<{ slug: 
         </Section>
       ) : null}
 
-      {service.slug === DECANTER_3D_SLUG ? (
-        <Section tone="deep" id="rotating-assembly" className="scroll-mt-24">
-          <div className="mx-auto max-w-5xl">
-            <div className="mb-6 max-w-2xl">
-              <h2 className="text-white">Inside a decanter rotating assembly</h2>
-              <p className="mt-2 text-white/85">
-                Rotate the assembly, fly it apart, and point at any part to see what it does: the bowl, scroll
-                conveyor, gearbox, and bearings we restore and balance in a decanter repair.
-              </p>
-            </div>
-            <FlyApartExplorer model="decanter" />
-          </div>
-        </Section>
-      ) : null}
+      {FLYAPART_BY_SLUG[service.slug] ? <FlyApartSection {...FLYAPART_BY_SLUG[service.slug]} /> : null}
 
       {SERVICE_VIDEO[service.slug] ? (
         <Section>

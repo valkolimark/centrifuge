@@ -24,6 +24,16 @@ Format loosely follows [Keep a Changelog](https://keepachangelog.com/); dates ar
 **Notes**
 - The model is representative (14-inch class, dimensions approximated from public listings), not a drawing of a specific make or model; the page says so under the viewer.
 
+### Interactive 3D basket centrifuge
+
+**Added**
+- **3D basket centrifuge on the basket repair page** — `/services/basket-centrifuge-repair/#inside-the-machine` gets a click-to-load, whole-machine fly-apart of a vertical basket centrifuge: top drive (motor, gearbox, coupling, pedestal), bearing housing with spindle and bearings, lid with sight glass, feed pipe and plow, perforated basket, casing, base frame, and bottom discharge chute. 20 identifiable parts with descriptions; the basket turns once it is clear of the casing.
+- **Tall layout** — vertical machines render in a portrait viewer beside the heading and an open parts list on desktop; on phones the list folds under the viewer. `FlyApartSection` picks the layout from the model registry.
+- Same loading rules as the decanter: nothing in first-load JS, self-hosted model (338 KB) and decoder, no CSP change.
+
+**Notes**
+- The model is representative (48 x 30 inch class, top-driven, bottom discharge; dimensions approximated from public listings), not a drawing of a specific make or model. The page says so under the viewer.
+
 ## 2026-10-02
 
 ### Lead notifications (email)

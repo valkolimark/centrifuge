@@ -20,7 +20,7 @@ type Status = 'idle' | 'loading' | 'ready' | 'error'
 
 const ASPECT: Record<FlyApartModel['layout'], string> = {
   wide: 'aspect-[4/5] sm:aspect-[16/9]',
-  tall: 'aspect-[3/4] sm:aspect-[4/5]',
+  tall: 'aspect-[3/4] lg:aspect-[5/8]',
 }
 const POSTER_SIZE: Record<FlyApartModel['layout'], string> = {
   wide: 'h-auto w-full max-w-[880px]',
@@ -56,12 +56,12 @@ function IconButton({
 
 export function FlyApartExplorer({
   model: modelKey,
-  partsList = true,
+  partsListClassName,
   className,
 }: {
   model: FlyApartModelKey
-  /** Render the collapsible text list of parts under the viewer. */
-  partsList?: boolean
+  /** Extra classes for the collapsible parts list under the viewer (e.g. hide it where the page shows its own). */
+  partsListClassName?: string
   className?: string
 }) {
   const model: FlyApartModel = FLYAPART_MODELS[modelKey]
@@ -240,21 +240,19 @@ export function FlyApartExplorer({
 
       <p className="mt-3 text-sm text-white/75">{model.caption}</p>
 
-      {partsList ? (
-        <details className="mt-4 rounded-card bg-white/5 ring-1 ring-white/10">
-          <summary className="cursor-pointer px-4 py-3 text-sm font-semibold text-white focus-visible:outline-white">
-            Parts shown in this model ({model.parts.length})
-          </summary>
-          <dl className="grid gap-x-6 gap-y-3 px-4 pb-4 pt-1 sm:grid-cols-2 lg:grid-cols-3">
-            {model.parts.map((p) => (
-              <div key={p.key}>
-                <dt className="text-sm font-semibold text-white">{p.name}</dt>
-                <dd className="text-sm text-white/80">{p.description}</dd>
-              </div>
-            ))}
-          </dl>
-        </details>
-      ) : null}
+      <details className={cn('mt-4 rounded-card bg-white/5 ring-1 ring-white/10', partsListClassName)}>
+        <summary className="cursor-pointer px-4 py-3 text-sm font-semibold text-white focus-visible:outline-white">
+          Parts shown in this model ({model.parts.length})
+        </summary>
+        <dl className="grid gap-x-6 gap-y-3 px-4 pb-4 pt-1 sm:grid-cols-2 lg:grid-cols-3">
+          {model.parts.map((p) => (
+            <div key={p.key}>
+              <dt className="text-sm font-semibold text-white">{p.name}</dt>
+              <dd className="text-sm text-white/80">{p.description}</dd>
+            </div>
+          ))}
+        </dl>
+      </details>
     </div>
   )
 }
