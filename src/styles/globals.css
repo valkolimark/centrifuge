@@ -45,6 +45,28 @@
   --spacing-container: var(--container-max);
 }
 
+/* ── Metric-matched font fallbacks ───────────────────────────
+   Arial resized to the metrics of Archivo / Inter so text barely moves when the
+   web fonts swap in. Values are the ones next/font/google generated before the
+   fonts moved to next/font/local (see src/lib/fonts.ts) — keep them in sync with
+   the `fallback` arrays there. */
+@font-face {
+  font-family: 'Archivo Fallback';
+  src: local('Arial');
+  ascent-override: 88.96%;
+  descent-override: 21.28%;
+  line-gap-override: 0%;
+  size-adjust: 98.7%;
+}
+@font-face {
+  font-family: 'Inter Fallback';
+  src: local('Arial');
+  ascent-override: 90.44%;
+  descent-override: 22.52%;
+  line-gap-override: 0%;
+  size-adjust: 107.12%;
+}
+
 /* ── Base layer ─────────────────────────────────────────────── */
 @layer base {
   * {

@@ -9,6 +9,7 @@ Format loosely follows [Keep a Changelog](https://keepachangelog.com/); dates ar
 
 **Fixed**
 - **Vercel deployments failing since 2026-11-23** — every build died in `next/font` on `src/payload/admin/BrandProvider.tsx` (`TypeError: Cannot read properties of null (reading '1')`). `next/font/google` downloads fonts from Google at build time; Google began returning font URLs without a file extension to Vercel's builders, which Next 15.4's loader cannot parse. The admin fonts (Chakra Petch, Inter, JetBrains Mono) are now committed under `src/payload/admin/fonts/` and loaded with `next/font/local`, so the build no longer depends on Google. Same font files as before; no visual change intended.
+- **Public-site fonts hit the same failure** — the first production deploy after the admin fix died on `src/lib/fonts.ts` instead (the Google response is intermittent per build). Archivo and Inter are now committed under `src/styles/fonts/` and loaded with `next/font/local`. The files are byte-identical to the ones previously served, and the metric-matched fallback faces are pinned in `globals.css` to the values `next/font/google` generated, so layout shift is unchanged. Nothing in the repo uses `next/font/google` any more.
 
 ### Interactive 3D decanter
 
