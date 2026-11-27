@@ -9,4 +9,4 @@ Ideas and follow-ups deferred from a cycle's scope (CLAUDE.md rule 6).
 - **Legacy `src/lib/email/notify.ts` + `scripts/test-form.ts`** are unused by the live path (and the script still uses the old `company_website` honeypot). Remove or update.
 
 ## Fonts (from the 2026-11-23 Vercel build failures)
-- **Public-site fonts still use `next/font/google`.** `src/lib/fonts.ts` (Archivo, Inter) fetches from Google at build time, the same mechanism that broke the admin fonts. It did not fail in the affected builds, but it carries the same risk. Move it to `next/font/local` with committed files (check fallback-metric overrides so CLS does not change).
+- **Only the latin subset is self-hosted.** `next/font/google` also served latin-ext, Cyrillic, Greek and Vietnamese subsets on demand; with the local files those characters fall back to system fonts. Add the latin-ext files if a brand or customer name ever needs them.
