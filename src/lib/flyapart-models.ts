@@ -92,6 +92,32 @@ const BASKET_PARTS: FlyApartPart[] = [
   { key: 'Base_Frame', name: 'Base frame', description: 'Supports the casing and carries the machine on vibration isolators.' },
 ]
 
+const DISCSTACK_PARTS: FlyApartPart[] = [
+  { key: 'Feed_Pipe', name: 'Feed pipe', description: 'Stationary pipe that delivers product down the centre of the bowl to the distributor.' },
+  { key: 'Connection_Housing', name: 'Feed and discharge housing', description: 'Stationary head that carries the feed pipe and the clarified-liquid outlet.' },
+  { key: 'Hood', name: 'Hood', description: 'Upper cover over the bowl. Bolts to the solids collector.' },
+  { key: 'Centripetal_Pump', name: 'Centripetal pump (paring disc)', description: 'Stationary disc that scoops clarified liquid out of the spinning bowl and discharges it under pressure.' },
+  { key: 'Pump_Chamber_Cover', name: 'Pump chamber cover', description: 'Closes the chamber at the top of the bowl where the centripetal pump runs.' },
+  { key: 'Bowl_Lock_Ring', name: 'Bowl lock ring', description: 'Threaded ring that clamps the bowl top to the bowl bottom.' },
+  { key: 'Bowl_Top', name: 'Bowl top', description: 'Conical upper half of the bowl.' },
+  { key: 'Disc_Stack', name: 'Disc stack', description: 'Conical discs that split the liquid into thin layers, shortening the settling distance and multiplying the clarifying area.' },
+  { key: 'Distributor', name: 'Distributor', description: 'Accelerates the feed and distributes it into the disc stack. The discs sit on its neck.' },
+  { key: 'Sliding_Piston', name: 'Sliding piston', description: 'Hydraulically operated piston that opens and closes the solids ejection ports.' },
+  { key: 'Piston_Seal', name: 'Piston seal', description: 'Seals the sliding piston while the bowl is closed.' },
+  { key: 'Bowl_Bottom', name: 'Bowl bottom', description: 'Lower half of the bowl. Sits on the spindle taper and carries the solids ejection ports.' },
+  { key: 'Solids_Collector', name: 'Solids collector', description: 'Stationary housing that catches ejected solids and directs them to the solids outlet.' },
+  { key: 'Spindle_Bearing_Upper', name: 'Spindle bearing, upper', description: 'Carries the spindle at the top of the bearing housing.' },
+  { key: 'Bearing_Housing', name: 'Spindle bearing housing', description: 'Holds the spindle bearings in the frame.' },
+  { key: 'Spindle_Bearing_Lower', name: 'Spindle bearing, lower', description: 'Carries the spindle at the bottom of the bearing housing.' },
+  { key: 'Spindle', name: 'Spindle', description: 'Vertical shaft that carries and drives the bowl.' },
+  { key: 'Spindle_Pulley', name: 'Spindle pulley', description: 'Driven pulley on the bottom of the spindle.' },
+  { key: 'Drive_Belt', name: 'Flat drive belt', description: 'Transmits power from the motor pulley to the spindle pulley.' },
+  { key: 'Motor_Pulley', name: 'Motor pulley', description: 'Driving pulley on the motor shaft.' },
+  { key: 'Drive_Motor', name: 'Drive motor', description: 'Electric motor mounted beside the bowl.' },
+  { key: 'Belt_Guard', name: 'Belt guard', description: 'Removable cover over the belt drive.' },
+  { key: 'Frame', name: 'Frame', description: 'Machine base. Houses the spindle and belt drive and supports the collector and hood.' },
+]
+
 export const FLYAPART_MODELS = {
   decanter: {
     title: 'Decanter rotating assembly',
@@ -134,6 +160,24 @@ export const FLYAPART_MODELS = {
         { key: 'hydraulic', label: 'Hydraulic' },
       ],
     },
+  },
+  discstack: {
+    title: 'Disc stack centrifuge',
+    modelUrl: '/models/disc-stack-separator.glb',
+    poster: {
+      src: '/images/discstack-3d/assembled.webp',
+      alt: '3D render of a self-cleaning disc stack centrifuge: frame with a side-mounted motor, solids collector with outlet, and a conical hood with feed and discharge connections',
+      width: 904,
+      height: 973,
+    },
+    canvasLabel: 'Interactive 3D model of a disc stack centrifuge. A text list of the parts is on this page.',
+    caption:
+      'Representative self-cleaning disc stack centrifuge with a flat-belt drive. Layout and details vary by make and model.',
+    parts: DISCSTACK_PARTS,
+    spin: { node: 'Disc_Stack', axis: 'y' },
+    floorY: 0,
+    view: { azimuth: -30, elevation: 14 },
+    layout: 'tall',
   },
 } satisfies Record<string, FlyApartModel>
 

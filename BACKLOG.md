@@ -21,3 +21,8 @@ Ideas and follow-ups deferred from a cycle's scope (CLAUDE.md rule 6).
 - **Confirm drive details with the shop.** The model offers an electric drive (motor on an inline gearbox) and a hydraulic drive (radial-piston motor with hoses) on the same pedestal. Both are representative; adjust either if the reference machines differ.
 - **Perforations are drawn, not cut.** The basket holes are dark discs on the wall to keep the model light for the web. Real through-holes, a filter cloth/liner, and a hinged lid are possible refinements.
 
+## 3D disc stack centrifuge (2026-11-26)
+- **Confirm the machine details with the shop.** No public spec sheets were found for the reference models, so bowl size, the flat-belt drive with a side motor, and the clarifier bowl layout (no separating disc or regulating ring) are assumptions. Older machines use a worm-gear drive; a purifier bowl would add a separating disc and gravity disc.
+- **Operating-water system** (valves, supply lines, closing-water chamber) is not modeled.
+- **Three homepage bands** may be one too many; consider a single "Explore in 3D" band with all three machines.
+
