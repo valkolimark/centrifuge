@@ -56,6 +56,12 @@ Format loosely follows [Keep a Changelog](https://keepachangelog.com/); dates ar
 - **Worm gear drive option** on the disc stack model — a Drive toggle switches between the flat-belt drive and a worm gear drive (horizontal flanged motor, centrifugal clutch, horizontal shaft with bearings, bronze worm wheel, worm on the spindle, gear housing).
 - **Spindle shown on its own** — in the exploded disc stack view the spindle now comes out to the side instead of staying threaded through its bearings and housing.
 
+### 3D disc stack centrifuge: bowl and operating-water detail
+
+**Changed**
+- **Disc stack model brought in line with a published parts glossary.** Added: top disc, gravity disc, distributing cone, bowl liner, port liners, and the operating-water parts (operating slide, distributing ring, control paring disc, distributing cover). The sludge ports are now rectangular slots, the main bowl seal is a nylon ring in the bowl hood (it was a rubber ring on the piston), the discs carry caulks, and the distributor has an alignment key. 39 identifiable parts (was 29).
+- **Part names** now give both common terms where they differ, e.g. "Bowl hood (bowl top)", "Paring disc (centripetal pump)", "Small lock ring (paring chamber cover)", "Worm wheel (bull gear)". The clutch is labelled a friction clutch.
+
 ## 2026-10-02
 
 ### Lead notifications (email)

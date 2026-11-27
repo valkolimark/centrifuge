@@ -23,7 +23,7 @@ Ideas and follow-ups deferred from a cycle's scope (CLAUDE.md rule 6).
 
 ## 3D disc stack centrifuge (2026-11-26)
 - **Confirm the machine details with the shop.** No public spec sheets were found for the reference models, so bowl size, both drive layouts (flat belt with a vertical side motor; worm gear with a horizontal flanged motor and centrifugal clutch), and the clarifier bowl layout (no separating disc or regulating ring) are assumptions. A purifier bowl would add a separating disc and gravity disc.
-- **Operating-water system** (valves, supply lines, closing-water chamber) is not modeled.
+- **Operating-water details not modeled:** valves, supply lines, and the internal water passages. The main parts (operating slide, distributing ring, control paring disc, distributing cover) are in the model.
 - **Three homepage bands** may be one too many; consider a single "Explore in 3D" band with all three machines.
 - **Isolating a part is pointer-only.** Double-click / double-tap has no keyboard equivalent yet; offer an "isolate" action from the parts list.
 
