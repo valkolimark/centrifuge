@@ -1,6 +1,6 @@
 import { Section } from '@/components/ui/Section'
 import { FlyApartExplorer } from '@/components/blocks/FlyApartExplorer'
-import { FLYAPART_MODELS, type FlyApartModel, type FlyApartModelKey } from '@/lib/flyapart-models'
+import { FLYAPART_MODELS, variantTag, type FlyApartModel, type FlyApartModelKey } from '@/lib/flyapart-models'
 
 // Page section that hosts an interactive 3D fly-apart model. Wide (horizontal)
 // machines get the viewer full width with the parts list folded underneath; tall
@@ -28,12 +28,18 @@ export function FlyApartSection({
             <h2 className="text-white">{heading}</h2>
             <p className="mt-2 max-w-2xl text-white/85">{intro}</p>
             <dl className="mt-6 hidden gap-x-6 gap-y-3 sm:grid-cols-2 lg:grid">
-              {model.parts.map((p) => (
-                <div key={p.key}>
-                  <dt className="text-sm font-semibold text-white">{p.name}</dt>
-                  <dd className="text-sm text-white/80">{p.description}</dd>
-                </div>
-              ))}
+              {model.parts.map((p) => {
+                const tag = variantTag(model, p)
+                return (
+                  <div key={p.key}>
+                    <dt className="text-sm font-semibold text-white">
+                      {p.name}
+                      {tag ? <span className="ml-2 text-xs font-medium text-white/70">({tag})</span> : null}
+                    </dt>
+                    <dd className="text-sm text-white/80">{p.description}</dd>
+                  </div>
+                )
+              })}
             </dl>
           </div>
           {/* Below lg the parts list folds under the viewer instead (FlyApartExplorer's own <details>). */}

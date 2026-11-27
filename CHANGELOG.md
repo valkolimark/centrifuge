@@ -31,6 +31,10 @@ Format loosely follows [Keep a Changelog](https://keepachangelog.com/); dates ar
 - **Tall layout** — vertical machines render in a portrait viewer beside the heading and an open parts list on desktop; on phones the list folds under the viewer. `FlyApartSection` picks the layout from the model registry.
 - Same loading rules as the decanter: nothing in first-load JS, self-hosted model (338 KB) and decoder, no CSP change.
 
+- **Electric or hydraulic drive** — a Drive toggle in the viewer switches the basket model between an electric drive (motor on an inline gearbox) and a hydraulic drive (radial-piston motor with pressure and return hoses). Both sit on the same pedestal and coupling; parts that belong to one drive are tagged in the parts list.
+- **Raised sight glass** — the lid's sight glass is now a 400 mm glass on a raised, flanged nozzle with a bolted frame, so it reads clearly from any angle.
+- **Nothing overlays the model** — part information moved to a fixed-height strip above the 3D canvas and every control (fly-apart, slider, drive toggle, zoom) to a strip below it, on both models. The canvas is unobstructed at every screen size, and loading or hovering never shifts the page.
+
 **Notes**
 - The model is representative (48 x 30 inch class, top-driven, bottom discharge; dimensions approximated from public listings), not a drawing of a specific make or model. The page says so under the viewer.
 

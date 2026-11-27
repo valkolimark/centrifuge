@@ -6,6 +6,8 @@ export interface FlyApartPart {
   key: string
   name: string
   description: string
+  /** Set when the part belongs to only one option of the model's `variants` (e.g. one drive type). */
+  variant?: string
 }
 
 export interface FlyApartModel {
@@ -26,6 +28,14 @@ export interface FlyApartModel {
   view: { azimuth: number; elevation: number }
   /** 'wide' for horizontal machines, 'tall' for vertical ones (changes the viewer's aspect ratio). */
   layout: 'wide' | 'tall'
+  /** Optional either/or configuration the visitor can switch between; the first option is the default. */
+  variants?: { label: string; options: { key: string; label: string }[] }
+}
+
+/** "Electric drive" style tag for a variant-specific part, or undefined for common parts. */
+export function variantTag(model: FlyApartModel, part: FlyApartPart): string | undefined {
+  const opt = model.variants?.options.find((o) => o.key === part.variant)
+  return opt && model.variants ? `${opt.label} ${model.variants.label.toLowerCase()}` : undefined
 }
 
 const DECANTER_PARTS: FlyApartPart[] = [
@@ -58,10 +68,12 @@ const DECANTER_PARTS: FlyApartPart[] = [
 ]
 
 const BASKET_PARTS: FlyApartPart[] = [
-  { key: 'Drive_Motor', name: 'Drive motor', description: 'Top-mounted motor that powers the basket.' },
-  { key: 'Drive_Gearbox', name: 'Drive gearbox', description: 'Transmits motor power down to the spindle.' },
-  { key: 'Drive_Coupling', name: 'Drive coupling', description: 'Flexible coupling between the gearbox output and the spindle.' },
-  { key: 'Drive_Pedestal', name: 'Drive pedestal', description: 'Supports the gearbox and motor above the bearing housing.' },
+  { key: 'Drive_Motor', name: 'Drive motor', description: 'Top-mounted electric motor that powers the basket.', variant: 'electric' },
+  { key: 'Drive_Gearbox', name: 'Drive gearbox', description: 'Transmits motor power down to the spindle.', variant: 'electric' },
+  { key: 'Hydraulic_Hoses', name: 'Hydraulic lines', description: 'Pressure and return hoses between the motor and a separate hydraulic power unit.', variant: 'hydraulic' },
+  { key: 'Hydraulic_Motor', name: 'Hydraulic drive motor', description: 'Low-speed, high-torque hydraulic motor mounted directly above the spindle.', variant: 'hydraulic' },
+  { key: 'Drive_Coupling', name: 'Drive coupling', description: 'Flexible coupling between the drive output and the spindle.' },
+  { key: 'Drive_Pedestal', name: 'Drive pedestal', description: 'Supports the drive above the bearing housing.' },
   { key: 'Bearing_Housing', name: 'Bearing housing', description: 'Cartridge that holds the spindle bearings and mounts to the lid.' },
   { key: 'Spindle_Bearing_Upper', name: 'Spindle bearing, upper', description: 'Carries the spindle at the top of the bearing housing.' },
   { key: 'Spindle_Bearing_Lower', name: 'Spindle bearing, lower', description: 'Carries the spindle at the bottom of the bearing housing.' },
@@ -103,18 +115,25 @@ export const FLYAPART_MODELS = {
     modelUrl: '/models/basket-centrifuge.glb',
     poster: {
       src: '/images/basket-3d/assembled.webp',
-      alt: '3D render of a vertical basket centrifuge: casing on a base frame, lid with sight glass and feed pipe, and a top-mounted drive',
+      alt: '3D render of a vertical basket centrifuge: casing on a base frame, lid with a raised sight glass and feed pipe, and a top-mounted drive',
       width: 672,
       height: 1146,
     },
     canvasLabel: 'Interactive 3D model of a vertical basket centrifuge. A text list of the parts is on this page.',
     caption:
-      'Representative 48 x 30 inch top-driven, bottom-discharge basket centrifuge. Layout and details vary by make and model.',
+      'Representative 48 x 30 inch top-driven, bottom-discharge basket centrifuge, shown with an electric or a hydraulic drive. Layout and details vary by make and model.',
     parts: BASKET_PARTS,
     spin: { node: 'Basket', axis: 'y' },
     floorY: 0,
     view: { azimuth: -30, elevation: 14 },
     layout: 'tall',
+    variants: {
+      label: 'Drive',
+      options: [
+        { key: 'electric', label: 'Electric' },
+        { key: 'hydraulic', label: 'Hydraulic' },
+      ],
+    },
   },
 } satisfies Record<string, FlyApartModel>
 
