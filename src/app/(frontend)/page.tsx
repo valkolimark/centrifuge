@@ -14,6 +14,7 @@ import { LocationCard } from '@/components/blocks/LocationCard'
 import { FAQAccordion } from '@/components/blocks/FAQAccordion'
 import { CTABanner } from '@/components/blocks/CTABanner'
 import { VideoFacade } from '@/components/blocks/VideoFacade'
+import { DecanterFeature } from '@/components/blocks/DecanterFeature'
 import { JsonLd } from '@/components/JsonLd'
 import { webPageSchema, videoObjectSchema } from '@/lib/schema'
 import { youtubeEmbedUrl } from '@/lib/videos'
@@ -206,6 +207,8 @@ export default async function HomePage() {
           ))}
         </div>
       </Section>
+
+      <DecanterFeature />
 
       <Section>
         <div className="mb-6 max-w-2xl">

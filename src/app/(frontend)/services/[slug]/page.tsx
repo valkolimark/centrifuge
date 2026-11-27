@@ -12,6 +12,7 @@ import { RelatedLinks } from '@/components/blocks/RelatedLinks'
 import { CTABanner } from '@/components/blocks/CTABanner'
 import { QuoteForm } from '@/components/forms/QuoteForm'
 import { VideoFacade } from '@/components/blocks/VideoFacade'
+import { DecanterExplorer } from '@/components/blocks/DecanterExplorer'
 import { SERVICE_HERO, SERVICE_VIDEO } from '@/lib/page-media'
 import { toVideoSource } from '@/lib/videos'
 import { JsonLd } from '@/components/JsonLd'
@@ -29,6 +30,10 @@ export const revalidate = 86400
 export const dynamicParams = true
 
 interface LinkItem { label: string; href: string }
+
+// The interactive 3D rotating assembly renders on this service page only
+// (linked from the homepage feature band — see DecanterFeature).
+const DECANTER_3D_SLUG = 'decanter-centrifuge-repair'
 
 export async function generateStaticParams() {
   return (await getServices()).map((s) => ({ slug: s.slug }))
@@ -121,6 +126,21 @@ export default async function ServicePage({ params }: { params: Promise<{ slug: 
             <div className="mt-5">
               <ProcessSteps steps={service.process} />
             </div>
+          </div>
+        </Section>
+      ) : null}
+
+      {service.slug === DECANTER_3D_SLUG ? (
+        <Section tone="deep" id="rotating-assembly" className="scroll-mt-24">
+          <div className="mx-auto max-w-5xl">
+            <div className="mb-6 max-w-2xl">
+              <h2 className="text-white">Inside a decanter rotating assembly</h2>
+              <p className="mt-2 text-white/85">
+                Rotate the assembly, fly it apart, and point at any part to see what it does: the bowl, scroll
+                conveyor, gearbox, and bearings we restore and balance in a decanter repair.
+              </p>
+            </div>
+            <DecanterExplorer />
           </div>
         </Section>
       ) : null}

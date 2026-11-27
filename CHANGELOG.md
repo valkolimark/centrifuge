@@ -11,6 +11,17 @@ Format loosely follows [Keep a Changelog](https://keepachangelog.com/); dates ar
 - **Vercel deployments failing since 2026-11-23** — every build died in `next/font` on `src/payload/admin/BrandProvider.tsx` (`TypeError: Cannot read properties of null (reading '1')`). `next/font/google` downloads fonts from Google at build time; Google began returning font URLs without a file extension to Vercel's builders, which Next 15.4's loader cannot parse. The admin fonts (Chakra Petch, Inter, JetBrains Mono) are now committed under `src/payload/admin/fonts/` and loaded with `next/font/local`, so the build no longer depends on Google. Same font files as before; no visual change intended.
 - **Public-site fonts hit the same failure** — the first production deploy after the admin fix died on `src/lib/fonts.ts` instead (the Google response is intermittent per build). Archivo and Inter are now committed under `src/styles/fonts/` and loaded with `next/font/local`. The files are byte-identical to the ones previously served, and the metric-matched fallback faces are pinned in `globals.css` to the values `next/font/google` generated, so layout shift is unchanged. Nothing in the repo uses `next/font/google` any more.
 
+### Interactive 3D decanter
+
+**Added**
+- **3D rotating-assembly explorer on the decanter repair page** — `/services/decanter-centrifuge-repair/#rotating-assembly` gets a click-to-load 3D model of a decanter rotating assembly (bowl, scroll conveyor, hubs, bearings, gearbox). Visitors can rotate it, fly it apart with a button or slider, and point at or tap a part to see its name and what it does. A text list of all 26 parts sits under the viewer for screen readers and search.
+- **Homepage feature band** — a Web Blue gradient section between "Centrifuge types we service" and "Industries we serve" with an exploded render and a tracked "Explore the 3D decanter" CTA to the explorer.
+- **Facade pattern, nothing in first load** — like `VideoFacade`, the page ships only a poster image. `three` (new dependency, an exception to the 5 KB animation-library rule, made at the client's request), the self-hosted Draco decoder (`/public/draco`), and the 453 KB model (`/public/models`) are fetched only after the click. No CSP change: the decoder runs as JS, not WASM.
+- GA4 `cta_click` events: `Home — Explore the 3D decanter`, `Explore in 3D`, `3D — Fly apart`.
+
+**Notes**
+- The model is representative (14-inch class, dimensions approximated from public listings), not a drawing of a specific make or model; the page says so under the viewer.
+
 ## 2026-10-02
 
 ### Lead notifications (email)
