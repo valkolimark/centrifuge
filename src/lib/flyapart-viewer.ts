@@ -7,6 +7,9 @@
 // Each GLB carries one baked clip (assembled → fully apart). The viewer scrubs that
 // clip with a 0..1 progress value, keeps the model framed as it grows, reports which
 // part is under the pointer, and zooms toward the last part the visitor clicked.
+// Double-clicking (or double-tapping) a part isolates it: everything else is hidden and
+// the camera frames that part alone so it can be turned around; doing it again puts it
+// back. Parts flagged `individual` (e.g. a disc stack) are picked one mesh at a time.
 // Rendering is on demand: the loop stops whenever nothing is moving or the canvas is
 // off screen. Wheel and pinch zoom are deliberately off so the canvas never hijacks
 // page scrolling; zoom is driven by the explorer's buttons.
@@ -42,8 +45,11 @@ export interface FlyApartViewerOptions {
   canvas: HTMLCanvasElement
   modelUrl: string
   dracoPath: string
-  /** Identifiable parts (node names). A part with `variant` shows only while that variant is selected. */
-  parts: readonly { key: string; variant?: string }[]
+  /**
+   * Identifiable parts (node names). A part with `variant` shows only while that variant is
+   * selected. A part with `individual` is picked, highlighted and isolated one mesh at a time.
+   */
+  parts: readonly { key: string; variant?: string; individual?: boolean }[]
   /** Initially selected variant, for models that have them. */
   variant?: string
   /** Highlight colour for the hovered part (any CSS colour). */
@@ -59,7 +65,10 @@ export interface FlyApartViewerOptions {
   onError: (err: unknown) => void
   /** p: 0 assembled … 1 fully apart. playingTo is the play() target, or null when idle/scrubbing. */
   onProgress: (p: number, playingTo: 0 | 1 | null) => void
-  onFocus: (key: string | null) => void
+  /** unitLabel is set for `individual` parts, e.g. "7 of 24". */
+  onFocus: (key: string | null, unitLabel: string | null) => void
+  /** A part was isolated (double-click) or returned to the machine (key null). */
+  onIsolate: (key: string | null, unitLabel: string | null) => void
   /** Zoom target changed (1 = whole model in view). */
   onZoom: (zoom: number) => void
 }
@@ -73,6 +82,8 @@ export interface FlyApartViewerHandle {
   resetView: () => void
   /** Show the parts of one variant (e.g. a drive type) and hide the others. */
   setVariant: (variant: string) => void
+  /** Put an isolated part back into the machine. */
+  exitIsolation: () => void
   dispose: () => void
 }
 
@@ -83,6 +94,7 @@ const PLAY_SECONDS = 5.2
 export function createFlyApartViewer(opts: FlyApartViewerOptions): FlyApartViewerHandle {
   const { canvas } = opts
   const partVariant = new Map(opts.parts.map((p) => [p.key, p.variant]))
+  const individual = new Set(opts.parts.filter((p) => p.individual).map((p) => p.key))
 
   const renderer = new WebGLRenderer({ canvas, antialias: true, alpha: true })
   renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2))
@@ -137,15 +149,22 @@ export function createFlyApartViewer(opts: FlyApartViewerOptions): FlyApartViewe
   let action: AnimationAction | null = null
   let clipStart = 0
   let clipEnd = 0
-  const byKey = new Map<string, Mesh[]>()
+  // A unit is what one click selects: every mesh of a part, or a single mesh of an `individual` part.
+  interface Unit {
+    key: string
+    meshes: Mesh[]
+    label: string | null
+  }
+  const units = new Map<string, Unit>()
   const meshes: Mesh[] = []
   let variant = opts.variant
+  let isolated: string | null = null // unit id shown on its own
 
   let progress = 0
   let applied = -1
   let target: 0 | 1 | null = null
-  let focused: string | null = null
-  let anchorKey: string | null = null // last clicked part: where zoom heads
+  let focused: string | null = null // unit id under the pointer
+  let anchorKey: string | null = null // unit id last clicked: where zoom heads
   let zoomGoal = 1
   let zoom = 1
   let dragging = false
@@ -159,6 +178,7 @@ export function createFlyApartViewer(opts: FlyApartViewerOptions): FlyApartViewe
 
   const box = new Box3()
   const anchorBox = new Box3()
+  const tmpBox = new Box3()
   const center = new Vector3()
   const raycaster = new Raycaster()
   const pointer = new Vector2()
@@ -191,17 +211,18 @@ export function createFlyApartViewer(opts: FlyApartViewerOptions): FlyApartViewe
     return null
   }
 
-  function focus(k: string | null) {
-    if (k === focused) return
-    for (const [name, meshes] of byKey) {
-      for (const m of meshes) {
+  function focus(id: string | null) {
+    if (id === focused) return
+    for (const [unitId, unit] of units) {
+      for (const m of unit.meshes) {
         const mat = m.material as MeshStandardMaterial
-        mat.emissive.set(name === k ? opts.accent : '#000000')
-        mat.emissiveIntensity = name === k ? 0.45 : 1
+        mat.emissive.set(unitId === id ? opts.accent : '#000000')
+        mat.emissiveIntensity = unitId === id ? 0.45 : 1
       }
     }
-    focused = k
-    opts.onFocus(k)
+    focused = id
+    const unit = id ? units.get(id) : undefined
+    opts.onFocus(unit?.key ?? null, unit?.label ?? null)
     wake()
   }
 
@@ -211,26 +232,49 @@ export function createFlyApartViewer(opts: FlyApartViewerOptions): FlyApartViewe
     pointer.set(((e.clientX - b.left) / b.width) * 2 - 1, -((e.clientY - b.top) / b.height) * 2 + 1)
     raycaster.setFromCamera(pointer, camera)
     const hit = raycaster.intersectObject(model, true).find((h) => h.object.visible) // skip the hidden variant
-    const k = hit ? ((hit.object.userData.partKey as string | undefined) ?? null) : null
-    focus(k)
-    return k
+    const id = hit ? ((hit.object.userData.unitId as string | undefined) ?? null) : null
+    focus(id)
+    return id
   }
 
-  // Bounds of what is currently shown (the hidden variant's parts do not count).
+  // Union of the meshes' own bounds (children are separate parts, so they must not be included).
+  function expandBy(target: Box3, list: readonly Mesh[]) {
+    for (const m of list) {
+      if (!m.visible || !m.geometry.boundingBox) continue
+      target.union(tmpBox.copy(m.geometry.boundingBox).applyMatrix4(m.matrixWorld))
+    }
+  }
+
+  // Bounds of what is currently shown (hidden variants and, when isolating, other parts do not count).
   function computeBox() {
     box.makeEmpty()
-    for (const m of meshes) if (m.visible) box.expandByObject(m)
+    expandBy(box, meshes)
   }
 
-  function applyVariant() {
+  function applyVisibility() {
     for (const m of meshes) {
       const v = partVariant.get(m.userData.partKey as string)
-      m.visible = !v || !variant || v === variant
+      const inVariant = !v || !variant || v === variant
+      m.visible = inVariant && (!isolated || m.userData.unitId === isolated)
     }
     if (model) {
       model.updateMatrixWorld(true)
       computeBox()
     }
+  }
+
+  function setIsolated(id: string | null) {
+    if (id === isolated) return
+    isolated = id
+    // Frame the part (or the machine again) from scratch: no zoom, no anchor.
+    zoomGoal = ZOOM_MIN
+    anchorKey = null
+    if (opts.reducedMotion) zoom = zoomGoal
+    opts.onZoom(zoomGoal)
+    applyVisibility()
+    const unit = id ? units.get(id) : undefined
+    opts.onIsolate(unit?.key ?? null, unit?.label ?? null)
+    wake()
   }
 
   // Distance at which the whole box fits the view from direction `dir`.
@@ -302,11 +346,11 @@ export function createFlyApartViewer(opts: FlyApartViewerOptions): FlyApartViewe
     const dir = tmpDir.copy(camera.position).sub(controls.target).normalize()
     const want = Math.max(fitDistance(dir) / zoom, 0.35)
     box.getCenter(tmpWant)
-    const anchorMeshes = anchorKey ? byKey.get(anchorKey) : undefined
-    if (anchorMeshes && zoom > 1) {
+    const anchorUnit = anchorKey ? units.get(anchorKey) : undefined
+    if (anchorUnit && zoom > 1) {
       anchorBox.makeEmpty()
-      for (const m of anchorMeshes) anchorBox.expandByObject(m)
-      tmpWant.lerp(anchorBox.getCenter(tmpC), MathUtils.smoothstep(zoom, 1, 1.6))
+      expandBy(anchorBox, anchorUnit.meshes)
+      if (!anchorBox.isEmpty()) tmpWant.lerp(anchorBox.getCenter(tmpC), MathUtils.smoothstep(zoom, 1, 1.6))
     }
     const k = snap ? 1 : 1 - Math.exp(-dt * 7)
     snap = false
@@ -347,6 +391,7 @@ export function createFlyApartViewer(opts: FlyApartViewerOptions): FlyApartViewe
 
   // ── events ───────────────────────────────────────────────────────────────
   let downAt: [number, number] | null = null
+  let lastTap: { t: number; x: number; y: number } | null = null
   const onStart = () => {
     dragging = true
   }
@@ -362,11 +407,24 @@ export function createFlyApartViewer(opts: FlyApartViewerOptions): FlyApartViewe
     downAt = [e.clientX, e.clientY]
   }
   const onUp = (e: PointerEvent) => {
-    // A click or tap (no drag) identifies the part and makes it the zoom anchor.
-    if (downAt && Math.hypot(e.clientX - downAt[0], e.clientY - downAt[1]) < 6) {
-      anchorKey = pick(e)
-      wake()
+    if (!downAt || Math.hypot(e.clientX - downAt[0], e.clientY - downAt[1]) >= 6) return // it was a drag
+    const now = performance.now()
+    const double = lastTap !== null && now - lastTap.t < 380 && Math.hypot(e.clientX - lastTap.x, e.clientY - lastTap.y) < 24
+    if (double) {
+      // Second click / tap: isolate the part under the pointer, or put the isolated part back.
+      lastTap = null
+      if (isolated) {
+        setIsolated(null)
+      } else {
+        const id = pick(e)
+        if (id) setIsolated(id)
+      }
+      return
     }
+    // Single click or tap: identify the part and make it the zoom anchor.
+    lastTap = { t: now, x: e.clientX, y: e.clientY }
+    anchorKey = pick(e)
+    wake()
   }
   controls.addEventListener('start', onStart)
   controls.addEventListener('end', onEnd)
@@ -399,15 +457,28 @@ export function createFlyApartViewer(opts: FlyApartViewerOptions): FlyApartViewe
         if (!mesh.isMesh) return
         mesh.castShadow = true
         mesh.material = (mesh.material as MeshStandardMaterial).clone() // per-part highlight
+        mesh.geometry.computeBoundingBox()
         meshes.push(mesh)
         const k = keyOf(mesh)
         if (k) {
+          // Multi-material meshes arrive as sibling primitives named "<node>_1", "<node>_2": keep them together.
+          const node = mesh.parent?.type === 'Group' ? mesh.parent : mesh
+          const id = individual.has(k) ? `${k}:${node.name}` : k
           mesh.userData.partKey = k
-          const list = byKey.get(k)
-          if (list) list.push(mesh)
-          else byKey.set(k, [mesh])
+          mesh.userData.unitId = id
+          const unit = units.get(id)
+          if (unit) unit.meshes.push(mesh)
+          else units.set(id, { key: k, meshes: [mesh], label: null })
         }
       })
+      // Number the units of each `individual` part in name order: "1 of 24", "2 of 24", …
+      for (const k of individual) {
+        const ids = [...units.keys()].filter((id) => id.startsWith(`${k}:`)).sort()
+        ids.forEach((id, i) => {
+          const unit = units.get(id)
+          if (unit) unit.label = `${i + 1} of ${ids.length}`
+        })
+      }
       spinNode = opts.spin ? model.getObjectByName(opts.spin.node) : undefined
       scene.add(model)
 
@@ -423,7 +494,7 @@ export function createFlyApartViewer(opts: FlyApartViewerOptions): FlyApartViewe
         clipStart = Math.min(...tracks.map((t) => t.times[0]))
         clipEnd = clip.duration
       }
-      applyVariant()
+      applyVisibility()
       box.getCenter(center)
       idleAt = performance.now() + 1200
       resize()
@@ -470,11 +541,19 @@ export function createFlyApartViewer(opts: FlyApartViewerOptions): FlyApartViewe
     setVariant(v) {
       if (v === variant) return
       variant = v
-      // Drop the highlight / zoom anchor if it was on a part that is now hidden.
-      if (focused && partVariant.get(focused) && partVariant.get(focused) !== v) focus(null)
-      if (anchorKey && partVariant.get(anchorKey) && partVariant.get(anchorKey) !== v) anchorKey = null
-      applyVariant()
+      // Drop isolation, highlight and zoom anchor if they were on a part that is now hidden.
+      const hiddenNow = (id: string | null) => {
+        const pv = id ? partVariant.get(units.get(id)?.key ?? '') : undefined
+        return Boolean(pv && pv !== v)
+      }
+      if (hiddenNow(isolated)) setIsolated(null)
+      if (hiddenNow(focused)) focus(null)
+      if (hiddenNow(anchorKey)) anchorKey = null
+      applyVisibility()
       wake()
+    },
+    exitIsolation() {
+      setIsolated(null)
     },
     dispose() {
       disposed = true

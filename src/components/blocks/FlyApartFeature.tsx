@@ -82,14 +82,14 @@ const FEATURES = {
       {
         src: '/images/discstack-3d/assembled.webp',
         alt: '3D render of a self-cleaning disc stack centrifuge with a side-mounted motor and a conical hood',
-        width: 904,
+        width: 888,
         height: 973,
       },
       {
         src: '/images/discstack-3d/exploded.webp',
         alt: 'The same disc stack centrifuge exploded vertically: hood, centripetal pump, bowl top, disc stack, distributor, sliding piston, bowl bottom, solids collector, spindle, and frame',
-        width: 468,
-        height: 1122,
+        width: 422,
+        height: 1090,
       },
     ],
     mirrored: false,
