@@ -20,5 +20,4 @@ Ideas and follow-ups deferred from a cycle's scope (CLAUDE.md rule 6).
 ## 3D basket centrifuge (2026-11-26)
 - **Confirm drive details with the shop.** The model offers an electric drive (motor on an inline gearbox) and a hydraulic drive (radial-piston motor with hoses) on the same pedestal. Both are representative; adjust either if the reference machines differ.
 - **Perforations are drawn, not cut.** The basket holes are dark discs on the wall to keep the model light for the web. Real through-holes, a filter cloth/liner, and a hinged lid are possible refinements.
-- **Homepage feature band** for the basket model (the decanter has one) if it should be promoted from the homepage.
 

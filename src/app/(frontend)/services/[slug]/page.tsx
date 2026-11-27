@@ -33,7 +33,7 @@ export const dynamicParams = true
 interface LinkItem { label: string; href: string }
 
 // Interactive 3D fly-apart models, by service slug. The decanter anchor is linked from
-// the homepage feature band (see DecanterFeature) — keep its id stable.
+// the homepage feature bands (see FlyApartFeature) — keep its id stable.
 const FLYAPART_BY_SLUG: Record<string, { model: FlyApartModelKey; id: string; heading: string; intro: string }> = {
   'decanter-centrifuge-repair': {
     model: 'decanter',
