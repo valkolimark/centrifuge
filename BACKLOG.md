@@ -18,8 +18,7 @@ Ideas and follow-ups deferred from a cycle's scope (CLAUDE.md rule 6).
 - **Only the latin subset is self-hosted.** `next/font/google` also served latin-ext, Cyrillic, Greek and Vietnamese subsets on demand; with the local files those characters fall back to system fonts. Add the latin-ext files if a brand or customer name ever needs them.
 
 ## 3D basket centrifuge (2026-11-26)
-- **Confirm the drive arrangement with the shop.** The model shows an electric motor on an inline gearbox, coupled to the spindle through a pedestal. Many 48 x 30 top-driven units use a hydraulic drive instead; relabel or remodel the drive stack if that is the machine to show.
+- **Confirm drive details with the shop.** The model offers an electric drive (motor on an inline gearbox) and a hydraulic drive (radial-piston motor with hoses) on the same pedestal. Both are representative; adjust either if the reference machines differ.
 - **Perforations are drawn, not cut.** The basket holes are dark discs on the wall to keep the model light for the web. Real through-holes, a filter cloth/liner, and a hinged lid are possible refinements.
 - **Homepage feature band** for the basket model (the decanter has one) if it should be promoted from the homepage.
-- **Tall viewer on phones:** the info panel can overlap the top of the fully exploded stack; consider a smaller panel or more top margin.
 

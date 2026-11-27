@@ -42,8 +42,10 @@ export interface FlyApartViewerOptions {
   canvas: HTMLCanvasElement
   modelUrl: string
   dracoPath: string
-  /** Node names that count as identifiable parts. */
-  partKeys: readonly string[]
+  /** Identifiable parts (node names). A part with `variant` shows only while that variant is selected. */
+  parts: readonly { key: string; variant?: string }[]
+  /** Initially selected variant, for models that have them. */
+  variant?: string
   /** Highlight colour for the hovered part (any CSS colour). */
   accent: string
   reducedMotion: boolean
@@ -69,6 +71,8 @@ export interface FlyApartViewerHandle {
   zoomBy: (factor: number) => void
   /** Back to the whole model, centred. */
   resetView: () => void
+  /** Show the parts of one variant (e.g. a drive type) and hide the others. */
+  setVariant: (variant: string) => void
   dispose: () => void
 }
 
@@ -78,7 +82,7 @@ const PLAY_SECONDS = 5.2
 
 export function createFlyApartViewer(opts: FlyApartViewerOptions): FlyApartViewerHandle {
   const { canvas } = opts
-  const partKeys = new Set(opts.partKeys)
+  const partVariant = new Map(opts.parts.map((p) => [p.key, p.variant]))
 
   const renderer = new WebGLRenderer({ canvas, antialias: true, alpha: true })
   renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2))
@@ -134,6 +138,8 @@ export function createFlyApartViewer(opts: FlyApartViewerOptions): FlyApartViewe
   let clipStart = 0
   let clipEnd = 0
   const byKey = new Map<string, Mesh[]>()
+  const meshes: Mesh[] = []
+  let variant = opts.variant
 
   let progress = 0
   let applied = -1
@@ -180,7 +186,7 @@ export function createFlyApartViewer(opts: FlyApartViewerOptions): FlyApartViewe
   function keyOf(o: Object3D | null): string | null {
     for (let n = o; n; n = n.parent) {
       const name = n.name.replace(/_\d+$/, '')
-      if (partKeys.has(name)) return name
+      if (partVariant.has(name)) return name
     }
     return null
   }
@@ -204,10 +210,27 @@ export function createFlyApartViewer(opts: FlyApartViewerOptions): FlyApartViewe
     const b = canvas.getBoundingClientRect()
     pointer.set(((e.clientX - b.left) / b.width) * 2 - 1, -((e.clientY - b.top) / b.height) * 2 + 1)
     raycaster.setFromCamera(pointer, camera)
-    const hit = raycaster.intersectObject(model, true)[0]
+    const hit = raycaster.intersectObject(model, true).find((h) => h.object.visible) // skip the hidden variant
     const k = hit ? ((hit.object.userData.partKey as string | undefined) ?? null) : null
     focus(k)
     return k
+  }
+
+  // Bounds of what is currently shown (the hidden variant's parts do not count).
+  function computeBox() {
+    box.makeEmpty()
+    for (const m of meshes) if (m.visible) box.expandByObject(m)
+  }
+
+  function applyVariant() {
+    for (const m of meshes) {
+      const v = partVariant.get(m.userData.partKey as string)
+      m.visible = !v || !variant || v === variant
+    }
+    if (model) {
+      model.updateMatrixWorld(true)
+      computeBox()
+    }
   }
 
   // Distance at which the whole box fits the view from direction `dir`.
@@ -218,7 +241,7 @@ export function createFlyApartViewer(opts: FlyApartViewerOptions): FlyApartViewe
     const y = tmpB.crossVectors(dir, x)
     const c = box.getCenter(tmpC)
     const marginH = 0.9
-    const marginV = 0.68 // leaves room for the overlay controls
+    const marginV = 0.88 // all controls sit outside the canvas, so only a small margin is needed
     let need = 0
     for (let i = 0; i < 8; i++) {
       tmpP
@@ -256,7 +279,7 @@ export function createFlyApartViewer(opts: FlyApartViewerOptions): FlyApartViewe
       mixer.update(0)
       applied = progress
       model.updateMatrixWorld(true)
-      box.setFromObject(model)
+      computeBox()
     }
     if (spinNode && opts.spin && progress > 0.6 && !opts.reducedMotion) {
       // Turn the rotor once it is exposed, so the flights / basket read as rotating parts.
@@ -376,6 +399,7 @@ export function createFlyApartViewer(opts: FlyApartViewerOptions): FlyApartViewe
         if (!mesh.isMesh) return
         mesh.castShadow = true
         mesh.material = (mesh.material as MeshStandardMaterial).clone() // per-part highlight
+        meshes.push(mesh)
         const k = keyOf(mesh)
         if (k) {
           mesh.userData.partKey = k
@@ -399,8 +423,7 @@ export function createFlyApartViewer(opts: FlyApartViewerOptions): FlyApartViewe
         clipStart = Math.min(...tracks.map((t) => t.times[0]))
         clipEnd = clip.duration
       }
-      model.updateMatrixWorld(true)
-      box.setFromObject(model)
+      applyVariant()
       box.getCenter(center)
       idleAt = performance.now() + 1200
       resize()
@@ -442,6 +465,15 @@ export function createFlyApartViewer(opts: FlyApartViewerOptions): FlyApartViewe
       anchorKey = null
       if (opts.reducedMotion) zoom = zoomGoal
       opts.onZoom(zoomGoal)
+      wake()
+    },
+    setVariant(v) {
+      if (v === variant) return
+      variant = v
+      // Drop the highlight / zoom anchor if it was on a part that is now hidden.
+      if (focused && partVariant.get(focused) && partVariant.get(focused) !== v) focus(null)
+      if (anchorKey && partVariant.get(anchorKey) && partVariant.get(anchorKey) !== v) anchorKey = null
+      applyVariant()
       wake()
     },
     dispose() {
