@@ -1,15 +1,34 @@
-// Part names and one-line descriptions for the 3D decanter rotating assembly
-// (public/models/decanter-rotating-assembly.glb). Keys match the node names in the
-// model. Kept free of three.js so server components can render the text list
-// without pulling the 3D bundle. Descriptions are generic decanter engineering,
-// not claims about any one make or model.
-export interface DecanterPart {
+// Registry of the interactive 3D fly-apart models shown by FlyApartExplorer.
+// Kept free of three.js so server components can read part lists and posters
+// without pulling the 3D bundle. Part keys match the node names in each GLB.
+// Descriptions are generic engineering, not claims about any one make or model.
+export interface FlyApartPart {
   key: string
   name: string
   description: string
 }
 
-export const DECANTER_PARTS: DecanterPart[] = [
+export interface FlyApartModel {
+  /** Title shown in the viewer's info panel when no part is selected. */
+  title: string
+  modelUrl: string
+  poster: { src: string; alt: string; width: number; height: number }
+  /** Accessible name for the canvas. */
+  canvasLabel: string
+  /** Honest caption under the viewer: what the model is and is not. */
+  caption: string
+  parts: FlyApartPart[]
+  /** Node that turns slowly once the model is mostly apart (e.g. the scroll or basket). */
+  spin?: { node: string; axis: 'x' | 'y' | 'z' }
+  /** Height of the shadow-catching floor in model units (glTF Y-up). */
+  floorY: number
+  /** Starting camera direction, in degrees. */
+  view: { azimuth: number; elevation: number }
+  /** 'wide' for horizontal machines, 'tall' for vertical ones (changes the viewer's aspect ratio). */
+  layout: 'wide' | 'tall'
+}
+
+const DECANTER_PARTS: FlyApartPart[] = [
   { key: 'Bowl_Cylinder', name: 'Bowl, cylindrical section', description: 'The clarifying zone. Solids settle against the bowl wall under centrifugal force.' },
   { key: 'Bowl_Cone_Beach', name: 'Bowl, conical beach', description: 'Solids are conveyed up the beach, out of the liquid pond, and drain before discharge.' },
   { key: 'Solids_Port_Bushing', name: 'Solids discharge bushings', description: 'Replaceable wear bushings lining the solids discharge ports.' },
@@ -38,10 +57,27 @@ export const DECANTER_PARTS: DecanterPart[] = [
   { key: 'Feed_Tube', name: 'Feed tube', description: 'Stationary pipe that delivers feed into the scroll feed chamber.' },
 ]
 
-export const DECANTER_PART_BY_KEY: Record<string, DecanterPart> = Object.fromEntries(
-  DECANTER_PARTS.map((p) => [p.key, p]),
-)
+export const FLYAPART_MODELS = {
+  decanter: {
+    title: 'Decanter rotating assembly',
+    modelUrl: '/models/decanter-rotating-assembly.glb',
+    poster: {
+      src: '/images/decanter-3d/assembled.webp',
+      alt: '3D render of a decanter centrifuge rotating assembly: gearbox, bowl, conical beach, and drive sheave',
+      width: 1274,
+      height: 350,
+    },
+    canvasLabel: 'Interactive 3D model of a decanter centrifuge rotating assembly. A text list of the parts follows.',
+    caption: 'Representative 14-inch decanter rotating assembly. Layout and details vary by make and model.',
+    parts: DECANTER_PARTS,
+    spin: { node: 'Scroll_Hub', axis: 'x' },
+    floorY: -0.42,
+    view: { azimuth: -34, elevation: 17 },
+    layout: 'wide',
+  },
+} satisfies Record<string, FlyApartModel>
 
-export const DECANTER_MODEL_URL = '/models/decanter-rotating-assembly.glb'
+export type FlyApartModelKey = keyof typeof FLYAPART_MODELS
+
 /** Self-hosted Draco decoder (JS build — the WASM build is blocked by the site CSP). */
-export const DECANTER_DRACO_PATH = '/draco/'
+export const FLYAPART_DRACO_PATH = '/draco/'
