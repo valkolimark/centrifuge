@@ -57,6 +57,29 @@ const DECANTER_PARTS: FlyApartPart[] = [
   { key: 'Feed_Tube', name: 'Feed tube', description: 'Stationary pipe that delivers feed into the scroll feed chamber.' },
 ]
 
+const BASKET_PARTS: FlyApartPart[] = [
+  { key: 'Drive_Motor', name: 'Drive motor', description: 'Top-mounted motor that powers the basket.' },
+  { key: 'Drive_Gearbox', name: 'Drive gearbox', description: 'Transmits motor power down to the spindle.' },
+  { key: 'Drive_Coupling', name: 'Drive coupling', description: 'Flexible coupling between the gearbox output and the spindle.' },
+  { key: 'Drive_Pedestal', name: 'Drive pedestal', description: 'Supports the gearbox and motor above the bearing housing.' },
+  { key: 'Bearing_Housing', name: 'Bearing housing', description: 'Cartridge that holds the spindle bearings and mounts to the lid.' },
+  { key: 'Spindle_Bearing_Upper', name: 'Spindle bearing, upper', description: 'Carries the spindle at the top of the bearing housing.' },
+  { key: 'Spindle_Bearing_Lower', name: 'Spindle bearing, lower', description: 'Carries the spindle at the bottom of the bearing housing.' },
+  { key: 'Spindle_Seal', name: 'Spindle seal', description: 'Keeps process liquid and vapor out of the bearing housing.' },
+  { key: 'Spindle', name: 'Spindle', description: 'The shaft that carries the basket and transmits drive torque to it.' },
+  { key: 'Lid', name: 'Lid (cover)', description: 'Closes the top of the casing and carries the feed pipe, sight glass, plow, and drive.' },
+  { key: 'Lid_Bolts', name: 'Lid bolts', description: 'Fasten the lid to the casing flange.' },
+  { key: 'Sight_Glass_Frame', name: 'Sight glass frame', description: 'Clamps and seals the sight glass to the lid.' },
+  { key: 'Sight_Glass_Lens', name: 'Sight glass', description: 'Window for watching the cake build and the wash during a cycle.' },
+  { key: 'Feed_Pipe', name: 'Feed pipe', description: 'Delivers slurry into the spinning basket.' },
+  { key: 'Plow_Assembly', name: 'Plow (scraper)', description: 'Swings into the cake at low speed to cut solids off the basket wall for bottom discharge.' },
+  { key: 'Basket', name: 'Perforated basket', description: 'The rotating filter drum. Liquid passes through the perforations while solids build up as a cake on the wall.' },
+  { key: 'Basket_Lock_Nut', name: 'Basket lock nut', description: 'Retains the basket hub on the spindle taper.' },
+  { key: 'Casing', name: 'Casing (curb)', description: 'Stationary housing around the basket. Collects the filtrate and directs it to the liquid outlet.' },
+  { key: 'Discharge_Chute', name: 'Solids discharge chute', description: 'Bottom outlet where plowed solids leave the machine.' },
+  { key: 'Base_Frame', name: 'Base frame', description: 'Supports the casing and carries the machine on vibration isolators.' },
+]
+
 export const FLYAPART_MODELS = {
   decanter: {
     title: 'Decanter rotating assembly',
@@ -74,6 +97,24 @@ export const FLYAPART_MODELS = {
     floorY: -0.42,
     view: { azimuth: -34, elevation: 17 },
     layout: 'wide',
+  },
+  basket: {
+    title: 'Basket centrifuge',
+    modelUrl: '/models/basket-centrifuge.glb',
+    poster: {
+      src: '/images/basket-3d/assembled.webp',
+      alt: '3D render of a vertical basket centrifuge: casing on a base frame, lid with sight glass and feed pipe, and a top-mounted drive',
+      width: 672,
+      height: 1146,
+    },
+    canvasLabel: 'Interactive 3D model of a vertical basket centrifuge. A text list of the parts is on this page.',
+    caption:
+      'Representative 48 x 30 inch top-driven, bottom-discharge basket centrifuge. Layout and details vary by make and model.',
+    parts: BASKET_PARTS,
+    spin: { node: 'Basket', axis: 'y' },
+    floorY: 0,
+    view: { azimuth: -30, elevation: 14 },
+    layout: 'tall',
   },
 } satisfies Record<string, FlyApartModel>
 
